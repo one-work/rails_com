@@ -7,7 +7,7 @@ module RailsCom::Connection
 
   def connect
     self.verified_receiver = find_verified_receiver
-    self.session_id = session['session_id']
+    self.session_id = session['session_id'] if session
     self.organ = current_organ
   end
 
