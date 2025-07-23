@@ -1,4 +1,4 @@
-<nav data-controller="menu" id="admin_menu" class="menu as-wrap p-3" style="<%= defined?(current_organ) && current_organ&.panel_theme %>">
+<nav data-controller="menu" id="admin_menu" class="menu as-wrap" style="<%= defined?(current_organ) && current_organ&.panel_theme %>">
   <%= render 'brand_nav' %>
   <%= render 'com_nav' if role_permit?(business: 'com', namespace: 'panel') %>
   <%= render 'role_nav' if role_permit?(business: 'roled', namespace: 'panel') %>
