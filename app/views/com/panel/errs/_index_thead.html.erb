@@ -1,7 +1,6 @@
 <th id="xxd" data-controller="check" data-check-form-outlet="form.button_to">
   <%= check_box_tag 'xxd', 'xx', false, data: { check_target: 'all', action: 'check#toggleAll' }, id: nil %>
 </th>
-<th style="width: 4rem"><%= Com::Err.human_attribute_name(:id) %></th>
 <th>
   <p><%= Com::Err.human_attribute_name(:path) %></p>
   <p><%= Com::Err.human_attribute_name(:params) %></p>

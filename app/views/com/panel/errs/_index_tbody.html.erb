@@ -1,10 +1,11 @@
 <td><%= check_box_tag 'xx', model.id, false, id: nil %></td>
-<td><%= link_to model.id, { action: 'show', id: model.id }, text: true %></td>
 <td>
+<%= link_to({ action: 'show', id: model.id }, text: true) do %>
   <p><%= model.path %></p>
   <p class="is-wrap"><%= simple_format model.params.limit(3) %></p>
   <p class="is-wrap"><%= simple_format model.session.limit(3) %></p>
   <p class="is-wrap"><%= model.exception %></p>
+<% end %>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>

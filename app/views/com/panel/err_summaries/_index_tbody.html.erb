@@ -1,7 +1,8 @@
-<td><%= link_to model.id, { controller: 'errs', err_summary_id: model.id }, text: true %></td>
 <td>
+<%= link_to({ controller: 'errs', err_summary_id: model.id }, text: true) do %>
   <p><%= model.controller_name %></p>
   <p><%= model.action_name %></p>
+<% end %>
 </td>
 <td><%= model.exception_object %></td>
 <td><%= model.errs_count %></td>
