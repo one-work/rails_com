@@ -1,6 +1,3 @@
-<td><%= model.name %></td>
-<td><%= link_to model.record_name, { controller: 'meta_columns', meta_model_id: model.id, **request.GET.except(:id, :page, :per, :record_name) } %></td>
-<td><%= model.description %></td>
 <td>
   <div data-show-target="item" class="visibility-hidden">
     <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light') do %>
@@ -14,13 +11,9 @@
     <% end %>
   </div>
   <div data-show-target="item" class="visibility-hidden">
-    <%= link_to({ action: 'reflections', id: model.id, **request.query_parameters.except(:id, :page, :per, :table_name) }, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ controller: 'pg_publication_tables', pg_publication_id: model.id }, class: 'button is-small is-rounded is-light') do %>
       <i class="fa-solid fa-sitemap text-success"></i>
-      <span class="ml-1"><%= t('.reflections.title') %></span>
-    <% end %>
-    <%= link_to({ action: 'indexes', id: model.id, **request.query_parameters.except(:id, :page, :per, :table_name) }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fa-solid fa-sitemap text-success"></i>
-      <span class="ml-1"><%= t('.indexes.title') %></span>
+      <span class="ml-1"><%= t('.pg_publication_tables.index.title') %></span>
     <% end %>
   </div>
 </td>

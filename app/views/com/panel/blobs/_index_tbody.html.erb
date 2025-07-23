@@ -22,3 +22,14 @@
     <%= link_to "#{attachment.record_type}_#{attachment.record_id}", { controller: 'com/panel/attachments', id: attachment.id } %>
   <% end %>
 </td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%=button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-trash text-danger"></i>
+    <% end %>
+    <%= link_to({ controller: '/com/audios', action: 'show', id:model.id }, target: '_blank', aria: { label: t('.play') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-play text-primary"></i>
+    <% end %>
+  </div>
+</td>
+

@@ -9,3 +9,13 @@
   <p class="text-success"><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></p>
   <p class="text-grey"><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
 </td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-trash text-danger"></i>
+    <% end %>
+    <%= button_to({ action: 'clean', id: model.id }, method: :delete, aria: { label: t('.clean.title') }, data: { turbo_confirm: t('.clean.confirm') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fa-solid fa-trash-arrow-up text-danger-dark"></i>
+    <% end %>
+  </div>
+</td>

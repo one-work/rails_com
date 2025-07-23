@@ -1,5 +1,5 @@
 <tr id="tr_<%= model.name %>">
-  <%= yield %>
+
   <td>
     <% if model.paused? %>
       <%= button_to "Resume", { action: 'resume', id: model.name }, class: 'button is-warning' %>
@@ -7,4 +7,4 @@
       <%= button_to "Pause", { action: 'pause', id: model.name }, class: 'button is-success' %>
   <% end %>
   </td>
-</tr>
+
