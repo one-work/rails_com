@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="turbo-cache-control" content="no-preview">
     <meta name="turbo-prefetch" content="<%= !Rails.env.local? %>">
+    <link rel="icon" href="/icon.png" type="image/png">
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <%= csrf_meta_tags %>
