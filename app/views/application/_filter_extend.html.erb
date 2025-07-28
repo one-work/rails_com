@@ -1,4 +1,4 @@
-<div data-switch-target="src" class="tags display-none">
+<div data-switch-target="src" class="<% raw_filter_params.present? ? 'tags' : 'tags display-none' %>">
   <% raw_filter_params.each do |key, value| %>
     <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
       <% if record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :boolean %>
