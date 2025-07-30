@@ -4,8 +4,8 @@
     <span class="ml-1"><%= t('wechat.wechat.user_login.title') %></span>
   <% end %>
 <% else %>
-  <%= link_to({ controller: '/auth/sign', action: 'login_new' }, class: 'navbar-item') do %>
+  <%= link_to({ controller: '/auth/sessions', action: 'new' }, class: 'navbar-item') do %>
     <i class="fa-solid fa-user"></i>
-    <span class="ml-1"><%= t('auth.sign.sign.title') %></span>
+    <span class="ml-1"><%= t('auth.sessions.new.title') %></span>
   <% end %>
 <% end %>
