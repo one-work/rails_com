@@ -11,8 +11,8 @@
     <%= link_to({ controller: '/my/home' }, class: active_helper(controllers: ['my/home'], active: 'navbar-item is-active', item: 'navbar-item')) do %>
       <span><%= t('my.home.index.title') %></span>
     <% end %>
-    <%= button_to({ controller: '/auth/sign', action: 'logout' }, data: { turbo_confirm: '确认退出' }, form: { class: 'navbar-item' }) do %>
-      <span><%= t('auth.sign.logout.title') %></span>
+    <%= button_to({ controller: '/auth/sessions', action: 'destroy' }, method: :delete, data: { turbo_confirm: '确认退出' }, form: { class: 'navbar-item' }) do %>
+      <span><%= t('auth.sessions.destroy.title') %></span>
     <% end %>
   </div>
 </div>
