@@ -8,11 +8,11 @@ module Com
     end
 
     def setup
-      SshKeySetupJob.perform_later(@ssh_key, current_authorized_token.id)
+      SshKeySetupJob.perform_later(@ssh_key, Current.session.id)
     end
 
     def deploy
-      SshKeyDeployJob.perform_later(@ssh_key, current_authorized_token.id)
+      SshKeyDeployJob.perform_later(@ssh_key, Current.session.id)
     end
 
     def remote_status
