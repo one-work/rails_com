@@ -7,7 +7,7 @@ module RailsCom
       template_path = (Rails.root + template).existence || Engine.root + template
       export_path = Rails.root + export
 
-      @yaml = YAML.parse_stream File.read(template_path)
+      @yaml = YAML.parse_stream template_path.read
       @content = @yaml.children[0].children[0].children
       @parsed = @yaml.to_ruby[0]
       @io = File.new(export_path, 'w+')
