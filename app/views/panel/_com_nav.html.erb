@@ -1,6 +1,6 @@
 <div class="menu-list">
   <%= link_to({ controller: 'com/panel/home' }, text: true, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'menu-item') do %>
-    <i class="fa-solid fa-cogs fa-fw"></i>
+    <%= svg_tag 'gears' %>
     <strong><%= t('com.panel.title') %></strong>
   <% end %>
   <div class="pl-4">
