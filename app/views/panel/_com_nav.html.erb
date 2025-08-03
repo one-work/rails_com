@@ -1,7 +1,7 @@
 <div class="menu-list">
   <%= link_to({ controller: 'com/panel/home' }, text: true, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'menu-item') do %>
     <%= svg_tag 'gears' %>
-    <strong><%= t('com.panel.title') %></strong>
+    <strong class="ml-1"><%= t('com.panel.title') %></strong>
   <% end %>
   <div class="pl-4">
     <%= link_to t('com.panel.meta_controllers.index.title'), { controller: 'com/panel/meta_controllers' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'meta_controllers', item: 'menu-item', active: 'menu-item is-active') %>
