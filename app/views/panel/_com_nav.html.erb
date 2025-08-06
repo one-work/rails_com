@@ -1,13 +1,5 @@
+
 <div class="menu-list">
-  <div class="dropdown is-hoverable pop-right p-3">
-    <%= link_to({ controller: 'com/panel/home' }, text: true, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'menu-item') do %>
-      <%= svg_tag 'gears' %>
-      <strong class="ml-1"><%= t('com.panel.title') %></strong>
-    <% end %>
-    <div class="dropdown-menu">
-      <%= render 'com/panel/home/index_column' %>
-    </div>
-  </div>
   <div class="pl-4">
     <%= link_to t('com.panel.meta_controllers.index.title'), { controller: 'com/panel/meta_controllers' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'meta_controllers', item: 'menu-item', active: 'menu-item is-active') %>
     <%= link_to t('com.panel.meta_models.index.title'), { controller: 'com/panel/meta_models' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'meta_models', item: 'menu-item', active: 'menu-item is-active') %>

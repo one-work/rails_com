@@ -1,18 +1,15 @@
-<nav data-controller="menu" id="admin_menu" class="menu as-wrap" style="<%= defined?(current_organ) && current_organ&.panel_theme %>">
-  <%= render 'brand_nav' %>
-  <%= render 'com_nav' if role_permit?(business: 'com', namespace: 'panel') %>
-  <%= render 'role_nav' if role_permit?(business: 'roled', namespace: 'panel') %>
-  <%= render 'auth_nav' if defined?(RailsAuth) && role_permit?(business: 'auth', namespace: 'panel') %>
-  <%= render 'org_nav' if defined?(RailsOrg) && role_permit?(business: 'org', namespace: 'panel') %>
-  <%= render 'data_nav' if defined?(RailsData) && role_permit?(business: 'data', namespace: 'panel') %>
-  <%= render 'factory_nav' if defined?(RailsFactory) && role_permit?(business: 'factory', namespace: 'panel') %>
-  <%= render 'trade_nav' if defined?(RailsTrade) && role_permit?(business: 'trade', namespace: 'panel') %>
-  <%= render 'wechat_nav' if defined?(RailsWechat) && role_permit?(business: 'wechat', namespace: 'panel') %>
-  <%= render 'ship_nav' if defined?(RailsShip) && role_permit?(business: 'ship', namespace: 'panel') %>
-  <%= render 'crm_nav' if defined?(RailsCrm) && role_permit?(business: 'crm', namespace: 'panel') %>
-  <%= render 'audit_nav' if defined?(RailsAudit) && role_permit?(business: 'audit', namespace: 'panel') %>
-  <%= render 'email_nav' if defined?(RailsEmail) && role_permit?(business: 'email', namespace: 'panel') %>
-  <%= render 'markdown_nav' if defined?(RailsMarkdown) && role_permit?(business: 'markdown', namespace: 'panel') %>
-  <%= render 'med_nav' if defined?(RailsMed) && role_permit?(business: 'med', namespace: 'panel') %>
-  <%= render 'bench_nav' if defined?(RailsBench) && role_permit?(business: 'bench', namespace: 'panel') %>
-</nav>
+<div class="flex-grow-1">
+  <div class="dropdown is-hoverable pop-right p-3">
+    <div class="dropdown-trigger">
+      <%= svg_tag 'gears' %>
+      <strong class="ml-1"><%= t('com.panel.title') %></strong>
+    </div>
+    <div class="dropdown-menu">
+      <div class="dropdown-content">
+        <div class="section">
+          <%= render 'com/panel/home/index_column' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

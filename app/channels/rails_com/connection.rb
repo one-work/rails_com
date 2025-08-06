@@ -7,16 +7,15 @@ module RailsCom::Connection
 
   def connect
     self.verified_receiver = find_verified_receiver
-    self.session_id = session['session_id'] if session
+    self.session_id = cookies['session_id']
     self.organ = current_organ
   end
 
   protected
   def find_verified_receiver
-    return unless session
-    if session['auth_token'] && defined?(Auth::AuthorizedToken)
+    if cookies['session_id'] && defined?(Auth::Session)
       Rails.logger.silence do
-        Auth::AuthorizedToken.find_by(id: session['auth_token'])
+        Auth::Session.find_by(id: cookies.signed['session_id'])
       end
     end
   rescue
@@ -29,11 +28,6 @@ module RailsCom::Connection
     if organ_domain
       organ_domain.organ
     end
-  end
-
-  def session
-    session_key = Rails.configuration.session_options[:key]
-    cookies.encrypted[session_key]
   end
 
 end
