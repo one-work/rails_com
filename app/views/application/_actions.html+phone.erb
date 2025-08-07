@@ -1,5 +1,5 @@
 <%= button_to({ action: 'destroy' }, method: :delete, form: { data: { turbo_confirm: t('.destroy.confirm') }, class: 'cell' }, class: 'has-column-centered text-danger') do %>
-  <i class="fa-solid fa-trash"></i>
+  <%= svg_tag 'trash', class: 'icon' %>
   <span><%= t('.destroy.title') %></span>
 <% end if RailsCom::Routes.controllers[referer_controller].key?('destroy') %>
 <%= button_to({ action: 'edit' }, class: 'cell has-column-centered') do %>
@@ -7,6 +7,6 @@
   <span><%= t('.edit.title') %></span>
 <% end if RailsCom::Routes.controllers[referer_controller].key?('edit') %>
 <%= link_to({ action: 'show' }, class: 'cell has-column-centered') do %>
-  <i class="fa-solid fa-circle-info"></i>
+  <%= svg_tag 'circle-info', class: 'icon text-info' %>
   <span><%= t('.show.title') %></span>
 <% end unless referer_meta[:action] == 'show' %>

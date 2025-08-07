@@ -23,7 +23,7 @@
 <div class="field is-narrow" data-picture-target="preview" style="display: none">
   <div class="image">
     <button class="button is-unset as-corner" data-action="picture#removePreview">
-      <i class="fa-solid fa-trash text-danger"></i>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
     </button>
     <%= image_tag 'avatar.png', data: { picture_target: 'src' }, class: 'image is-96x96' %>
   </div>

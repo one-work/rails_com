@@ -11,8 +11,8 @@ module RailsCom::TrHelper
   end
 
   def tr_actions(model)
-    button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light') do
-      '<i class="fa-solid fa-circle-info text-info"></i>'.html_safe
+    button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do
+      svg_tag 'circle-info', class: 'icon text-info'
     end
   end
 
