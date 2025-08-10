@@ -1,6 +1,8 @@
 regular:
   - circle-info
   - gears
+  - globe
   - pencil
   - trash
+  - user
   - user-secret
