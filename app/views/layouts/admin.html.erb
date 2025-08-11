@@ -6,8 +6,7 @@
         <%= render 'admin/menu_bar' %>
       </div>
     </div>
-    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column pt-0">
-      <%= render 'admin/nav_bar' %>
+    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column">
       <%= yield %>
     </turbo-frame>
   </main>
