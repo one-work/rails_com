@@ -17,12 +17,8 @@
 </div>
 <% if models.respond_to?(:total_pages) %>
   <div>
-    <span>共<%= models.total_pages %>页</span>
-    <span>/</span>
-    <span>共<%= models.total_count %>条</span>
-  </div>
-<% else %>
-  <div>
-    <span>共<%= models.count %>条</span>
+    <span>共</span>
+    <span><%= models.total_pages %></span>
+    <span>页</span>
   </div>
 <% end %>
