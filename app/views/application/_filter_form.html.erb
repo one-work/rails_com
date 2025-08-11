@@ -3,7 +3,7 @@
     <%= f.text_field 'name-like', autocomplete: 'off' %>
     <div class="field is-narrow">
       <%= f.submit %>
-      <%= link_to t('.clear'), filter_params(except: [:name]), class: 'button is-light' %>
+      <%= link_to t('.clear'), filter_params(except: ['name-like']), class: 'button is-light' %>
     </div>
   </div>
 <% end %>
