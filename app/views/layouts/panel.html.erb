@@ -4,8 +4,7 @@
       <%= render 'nav' %>
       <%= render 'menu_bar' %>
     </div>
-    <turbo-frame id="body" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column table-container pt-0">
-      <%= render 'nav_bar' %>
+    <turbo-frame id="body" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column table-container">
       <%= render 'alert' %>
       <%= yield %>
     </turbo-frame>
