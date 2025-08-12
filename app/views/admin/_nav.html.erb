@@ -1,4 +1,9 @@
 <div class="menu as-wrap flex-grow-1 flex flex-direction-column">
+  <div class="menu-brand">
+    <%= link_to({ controller: 'admin/home' }, class: 'text-centered') do %>
+      <%= image_tag 'logo_avatar.png', class: 'image is-64x64' %>
+    <% end %>
+  </div>
   <ul data-controller="menu-popup" class="menu-list">
     <li class="menu-item p-0">
       <%= render 'org_nav_popup' %>
