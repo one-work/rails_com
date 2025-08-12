@@ -1,12 +1,12 @@
-<div class="dropdown is-hoverable pop-right">
+<div class="dropdown is-hoverable pop-right is-fullwidth">
   <div class="dropdown-trigger">
     <% if current_member.avatar.present? %>
-      <%= image_tag current_member.avatar, class: 'image is-32x32' %>
+      <%= image_tag current_member.avatar, class: 'image is-32x32 mx-auto' %>
     <% else %>
-      <%= image_tag 'avatar.png', class: 'image is-64x64' %>
+      <%= image_tag 'avatar.png', class: 'image is-64x64 mx-auto' %>
     <% end %>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" style="bottom: 0">
     <div class="dropdown-content">
       <%= link_to({ controller: '/me/home' }, class: 'dropdown-item') do %>
         <span><%= t('me.home.index.title') %></span>
