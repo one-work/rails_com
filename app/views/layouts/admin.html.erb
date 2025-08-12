@@ -2,11 +2,11 @@
   <main class="columns as-main">
     <div class="column is-narrow p-0 has-page">
       <%= render 'admin/nav' %>
-      <div class="flex-shrink-0">
+      <div class="flex-shrink-0 mx-auto">
         <%= render 'admin/menu_bar' %>
       </div>
     </div>
-    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column">
+    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column as-body">
       <%= render 'alert' %>
       <div class="box as-body">
         <%= yield %>
