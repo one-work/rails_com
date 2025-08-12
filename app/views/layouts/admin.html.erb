@@ -1,5 +1,5 @@
 <%= render layout: 'layouts/admin_head' do %>
-  <main class="columns">
+  <main class="columns as-main">
     <div class="column is-narrow p-0 has-page">
       <%= render 'admin/nav' %>
       <div class="flex-shrink-0">
@@ -7,7 +7,10 @@
       </div>
     </div>
     <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column">
-      <%= yield %>
+      <%= render 'alert' %>
+      <div class="box as-body">
+        <%= yield %>
+      </div>
     </turbo-frame>
   </main>
 <% end %>
