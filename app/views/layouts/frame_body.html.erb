@@ -1,4 +1,9 @@
 <turbo-frame id="body" title="<%= current_title %>">
+  <div class="breadcrumb has-succeeds-separator">
+    <ul>
+      <%= render 'breadcrumb' %>
+    </ul>
+  </div>
   <%= render 'alert' %>
   <div class="box as-body">
     <%= yield %>

@@ -7,6 +7,11 @@
       </div>
     </div>
     <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column as-body">
+      <div class="breadcrumb has-succeeds-separator">
+        <ul>
+          <%= render 'breadcrumb' %>
+        </ul>
+      </div>
       <%= render 'alert' %>
       <div class="box as-body">
         <%= yield %>
