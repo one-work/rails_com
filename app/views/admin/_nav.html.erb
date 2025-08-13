@@ -1,47 +1,47 @@
 <div class="menu as-wrap flex-grow-1 flex flex-direction-column">
   <div class="menu-brand">
     <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
-      <%= image_tag 'logo_avatar.png', class: 'image is-64x64' %>
+      <%= image_tag 'logo_avatar.png' %>
     <% end %>
   </div>
-  <ul data-controller="menu-popup" class="menu-list">
-    <li class="menu-item p-0">
+  <ul class="menu-list">
+    <li class="<%= active_helper(modules: 'org/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'org_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'factory/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'factory_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'trade/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'trade_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'ship/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'ship_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'crm/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'crm_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'bench/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'bench_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'cms/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'cms_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'bluetooth/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'bluetooth_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'markdown/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'markdown_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'print/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'print_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'finance/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'finance_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'notice/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'notice_nav_popup' %>
     </li>
-    <li class="menu-item p-0">
+    <li class="<%= active_helper(modules: 'wechat/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'wechat_nav_popup' %>
     </li>
   </ul>
