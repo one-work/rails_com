@@ -10,7 +10,7 @@
       <span class="ml-1"><%= t('.edit.title') %></span>
     <% end %>
     <%= button_to({ action: 'destroy', id: model.id }, method: :delete, class: 'button is-small is-rounded is-danger', form: { data: { turbo_confirm: t('.destroy.confirm') } }) do %>
-      <%= svg_tag 'trash', class: 'icon' %>
+      <%= svg_tag 'trash' %>
       <span class="ml-1"><%= t('.destroy.title') %></span>
     <% end %>
   </td>
