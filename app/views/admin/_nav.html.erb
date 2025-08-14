@@ -21,14 +21,19 @@
       </li>
     <% end %>
     <% if defined?(RailsShip) && role_permit?(business: 'ship', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'ship/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'ship_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'ship/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'ship_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsSpace) && role_permit?(business: 'space', namespace: 'admin') %>
+      <li class="<%= active_helper(modules: 'space/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'space_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsCrm) && role_permit?(business: 'crm', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'crm/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'crm_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'crm/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'crm_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsBench) && role_permit?(business: 'bench', namespace: 'admin') %>
     <li class="<%= active_helper(modules: 'bench/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
@@ -36,34 +41,34 @@
     </li>
     <% end %>
     <% if defined?(RailsFactory) && role_permit?(business: 'factory', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'cms/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'cms_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'cms/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'cms_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsBluetooth) && role_permit?(business: 'bluetooth', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'bluetooth/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'bluetooth_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'bluetooth/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'bluetooth_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsMarkdown) && role_permit?(business: 'markdown', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'markdown/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'markdown_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'markdown/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'markdown_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsPrint) && role_permit?(business: 'print', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'print/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'print_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'print/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'print_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsFinance) && role_permit?(business: 'finance', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'finance/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'finance_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'finance/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'finance_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsNotice) && role_permit?(business: 'notice', namespace: 'admin') %>
-    <li class="<%= active_helper(modules: 'notice/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-      <%= render 'notice_nav_popup' %>
-    </li>
+      <li class="<%= active_helper(modules: 'notice/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'notice_nav_popup' %>
+      </li>
     <% end %>
     <% if defined?(RailsWechat) && role_permit?(business: 'wechat', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'wechat/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
