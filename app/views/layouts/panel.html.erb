@@ -1,12 +1,19 @@
 <%= render layout: 'layouts/admin_head' do %>
-  <main class="columns">
+  <main class="columns as-main">
     <div class="column is-narrow p-0 has-page">
       <%= render 'nav' %>
       <%= render 'menu_bar' %>
     </div>
-    <turbo-frame id="body" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column table-container">
+    <turbo-frame id="body" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column as-body">
+      <div class="breadcrumb has-succeeds-separator ml-3">
+        <ul>
+          <%= render 'breadcrumb' %>
+        </ul>
+      </div>
       <%= render 'alert' %>
-      <%= yield %>
+      <div class="box as-body">
+        <%= yield %>
+      </div>
     </turbo-frame>
   </main>
 <% end %>
