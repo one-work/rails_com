@@ -1,4 +1,4 @@
-<div class="menu as-wrap flex-grow-1 flex flex-direction-column">
+<div class="menu as-wrap flex-grow-1 flex flex-direction-column" style="width: 100px">
   <div class="menu-brand">
     <%= link_to({ controller: '/panel/home' }, class: 'text-centered') do %>
       <%= image_tag 'logo_avatar.png' %>
@@ -40,6 +40,9 @@
     </li>
     <li class="menu-item p-0">
       <%= render 'print_nav_popup' %>
+    </li>
+    <li class="menu-item p-0">
+      <%= render 'audit_nav_popup' %>
     </li>
     <li class="menu-item p-0">
       <%= render 'douyin_nav_popup' %>
