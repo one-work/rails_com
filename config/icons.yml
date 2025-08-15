@@ -1,13 +1,13 @@
 regular:
   - circle-info
-  - fast-backward
-  - fast-forward
+  - backward-fast
+  - backward-step
+  - forward-fast
+  - forward-step
   - gears
   - globe
   - pencil
   - plus
   - trash
-  - step-backward
-  - step-forward
   - user
   - user-secret
