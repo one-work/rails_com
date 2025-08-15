@@ -7,7 +7,7 @@ module RailsCom::Connection
 
   def connect
     self.verified_receiver = find_verified_receiver
-    self.session_id = cookies.encrypted[Rails.configuration.session_options[:key]]
+    self.session_id = session['session_id'] if session
     self.organ = current_organ
   end
 
@@ -28,6 +28,10 @@ module RailsCom::Connection
     if organ_domain
       organ_domain.organ
     end
+  end
+
+  def session
+    cookies.encrypted[Rails.configuration.session_options[:key]]
   end
 
 end
