@@ -180,6 +180,7 @@ Rails.application.routes.draw do
             get :indexes
             post :index_edit
             post :index_update
+            patch :reorder
           end
           resources :meta_columns do
             member do
