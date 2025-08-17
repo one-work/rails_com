@@ -3,6 +3,7 @@ regular:
   - circle-info
   - backward-fast
   - backward-step
+  - ellipsis-vertical
   - forward-fast
   - forward-step
   - gears
