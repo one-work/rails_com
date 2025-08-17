@@ -1,7 +1,3 @@
-<div>
-  <%= link_to t('.edit.title'), { action: 'edit' }, class: 'button is-small is-link' %>
-</div>
-
 <div class="fixed-grid has-2-cols as-boxed">
   <dl class="grid as-show">
     <div>
@@ -9,5 +5,11 @@
       <dd><%= model.id %></dd>
     </div>
     <%= render 'show_table' %>
+    <div>
+      <%= link_to({ action: 'edit' }, class: 'text-grey') do %>
+        <%= svg_tag 'pencil' %>
+        <span class="ml-1"><%= t('.edit.title') %></span>
+      <% end %>
+    </div>
   </dl>
 </div>
