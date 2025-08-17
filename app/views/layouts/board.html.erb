@@ -6,6 +6,11 @@
       <%= render 'nav' %>
     </div>
     <div class="column">
+      <div class="breadcrumb has-succeeds-separator">
+        <ul>
+          <%= render 'breadcrumb' %>
+        </ul>
+      </div>
       <%= yield %>
     </div>
   </main>
