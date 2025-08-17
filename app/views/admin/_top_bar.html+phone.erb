@@ -1,11 +1,11 @@
 <div class="box as-bar">
   <% if current_state %>
     <%= link_to(current_state.referer, class: 'px-4') do %>
-      <i class="fa-solid fa-lg fa-fw-1 fa-angle-left"></i>
+      <%= svg_tag 'angle-left' %>
     <% end %>
   <% elsif tab_item_items.exclude?(request.path) %>
     <%= link_to({ controller: 'me/home' }, class: 'px-4') do %>
-      <i class="fa-solid fa-lg fa-fw-1 fa-angle-left"></i>
+      <%= svg_tag 'angle-left' %>
     <% end %>
   <% else %>
     <i class="px-5"></i>

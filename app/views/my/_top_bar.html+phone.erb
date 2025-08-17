@@ -2,11 +2,11 @@
 <div class="box as-bar">
   <% if params[:action] == 'index' || referer_controller == 'my/home' %>
     <%= link_to({ controller: '/my/home' }, class: 'px-4') do %>
-      <i class="fa-solid fa-lg fa-fw-1 fa-angle-left"></i>
+      <%= svg_tag 'angle-left' %>
     <% end %>
   <% elsif params[:action] != 'index' %>
     <%= link_to({ action: 'index' }, class: 'px-4') do %>
-      <i class="fa-solid fa-lg fa-fw-1 fa-angle-left"></i>
+      <%= svg_tag 'angle-left' %>
     <% end %>
   <% end %>
   <div class="weui-title"><%= t('.title', default: '') %></div>
