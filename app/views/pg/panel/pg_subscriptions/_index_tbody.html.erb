@@ -16,7 +16,7 @@
   </div>
   <div data-show-target="item" class="visibility-hidden">
     <%= button_to({ action: 'refresh', id: model.id }, class: 'button is-small is-rounded is-warning') do %>
-      <i class="fa-solid fa-rotate"></i>
+      <%= svg_tag 'rotate' %>
       <span class="ml-1"><%= t('.refresh.title') %></span>
     <% end %>
     <%= link_to({ controller: 'pg_stat_subscriptions', pg_subscription_id: model.id }, class: 'button is-small is-rounded is-success') do %>

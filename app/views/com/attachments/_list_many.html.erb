@@ -6,7 +6,7 @@
       <%= video_tag file, controls: true %>
       <figcaption><%= link_to file.filename, rails_ext_video_path(file), target: '_blank' %></figcaption>
       <%= button_to({ controller: 'com/panel/attachments', action: 'destroy', id: file.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, form: { class: 'delete' }) do %>
-        <i class="fa-solid fa-times"></i>
+        <%= svg_tag 'xmark' %>
       <% end %>
     </figure>
   <% else %>

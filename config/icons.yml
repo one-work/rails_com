@@ -9,6 +9,8 @@ regular:
   - globe
   - pencil
   - plus
+  - rotate
   - trash
   - user
   - user-secret
+  - xmark
