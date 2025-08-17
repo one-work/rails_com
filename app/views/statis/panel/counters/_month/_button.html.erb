@@ -1,4 +1,4 @@
-<%= button_to({ action: 'do_cache', **params.permit(:month) }, class: 'button is-link') do %>
+<%= button_to({ action: 'do_cache', **params.permit(:month) }, class: 'button is-rounded is-primary') do %>
   <%= svg_tag 'plus' %>
   <span class="ml-1"><%= t('.do_cache.title') %></span>
 <% end %>
