@@ -1,9 +1,0 @@
-<div class="menu-list">
-  <div class="py-2 px-3">
-    <%= svg_tag 'user-secret' %>
-    <div><%= t('roled.panel.title') %></div>
-  </div>
-  <div class="pl-4">
-    <%= link_to t('roled.panel.roles.index.title'), { controller: 'roled/panel/roles' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'roles', item: 'menu-item', active: 'menu-item is-active') %>
-  </div>
-</div>

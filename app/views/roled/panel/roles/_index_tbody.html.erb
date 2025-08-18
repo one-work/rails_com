@@ -31,11 +31,11 @@
   </div>
   <div data-show-target="item" class="visibility-hidden">
     <%= link_to({ action: 'show', id: model.id }, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-cogs"></i>
+      <%= svg_tag 'gears' %>
       <span class="ml-1"><%= t('.show.title') %></span>
     <% end %>
     <%= link_to({ controller: 'tabs', role_id: model.id }, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-house"></i>
+      <%= svg_tag 'house' %>
       <span class="ml-1"><%= t('.tabs.index.title') %></span>
     <% end %>
   </div>
