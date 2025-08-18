@@ -6,6 +6,7 @@ regular:
   - circle-info
   - backward-fast
   - backward-step
+  - ellipsis
   - ellipsis-vertical
   - forward-fast
   - forward-step
@@ -13,9 +14,11 @@ regular:
   - globe
   - house
   - list
+  - location-dot
   - minus
   - pencil
   - plus
+  - qrcode
   - rotate
   - square
   - square-check

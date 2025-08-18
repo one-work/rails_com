@@ -5,20 +5,20 @@
   <div class="columns is-4-mobile flex is-vcentered is-centered m-0" data-empty-target="content">
     <%= link_to({ controller: 'ship/my/addresses' }, class: 'column has-column-centered') do %>
       <div class="text-primary">
-        <i class="fa-solid fa-fw fa-xl fa-location-dot"></i>
+        <%= svg_tag 'location-dot', class: 'icon is-medium' %>
       </div>
       <div class="text-grey size-7 mt-1"><%= t('ship.my.addresses.index.title') %></div>
     <% end %>
     <%= link_to({ controller: 'wechat/my/users', action: 'invite_qrcode' }, class: 'column has-column-centered') do %>
       <div class="text-primary left-badge">
-        <i class="fa-solid fa-fw fa-xl fa-qrcode"></i>
+        <%= svg_tag 'qrcode', class: 'icon is-medium' %>
         <span class="weui-badge">邀请有礼</span>
       </div>
       <div class="text-grey size-7 mt-1">邀请好友</div>
     <% end %>
     <%= link_to({ controller: 'auth/board/home' }, class: 'column has-column-centered') do %>
       <div class="text-primary">
-        <i class="fa-solid fa-fw fa-xl fa-ellipsis"></i>
+        <%= svg_tag 'ellipsis', class: 'icon is-medium' %>
       </div>
       <div class="text-grey size-7 mt-1"><%= t('auth.board.home.index.title') %></div>
     <% end %>
