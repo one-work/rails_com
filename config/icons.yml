@@ -27,3 +27,7 @@ regular:
   - user
   - user-secret
   - xmark
+light:
+  - house
+  - list
+  - user
