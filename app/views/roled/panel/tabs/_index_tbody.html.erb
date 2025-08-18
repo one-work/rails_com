@@ -1,6 +1,6 @@
 <td>
-  <i class="fa-solid fa-fw fa-bars text-grey is-drawable"></i>
-  <i class="fa-solid fa-<%= model.icon %>"></i>
+  <%= svg_tag 'bars', class: 'icon is-small text-grey is-drawable' %>
+  <%= svg_tag model.icon, class: 'icon' %>
 </td>
 <td><%= model.path %></td>
 <td><%= model.name %></td>
