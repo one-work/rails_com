@@ -1,6 +1,6 @@
 <% @roled_tabs.each do |tab| %>
   <%= link_to(tab.path, class: active_helper(paths: tab.path, active: 'is-active')) do %>
-    <i class="fa-solid fa-<%= tab.icon %> size-5"></i>
+    <%= svg_tag tab.icon, class: 'icon is-medium' %>
     <span class="family-monospace size-7"><%= tab.name %></span>
   <% end %>
 <% end %>
