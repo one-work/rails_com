@@ -19,7 +19,7 @@
       <% end %>
     <% else %>
       <%= button_to({ action: 'namespace_on' }, params: { business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <%= svg_tag 'square-minus' %>
+        <%= svg_tag 'square-minus', class: 'icon' %>
         <span><%= meta_namespace.name %></span>
       <% end %>
     <% end %>

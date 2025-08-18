@@ -21,7 +21,7 @@
       <% end %>
     <% else %>
       <%= button_to({ action: 'business_on' }, params: { business_identifier: meta_business.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <%= svg_tag 'square-minus' %>
+        <%= svg_tag 'square-minus', class: 'icon' %>
         <span><%= meta_business.name %></span>
         <span class="text-grey">(<%= meta_business.identifier %>)</span>
       <% end %>

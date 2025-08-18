@@ -12,7 +12,7 @@
       <% end %>
     <% else %>
       <%= button_to({ action: 'controller_on' }, params: { meta_controller_id: meta_controller.id, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <%= svg_tag 'square-minus' %>
+        <%= svg_tag 'square-minus', class: 'icon' %>
         <span><%= meta_controller.name %></span>
       <% end %>
     <% end %>
