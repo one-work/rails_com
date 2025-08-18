@@ -17,6 +17,7 @@ regular:
   - rotate
   - square
   - square-check
+  - square-minus
   - trash
   - user
   - user-secret
