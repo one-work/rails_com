@@ -2,9 +2,9 @@
   <td>
     <%= button_to({ action: 'namespaces' }, params: { business_identifier: meta_business.identifier }) do %>
       <% if defined?(expand) && expand %>
-        <i class="fa-solid fa-fw fa-caret-down" style="cursor: pointer" data-action="click->tree-remote#collapse"></i>
+        <%= svg_tag 'caret-down', data: { action: 'click->tree-remote#collapse' }, class: 'icon is-small clickable' %>
       <% else %>
-        <i class="fa-solid fa-fw fa-caret-right" style="cursor: pointer" data-action="click->tree-remote#expand"></i>
+        <%= svg_tag 'caret-right', data: { action: 'click->tree-remote#expand' }, class: 'icon is-small clickable' %>
       <% end %>
     <% end %>
     <% case @role.business_role(meta_business) when 1 %>

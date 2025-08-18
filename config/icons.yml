@@ -1,5 +1,7 @@
 regular:
   - angle-left
+  - caret-down
+  - caret-right
   - circle-info
   - backward-fast
   - backward-step
@@ -9,6 +11,7 @@ regular:
   - gears
   - globe
   - house
+  - minus
   - pencil
   - plus
   - rotate
