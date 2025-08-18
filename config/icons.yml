@@ -12,6 +12,8 @@ regular:
   - pencil
   - plus
   - rotate
+  - square
+  - square-check
   - trash
   - user
   - user-secret

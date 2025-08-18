@@ -2,12 +2,12 @@
   <td class="background-danger-light" style="padding-left: 3.5em">
     <% case @role.controller_role(meta_controller) when 1 %>
       <%= button_to({ action: 'controller_off' }, params: { meta_controller_id: meta_controller.id, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <i class="fa-regular fa-check-square fa-lg"></i>
+        <%= svg_tag 'square-check', class: 'icon' %>
         <span><%= meta_controller.name %></span>
       <% end %>
     <% when 0 %>
       <%= button_to({ action: 'controller_on' }, params: { meta_controller_id: meta_controller.id, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <i class="fa-regular fa-square fa-lg"></i>
+        <%= svg_tag 'square', class: 'icon' %>
         <span><%= meta_controller.name %></span>
       <% end %>
     <% else %>

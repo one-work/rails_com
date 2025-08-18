@@ -9,13 +9,13 @@
     <% end %>
     <% case @role.business_role(meta_business) when 1 %>
       <%= button_to({ action: 'business_off' }, params: { business_identifier: meta_business.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <i class="fa-regular fa-check-square fa-lg"></i>
+        <%= svg_tag 'square-check', class: 'icon' %>
         <span><%= meta_business.name %></span>
         <span class="text-grey">(<%= meta_business.identifier %>)</span>
       <% end %>
     <% when 0 %>
       <%= button_to({ action: 'business_on' }, params: { business_identifier: meta_business.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
-        <i class="fa-regular fa-square fa-lg"></i>
+        <%= svg_tag 'square', class: 'icon' %>
         <span><%= meta_business.name %></span>
         <span class="text-grey">(<%= meta_business.identifier %>)</span>
       <% end %>
