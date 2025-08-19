@@ -7,11 +7,6 @@
     <meta name="turbo-refresh-method" content="morph">
     <meta name="turbo-refresh-scroll" content="preserve">
     <%= yield :reload %>
-    <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
-    <% if request.variant.include?(:mini_program) %>
-      <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
-    <% end %>
-    <%= javascript_include_tag 'phone', 'data-turbo-track': 'reload' %>
     <% if request.variant.include?(:work_wechat) %>
       <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script"></script>
       <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js" referrerpolicy="origin" data-turbo-track="reload" id="wxwork_script"></script>
@@ -19,6 +14,11 @@
     <% elsif request.variant.include?(:wechat) %>
       <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script"></script>
       <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
+    <% end %>
+    <%= javascript_include_tag 'phone', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
+    <% if request.variant.include?(:mini_program) %>
+      <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <% end %>
     <%= render 'head_extra_js' %>
     <%= csrf_meta_tags %>
