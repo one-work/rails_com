@@ -8,8 +8,8 @@
     <meta name="turbo-refresh-scroll" content="preserve">
     <%= yield :reload %>
     <% if request.variant.include?(:work_wechat) %>
-      <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script"></script>
-      <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js" referrerpolicy="origin" data-turbo-track="reload" id="wxwork_script"></script>
+      <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
+      <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js" referrerpolicy="origin" data-turbo-track="reload" id="wxwork_script" async></script>
       <%= javascript_include_tag 'qy', 'data-turbo-track': 'reload' %>
     <% elsif request.variant.include?(:wechat) %>
       <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
