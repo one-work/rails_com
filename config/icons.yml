@@ -27,6 +27,7 @@ regular:
   - trash
   - user
   - user-secret
+  - users
   - xmark
 light:
   - house

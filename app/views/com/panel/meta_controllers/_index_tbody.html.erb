@@ -9,7 +9,7 @@
     <% end %>
     <span aria-label="<%= meta_controller.identifier %>"><%= meta_controller.name %></span>
     <%= link_to({ action: 'edit', id: meta_controller.id }, aria: { label: t('.edit.title') }, class: 'text-grey-lighter') do %>
-      <i class="fa-solid fa-pencil"></i>
+      <%= svg_tag 'pencil' %>
     <% end %>
   </td>
   <td>
@@ -17,10 +17,10 @@
       <div>
         <span aria-label="<%= meta_action.action_name %>"><%= meta_action.name %></span>
         <%= link_to({ controller: 'meta_actions', action: 'edit', meta_controller_id: meta_controller.id, id: meta_action.id }, id: "roles_#{meta_action.id}", class: 'text-grey-lighter') do %>
-          <i class="fa-regular fa-users"></i>
+          <%= svg_tag 'users' %>
         <% end %>
         <%= link_to({ controller: 'meta_actions', action: 'edit', meta_controller_id: meta_controller.id, id: meta_action.id }, aria: { label: t('.edit.title') }, class: 'text-grey-lighter') do %>
-          <i class="fa-solid fa-pencil"></i>
+          <%= svg_tag 'pencil' %>
         <% end %>
       </div>
     <% end %>
