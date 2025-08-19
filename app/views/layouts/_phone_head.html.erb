@@ -12,8 +12,8 @@
       <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js" referrerpolicy="origin" data-turbo-track="reload" id="wxwork_script"></script>
       <%= javascript_include_tag 'qy', 'data-turbo-track': 'reload' %>
     <% elsif request.variant.include?(:wechat) %>
-      <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script"></script>
       <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
+      <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script"></script>
     <% end %>
     <%= javascript_include_tag 'phone', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
