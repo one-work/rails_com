@@ -6,16 +6,16 @@
 <td><%= model.column_limit %></td>
 <td>
 <% if model.defined_db %>
-  <i class="fa-solid fa-check text-success"></i>
+  <%= svg_tag 'check', class: 'icon is-small text-success' %>
 <% else %>
-  <i class="fa-solid fa-times text-danger"></i>
+  <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
 <% end %>
 </td>
 <td>
 <% if model.defined_model %>
-  <i class="fa-solid fa-check text-success"></i>
+  <%= svg_tag 'check', class: 'icon is-small text-success' %>
 <% else %>
-  <i class="fa-solid fa-times text-danger"></i>
+  <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
 <% end %>
 </td>
 <td>
