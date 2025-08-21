@@ -1,4 +1,4 @@
-<div data-controller="search" class="field is-grouped py-2">
+<div data-controller="search" class="field is-grouped py-2 mb-0">
   <div class="control is-expanded has-icons-left">
     <%= form_with theme: nil, method: :get do |f| %>
       <%= f.search_field 'name-like', value: params['name-like'], placeholder: '搜索', data: { search_target: 'input' }, class: 'input is-rounded' %>
