@@ -1,7 +1,7 @@
 <div data-controller="search" class="field is-grouped py-2 mb-0">
   <div class="control is-expanded has-icons-left">
     <%= form_with theme: nil, method: :get do |f| %>
-      <%= f.search_field 'name-like', value: params['name-like'], placeholder: '搜索', data: { search_target: 'input' }, class: 'input is-rounded' %>
+      <%= f.search_field defined?(name) ? name : 'name-like', value: params[defined?(name) ? name : 'name-like'], placeholder: '搜索', data: { search_target: 'input' }, class: 'input is-rounded' %>
       <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-3' %>
     <% end %>
   </div>
