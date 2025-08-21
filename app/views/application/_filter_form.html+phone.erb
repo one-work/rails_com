@@ -1,8 +1,11 @@
-<div class="py-2">
-  <%= form_with theme: nil, method: :get, data: { controller: 'search' }, class: 'field' do |f| %>
-    <div class="control has-icons-left">
+<div data-controller="search" class="field is-grouped py-2">
+  <div class="control is-expanded has-icons-left">
+    <%= form_with theme: nil, method: :get do |f| %>
       <%= f.search_field 'name-like', value: params['name-like'], placeholder: '搜索', data: { search_target: 'input' }, class: 'input is-rounded' %>
       <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-3' %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <button data-search-target="cancel" data-action="search#cancel" class="button is-borderless display-none">
+    <span>取消</span>
+  </button>
 </div>
