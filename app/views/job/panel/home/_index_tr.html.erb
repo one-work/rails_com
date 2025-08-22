@@ -1,10 +1,4 @@
 <tr id="tr_<%= model.name %>">
-
-  <td>
-    <% if model.paused? %>
-      <%= button_to "Resume", { controller: 'queues', action: 'resume', id: model.name }, class: 'button is-warning' %>
-    <% else %>
-      <%= button_to "Pause", { controller: 'queues', action: 'pause', id: model.name }, class: 'button is-success' %>
-  <% end %>
-  </td>
+  <%= yield %>
+</tr>
 
