@@ -22,6 +22,7 @@ regular:
   - plus
   - qrcode
   - rotate
+  - sitemap
   - square
   - square-check
   - square-minus
