@@ -11,9 +11,9 @@
     <div class="field-body">
       <%= ef.text_field :domain, label: nil, wrap: { all: nil, input: 'field' }, placeholder: Com::AcmeDomain.human_attribute_name(:domain) %>
       <span class="field has-addons has-addons-middle">
-            <i class="fa-solid fa-lg fa-plus-circle" data-action="click->field#add" style="cursor: pointer"></i>
-            <i class="fa-solid fa-lg fa-minus-circle pl-2" data-action="click->field#remove" style="cursor: pointer"></i>
-          </span>
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'munus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+      </span>
     </div>
   </div>
 <% end %>

@@ -12,8 +12,8 @@
     <div class="field-body">
       <%= f.text_field :keys, value: key, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
       <span class="field is-narrow has-addons has-addons-middle">
-        <i class="fa-solid fa-lg fa-plus-circle" data-action="click->field#add" style="cursor: pointer"></i>
-        <i class="fa-solid fa-lg fa-minus-circle pl-2" data-action="click->field#remove" style="cursor: pointer"></i>
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'munus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
       </span>
     </div>
   </div>
@@ -24,8 +24,8 @@
     <div class="field-body">
       <%= f.text_field :keys, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
       <span class="field is-narrow has-addons has-addons-middle">
-        <i class="fa-solid fa-lg fa-plus-circle" data-action="click->field#add" style="cursor: pointer"></i>
-        <i class="fa-solid fa-lg fa-minus-circle pl-2" data-action="click->field#remove" style="cursor: pointer"></i>
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'munus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
       </span>
     </div>
   </div>
@@ -40,8 +40,8 @@
     <div class="field-body">
       <%= f.text_field :scopes, value: key, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
       <span class="field is-narrow has-addons has-addons-middle">
-        <i class="fa-solid fa-lg fa-plus-circle" data-action="click->field#add" style="cursor: pointer"></i>
-        <i class="fa-solid fa-lg fa-minus-circle pl-2" data-action="click->field#remove" style="cursor: pointer"></i>
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'munus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
       </span>
     </div>
   </div>
@@ -52,8 +52,8 @@
     <div class="field-body">
       <%= f.text_field :scopes, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
       <span class="field is-narrow has-addons has-addons-middle">
-        <i class="fa-solid fa-lg fa-plus-circle" data-action="click->field#add" style="cursor: pointer"></i>
-        <i class="fa-solid fa-lg fa-minus-circle pl-2" data-action="click->field#remove" style="cursor: pointer"></i>
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'munus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
       </span>
     </div>
   </div>

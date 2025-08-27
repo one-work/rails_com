@@ -7,7 +7,7 @@
   <div class="field-body">
     <%= ef.text_field :controller_name, label: nil, placeholder: Com::ErrNotice.human_attribute_name(:controller_name) %>
     <span class="field has-addons has-addons-middle">
-      <i class="fa-solid fa-lg fa-plus-circle" data-action="click->field#add" style="cursor: pointer"></i>
+      <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
       <i class="fa-solid fa-lg fa-minus-circle ml-2" data-action="click->field#remove" style="cursor: pointer"></i>
     </span>
   </div>
