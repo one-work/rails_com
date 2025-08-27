@@ -37,11 +37,11 @@
       <span class="ml-1"><%= t('.acme_identifiers.index.title') %></span>
     <% end %>
     <%= button_to({ action: 'order', id: model.id }, method: :patch, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-shopping-cart text-success"></i>
+      <%= svg_tag 'cart-shopping' %>
       <span class="ml-1"><%= t('.order.title') %></span>
     <% end %>
     <%= button_to({ action: 'cert', id: model.id }, method: :patch, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-certificate"></i>
+      <%= svg_tag 'certificate' %>
       <span class="ml-1"><%= t('.cert.title') %></span>
     <% end %>
   </div>
