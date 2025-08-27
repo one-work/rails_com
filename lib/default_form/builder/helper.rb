@@ -170,6 +170,7 @@ module DefaultForm::Builder
 
     def time_select(method, options = {}, html_options = {})
       wrap_with(method, options, :select) do |css|
+        options[:time_separator] = '<span class="select-divider">:</span>'.html_safe unless options.key?(:time_separator)
         html_options[:class] = css.dig(:origin, :select) unless html_options.key?(:class)
         wrapping(super, wrap: css.dig(:wrap, :select))
       end
