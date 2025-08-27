@@ -9,7 +9,7 @@
     <%= ef.text_field :hook_url, label: nil, placeholder: Com::DetectorBot.human_attribute_name(:hook_url) %>
     <span class="field has-addons has-addons-middle">
       <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
-      <i class="fa-solid fa-lg fa-minus-circle ml-2" data-action="click->field#remove" style="cursor: pointer"></i>
+      <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
     </span>
   </div>
 </div>
