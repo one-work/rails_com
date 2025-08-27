@@ -3,12 +3,14 @@ regular:
   - bars
   - caret-down
   - caret-right
+  - cart-shopping
   - check
   - circle-info
   - backward-fast
   - backward-step
   - ellipsis
   - ellipsis-vertical
+  - eye
   - forward-fast
   - forward-step
   - gears
