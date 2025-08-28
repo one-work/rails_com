@@ -1,7 +1,7 @@
 <nav data-controller="switch" class="level mb-2 box is-narrow">
   <div class="level-left">
     <button data-action="switch#toggle" data-id="filter_form" class="button">
-      <%= svg_tag 'magnifying-glass' %>
+      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-3' %>
     </button>
     <%= render 'filter_form' %>
     <div data-switch-target="src" class="buttons">
