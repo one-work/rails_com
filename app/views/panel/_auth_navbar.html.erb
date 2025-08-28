@@ -1,4 +1,4 @@
-<div class="dropdown is-hoverable pop-right p-3 background-grey-dark">
+<div class="dropdown is-hoverable pop-right pop-right-bottom p-3 background-grey-dark">
   <div class="dropdown-trigger">
     <div class="is-several">
     <% if current_user %>
@@ -7,7 +7,7 @@
     <% end %>
     </div>
   </div>
-  <div class="dropdown-menu" style="bottom: 0">
+  <div class="dropdown-menu">
     <div class="dropdown-content">
       <%= link_to({ controller: '/board/home' }, class: 'dropdown-item') do %>
         <span><%= t('board.home.index.title') %></span>
