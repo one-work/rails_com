@@ -30,6 +30,7 @@ regular:
   - square-check
   - square-minus
   - trash
+  - upload
   - user
   - user-secret
   - users
