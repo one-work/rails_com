@@ -51,7 +51,7 @@ class BaseTspl
     @qrcodes << "QRCODE #{x},#{y},#{ecc},#{cell_width},A,0,\"#{data}\""
   end
 
-  def right_qrcode(data, y:, ecc: 'L', cell_width: 6)
+  def qrcode_right(data, y:, ecc: 'L', cell_width: 6)
     @qrcodes << "QRCODE #{@dot_width - (cell_width * 30)},#{y},#{ecc},#{cell_width},A,0,\"#{data}\""
   end
 
