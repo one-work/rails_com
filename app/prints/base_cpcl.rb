@@ -33,7 +33,7 @@ class BaseCpcl
     ]
   end
 
-  def bold_text(data, size: 1, **options)
+  def text_bold(data, size: 1, **options)
     @texts << 'SETBOLD 2'
     @texts << "SETMAG #{size} #{size}"
     text(data, size: size, y: 36 * size, **options)
