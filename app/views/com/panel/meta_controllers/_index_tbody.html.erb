@@ -2,10 +2,10 @@
   <td><%= meta_controller.namespace_identifier %></td>
   <td>
     <%= button_to({ action: 'move_higher', id: meta_controller.id }, method: :patch, class: 'text-grey-lighter') do %>
-      <i class="fa-solid fa-arrow-up"></i>
+      <%= svg_tag 'arrow-up' %>
     <% end %>
     <%= button_to({ action: 'move_lower', id: meta_controller.id }, method: :patch, class: 'text-grey-lighter') do %>
-      <i class="fa-solid fa-arrow-down"></i>
+      <%= svg_tag 'arrow-down' %>
     <% end %>
     <span aria-label="<%= meta_controller.identifier %>"><%= meta_controller.name %></span>
     <%= link_to({ action: 'edit', id: meta_controller.id }, aria: { label: t('.edit.title') }, class: 'text-grey-lighter') do %>

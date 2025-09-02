@@ -7,10 +7,10 @@
     <% end %>
     <%= link_to model.name, { action: 'show', id: model.id }, text: true %>
     <%= button_to({ action: 'move_higher', id: model.id }, method: :patch, data: { 'show-target': 'item' }, class: 'visibility-hidden') do %>
-      <i class="fa-solid fa-arrow-up"></i>
+      <%= svg_tag 'arrow-up' %>
     <% end %>
     <%= button_to({ action: 'move_lower', id: model.id }, method: :patch, data: { 'show-target': 'item' }, class: 'visibility-hidden') do %>
-      <i class="fa-solid fa-arrow-down"></i>
+      <%= svg_tag 'arrow-down' %>
     <% end %>
   </div>
 </td>
