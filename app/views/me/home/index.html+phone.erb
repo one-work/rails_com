@@ -15,6 +15,9 @@
       <%= render 'crm_nav' if defined? RailsCrm %>
       <%= render 'factory_nav' if defined? RailsFactory %>
       <%= render 'trade_nav' if defined? RailsTrade %>
+      <% if RailsBluetooth %>
+        <%= render 'bluetooth_nav' %>
+      <% end %>
       <%# render 'bench_nav' if defined? RailsBench %>
       <%# render 'finance_nav' if defined? RailsFinance %>
       <%# render 'space_nav' if defined? RailsSpace %>
