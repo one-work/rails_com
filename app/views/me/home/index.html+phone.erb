@@ -2,16 +2,26 @@
   <%= render 'profile_item' %>
 <% end %>
 
-<div class="box fixed-grid has-3-cols">
-  <div class="grid">
-    <%= render 'crm_nav' if defined? RailsCrm %>
-    <%= render 'factory_nav' if defined? RailsFactory %>
-    <%= render 'trade_nav' if defined? RailsTrade %>
-    <%# render 'bench_nav' if defined? RailsBench %>
-    <%# render 'finance_nav' if defined? RailsFinance %>
-    <%# render 'space_nav' if defined? RailsSpace %>
-    <%# render 'printer_nav' %>
+<div class="box is-padding-less">
+  <div class="box-header">
+    <span class="has-border-left-primary size-7">功能</span>
+    <%= link_to({ controller: 'admin/home' }) do %>
+      <%= svg_tag 'up-right-and-down-left-from-center' %>
+      <span class="size-7 ml-1">更多功能</span>
+    <% end %>
+  </div>
+  <div class="fixed-grid has-3-cols is-shadow p-3">
+    <div class="grid">
+      <%= render 'crm_nav' if defined? RailsCrm %>
+      <%= render 'factory_nav' if defined? RailsFactory %>
+      <%= render 'trade_nav' if defined? RailsTrade %>
+      <%# render 'bench_nav' if defined? RailsBench %>
+      <%# render 'finance_nav' if defined? RailsFinance %>
+      <%# render 'space_nav' if defined? RailsSpace %>
+      <%# render 'printer_nav' %>
+    </div>
   </div>
 </div>
+
 
 <%= render 'powered_by' %>

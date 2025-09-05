@@ -4,7 +4,7 @@
       <%= svg_tag 'angle-left' %>
     <% end %>
   <% elsif tab_item_items.exclude?(request.path) %>
-    <%= link_to({ controller: 'admin/home' }, class: 'px-4') do %>
+    <%= link_to({ controller: 'me/home' }, class: 'px-4') do %>
       <%= svg_tag 'angle-left' %>
     <% end %>
   <% else %>
