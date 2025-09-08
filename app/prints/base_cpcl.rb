@@ -22,7 +22,7 @@ class BaseCpcl
       'FORM',
       'PRINT',
       ''
-    ].join("\n").encode!('gb2312')
+    ].join("\n").encode!('gb18030')
   end
 
   def head
