@@ -28,7 +28,6 @@ class BaseEsc
   TXT_NORMAL = [ 0x1b, 0x21, 0x00 ]        # Normal text
   TXT_2HEIGHT = [ 0x1b, 0x21, 0x10 ]        # Double height text
   TXT_2WIDTH = [ 0x1b, 0x21, 0x20 ]        # Double width text
-  TXT_4SQUARE = [ 0x1b, 0x21, 0x30 ]        # Quad area text
   TXT_UNDERL_OFF = [ 0x1b, 0x2d, 0x00 ]        # Underline font OFF
   TXT_UNDERL_ON = [ 0x1b, 0x2d, 0x01 ]        # Underline font 1
   TXT_UNDERL2_ON = [ 0x1b, 0x2d, 0x02 ]        # Underline font 2
@@ -106,7 +105,10 @@ class BaseEsc
   end
 
   def big_text(data)
-    @data.concat *[TXT_4SQUARE, data.encode('gb18030').bytes, TXT_NORMAL, CTL_LF]
+    @data.push 0x1b, 0x21, 0x30 # Quad area text
+    @data.push *data.encode('gb18030').bytes
+    @data.push *TXT_NORMAL
+    @data.push *CTL_LF
   end
 
   def double_width(data)
