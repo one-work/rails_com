@@ -1,10 +1,8 @@
 # 此模块专为页模式设计，暂不考虑标准模式
 class BaseEsc
   # Printer hardware
-  HW_INIT = [ 0x1b, 0x40 ] # 初始化打印机：清除打印缓存，各参数恢复默认值
   HW_SELECT = [ 0x1b, 0x3d, 0x01 ] # Printer select
   HW_RESET = [ 0x1b, 0x3f, 0x0a, 0x00 ] # Reset printer hardware
-  HW_PAGE = [ 0x1b, 0x4c ] # 页模式
 
   # Feed control sequences
   CTL_LF = [ 0x0a ]                   # Print and line feed
@@ -66,14 +64,12 @@ class BaseEsc
   attr_reader :data
   def initialize
     @data = []
-    @data.concat(HW_INIT)
-    @data.concat(HW_PAGE)
-    @data.concat([0x1d, 0x4c, 0x12, 0x00])
-    @data.concat([
-      0x1c, 0x26,
-      0x1c, 0x21, 0x00,
-      0x1b, 0x39, 0x01
-    ])
+    @data.push(0x1b, 0x40)  # 初始化打印机：清除打印缓存，各参数恢复默认值
+    @data.push(0x1b, 0x4c) # 页模式
+    @data.push(0x1d, 0x4c, 0x12, 0x00)  # 设置左限（左边距）：向右移动 18（0x12）点
+    @data.push(0x1c, 0x26) # 启用 16×16 点阵中文打印模式
+    @data.push(0x1c, 0x21, 0x00)  # 中文字间距为 0 点
+    @data.push(0x1b, 0x39, 0x01)  # 双向打印
   end
 
   def partial_cut!
