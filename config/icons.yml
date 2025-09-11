@@ -40,6 +40,7 @@ regular:
   - users
   - xmark
 light:
+  - grid-2
   - house
   - list
   - user
