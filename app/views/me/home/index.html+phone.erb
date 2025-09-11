@@ -1,5 +1,9 @@
-<% if defined?(current_organ) %>
+<% if defined?(current_organ) && current_member %>
   <%= render 'profile_item' %>
+<% else %>
+  <div class="box is-padding-less">
+    <%= render 'my/profile_item' %>
+  </div>
 <% end %>
 
 <div class="box is-padding-less">
