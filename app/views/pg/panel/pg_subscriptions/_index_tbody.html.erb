@@ -20,7 +20,7 @@
       <span class="ml-1"><%= t('.refresh.title') %></span>
     <% end %>
     <%= link_to({ controller: 'pg_stat_subscriptions', pg_subscription_id: model.id }, class: 'button is-small is-rounded is-success') do %>
-      <i class="fa-solid fa-list"></i>
+      <%= svg_tag 'list' %>
       <span class="ml-1"><%= t('.pg_stat_subscriptions.index.title') %></span>
     <% end %>
   </div>
