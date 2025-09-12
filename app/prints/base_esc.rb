@@ -97,7 +97,10 @@ class BaseEsc
   end
 
   def text(data)
-    @data.concat *[TXT_NORMAL, data.encode('gb18030').bytes, TXT_NORMAL, CTL_LF]
+    @data.push *TXT_NORMAL
+    @data.push *data.encode('gb18030').bytes
+    @data.push *TXT_NORMAL
+    @data.push *CTL_LF
   end
 
   def double_height(data)
