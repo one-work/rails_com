@@ -84,7 +84,7 @@ class BaseEsc
   end
 
   def render
-    @data.concat(CTL_LF * 5)
+    @data.push(CTL_LF * 5)
     cut!
   end
 
@@ -205,7 +205,7 @@ class BaseEsc
   end
 
   def cut
-    @data.concat(PAPER_FULL_CUT)
+    @data.push(0x1d, 0x56, 0x00)  # 全切纸
   end
 
 end
