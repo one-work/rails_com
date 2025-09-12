@@ -111,7 +111,7 @@ class BaseCpcl
     @qrcodes << [
       "B QR #{x} #{y} M 2 U #{u}",
       "MA,#{data}",
-      "ENDQR"
+      'ENDQR'
     ].join("\n")
   end
 
