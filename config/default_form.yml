@@ -121,7 +121,7 @@ line_phone:
     <<: *default_errors
 weui:
   <<: *defaults
-  form: flex flex-direction-column is-fullheight
+  form: form-fields as-boxed
   origin:
     label: label text-grey
     input: input
