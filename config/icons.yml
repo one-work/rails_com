@@ -40,3 +40,5 @@ light:
   - user-secret
   - users
   - xmark
+regular:
+  - angle-left
