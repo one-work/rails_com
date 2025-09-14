@@ -10,7 +10,7 @@
       <%= link_to({ controller: shortcut.controller, action: shortcut.action }, class: 'cell button is-large is-fullwidth') do %>
         <span class="size-6"><%= t("#{shortcut.controller.tr('/', '.')}.#{shortcut.action}.title") %></span>
       <% end %>
-    <% end %>
+    <% end if current_member %>
   </div>
   <div class="grid">
     <%= link_to({ controller: '/admin/home' }, class: 'cell button is-large is-fullwidth') do %>
