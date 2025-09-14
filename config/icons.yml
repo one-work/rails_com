@@ -1,4 +1,4 @@
-regular:
+light:
   - angle-left
   - arrow-down
   - arrow-up
@@ -19,6 +19,7 @@ regular:
   - gears
   - globe
   - grip
+  - grid-2
   - house
   - list
   - location-dot
@@ -39,8 +40,3 @@ regular:
   - user-secret
   - users
   - xmark
-light:
-  - grid-2
-  - house
-  - list
-  - user
