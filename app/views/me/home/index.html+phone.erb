@@ -39,15 +39,21 @@
   </div>
   <div class="fixed-grid has-3-cols is-shadow p-3">
     <div class="grid">
-    <%= link_to({ controller: 'factory/productions' }, class: 'cell has-column-centered') do %>
-      <div class="text-primary">
-        <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium' %>
-      </div>
-      <span class="size-7 text-grey mt-1">预览商店</span>
-    <% end %>
-    <% if RailsBluetooth %>
-      <%= render 'bluetooth_nav' %>
-    <% end %>
+      <%= link_to({ controller: 'factory/productions' }, class: 'cell has-column-centered') do %>
+        <div class="text-primary">
+          <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium' %>
+        </div>
+        <span class="size-7 text-grey mt-1">门店预览</span>
+      <% end %>
+      <%= link_to({ controller: 'factory/admin/organs', action: 'show' }, class: 'cell has-column-centered') do %>
+        <div class="text-primary">
+          <%= svg_tag 'shop', class: 'icon is-medium' %>
+        </div>
+        <span class="size-7 text-grey mt-1">门店设置</span>
+      <% end %>
+      <% if RailsBluetooth %>
+        <%= render 'bluetooth_nav' %>
+      <% end %>
     </div>
   </div>
 </div>
