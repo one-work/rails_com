@@ -96,7 +96,7 @@ module Roled
       end
 
       def default_roles
-        Role.joins(:role_types).where(role_types: { who_type: name }).visible
+        Role.joins(:role_types).where(role_types: { who_type: name }).default
       end
     end
 
