@@ -1,0 +1,13 @@
+<div id="modal" data-controller="modal" class="modal is-mobile is-mobile-top is-active">
+  <div class="modal-background has-animate-color"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><%= t('.title') %></p>
+      <button type="button" data-action="modal#close" class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= yield %>
+    </section>
+    <%= render 'modal_foot' %>
+  </div>
+</div>
