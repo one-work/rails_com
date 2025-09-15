@@ -215,7 +215,8 @@ module Com
             if ['new', 'edit'].include?(state.parent.action_name)
               @current_state = state_enter(destroyable: false, parent_id: state.parent.parent_id, referer: state.parent.referer)
             else
-              @current_state = state # 针对当前页面的 post 请求
+              state.destroy
+              @current_state = state_enter(destroyable: false, parent_id: state.parent_id) # 针对当前页面的 post 请求
             end
           elsif request.referer.blank? || request.referer == request.url # 当前页面刷新，或者当前页面重复点击
             @current_state = state
