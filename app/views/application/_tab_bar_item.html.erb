@@ -9,4 +9,4 @@
     <%= svg_tag 'arrows-rotate', class: 'icon is-medium mr-0' %>
     <span class="family-monospace size-7">后台管理</span>
   <% end %>
-<% end %>
+<% end if current_user && current_organ %>
