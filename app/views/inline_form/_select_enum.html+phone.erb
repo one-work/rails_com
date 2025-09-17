@@ -1,1 +1,7 @@
-<%= f.select name, options_for_select(f.object.class.options_i18n(name), f.object.public_send(name)) %>
+<div class="panel is-fullwidth">
+<% f.object.class.options_i18n(name).each do |text, value| %>
+  <div class="<%= f.object.public_send(name) == value ? 'panel-block is-active' : 'panel-block'%>">
+    <span><%= text %></span>
+  </div>
+<% end %>
+</div>
