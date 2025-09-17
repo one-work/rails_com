@@ -1,20 +1,2 @@
-<%= form_with theme: 'inline', url: { action: 'update' }, method: :patch, data: { controller: 'single-form' }, id: 'bottom-field', class: 'form-bottom invisible p-2' do |f| %>
-  <div class="field is-grouped">
-    <div class="control is-expanded">
-      <input type="text" data-single-form-target="input" class="input is-small">
-    </div>
-    <div class="control">
-      <%= f.submit %>
-    </div>
-  </div>
-<% end %>
-<%= form_with theme: 'inline', url: { action: 'update' }, method: :patch, data: { controller: 'single-form' }, id: 'bottom-area', class: 'form-bottom invisible p-2' do |f| %>
-  <div class="field is-grouped">
-    <div class="control is-expanded">
-      <textarea data-single-form-target="input" class="textarea is-small"></textarea>
-    </div>
-    <div class="control">
-      <%= f.submit %>
-    </div>
-  </div>
+<%= form_with theme: 'inline', url: { action: 'update' }, method: :patch, id: 'bottom-area', class: 'form-bottom invisible' do %>
 <% end %>
