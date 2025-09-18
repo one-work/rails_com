@@ -1,5 +1,5 @@
 <%= link_to('/', class: active_helper(paths: '/', active: 'is-active')) do %>
-  <%= svg_tag 'grid-2', kind: 'light', class: 'icon is-medium mr-0' %>
+  <%= svg_tag 'grid-2', class: 'icon is-medium mr-0' %>
   <span class="family-monospace size-7"><%= t('me.home.index.title') %></span>
 <% end %>
 <% @roled_tabs.each do |tab| %>
@@ -7,4 +7,8 @@
     <%= svg_tag tab.icon, kind: 'light', class: 'icon is-medium mr-0' %>
     <span class="family-monospace size-7"><%= tab.name %></span>
   <% end %>
+<% end %>
+<%= link_to('/board', class: active_helper(paths: '/board', active: 'is-active')) do %>
+  <%= svg_tag 'user', class: 'icon is-medium mr-0' %>
+  <span class="family-monospace size-7"><%= t('board.home.index.title') %></span>
 <% end %>
