@@ -116,9 +116,9 @@ class BaseCpcl
   end
 
   # todo
-  def line_x(x0: 0, y0: 36, x1: 40 * 8, y1: 36, width: 2, line_add: true)
+  def line_x(x0: 0, x1: 40 * 8, width: 2, height: 36)
     @texts << "L #{x0} #{@current_y} #{x1} #{@current_y} #{width}"
-    @current_y += y1 if line_add
+    @current_y += height
   end
 
 end
