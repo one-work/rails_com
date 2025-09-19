@@ -22,12 +22,12 @@
       </span>
     </label>
   </div>
-  <div data-picture-target="preview" class="field is-narrow display-none">
-    <div class="image">
+  <div data-picture-target="preview" class="has-block-centered display-none">
+    <div class="image is-96x96">
       <button class="button is-unset as-corner" data-action="picture#removePreview">
         <%= svg_tag 'trash', class: 'icon text-danger' %>
       </button>
-      <%= image_tag 'avatar.png', data: { picture_target: 'src' }, class: 'image is-96x96' %>
+      <%= image_tag 'avatar.png', data: { picture_target: 'src' } %>
     </div>
   </div>
 </div>
