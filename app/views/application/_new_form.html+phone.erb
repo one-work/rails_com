@@ -1,9 +1,5 @@
 <%= form_with theme: 'weui', model: model, scope: model_name, url: { action: 'create' } do |f| %>
-  <div class="form-fields mt-3">
-    <div class="box">
-      <%= render 'error_messages', target: f.object if f.object.errors.present? %>
-      <%= render partial: 'form', locals: { f: f } %>
-    </div>
-  </div>
+  <%= render 'error_messages', target: f.object if f.object.errors.present? %>
+  <%= render partial: 'form', locals: { f: f } %>
   <%= f.submit %>
 <% end %>
