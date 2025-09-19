@@ -1,0 +1,31 @@
+<div data-picture-target="uploadDiv" class="file is-boxed is-fullwidth">
+  <label class="file-label">
+    <%=
+      f.file_field(
+        target.name,
+        multiple: target.is_a?(ActiveStorage::Attached::Many),
+        direct_upload: true,
+        wrap: { input: false },
+        all: { normal: false },
+        label: nil,
+        data: { action: 'picture#upload' },
+        class: 'file-input',
+        **local_assigns.slice(:form)
+      )
+    %>
+    <span class="file-cta">
+      <span class="file-icon">
+        <%= svg_tag 'upload' %>
+      </span>
+      <span>选择文件</span>
+    </span>
+  </label>
+</div>
+<div data-picture-target="preview" class="field is-narrow display-none">
+  <div class="image">
+    <button class="button is-unset as-corner" data-action="picture#removePreview">
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    </button>
+    <%= image_tag 'avatar.png', data: { picture_target: 'src' }, class: 'image is-96x96' %>
+  </div>
+</div>
