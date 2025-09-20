@@ -21,16 +21,22 @@
       </span>
     </label>
   </div>
-  <div data-picture-target="preview" class="<%= target.attached? ? 'picture-preview' : 'picture-preview display-none' %>">
+  <div data-picture-target="preview" class="picture-preview display-none">
     <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
       <%= svg_tag 'xmark', class: 'icon text-danger' %>
     </button>
     <div class="image is-64x64">
-    <% if target.attached? %>
-      <%= image_tag target, data: { picture_target: 'src' } %>
-    <% else %>
       <%= image_tag 'avatar.png', data: { picture_target: 'src' } %>
-    <% end %>
     </div>
   </div>
+  <% if target.attached? %>
+    <div data-picture-target="preview" class="picture-preview">
+      <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
+        <%= svg_tag 'xmark', class: 'icon text-danger' %>
+      </button>
+      <div class="image is-64x64">
+        <%= image_tag target, data: { picture_target: 'src' } %>
+      </div>
+    </div>
+  <% end %>
 </div>
