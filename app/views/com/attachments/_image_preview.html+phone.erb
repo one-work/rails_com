@@ -1,0 +1,13 @@
+<div data-picture-target="preview" class="field is-narrow">
+  <%= hidden_field_tag "#{f.object_name}[#{image.name}#{}][]", image.signed_id, id: nil %>
+  <div class="image">
+    <button type="button" data-action="picture#removePreview" class="button is-unset as-corner">
+      <%= svg_tag 'xmark', class: 'icon text-danger' %>
+    </button>
+    <%= image_tag image.variant(resize_to_limit: [300, 300]), id: "attachment_#{image.id}", data: { picture_target: 'src' }, class: 'image is-96x96' %>
+  </div>
+</div>
+<p id="attachment_<%= target.id %>">
+  <%= link_to target.filename, { controller: 'com/panel/blobs', action: 'show', id: target.id } %>
+  <%= button_to 'x', { controller: 'com/panel/attachments', action: 'destroy', id: target.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') } %>
+</p>

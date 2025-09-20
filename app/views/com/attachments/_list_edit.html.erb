@@ -1,16 +1,5 @@
 <% if target.is_a?(ActiveStorage::Attached::One) %>
-  <% if target.content_type.to_s.start_with?('image') %>
-    <%= render partial: 'com/attachments/image_preview', locals: { image: target, f: f } %>
-  <% elsif target.content_type.to_s.start_with?('video') %>
-    <%= render partial: 'com/attachments/video_item', locals: { video: target, f: f } %>
-  <% elsif !target.attached? %>
-    <%= render partial: 'com/attachments/file_upload', locals: local_assigns %>
-  <% else %>
-    <p id="attachment_<%= target.id %>">
-      <%= link_to target.filename, { controller: 'com/panel/blobs', action: 'show', id: target.id } %>
-      <%= button_to 'x', { controller: 'com/panel/attachments', action: 'destroy', id: target.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') } %>
-    </p>
-  <% end %>
+  <%= render partial: 'com/attachments/file_upload_one', locals: local_assigns %>
 <% elsif target.is_a?(ActiveStorage::Attached::Many) %>
   <%= render partial: 'com/attachments/file_upload', locals: local_assigns %>
   <% target.each do |file| %>
