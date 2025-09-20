@@ -47,7 +47,7 @@
         <%= svg_tag 'shop', class: 'icon is-medium text-primary' %>
         <span class="size-7 text-grey mt-1">门店设置</span>
       <% end %>
-      <%= link_to({ controller: 'wechat/admin/registers' }, class: 'cell has-column-centered') do %>
+      <%= link_to({ controller: 'wechat/admin/registers', action: 'show' }, class: 'cell has-column-centered') do %>
         <%= image_tag 'icons/wxpay.svg', class: 'icon is-medium' %>
         <span class="size-7 text-grey mt-1">微信支付</span>
       <% end %>
