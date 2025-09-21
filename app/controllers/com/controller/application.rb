@@ -209,7 +209,11 @@ module Com
         if state
           if tab_item_items.include?(request.path) || controller_name == 'home'
             state.destroy
-          elsif request.get? && state.referer == request.url # 点回前一个页面
+          elsif request.referer.blank? || request.referer == request.url # 当前页面刷新，或者当前页面重复点击
+            @current_state = state
+          elsif state.referer == request.referer
+            @current_state = state.ancestors.where.not(request_method: 'POST').first
+          elsif request.get? && (state.referer == request.url) # 点回前一个页面
             @current_state = state.ancestors.where.not(request_method: 'POST').first
           elsif state.parent_id.present? && ['POST'].include?(state.request_method) # create/update redirect to 详情页后
             if ['new', 'edit'].include?(state.parent.action_name)
@@ -218,8 +222,6 @@ module Com
               state.destroy
               @current_state = state_enter(destroyable: false, parent_id: state.parent_id) # 针对当前页面的 post 请求
             end
-          elsif request.referer.blank? || request.referer == request.url # 当前页面刷新，或者当前页面重复点击
-            @current_state = state
           else # 常规页面：referer 存在，referer != url
             @current_state = state_enter(destroyable: false, parent_id: state.id)
           end
