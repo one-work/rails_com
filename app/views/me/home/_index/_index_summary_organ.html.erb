@@ -1,0 +1,19 @@
+<div class="box is-padding-less">
+  <div class="box-header">
+    <span class="has-border-left-primary size-7">今日营收</span>
+  </div>
+  <div class="fixed-grid has-2-cols p-3">
+    <div class="grid">
+      <div class="cell has-column-centered">
+        <strong class="size-5"><%= current_organ.counters['amount'].to_money.format.html_safe %></strong>
+        <p class="size-7 text-grey">营业额</p>
+      </div>
+      <div class="grid">
+        <div class="cell has-column-centered">
+          <strong class="size-5"><%= current_organ.counters['count'].to_i %></strong>
+          <p class="size-7 text-grey">单数</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
