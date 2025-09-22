@@ -11,6 +11,7 @@ light:
   - check
   - chevron-right
   - circle-info
+  - circle-play
   - backward-fast
   - backward-step
   - ellipsis
@@ -37,6 +38,7 @@ light:
   - square-minus
   - star
   - trash
+  - trash-list
   - upload
   - user
   - user-secret
