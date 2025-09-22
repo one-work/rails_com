@@ -15,7 +15,7 @@
       <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
       <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
     <% end %>
-    <%= javascript_include_tag 'phone', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <% if request.variant.include?(:mini_program) %>
       <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
