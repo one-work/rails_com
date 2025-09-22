@@ -20,7 +20,7 @@
       <span class="size-7 ml-1">更多功能</span>
     <% end %>
   </div>
-  <div class="fixed-grid has-3-cols is-shadow p-3">
+  <div class="fixed-grid has-3-cols is-shadow-top p-3">
     <div class="grid">
       <%= render 'crm_nav' if defined? RailsCrm %>
       <%= render 'factory_nav' if defined? RailsFactory %>
@@ -37,7 +37,7 @@
   <div class="box-header">
     <span class="has-border-left-primary size-7">门店管理</span>
   </div>
-  <div class="fixed-grid has-3-cols is-shadow p-3">
+  <div class="fixed-grid has-3-cols is-shadow-top p-3">
     <div class="grid">
       <%= link_to({ controller: 'factory/productions', host: current_organ.host }, class: 'cell has-column-centered') do %>
         <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
