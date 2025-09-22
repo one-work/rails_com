@@ -26,5 +26,8 @@
 
 <div class="flex-grow-1 has-column-centered">
   <p class="size-7 text-grey">PC 端登录</p>
-  <strong class="mt-1">https://admin.one.work</strong>
+  <div data-controller="clipboard" data-action="click->clipboard#copyInner" class="mt-1">
+    <strong data-clipboard-target="source">https://admin.one.work</strong>
+    <%= svg_tag 'clone', class: 'icon is-small text-grey ml-1' %>
+  </div>
 </div>
