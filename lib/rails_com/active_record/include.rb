@@ -12,7 +12,7 @@ module RailsCom::ActiveRecord
 
     def update_json_counter(column: 'counters', **cols)
       sql_str = cols.inject(column) do |sql, (col, num)|
-        "jsonb_set(#{sql}, '{#{col}}', (COALESCE(counters->>'#{col}', '0')::int #{num.negative? ? '-' : '+'} #{num.abs})::text::jsonb, true)"
+        "jsonb_set(#{sql}, '{#{col}}', (COALESCE(counters->>'#{col}', '0')::numeric #{num.negative? ? '-' : '+'} #{num.abs})::text::jsonb, true)"
       end
 
       self.class.where(id: id).update_all "#{column} = #{sql_str}"
