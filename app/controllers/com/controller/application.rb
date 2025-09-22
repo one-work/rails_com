@@ -204,7 +204,7 @@ module Com
     def current_state
       return @current_state if defined? @current_state
       if session[:state]
-        # 这里 state 是上一个请求
+        # 当前 state 记录的是前一个请求的信息
         state = State.find_by(id: session[:state])
         if state
           if tab_item_items.include?(request.path) || controller_name == 'home'
@@ -222,8 +222,10 @@ module Com
               state.destroy
               @current_state = state_enter(destroyable: false, parent_id: state.parent_id) # 针对当前页面的 post 请求
             end
-          else # 常规页面：referer 存在，referer != url
+          elsif request.get? # 常规页面：GET 请求，referer 存在，referer != url
             @current_state = state_enter(destroyable: false, parent_id: state.id)
+          else
+            @current_state = state
           end
         else
         end
