@@ -39,10 +39,22 @@
   </div>
   <div class="fixed-grid has-3-cols is-shadow-top p-3">
     <div class="grid">
-      <%= link_to({ controller: 'factory/productions', host: current_organ.host }, class: 'cell has-column-centered') do %>
-        <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
-        <span class="size-7 text-grey mt-1">门店预览</span>
-      <% end if defined?(current_organ) && current_organ %>
+      <% if defined?(current_organ) && current_organ %>
+        <%= link_to({ controller: 'factory/productions', host: current_organ.host }, class: 'cell has-column-centered') do %>
+          <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
+          <span class="size-7 text-grey mt-1">门店预览</span>
+        <% end %>
+        <div
+          data-controller="mini-program"
+          data-mini-program-nav-value="true"
+          data-mini-program-url-value="/pages/share/index"
+          data-action="click->mini-program#link"
+          class="cell has-column-centered"
+        >
+          <%= svg_tag 'share', class: 'icon is-medium text-primary' %>
+          <span class="size-7 text-grey ml-1">分享门店</span>
+        </div>
+      <% end %>
       <%= link_to({ controller: 'factory/admin/organs', action: 'show' }, class: 'cell has-column-centered') do %>
         <%= svg_tag 'shop', class: 'icon is-medium text-primary' %>
         <span class="size-7 text-grey mt-1">门店设置</span>
