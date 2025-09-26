@@ -1,5 +1,5 @@
 <% if ['my/home'].exclude?(params[:controller]) %>
-<div class="box as-bar">
+<div class="as-bar">
   <% if params[:action] == 'index' || referer_controller == 'my/home' %>
     <%= link_to({ controller: '/my/home' }, class: 'px-4') do %>
       <%= svg_tag 'angle-left', kind: 'regular' %>
@@ -9,7 +9,7 @@
       <%= svg_tag 'angle-left', kind: 'regular' %>
     <% end %>
   <% end %>
-  <div class="weui-title"><%= t('.title', default: '') %></div>
+  <div class="bar-title"><%= t('.title', default: '') %></div>
   <% if params[:action] == 'show' %>
     <%= button_to({ action: 'actions' }, class: 'px-4') do %>
       <%= svg_tag 'ellipsis-vertical' %>

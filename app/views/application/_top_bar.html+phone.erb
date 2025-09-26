@@ -1,9 +1,9 @@
 <% if params[:action] != 'index' %>
-<div class="box as-bar">
+<div class="as-bar">
   <%= link_to({ action: 'index' }, class: 'px-4') do %>
     <%= svg_tag 'angle-left', kind: 'regular' %>
   <% end %>
-  <div class="weui-title"><%= t('.title', default: '') %></div>
+  <div class="bar-title"><%= t('.title', default: '') %></div>
   <% if params[:action] == 'show' %>
     <%= button_to({ action: 'actions' }, class: 'px-4') do %>
       <%= svg_tag 'ellipsis-vertical' %>
