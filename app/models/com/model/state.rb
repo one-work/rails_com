@@ -30,6 +30,7 @@ module Com
       has_one :organ_domain, -> (o){ where(organ_id: o.organ_id) }, class_name: 'Org::OrganDomain', primary_key: :host, foreign_key: :host
 
       after_find :destroy_after_used, if: -> { destroyable? }
+      after_initialize :set_path, if: :new_record?
       after_save :destroy_after_used, if: -> { destroyable? && saved_change_to_destroyable? }
       before_destroy :delete_descendants
     end
@@ -43,6 +44,14 @@ module Com
       }
       r.merge! auth_token: auth_token if auth_token.present?
       r
+    end
+
+    def prev_path
+      if parent
+        parent.default_path
+      else
+        referer
+      end
     end
 
     def url(**options)
@@ -66,7 +75,12 @@ module Com
     end
 
     def default_path
-      Rails.application.routes.url_for(controller: controller_path, action: action_name, only_path: true)
+      Rails.application.routes.url_for(
+        controller: controller_path,
+        action: action_name,
+        only_path: true,
+        **params
+      )
     end
 
     def destroy_after_used
@@ -79,6 +93,10 @@ module Com
 
     def get?
       request_method == 'GET'
+    end
+
+    def set_path
+      self.path = self.default_path
     end
 
     def delete_descendants

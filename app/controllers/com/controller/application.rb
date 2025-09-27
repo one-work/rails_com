@@ -244,6 +244,7 @@ module Com
     # 5. 当前页面刷新：referer 为空；
     def set_state
       if current_state
+        logger.debug "\e[35m  Set State: #{current_state.id}  \e[0m"
         session[:state] = current_state.id
       else
         session.delete(:state)
