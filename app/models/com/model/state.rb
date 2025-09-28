@@ -90,6 +90,10 @@ module Com
       controller_path.delete_prefix('/') == params_controller && action_name == params_action
     end
 
+    def ident
+      "#{controller_path}##{action_name}"
+    end
+
     def get?
       request_method == 'GET'
     end
