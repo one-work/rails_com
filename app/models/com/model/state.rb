@@ -45,14 +45,6 @@ module Com
       r
     end
 
-    def prev_url
-      if parent
-        ""
-      else
-        referer
-      end
-    end
-
     def prev_path
       if parent
         parent.path
