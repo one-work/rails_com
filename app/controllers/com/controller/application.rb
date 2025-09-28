@@ -215,7 +215,7 @@ module Com
             @current_state = state
           elsif state.referer == request.referer
             @current_state = state.ancestors.where.not(request_method: 'POST').first
-          elsif request.get? && (state.prev_url == request.url) # 点回前一个页面
+          elsif request.get? && (state.prev_path == request.fullpath) # 点回前一个页面
             @current_state = state.ancestors.where.not(request_method: 'POST').first
           elsif state.parent_id.present? && ['POST'].include?(state.request_method) # create/update redirect to 详情页后
             if ['new', 'edit'].include?(state.parent.action_name)
