@@ -44,21 +44,8 @@ class BaseEsc
   TXT_COLOR_RED = [ 0x1b, 0x72, 0x01 ]        # Alternative Color (Usually Red)
 
   # Barcodes
-  BARCODE_TXT_OFF = [ 0x1d, 0x48, 0x00 ]         # HRI barcode chars OFF
-  BARCODE_TXT_ABV = [ 0x1d, 0x48, 0x01 ]         # HRI barcode chars above
-  BARCODE_TXT_BLW = [ 0x1d, 0x48, 0x02 ]         # HRI barcode chars below
-  BARCODE_TXT_BTH = [ 0x1d, 0x48, 0x03 ]         # HRI barcode chars both above and below
   BARCODE_FONT_A = [ 0x1d, 0x66, 0x00 ]         # Font type A for HRI barcode chars
   BARCODE_FONT_B = [ 0x1d, 0x66, 0x01 ]         # Font type B for HRI barcode chars
-  BARCODE_HEIGHT = [ 0x1d, 0x68 ]               # Barcode Height (1 - 255)
-  BARCODE_WIDTH = [ 0x1d, 0x77 ]               # Barcode Width (2 - 6)
-  BARCODE_UPC_A = [ 0x1d, 0x6b, 0x00 ]         # Barcode type UPC-A
-  BARCODE_UPC_E = [ 0x1d, 0x6b, 0x01 ]         # Barcode type UPC-E
-  BARCODE_EAN13 = [ 0x1d, 0x6b, 0x02 ]         # Barcode type EAN13
-  BARCODE_EAN8 = [ 0x1d, 0x6b, 0x03 ]         # Barcode type EAN8
-  BARCODE_CODE39 = [ 0x1d, 0x6b, 0x04 ]         # Barcode type CODE39
-  BARCODE_ITF = [ 0x1d, 0x6b, 0x05 ]         # Barcode type ITF
-  BARCODE_NW7 = [ 0x1d, 0x6b, 0x06 ]         # Barcode type NW7
 
   attr_reader :data
   def initialize
@@ -171,34 +158,33 @@ class BaseEsc
     @data.concat(CTL_LF * 2)
   end
 
-  def barcode(data, opts = {})
-    text_position = opts.fetch(:text_position, BARCODE_TXT_OFF)
-    possible_text_positions = [
-      BARCODE_TXT_OFF,
-      BARCODE_TXT_ABV,
-      BARCODE_TXT_BLW,
-      BARCODE_TXT_BTH
-    ]
-    unless possible_text_positions.include?(text_position)
+  # 0 不显示数据，只显示条码
+  # 1 数据在条码上方显示
+  # 2 数据在条码下方显示
+  # 3 数据在条码上下显示
+  def barcode(data, position: 2, width: 3, height: 50, format: 0x02)
+    text_position = [0x1d, 0x48, position]
+    bar_width = [0x1d, 0x77, width ]      # Barcode Width (2 - 6)
+    bar_height = [0x1d, 0x68, height]   # Barcode Height (1 - 255)
+    bar_format = [0x1d, 0x6b, format]
+
+    unless [0, 1, 2, 3].include?(position)
       raise ArgumentError("Wrong text position.")
     end
-    height = opts.fetch(:height, 50)
     if height && (height < 1 || height > 255)
       raise ArgumentError("Height must be in range from 1 to 255.")
     end
-    width = opts.fetch(:width, 3)
     if width && (width < 2 || width > 6)
       raise ArgumentError("Width must be in range from 2 to 6.")
     end
 
     @data.concat *[
       text_position,
-      BARCODE_WIDTH,
-      [width],
-      BARCODE_HEIGHT,
-      [height],
-      opts.fetch(:format, BARCODE_EAN13),
-      data.bytes
+      bar_height,
+      bar_width,
+      bar_format,
+      data.bytes,
+      [0x00]
     ]
   end
 
