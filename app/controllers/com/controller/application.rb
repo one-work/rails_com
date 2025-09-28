@@ -224,6 +224,7 @@ module Com
             end
           elsif request.get? # 常规页面：GET 请求，referer 存在，referer != url
             @current_state = state_enter(destroyable: false, parent_id: state.id)
+            # elsif 切换同级页面，不增加路径
           else
             @current_state = state
           end
