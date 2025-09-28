@@ -23,6 +23,10 @@ module Com
       params.except(:business, :namespace, :controller, :action)
     end
 
+    def raw_state_params
+      request.path_parameters.except(:business, :namespace, :controller, :action).merge!(request.query_parameters)
+    end
+
     def raw_filter_params
       request.GET.each_with_object({}) do |(k, v), h|
         next if v.blank?
@@ -44,9 +48,9 @@ module Com
       host: request.host,
       state_controller: "/#{controller_path}",
       state_action: action_name,
+      state_params: raw_state_params,
       request_method: request.request_method,
       referer: request.referer,
-      state_params: request.path_parameters.except(:business, :namespace, :controller, :action).merge!(request.query_parameters),
       body: raw_params.compact_blank,
       path: request.fullpath,
       organ_id: (defined?(current_organ) && current_organ)&.id,
@@ -211,20 +215,23 @@ module Com
         if state
           if tab_item_items.include?(request.path) || controller_name == 'home'
             state.destroy
-          elsif request.referer.blank? || request.referer == request.url # 当前页面刷新，或者当前页面重复点击
+          elsif request.referer.blank? || request.referer == request.url  # 当前页面刷新，或者当前页面重复点击
             @current_state = state
           elsif state.referer == request.referer
             @current_state = state.ancestors.where.not(request_method: 'POST').first
-          elsif request.get? && (state.prev_path == request.fullpath) # 点回前一个页面
+          elsif request.get? && (state.prev_path == request.fullpath)  # 点回前一个页面
             @current_state = state.ancestors.where.not(request_method: 'POST').first
-          elsif state.parent_id.present? && ['POST'].include?(state.request_method) # create/update redirect to 详情页后
+          elsif state.ident == "/#{controller_path}##{action_name}"  # 在当前页面，切换参数
+            state.update(params: raw_state_params, path: request.fullpath)
+            @current_state = state
+          elsif state.parent_id.present? && ['POST'].include?(state.request_method)  # create/update redirect to 详情页后
             if ['new', 'edit'].include?(state.parent.action_name)
               @current_state = state_enter(destroyable: false, parent_id: state.parent.parent_id, referer: state.parent.referer)
             else
               state.destroy
-              @current_state = state_enter(destroyable: false, parent_id: state.parent_id) # 针对当前页面的 post 请求
+              @current_state = state_enter(destroyable: false, parent_id: state.parent_id)  # 针对当前页面的 post 请求
             end
-          elsif request.get? # 常规页面：GET 请求，referer 存在，referer != url
+          elsif request.get?  # 常规页面：GET 请求，referer 存在，referer != url
             @current_state = state_enter(destroyable: false, parent_id: state.id)
             # elsif 切换同级页面，不增加路径
           else
