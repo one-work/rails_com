@@ -48,6 +48,7 @@ module Com
       referer: request.referer,
       state_params: request.path_parameters.except(:business, :namespace, :controller, :action).merge!(request.query_parameters),
       body: raw_params.compact_blank,
+      path: request.path,
       organ_id: (defined?(current_organ) && current_organ)&.id,
       user_id: current_user&.id,
       parent_id: nil,
@@ -61,6 +62,7 @@ module Com
         request_method: request_method,
         referer: referer,
         params: state_params,
+        path: path,
         body: body,
         organ_id: organ_id,
         user_id: user_id,
@@ -213,7 +215,7 @@ module Com
             @current_state = state
           elsif state.referer == request.referer
             @current_state = state.ancestors.where.not(request_method: 'POST').first
-          elsif request.get? && (state.referer == request.url) # 点回前一个页面
+          elsif request.get? && (state.prev_path == request.path) # 点回前一个页面
             @current_state = state.ancestors.where.not(request_method: 'POST').first
           elsif state.parent_id.present? && ['POST'].include?(state.request_method) # create/update redirect to 详情页后
             if ['new', 'edit'].include?(state.parent.action_name)
