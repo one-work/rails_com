@@ -79,7 +79,7 @@ module Com
         controller: controller_path,
         action: action_name,
         only_path: true,
-        **params
+        **params.to_options
       )
     end
 
