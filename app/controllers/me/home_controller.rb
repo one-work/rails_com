@@ -5,7 +5,6 @@ module Me
     before_action :require_user, only: [:index]
 
     def index
-      binding.b
       set_roled_tabs
     end
 
