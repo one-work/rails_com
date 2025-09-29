@@ -56,7 +56,7 @@ class BaseTspl
   end
 
   # TSS16, 字体为：16x16
-  def text(data, font: 'TSS24.BF2', line_height: FONTS[font] * 1.5, scale: 1, x:, y: @text_height || 0, line_add: true)
+  def text(data, font: 'TSS24.BF2', line_height: FONTS[font] * 1.5, scale: 1, x: 20, y: @text_height || 0, line_add: true)
     @texts << "TEXT #{x},#{y},\"#{font}\",0,#{scale},#{scale},\"#{data}\""
     if @text_height.nil? && line_add
       @text_height = y + (line_height * scale).to_i
