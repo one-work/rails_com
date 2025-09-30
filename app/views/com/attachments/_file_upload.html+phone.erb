@@ -31,7 +31,7 @@
         <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
           <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
         </button>
-        <div class="image is-64x64">
+        <div class="image is-64x64 overflow-y-hidden">
           <%= image_tag 'avatar.png', data: { picture_target: 'src' } %>
         </div>
       </div>
@@ -40,7 +40,7 @@
           <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
             <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
           </button>
-          <div class="image is-64x64">
+          <div class="image is-64x64 overflow-y-hidden">
             <%= image_tag file, data: { picture_target: 'src' } %>
           </div>
         </div>
