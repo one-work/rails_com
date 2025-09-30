@@ -4,8 +4,7 @@
     partial: 'edit_inline_form',
     layout: 'modal',
     locals: {
-      model: defined?(model) ? model : instance_variable_get("@#{model_name}"),
-      theme: 'inline'
+      model: defined?(model) ? model : instance_variable_get("@#{model_name}")
     }
   )
 %>
