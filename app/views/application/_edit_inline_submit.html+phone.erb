@@ -11,5 +11,6 @@
     <section class="modal-card-body">
       <%= render partial: "inline_form/#{params[:field_type]}", locals: { f: f, name: params[:field] } %>
     </section>
+    <%= f.submit %>
   <% end %>
 </div>
