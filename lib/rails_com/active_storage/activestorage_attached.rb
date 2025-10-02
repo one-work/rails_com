@@ -6,7 +6,7 @@ module ActiveStorage
 
     def url_sync(url, **options)
       filename = File.basename URI(url).path
-      file = UrlUtil.from_url(url)
+      file = UrlUtil.file_from_url(url)
 
       if options.present?
         variation = ActiveStorage::Variation.new(options)
