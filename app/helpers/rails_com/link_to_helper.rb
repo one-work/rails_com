@@ -9,8 +9,9 @@ module RailsCom::LinkToHelper
       _html_options = html_options || {}
     end
     text = _html_options.delete(:text)
+    skip_role = _html_options.delete(:skip_role)
 
-    return super if role_permit_options?(_options, _html_options.fetch(:method, nil))
+    return super if skip_role || role_permit_options?(_options, _html_options.fetch(:method, nil))
 
     if text
       if block_given?
@@ -35,7 +36,8 @@ module RailsCom::LinkToHelper
     end
 
     text = _html_options.delete(:text)
-    return super if role_permit_options?(_options, _html_options.fetch(:method, nil))
+    skip_role = _html_options.delete(:skip_role)
+    return super if skip_role || role_permit_options?(_options, _html_options.fetch(:method, nil))
 
     if text
       if block_given?
