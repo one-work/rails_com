@@ -6,6 +6,15 @@ module Me
 
     def index
       set_roled_tabs
+
+      @share = {
+        url: 'https://one.work/factory/productions',
+        title: '官方商场'
+      }
+
+      if current_organ && current_organ.share_logo.attached?
+        @share.merge! share_logo: current_organ.share_logo.url
+      end
     end
 
   end
