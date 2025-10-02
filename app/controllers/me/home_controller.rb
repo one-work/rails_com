@@ -13,7 +13,7 @@ module Me
       }
 
       if current_organ && current_organ.share_logo.attached?
-        @share.merge! share_logo: current_organ.share_logo.url
+        @share.merge! share_logo: current_organ.share_logo_url
       end
     end
 
