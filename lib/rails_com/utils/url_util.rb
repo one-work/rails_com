@@ -2,12 +2,6 @@
 module UrlUtil
   extend self
 
-  def from_url(url, filename: SecureRandom.alphanumeric, root: Rails.root.join('tmp/files'))
-    _, file = init_file(filename, root: root)
-    fetch_file(url, file)
-    file
-  end
-
   def file_from_url(url, filename: SecureRandom.alphanumeric, root: Rails.root.join('tmp/files'))
     _, file = init_file(filename, root: root)
     fetch_file(url, file)
