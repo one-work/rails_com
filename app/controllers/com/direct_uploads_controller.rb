@@ -6,7 +6,12 @@ module Com
 
     # change_column_null :active_storage_blobs, :checksum, true
     def create
-      blob = ActiveStorage::Blob.new metadata: {}, **blob_args
+      if request.headers['Service-Name']
+        extra = { service_name: request.headers['Service-Name'] }
+      else
+        extra = {}
+      end
+      blob = ActiveStorage::Blob.new metadata: {}, **extra, **blob_args
       blob.save(validate: false)
 
       render json: direct_upload_json(blob).merge!(download_url: blob.url)

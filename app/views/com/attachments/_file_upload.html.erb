@@ -7,7 +7,7 @@
         direct_upload: true,
         wrap: { input: false, all: false },
         label: false,
-        data: { action: 'picture#upload' },
+        data: { action: 'picture#upload', service: f.object.attachment_reflections[target.name].options[:service_name] },
         class: 'file-input',
         **local_assigns.slice(:form)
       )
