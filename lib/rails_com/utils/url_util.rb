@@ -1,3 +1,4 @@
+require 'httpx'
 
 module UrlUtil
   extend self
