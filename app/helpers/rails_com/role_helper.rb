@@ -1,19 +1,19 @@
 module RailsCom::RoleHelper
 
-  def role_permit_options?(_options, method)
+  def role_permit_options?(options, method)
     return true if session.blank?
-    if _options.is_a? String
+    if options.is_a? String
       begin
-        path_params = Rails.application.routes.recognize_path _options, { method: method }
+        path_params = Rails.application.routes.recognize_path options, { method: method }
       rescue ActionController::RoutingError
         return true
       end
-    elsif _options == :back
+    elsif options == :back
       return true
-    elsif _options.is_a? Hash
+    elsif options.is_a? Hash
       path_params = {
-        controller: _options[:controller] || controller_path,
-        action: _options[:action] || 'index'
+        controller: options[:controller] || controller_path,
+        action: options[:action] || 'index'
       }
       Rails.application.routes.send :generate, nil, path_params, request.path_parameters  # 例如 'orders' -> 'trade/me/orders', 这里会直接改变 dup_params 的值
     else
@@ -33,7 +33,7 @@ module RailsCom::RoleHelper
 
     result = role_permit?(**result_params)
     if Rails.configuration.x.role_debug || !result
-      logger.debug "\e[35m  Options: #{_options}  \e[0m"
+      logger.debug "\e[35m  Options: #{options}  \e[0m"
     end
     result
   end
