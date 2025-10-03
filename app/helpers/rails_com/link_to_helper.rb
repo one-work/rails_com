@@ -24,12 +24,12 @@ module RailsCom::LinkToHelper
       _options = options
       _html_options = html_options || {}
     end
+    text = _html_options.delete(:text)
     skip_role = _html_options.delete(:skip_role)
     allowed = skip_role || role_permit_options?(_options, _html_options.fetch(:method, nil))
 
     yield allowed
 
-    text = _html_options.delete(:text)
     if text
       if block
         content_tag(:div, _html_options.slice(:class, :data), &block)
