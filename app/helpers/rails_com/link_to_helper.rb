@@ -32,13 +32,6 @@ module RailsCom::LinkToHelper
   end
 
   def link_to(name = {}, options = {}, html_options = nil, &block)
-    if block_given?
-      _options = name
-      _html_options = options || {}
-    else
-      _options = options
-      _html_options = html_options || {}
-    end
 
     if request.variant.include?(:mini_program)
       _html_options['data-turbo-action'] = 'replace'
