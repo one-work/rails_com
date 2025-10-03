@@ -1,12 +1,13 @@
 module RailsCom::RoleHelper
 
   def role_permit_options?(options, method)
-    return true if session.blank?
+    return true if session.blank?  # 没有登录的情况下，默认放开所有权限
+
     if options.is_a? String
       begin
         path_params = Rails.application.routes.recognize_path options, { method: method }
       rescue ActionController::RoutingError
-        return true
+        return true  # 无法识别的路由（也就是没有在系统内定义）
       end
     elsif options == :back
       return true
