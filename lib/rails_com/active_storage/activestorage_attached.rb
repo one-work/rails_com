@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'httpx'
 module ActiveStorage
   class Attached
 
