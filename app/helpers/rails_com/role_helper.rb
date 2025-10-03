@@ -66,7 +66,6 @@ module RailsCom::RoleHelper
       logger.debug "\e[35m  #{current_organ&.base_class_name}_#{current_organ&.id}: #{organ_permitted.inspect}  \e[0m" if defined?(current_organ)
       logger.debug "\e[35m  #{rails_role_user&.base_class_name}_#{rails_role_user&.id}: #{user_permitted.inspect}  \e[0m"
     end
-
     result
   end
 
