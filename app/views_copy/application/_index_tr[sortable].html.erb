@@ -1,9 +1,9 @@
 <tr
   id="tr_<%= model.id %>"
   data-controller="show"
-  data-action="mouseenter->show#show mouseleave->show#hide"
   data-url="<%= url_for({ action: 'reorder', id: model.id }) %>"
   data-id="<%= model.id %>"
 >
   <%= yield %>
+  <td><%= render partial: 'index_tr_actions', locals: { model: model } %></td>
 </tr>
