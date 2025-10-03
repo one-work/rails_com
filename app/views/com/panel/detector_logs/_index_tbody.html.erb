@@ -9,4 +9,3 @@
   <p><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
 </td>
 <td><%= model.spend %></td>
-<td><%= render partial: 'index_tr_actions', locals: { model: model } %></td>
