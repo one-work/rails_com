@@ -1,6 +1,12 @@
 module RailsCom::LinkToHelper
 
   def button_to(name = {}, options = {}, html_options = nil, &block)
+    button_or_link_to(name, options, html_options) do |_options, _html_options|
+      return super if skip_role || role_permit_options?(_options, _html_options.fetch(:method, nil))
+    end
+  end
+
+  def button_or_link_to(name, options, html_options = nil, &block)
     if block_given?
       _options = name
       _html_options = options || {}
@@ -11,14 +17,14 @@ module RailsCom::LinkToHelper
     text = _html_options.delete(:text)
     skip_role = _html_options.delete(:skip_role)
 
-    return super if skip_role || role_permit_options?(_options, _html_options.fetch(:method, nil))
-
     if text
       if block_given?
         content_tag(:div, _html_options.slice(:class, :data), &block)
       else
         ERB::Util.html_escape(name)
       end
+    else
+      yield skip_role, _options, _html_options
     end
   end
 
