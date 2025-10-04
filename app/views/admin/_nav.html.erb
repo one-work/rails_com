@@ -70,6 +70,11 @@
         <%= render 'notice_nav_popup' %>
       </li>
     <% end %>
+    <% if defined?(RailsSync) && role_permit?(business: 'sync', namespace: 'admin') %>
+      <li class="<%= active_helper(modules: 'sync/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'sync_nav_popup' %>
+      </li>
+    <% end %>
     <% if defined?(RailsWechat) && role_permit?(business: 'wechat', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'wechat/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'wechat_nav_popup' %>
