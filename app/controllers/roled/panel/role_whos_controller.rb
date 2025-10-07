@@ -3,6 +3,10 @@ module Roled
     before_action :set_role
     before_action :set_who_role, only: [:destroy]
 
+    def index
+      @role_whos = @role.role_whos.page(params[:page])
+    end
+
     def destroy
       @who_role.destroy
     end
