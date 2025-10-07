@@ -25,10 +25,8 @@ module RailsCom::LinkToHelper
       _html_options = html_options || {}
     end
     text = _html_options.delete(:text)  # text 如何存在必须在渲染前删除
-    skip_role = _html_options.delete(:skip_role)
-    allowed = skip_role || role_permit_options?(_options, _html_options.fetch(:method, nil))
 
-    yield allowed
+    yield role_permit_options?(_options, _html_options.fetch(:method, nil))
 
     if text
       if block
