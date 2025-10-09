@@ -19,9 +19,9 @@
     </span>
   </label>
 </div>
-<div class="field is-narrow" data-picture-target="preview" style="display: none">
+<div data-picture-target="preview" class="field is-narrow display-none">
   <div class="image">
-    <button class="button is-unset as-corner" data-action="picture#removePreview">
+    <button data-action="picture#removePreview" class="button is-unset as-corner">
       <%= svg_tag 'trash', class: 'icon text-danger' %>
     </button>
     <%= image_tag 'avatar.png', data: { picture_target: 'src' }, class: 'image is-96x96' %>
