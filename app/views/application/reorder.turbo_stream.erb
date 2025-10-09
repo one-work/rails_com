@@ -1,1 +1,1 @@
-<%= turbo_stream.append 'body', partial: 'visit' %>
+<%= turbo_stream.update 'tbody', partial: 'index_tbody', layout: 'index_tr', collection: instance_variable_get("@#{pluralize_model_name}"), as: :model %>

@@ -98,6 +98,8 @@ module Com
       else # 向上移动
         model.update position: { before: params[:subsequent_id] }
       end
+
+      index
     end
 
     def destroy
