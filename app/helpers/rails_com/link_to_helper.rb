@@ -6,7 +6,7 @@ module RailsCom::LinkToHelper
     end
   end
 
-  def link_to(name = {}, options = {}, html_options = nil, &block)
+  def link_to(name = nil, options = nil, html_options = nil, &block)
     #if request.variant.include?(:mini_program)
     #   _html_options['data-turbo-action'] = 'replace'
     # end
@@ -24,7 +24,7 @@ module RailsCom::LinkToHelper
       _options = options
       _html_options = html_options || {}
     end
-    text = _html_options.delete(:text)  # text 如何存在必须在渲染前删除
+    text = _html_options.delete(:text)  # text 如果存在须在渲染前删除
 
     yield role_permit_options?(_options, _html_options.fetch(:method, nil))
 
