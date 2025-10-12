@@ -304,5 +304,9 @@ module Com
       @current_filters = Filter.includes(:filter_columns).default_where(default_params).where(controller_path: controller_path, action_name: action_name).limit(5)
     end
 
+    def redirect_for_too_many
+      redirect_to '/', alert: '请求过于频繁!'
+    end
+
   end
 end
