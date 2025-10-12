@@ -7,10 +7,6 @@ module RailsCom::LinkToHelper
   end
 
   def link_to(name = nil, options = nil, html_options = nil, &block)
-    #if request.variant.include?(:mini_program)
-    #   _html_options['data-turbo-action'] = 'replace'
-    # end
-
     button_or_link_to(name, options, html_options, block) do |allowed|
       return super if allowed
     end
