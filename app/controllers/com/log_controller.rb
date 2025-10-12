@@ -1,6 +1,7 @@
 module Com
   class LogController < BaseController
     skip_before_action :verify_authenticity_token if defined? verify_authenticity_token
+    rate_limit to: 10, within: 1.minute, only: [:not_found]
 
     def not_found
       logger.debug "\e[35m  format: #{request.format}, path: #{request.path_parameters}  \e[0m"
