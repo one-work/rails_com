@@ -23,7 +23,7 @@ module RailsCom::ActiveRecord
 
     def options_i18n_for_collection(attribute)
       options_i18n(attribute).each_with_object([]) do |(value, type), arr|
-        arr << OpenStruct.new(value: type, name: value)
+        arr << OpenStruct.new(value: type.to_s, name: value)
       end
     end
 
