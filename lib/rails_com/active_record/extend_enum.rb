@@ -21,6 +21,12 @@ module RailsCom::ActiveRecord
       h
     end
 
+    def options_i18n_for_collection(attribute)
+      options_i18n(attribute).each_with_object([]) do |(value, type), arr|
+        arr << OpenStruct.new(value: type, name: value)
+      end
+    end
+
     def help_i18n(attribute)
       return nil if attribute.blank?
       help_key = RailsCom.config.help_key.call(self, attribute)
