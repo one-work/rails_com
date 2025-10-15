@@ -1,4 +1,4 @@
-<tr id="tr_<%= meta_controller.id %>">
+<tr id="tr_<%= meta_controller.id %>" data-controller="show">
   <td><%= meta_controller.namespace_identifier %></td>
   <td>
     <%= button_to({ action: 'move_higher', id: meta_controller.id }, method: :patch, class: 'text-grey-lighter') do %>
