@@ -1,4 +1,4 @@
-<tr id="tr_<%= model.id %>" data-depth="<%= model.depth_str %>" data-controller="tree show" data-tree-target="item" data-action="mouseenter->show#show mouseleave->show#hide" style="display: <%= display %>">
+<tr id="tr_<%= model.id %>" data-depth="<%= model.depth_str %>" data-controller="tree show" data-tree-target="item" style="display: <%= display %>">
   <%= yield %>
   <td>
     <div data-show-target="item" class="visibility-hidden">
