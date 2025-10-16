@@ -119,8 +119,8 @@ line_phone:
     normal: field
   error:
     <<: *default_errors
-weui:
-  <<: *defaults
+default_phone:
+  <<: *phone
   form: form-fields as-boxed
   origin:
     label: label text-grey
