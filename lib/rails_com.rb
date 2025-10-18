@@ -52,10 +52,3 @@ require 'net/scp'
 require 'sshkey'
 
 require 'rails_com/money/formatter'
-
-module RailsCom
-  mattr_accessor :default_routes_scope, default: {
-    path: '(:org_id)(/:our_id)',
-    constraints: { org_id: /org_\d+/, our_id: /our_\d+/ }
-  }
-end
