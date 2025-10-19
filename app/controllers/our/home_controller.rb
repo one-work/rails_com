@@ -1,5 +1,5 @@
 module Our
-  class HomeController < My::HomeController
+  class HomeController < BaseController
     include Org::Controller::Our
     before_action :set_roles, only: [:organs]
 
