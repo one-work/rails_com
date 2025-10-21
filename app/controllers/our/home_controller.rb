@@ -1,6 +1,6 @@
 module Our
   class HomeController < BaseController
-    include Org::Controller::Our
+    include Org::Controller::Our if defined? RailsOrg
     before_action :set_roles, only: [:organs]
 
     def index
