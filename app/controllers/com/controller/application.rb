@@ -217,7 +217,7 @@ module Com
             state.destroy
           elsif request.referer.blank? || request.referer == request.url  # 当前页面刷新，或者当前页面重复点击
             @current_state = state
-          elsif state.referer == request.referer
+          elsif request.get? && (state.referer == request.referer)
             @current_state = state.ancestors.where.not(request_method: 'POST').first
           elsif request.get? && (state.prev_path == request.fullpath)  # 点回前一个页面
             @current_state = state.ancestors.where.not(request_method: 'POST').first
