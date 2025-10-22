@@ -213,7 +213,7 @@ module Com
         # 当前 state 记录的是前一个请求的信息
         state = State.find_by(id: session[:state])
         if state
-          if tab_item_items.include?(request.path) || controller_name == 'home'
+          if state_reset_filter
             state.destroy
           elsif request.referer.blank? || request.referer == request.url  # 当前页面刷新，或者当前页面重复点击
             @current_state = state
@@ -240,10 +240,20 @@ module Com
         else
         end
       elsif request.variant.include?(:phone) && turbo_request?
-        @current_state = state_enter(destroyable: false)
+        if request.get? && !state_reset_filter
+          @current_state = state_enter(destroyable: false)
+        end
       end
       logger.debug "\e[35m  Current State: #{@current_state.id}, #{@current_state.parent_ancestors.values.reverse.join(', ')}  \e[0m" if @current_state # RailsCom.config.debug
       @current_state
+    end
+
+    def state_skip_back
+      current_state.update skip_back: true
+    end
+
+    def state_reset_filter
+      tab_item_items.include?(request.path) || controller_name == 'home'
     end
 
     # 四种情况

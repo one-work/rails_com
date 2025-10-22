@@ -21,8 +21,9 @@ module Com
       attribute :cookie, :json, default: {}
       attribute :session_id, :string
       attribute :session, :json, default: {}
-      attribute :destroyable, :boolean, default: true
       attribute :auth_token, :string
+      attribute :destroyable, :boolean, default: true
+      attribute :skip_back, :boolean, default: false
 
       belongs_to :user, class_name: 'Auth::User', optional: true
       belongs_to :organ, class_name: 'Org::Organ', optional: true
@@ -47,7 +48,11 @@ module Com
 
     def prev_path
       if parent
-        parent.path
+        if parent.skip_back
+          parent.referer
+        else
+          parent.path
+        end
       else
         referer
       end
