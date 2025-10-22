@@ -219,8 +219,8 @@ module Com
             @current_state = state
           elsif request.get? && (state.referer == request.referer)
             @current_state = state.ancestors.where.not(request_method: 'POST').first
-          elsif request.get? && (state.prev_path == request.fullpath)  # 点回前一个页面
-            @current_state = state.ancestors.where.not(request_method: 'POST').first
+          elsif request.get? && [request.fullpath, request.url].include?(state.prev_path)  # 点回前一个页面
+            @current_state = state.ancestors.where.not(request_method: 'POST').where.not(skip_back: true).first
           elsif state.ident == "/#{controller_path}##{action_name}"  # 在当前页面，切换参数
             state.update(params: raw_state_params, path: request.fullpath)
             @current_state = state
