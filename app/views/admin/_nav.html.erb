@@ -1,11 +1,11 @@
 <div class="menu as-wrap flex-grow-1 flex flex-direction-column">
   <div class="menu-brand">
   <% if defined?(current_organ) && current_organ %>
-    <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
+    <%= link_to({ controller: '/admin/home' }, class: 'text-centered p-3') do %>
       <% if current_organ.logo.attached? %>
         <%= image_tag current_organ.logo, class: 'image is-64x64' %>
       <% else %>
-        <div class="is-avatar"><%= current_organ.name.to_s[0] %></div>
+        <div class="is-avatar display-inline-block"><%= current_organ.name.to_s[0] %></div>
       <% end %>
     <% end %>
   <% else %>
