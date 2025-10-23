@@ -1,8 +1,14 @@
 <div class="menu as-wrap flex-grow-1 flex flex-direction-column">
   <div class="menu-brand">
+  <% if defined?(current_organ) && current_organ %>
     <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
-      <%= image_tag 'logo_avatar.png' %>
+      <%= image_tag current_organ.logo, class: 'image is-64x64' %>
     <% end %>
+  <% else %>
+    <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
+      <%= image_tag 'logo_avatar.png', class: 'image is-64x64' %>
+    <% end %>
+  <% end %>
   </div>
   <ul class="menu-list">
     <% if defined?(RailsOrg) && role_permit?(business: 'org', namespace: 'admin') %>
