@@ -5,7 +5,7 @@
       <% if current_organ.logo.attached? %>
         <%= image_tag current_organ.logo, class: 'image is-64x64' %>
       <% else %>
-        <span><%= current_organ.name %></span>
+        <div class="is-avatar"><%= current_organ.name.to_s[0] %></div>
       <% end %>
     <% end %>
   <% else %>
