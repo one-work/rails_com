@@ -2,7 +2,11 @@
   <div class="menu-brand">
   <% if defined?(current_organ) && current_organ %>
     <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
-      <%= image_tag current_organ.logo, class: 'image is-64x64' %>
+      <% if current_organ.logo.attached? %>
+        <%= image_tag current_organ.logo, class: 'image is-64x64' %>
+      <% else %>
+        <span><%= current_organ.name %></span>
+      <% end %>
     <% end %>
   <% else %>
     <%= link_to({ controller: '/admin/home' }, class: 'text-centered') do %>
