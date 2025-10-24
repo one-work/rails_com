@@ -1,1 +1,7 @@
+bluetooth: bluetooth
+com: grid-round-2-minus
+job: send-backward
 print: print
+pg: database
+roled: user-lock
+statis: chart-simple

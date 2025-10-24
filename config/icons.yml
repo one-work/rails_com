@@ -48,6 +48,12 @@ light:
 regular:
   - angle-left
 duotone:
+  - bluetooth
   - building-user
+  - chart-simple
+  - database
   - face-smile
+  - grid-round-2-minus
   - print
+  - send-backward
+  - user-lock
