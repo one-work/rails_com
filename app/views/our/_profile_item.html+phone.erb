@@ -7,8 +7,13 @@
   <% end %>
   </div>
   <div class="media-content">
-    <p><%= current_client.organ.name %></p>
-    <p class="text-grey"><%= current_client.name %></p>
+    <p>
+      <span><%= current_client.organ.name %></span>
+      <span class="tag">公司</span>
+    </p>
+    <p class="text-grey">
+      <span><%= current_client.name %></span>
+    </p>
   </div>
   <div class="media-right text-grey">
     <%= svg_tag 'qrcode' %>
