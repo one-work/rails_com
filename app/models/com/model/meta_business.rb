@@ -95,6 +95,10 @@ module Com
       meta_actions.where.not(synced_at: synced_at).or(meta_actions.where(synced_at: nil)).delete_all
     end
 
+    def svg_icon
+      self.class.icon_mappings[identifier] || 'face-smile'
+    end
+
     class_methods do
 
       def sync
@@ -109,6 +113,13 @@ module Com
         (existing - business_keys).each do |business|
           self.find_by(identifier: business).destroy
         end
+      end
+
+      def icon_mappings
+        return @icon_mappings if defined? @icon_mappings
+
+        icon_path = RailsCom::Engine.root.join('config/icons_business.yml')
+        @icon_mappings = YAML.safe_load_file(icon_path)
       end
 
     end

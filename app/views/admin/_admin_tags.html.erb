@@ -1,7 +1,7 @@
 <% if role_permit?(business: model.identifier, namespace: 'admin') %>
 <div class="media">
-  <figure class="media-left">
-    <%= image_tag "#{model.identifier}_logo.png", class: 'image is-64x64' %>
+  <figure class="media-left text-link">
+    <%= svg_tag model.svg_icon, kind: 'duotone', class: 'image is-64x64' %>
   </figure>
   <div class="media-content">
     <div class="content">
