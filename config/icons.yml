@@ -56,4 +56,6 @@ duotone:
   - grid-round-2-minus
   - print
   - send-backward
+  - table
+  - user-group-simple
   - user-lock
