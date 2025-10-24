@@ -50,12 +50,18 @@ regular:
 duotone:
   - bluetooth
   - building-user
+  - calendar-lines-pen
   - chart-simple
   - database
   - face-smile
+  - fingerprint
   - grid-round-2-minus
+  - list-check
+  - industry
   - print
   - send-backward
   - table
+  - tape
+  - user
   - user-group-simple
   - user-lock

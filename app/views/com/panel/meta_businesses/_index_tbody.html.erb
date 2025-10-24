@@ -2,8 +2,8 @@
   <div class="is-several">
     <% if model.logo.attached? %>
       <%= image_tag model.logo, class: 'image is-24x24' %>
-    <% elsif Rails.application.assets.resolver.resolve("#{model.identifier}_logo.png") %>
-      <%= image_tag "#{model.identifier}_logo.png", class: 'image is-24x24' %>
+    <% else %>
+      <%= svg_tag model.svg_icon, kind: 'duotone', class: 'image is-24x24' %>
     <% end %>
     <%= link_to model.name, { action: 'show', id: model.id }, text: true %>
     <%= button_to({ action: 'move_higher', id: model.id }, method: :patch, data: { 'show-target': 'item' }, class: 'visibility-hidden') do %>

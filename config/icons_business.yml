@@ -1,7 +1,13 @@
+attend: fingerprint
+audit: tape
+auth: user
+bench: list-check
 bluetooth: bluetooth
 com: grid-round-2-minus
+cms: calendar-lines-pen
 crm: user-group-simple
 datum: table
+factory: industry
 job: send-backward
 print: print
 pg: database
