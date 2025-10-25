@@ -1,5 +1,6 @@
 module RailsCom::ActionController
   class Subscriber < ActiveSupport::LogSubscriber
+    attach_to :action_controller
 
     def start_processing(event)
       return unless logger.debug?
@@ -28,6 +29,5 @@ module RailsCom::ActionController
       err.record!(payload)
     end
 
-    self.attach_to :action_controller
   end
 end
