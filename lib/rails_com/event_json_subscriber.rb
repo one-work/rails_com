@@ -9,7 +9,7 @@ class EventJsonSubscriber
   end
 
   def emit(event)
-    Rails.logger.debug "---------------------emit ---#{@queue}-#{@task.running?}---"
+    Rails.logger.debug "---------------------emit ---#{@queue}-#{@task.running?}-object: #{self.object_id}--"
 
     @queue << [
       event[:payload][:controller],
