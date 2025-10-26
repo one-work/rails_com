@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class JsonEventReport
+class EventJsonSubscriber
   BATCH = 2_000
   FLUSH = 1.second
 
