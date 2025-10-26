@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class EventJsonSubscriber
-  FLUSH = 5.second
 
   def initialize
     @queue = Concurrent::Array.new
-    Concurrent::TimerTask.new(execution_interval: FLUSH) { flush! }.execute
+    Concurrent::TimerTask.new(execution_interval: 5) { flush! }.execute
   end
 
   def emit(event)
