@@ -5,7 +5,7 @@ class EventJsonSubscriber
 
   def initialize
     @queue = Concurrent::Array.new
-    @task = Concurrent::TimerTask.execute(execution_interval: 1) { flush! }
+    @task = Concurrent::TimerTask.new(execution_interval: 1) { flush! }
   end
 
   def emit(event)
