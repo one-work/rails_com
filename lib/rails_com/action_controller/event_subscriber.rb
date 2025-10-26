@@ -3,7 +3,6 @@ module RailsCom::ActionController
     attach_to :action_controller
 
     def start_processing(event)
-      Rails.logger.debug '---------------------------------------------'
       emit_event(
         'controller.request_started',
         controller: event.payload[:controller],
@@ -14,7 +13,6 @@ module RailsCom::ActionController
     end
 
     def process_action(event)
-      Rails.logger.debug '---------------------------------------------'
     end
 
   end
