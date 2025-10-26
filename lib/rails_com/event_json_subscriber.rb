@@ -22,6 +22,8 @@ class EventJsonSubscriber
     return if @queue.empty?
     buf = @queue.shift(@queue.size)
 
+    Rails.logger.debug "--------------------------#{buf}"
+
     conn = ActiveRecord::Base.connection.raw_connection
     conn.copy_data 'COPY com_logs(controller_name, action_name, format, created_at) FROM STDIN' do
       buf.each do |item|
