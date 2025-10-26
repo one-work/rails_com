@@ -5,12 +5,10 @@ class EventJsonSubscriber
 
   def initialize
     @queue = Concurrent::Array.new
-    @task = Concurrent::TimerTask.new(execution_interval: 1) { flush! }
+    Concurrent::TimerTask.execute(execution_interval: 5) { flush! }
   end
 
   def emit(event)
-    Rails.logger.debug "---------------------emit ---#{@queue}-#{@task.running?}-object: #{self.object_id}- task: #{@task.object_id}-"
-
     @queue << [
       event[:payload][:controller],
       event[:payload][:action],
@@ -24,11 +22,7 @@ class EventJsonSubscriber
     return if @queue.empty?
     buf = @queue.shift(@queue.size)
 
-    Rails.logger.debug "--------------------------#{buf}"
-
     conn = ActiveRecord::Base.connection.raw_connection
-
-    Rails.logger.debug "---------------------------#{conn}"
     conn.copy_data 'COPY com_logs(controller_name, action_name, format, created_at) FROM STDIN' do
       buf.each do |item|
         conn.put_copy_data item.join("\t") + "\n"
