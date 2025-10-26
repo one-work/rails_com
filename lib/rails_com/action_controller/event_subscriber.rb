@@ -1,5 +1,5 @@
 module RailsCom::ActionController
-  class EventSubscriber < ActiveSupport::LogSubscriber
+  class EventSubscriber < ActiveSupport::StructuredEventSubscriber
     attach_to :action_controller
 
     def start_processing(event)
