@@ -7,7 +7,8 @@ module RailsCom::ActionController
         'controller.request_started',
         controller: event.payload[:controller],
         action: event.payload[:action],
-        format: event.payload[:format]
+        format: event.payload[:format],
+        timestamp: Time.now.iso8601(6)
       )
     end
 
