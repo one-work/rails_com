@@ -25,6 +25,8 @@ class EventJsonSubscriber
     Rails.logger.debug "--------------------------#{buf}"
 
     conn = ActiveRecord::Base.connection.raw_connection
+
+    Rails.logger.debug "---------------------------#{conn}"
     conn.copy_data 'COPY com_logs(controller_name, action_name, format, created_at) FROM STDIN' do
       buf.each do |item|
         conn.put_copy_data item.join("\t") + "\n"
