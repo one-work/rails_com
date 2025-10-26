@@ -5,6 +5,7 @@ class EventJsonSubscriber
 
   def initialize
     @queue = Concurrent::Array.new
+    Rails.logger.debug "---------------------初始化 ---#{}----"
     Concurrent::TimerTask.new(execution_interval: FLUSH) { flush! }.execute
   end
 
