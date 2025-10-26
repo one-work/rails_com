@@ -13,6 +13,16 @@ module RailsCom::ActionController
     end
 
     def process_action(event)
+      request = event.payload[:request]
+
+      emit_event(
+        'controller.request_started',
+        controller: event.payload[:controller],
+        action: event.payload[:action],
+        format: event.payload[:format],
+        timestamp: Time.now.iso8601(6),
+        uuid: request.request_id
+      )
     end
 
   end
