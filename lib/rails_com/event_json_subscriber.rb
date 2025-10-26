@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class EventJsonSubscriber
+  attr_reader :task
 
   def initialize
     @queue = Concurrent::Array.new
-    Concurrent::TimerTask.new(execution_interval: 5) { flush! }.execute
+    @task = Concurrent::TimerTask.execute(execution_interval: 1) { flush! }
   end
 
   def emit(event)
-    Rails.logger.debug "---------------------emit ---#{@queue}----"
+    Rails.logger.debug "---------------------emit ---#{@queue}-#{@task.running?}---"
 
     @queue << [
       event[:payload][:controller],
