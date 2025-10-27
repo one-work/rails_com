@@ -1,9 +1,9 @@
-<td><%= model.id %></td>
+<td class="family-monospace"><%= model.id %></td>
 <td><%= model.name %></td>
 <td><%= model.record_type %></td>
 <td>
-  <p><%= model.record_id %></p>
-  <p><%= model.blob_id %></p>
+  <p class="family-monospace"><%= model.record_id %></p>
+  <p class="family-monospace"><%= model.blob_id %></p>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>
