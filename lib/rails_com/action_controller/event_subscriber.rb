@@ -13,6 +13,7 @@ module RailsCom::ActionController
 
       emit_event(
         'controller.process_action',
+        path: request.fullpath,
         controller_name: payload[:controller],
         action_name: payload[:action],
         params: payload[:params].to_json,
