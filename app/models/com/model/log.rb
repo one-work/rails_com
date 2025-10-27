@@ -12,7 +12,8 @@ module Com
       attribute :cookie, :json, default: {}
       attribute :session, :json, default: {}
       attribute :ip, :string
-      attribute :user_agent, :string
+      attribute :session_id, :string
+      attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
       attribute :format, :string
       attribute :commit_uuid, :string
     end

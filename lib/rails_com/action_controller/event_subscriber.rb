@@ -8,14 +8,20 @@ module RailsCom::ActionController
     def process_action(event)
       payload = event.payload
       request = payload[:request]
+      raw_headers = payload.fetch(:headers, {})
+      real_headers = Com::Err.request_headers(raw_headers)
 
       emit_event(
         'controller.process_action',
-        controller: payload[:controller],
-        action: payload[:action],
+        controller_name: payload[:controller],
+        action_name: payload[:action],
         params: payload[:params].to_json,
+        headers: real_headers.to_json,
+        session: request.session.to_h.to_json,
         format: payload[:format].to_s,
-        timestamp: Time.now.iso8601(6),
+        ip: request.remote_ip,
+        session_id: request.session.id,
+        created_at: Time.now.iso8601(6),
         uuid: request.request_id
       )
     end

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class EventJsonSubscriber
+  COLUMNS = [
+    :uuid, :controller_name, :action_name, :params, :headers, :session, :ip, :format, :session_id, :created_at
+  ]
 
   def initialize
     @queue = Concurrent::Array.new
@@ -10,14 +13,7 @@ class EventJsonSubscriber
   def emit(event)
     payload = event[:payload]
 
-    @queue << [
-      payload[:uuid],
-      payload[:controller],
-      payload[:action],
-      payload[:params],
-      payload[:format],
-      payload[:timestamp]
-    ]
+    @queue << payload.values_at(*COLUMNS)
   end
 
   private
@@ -27,7 +23,7 @@ class EventJsonSubscriber
     uuid = SecureRandom.uuid
 
     conn = ActiveRecord::Base.connection.raw_connection
-    conn.copy_data 'COPY com_logs(uuid, controller_name, action_name, params, format, created_at, commit_uuid) FROM STDIN' do
+    conn.copy_data "COPY com_logs(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
       buf.each do |item|
         conn.put_copy_data item.join("\t") + "\t" + uuid + "\n"
       end
