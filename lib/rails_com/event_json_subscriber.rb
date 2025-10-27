@@ -4,11 +4,11 @@ class EventJsonSubscriber
 
   def initialize
     @queue = Concurrent::Array.new
-    Concurrent::TimerTask.execute(execution_interval: 2) { flush! }
+    Concurrent::TimerTask.execute(execution_interval: 5) { flush! }
   end
 
   def emit(event)
-    payload = event.payload
+    payload = event[:payload]
 
     @queue << [
       payload[:uuid],

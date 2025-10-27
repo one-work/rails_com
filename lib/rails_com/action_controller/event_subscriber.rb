@@ -9,7 +9,6 @@ module RailsCom::ActionController
       payload = event.payload
       request = payload[:request]
 
-      binding.b
       emit_event(
         'controller.process_action',
         controller: payload[:controller],
