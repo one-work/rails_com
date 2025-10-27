@@ -7,6 +7,7 @@ class EventJsonSubscriber
 
   def initialize
     @queue = Concurrent::Array.new
+    @coder = PG::TextEncoder::CopyRow.new
     Concurrent::TimerTask.execute(execution_interval: 5) { flush! }
   end
 
@@ -25,7 +26,7 @@ class EventJsonSubscriber
     conn = ActiveRecord::Base.connection.raw_connection
     conn.copy_data "COPY com_logs(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
       buf.each do |item|
-        conn.put_copy_data item.join("\t") + "\t" + uuid + "\n"
+        conn.put_copy_data [*item, uuid], @coder
       end
     end
   end
