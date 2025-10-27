@@ -1,3 +1,4 @@
+# 这个类不要有 ruby 相关回调，因为数据都是用 copy 直接快速插入进pg 数据库的
 module Com
   module Model::Log
     extend ActiveSupport::Concern
