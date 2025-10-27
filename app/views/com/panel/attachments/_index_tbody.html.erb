@@ -1,8 +1,10 @@
 <td><%= model.id %></td>
 <td><%= model.name %></td>
 <td><%= model.record_type %></td>
-<td><%= model.record_id %></td>
-<td><%= model.blob_id %></td>
+<td>
+  <p><%= model.record_id %></p>
+  <p><%= model.blob_id %></p>
+</td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>
   <div data-show-target="item" class="visibility-hidden">
