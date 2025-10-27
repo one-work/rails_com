@@ -18,5 +18,9 @@ module Com
       attribute :commit_uuid, :string
     end
 
+    def real_path
+      URI.decode_www_form_component path
+    end
+
   end
 end
