@@ -6,13 +6,16 @@ module RailsCom::ActionController
     end
 
     def process_action(event)
-      request = event.payload[:request]
+      payload = event.payload
+      request = payload[:request]
 
+      binding.b
       emit_event(
         'controller.process_action',
-        controller: event.payload[:controller],
-        action: event.payload[:action],
-        format: event.payload[:format],
+        controller: payload[:controller],
+        action: payload[:action],
+        params: payload[:params].to_json,
+        format: payload[:format].to_s,
         timestamp: Time.now.iso8601(6),
         uuid: request.request_id
       )

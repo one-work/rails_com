@@ -11,10 +11,11 @@ class EventJsonSubscriber
     payload = event.payload
 
     @queue << [
-      payload[:request_id],
+      payload[:uuid],
       payload[:controller],
       payload[:action],
-      payload[:format].to_s,
+      payload[:params],
+      payload[:format],
       payload[:timestamp]
     ]
   end
@@ -26,7 +27,7 @@ class EventJsonSubscriber
     uuid = SecureRandom.uuid
 
     conn = ActiveRecord::Base.connection.raw_connection
-    conn.copy_data 'COPY com_logs(uuid, controller_name, action_name, format, created_at, commit_uuid) FROM STDIN' do
+    conn.copy_data 'COPY com_logs(uuid, controller_name, action_name, params, format, created_at, commit_uuid) FROM STDIN' do
       buf.each do |item|
         conn.put_copy_data item.join("\t") + "\t" + uuid + "\n"
       end
