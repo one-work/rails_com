@@ -3,8 +3,6 @@
   <p><%= Com::Log.human_attribute_name(:controller_name) %></p>
   <p><%= Com::Log.human_attribute_name(:action_name) %></p>
 </th>
-<th><%= Com::Err.human_attribute_name(:exception_object) %></th>
 <th>
-  <p class="text-success"><%= Com::Err.human_attribute_name(:updated_at) %></p>
-  <p class="text-grey"><%= Com::Err.human_attribute_name(:created_at) %></p>
+  <p class="text-grey"><%= Com::Log.human_attribute_name(:created_at) %></p>
 </th>
