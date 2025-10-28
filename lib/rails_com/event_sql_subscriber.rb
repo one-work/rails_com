@@ -20,7 +20,7 @@ class EventSqlSubscriber
       payload[:sql],
       payload[:duration_ms],
       Time.now.iso8601(6)
-    ]
+    ] if payload[:duration_ms] > 10
   end
 
   private
