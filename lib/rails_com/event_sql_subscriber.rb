@@ -1,21 +1,26 @@
 # frozen_string_literal: true
 
-class EventJsonSubscriber
+class EventSqlSubscriber
   COLUMNS = [
-    :uuid, :path, :controller_name, :action_name, :params, :headers, :session, :ip, :format, :session_id, :created_at,
-    :status, :duration, :view_duration, :db_duration, :query_count, :query_cached_count
+    :name, :async, :sql, :duration, :created_at
   ]
 
   def initialize
     @queue = Concurrent::Array.new
     @coder = PG::TextEncoder::CopyRow.new
-    Concurrent::TimerTask.execute(execution_interval: 5) { flush! }
+    Concurrent::TimerTask.execute(execution_interval: 2) { flush! }
   end
 
   def emit(event)
     payload = event[:payload]
 
-    @queue << payload.values_at(*COLUMNS)
+    @queue << [
+      payload[:name],
+      payload[:async],
+      payload[:sql],
+      payload[:duration_ms],
+      Time.now.iso8601(6)
+    ]
   end
 
   private
@@ -25,7 +30,7 @@ class EventJsonSubscriber
     uuid = SecureRandom.uuid
 
     conn = ActiveRecord::Base.connection.raw_connection
-    conn.copy_data "COPY com_logs(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
+    conn.copy_data "COPY com_log_sqls(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
       buf.each do |item|
         conn.put_copy_data item << uuid, @coder
       end
