@@ -133,7 +133,11 @@ Rails.application.routes.draw do
         end
       end
       resources :err_bots
-      resources :logs
+      resources :logs do
+        collection do
+          get :ip
+        end
+      end
       resources :csps, only: [:index, :show, :destroy]
       resources :states
       resources :meta_namespaces do
