@@ -125,6 +125,9 @@ zh:
         clean_other:
           title: 删除其他错误
           confirm: 确认
+      logs:
+        index:
+          title: 日志
       csps:
         index:
           title: 内容安全
