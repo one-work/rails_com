@@ -17,6 +17,12 @@ module Com
       attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
       attribute :format, :string
       attribute :commit_uuid, :string
+      attribute :status, :integer
+      attribute :duration, :integer
+      attribute :view_duration, :float
+      attribute :db_duration, :float
+      attribute :query_count, :integer
+      attribute :query_cached_count, :integer
     end
 
     def real_path

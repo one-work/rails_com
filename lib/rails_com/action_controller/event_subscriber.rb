@@ -23,6 +23,12 @@ module RailsCom::ActionController
         ip: request.remote_ip,
         session_id: request.session.id,
         created_at: Time.now.iso8601(6),
+        status: payload[:status],
+        duration: event.duration.round,
+        view_duration: payload[:view_runtime].round(1).to_s,
+        db_duration: payload[:db_runtime].round(1).to_s,
+        query_count: payload[:queries_count],
+        query_cached_count: payload[:cached_queries_count],
         uuid: request.request_id
       )
     end

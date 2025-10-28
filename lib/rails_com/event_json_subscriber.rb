@@ -2,7 +2,8 @@
 
 class EventJsonSubscriber
   COLUMNS = [
-    :uuid, :path, :controller_name, :action_name, :params, :headers, :session, :ip, :format, :session_id, :created_at
+    :uuid, :path, :controller_name, :action_name, :params, :headers, :session, :ip, :format, :session_id, :created_at,
+    :status, :duration, :view_duration, :db_duration, :query_count, :query_cached_count
   ]
 
   def initialize
