@@ -1,0 +1,36 @@
+<div>
+  <dt><%= Com::Log.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @log.created_at.iso8601(6) %></time></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:path) %></dt>
+  <dd><%= @log.real_path %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:controller_name) %></dt>
+  <dd><%= @log.controller_name %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:action_name) %></dt>
+  <dd><%= @log.action_name %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:ip) %></dt>
+  <dd><%= @log.ip %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:user_agent) %></dt>
+  <dd><%= @log.user_agent %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:format) %></dt>
+  <dd><%= @log.format %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:headers) %></dt>
+  <dd><%= simple_format @log.headers %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:params) %></dt>
+  <dd><%= simple_format @log.params %></dd>
+</div>

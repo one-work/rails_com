@@ -63,6 +63,9 @@
   <%= link_to({ controller: 'com/panel/logs', action: 'ip' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('com.panel.logs.ip.title') %></span>
   <% end %>
+  <%= link_to({ controller: 'com/panel/log_sqls' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.log_sqls.index.title') %></span>
+  <% end %>
 </div>
 <p class="size-7 text-grey mb-1">邮件</p>
 <div class="grid">

@@ -138,6 +138,7 @@ Rails.application.routes.draw do
           get :ip
         end
       end
+      resources :log_sqls
       resources :csps, only: [:index, :show, :destroy]
       resources :states
       resources :meta_namespaces do

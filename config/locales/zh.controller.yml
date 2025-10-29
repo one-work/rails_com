@@ -128,6 +128,9 @@ zh:
       logs:
         index:
           title: 日志
+      log_sqls:
+        index:
+          title: SQL 日志
       csps:
         index:
           title: 内容安全
