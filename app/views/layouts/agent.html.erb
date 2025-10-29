@@ -3,7 +3,7 @@
     <div class="column is-narrow p-0">
       <%= render 'nav' %>
     </div>
-    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" autoscroll data-autoscroll-block="start" class="column pt-0">
+    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" class="column pt-0">
       <%= render 'nav_bar' %>
       <%= render 'alert' %>
       <%= yield %>
