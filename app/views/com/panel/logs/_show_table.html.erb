@@ -7,6 +7,10 @@
   <dd><%= @log.real_path %></dd>
 </div>
 <div>
+  <dt><%= Com::Log.human_attribute_name(:referer) %></dt>
+  <dd><%= @log.referer %></dd>
+</div>
+<div>
   <dt><%= Com::Log.human_attribute_name(:status) %></dt>
   <dd><%= @log.status %></dd>
 </div>
@@ -45,6 +49,10 @@
 <div>
   <dt><%= Com::Log.human_attribute_name(:user_agent) %></dt>
   <dd><%= simple_format @log.user_agents %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:accept) %></dt>
+  <dd><%= @log.accept %></dd>
 </div>
 <div>
   <dt><%= Com::Log.human_attribute_name(:format) %></dt>

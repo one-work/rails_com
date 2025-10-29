@@ -15,7 +15,6 @@ module Com
       attribute :session, :json, default: {}
       attribute :ip, :string
       attribute :session_id, :string
-      attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
       attribute :format, :string
       attribute :commit_uuid, :string
       attribute :status, :integer
@@ -24,6 +23,9 @@ module Com
       attribute :db_duration, :float
       attribute :query_count, :integer
       attribute :query_cached_count, :integer
+      attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
+      attribute :accept, :string, as: "headers#>>'{ACCEPT}'", virtual: true
+      attribute :referer, :string, as: "headers#>>'{REFERER}'", virtual: true
     end
 
     def real_path
@@ -32,6 +34,10 @@ module Com
 
     def user_agents
       user_agent.split(FORMAT).map { |i| i.delete_prefix('(').delete_suffix(')') }
+    end
+
+    def slim_headers
+      headers.except('USER_AGENT', 'REFERER', 'ACCEPT')
     end
 
   end
