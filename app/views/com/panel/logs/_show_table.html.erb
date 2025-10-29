@@ -44,7 +44,7 @@
 </div>
 <div>
   <dt><%= Com::Log.human_attribute_name(:user_agent) %></dt>
-  <dd><%= @log.user_agent %></dd>
+  <dd><%= simple_format @log.user_agents %></dd>
 </div>
 <div>
   <dt><%= Com::Log.human_attribute_name(:format) %></dt>
