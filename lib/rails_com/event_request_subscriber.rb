@@ -9,7 +9,7 @@ class EventRequestSubscriber
   def initialize
     @queue = Concurrent::Array.new
     @coder = PG::TextEncoder::CopyRow.new
-    Concurrent::TimerTask.execute(execution_interval: 5) { flush! }
+    Concurrent::TimerTask.execute(execution_interval: 1) { flush! }
   end
 
   def emit(event)
