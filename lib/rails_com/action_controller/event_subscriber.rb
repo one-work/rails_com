@@ -22,7 +22,7 @@ module RailsCom::ActionController
         format: payload[:format].to_s,
         ip: request.remote_ip,
         session_id: request.session.id,
-        created_at: Time.now.iso8601(6),
+        created_at: Time.now.utc.iso8601(6),
         status: payload[:status],
         duration: event.duration.round,
         view_duration: payload[:view_runtime].round(1).to_s,
