@@ -2,6 +2,7 @@
 module Com
   module Model::Log
     extend ActiveSupport::Concern
+    FORMAT = /(?![^(]*\))\s+/
 
     included do
       attribute :uuid, :string
@@ -27,6 +28,10 @@ module Com
 
     def real_path
       URI.decode_www_form_component path
+    end
+
+    def user_agents
+      user_agent.split(FORMAT).map { |i| i.delete_prefix('(').delete_suffix(')') }
     end
 
   end
