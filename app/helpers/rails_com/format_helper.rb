@@ -28,19 +28,14 @@ module RailsCom::FormatHelper
   end
 
   def simple_format(text, html_options = {}, options = {})
-    if text.is_a?(Hash) || text.is_a?(Array)
+    if text.is_a?(Hash)
       return text.to_yaml.split("\n").map do |i|
         content_tag(:p, i.gsub(' ', '\1<span class="pl-1"></span>').html_safe, html_options)
       end.join("\n").html_safe
     end
 
     if text.is_a?(Array)
-      begin
-        hash_text = text.to_h
-        return simple_format_hash(hash_text, html_options, options)
-      rescue TypeError
-        return text.map { |t| content_tag(:p, t, html_options) }.join("\n").html_safe
-      end
+      return text.map { |t| content_tag(:p, t, html_options) }.join("\n").html_safe
     end
 
     text = text.to_s
