@@ -11,7 +11,7 @@
       <%= link_to({ controller: '/board/home' }, class: 'dropdown-item') do %>
         <span><%= t('board.home.index.title') %></span>
       <% end %>
-      <%= button_to({ controller: '/auth/sessions', action: 'destroy' }, method: :delete, data: { turbo_confirm: '确认退出' }, class: 'dropdown-item') do %>
+      <%= button_to({ controller: '/auth/sessions', action: 'destroy' }, method: :delete, data: { turbo_confirm: '确认退出' }, form: { class: 'dropdown-item' }) do %>
         <span><%= t('auth.sessions.destroy.title') %></span>
       <% end %>
     </div>
