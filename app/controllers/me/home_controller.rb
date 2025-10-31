@@ -8,12 +8,14 @@ module Me
       set_roled_tabs
 
       @share = {
-        url: url_for(controller: 'factory/productions', host: current_organ.host, only_path: false),
-        title: current_organ.name
+        url: 'https://one.work/factory/productions',
+        title: '官方商场'
       }
 
       if current_organ && current_organ.share_logo.attached?
         @share.merge!(
+          url: url_for(controller: 'factory/productions', host: current_organ.host, only_path: false),
+          title: current_organ.name,
           share_logo: current_organ.share_logo_url,
           debug: current_organ.debug_enabled
         )
