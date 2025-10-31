@@ -33,7 +33,7 @@ module Com
     end
 
     def user_agents
-      user_agent.split(FORMAT).map { |i| i.delete_prefix('(').delete_suffix(')') }
+      user_agent.to_s.split(FORMAT).map { |i| i.delete_prefix('(').delete_suffix(')') }
     end
 
     def slim_headers
