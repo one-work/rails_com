@@ -1,5 +1,5 @@
 <% if role_permit?(business: model.identifier, namespace: 'admin') %>
-<div class="media">
+<div id="<%= model.identifier %>_admin" class="media">
   <figure class="media-left text-link">
     <%= svg_tag model.svg_icon, kind: 'duotone', class: 'image is-64x64' %>
   </figure>
