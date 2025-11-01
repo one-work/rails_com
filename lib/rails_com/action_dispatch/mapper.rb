@@ -13,9 +13,9 @@ module RailsCom::ActionDispatch
         end
       end
       member do
-        post :actions
         if parent_resource.actions.include?(:show) && parent_resource.actions.include?(:index)
           post :show
+          post :actions
         end
         if parent_resource.actions.include?(:edit)
           post :edit
