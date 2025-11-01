@@ -87,6 +87,16 @@ module Com
       )
     end
 
+    def ancestor_path?(path)
+      paths = ancestors.each_with_object({}) { |i, h| h.merge! i.path => i }
+      paths.key?(path)
+    end
+
+    def ancestor_path(path)
+      paths = ancestors.each_with_object({}) { |i, h| h.merge! i.path => i }
+      paths[path]
+    end
+
     def destroy_after_used
       StateDestroyJob.perform_later(self.id)
     end
