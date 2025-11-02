@@ -301,7 +301,7 @@ module Com
       if request.headers.key? 'Turbo-Frame'
         "frame_#{request.headers['Turbo-Frame']}"
       else
-        params.fetch :namespace, 'admin'
+        params.fetch :namespace, 'application'
       end
     end
 
