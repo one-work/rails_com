@@ -300,6 +300,8 @@ module Com
     def turbo_frame_layout
       if request.headers.key? 'Turbo-Frame'
         "frame_#{request.headers['Turbo-Frame']}"
+      else
+        params.fetch :namespace, 'admin'
       end
     end
 
