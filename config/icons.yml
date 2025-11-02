@@ -53,6 +53,7 @@ duotone:
   - building-user
   - buildings
   - calendar-lines-pen
+  - cash-register
   - chart-line-up
   - chart-simple
   - cloud-arrow-up
@@ -60,6 +61,7 @@ duotone:
   - envelope
   - face-smile
   - fingerprint
+  - golf-flag-hole
   - grid-round-2-minus
   - head-side-brain
   - inbox
@@ -67,6 +69,8 @@ duotone:
   - list-check
   - memo-circle-info
   - money-check-dollar
+  - pen-ruler
+  - pencil-line
   - print
   - send-backward
   - sitemap
