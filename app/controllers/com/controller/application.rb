@@ -305,10 +305,6 @@ module Com
       end
     end
 
-    def turbo_frame_body?
-      request.format.symbol == :html && request.headers['Turbo-Frame'] == 'body'
-    end
-
     def turbo_request?
       request.headers['X-Turbo-Request-Id'].present?
     end
