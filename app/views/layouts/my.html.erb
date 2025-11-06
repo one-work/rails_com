@@ -5,14 +5,14 @@
     <div class="column is-narrow" style="width: 260px;">
       <%= render 'nav' %>
     </div>
-    <div class="column">
+    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" class="column">
       <div class="breadcrumb has-succeeds-separator">
         <ul>
           <%= render 'breadcrumb' %>
         </ul>
       </div>
       <%= yield %>
-    </div>
+    </turbo-frame>
   </main>
   <%= render 'footer' %>
 <% end %>

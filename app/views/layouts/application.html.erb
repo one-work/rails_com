@@ -6,8 +6,8 @@
       <%= render 'breadcrumb' %>
     </ul>
   </div>
-  <main class="columns container">
+  <turbo-frame id="body" refresh="morph" data-turbo-action="advance" class="columns container">
     <%= yield %>
-  </main>
+  </turbo-frame>
   <%= render 'footer' %>
 <% end %>
