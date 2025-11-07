@@ -1,13 +1,17 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
   <%= render 'alert' %>
-  <div class="breadcrumb has-succeeds-separator container my-3 flex-grow-0">
-    <ul>
-      <%= render 'breadcrumb' %>
-    </ul>
-  </div>
-  <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="columns container">
-    <%= yield %>
+  <turbo-frame id="main" refresh="morph" data-turbo-action="advance">
+    <div class="container">
+      <div class="breadcrumb has-succeeds-separator container my-3 flex-grow-0">
+        <ul>
+          <%= render 'breadcrumb' %>
+        </ul>
+      </div>
+      <div class="columns">
+        <%= yield %>
+      </div>
+    </div>
   </turbo-frame>
   <%= render 'footer' %>
 <% end %>
