@@ -15,10 +15,10 @@
   <%= link_to({ controller: 'com/panel/meta_businesses' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('com.panel.meta_businesses.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'com/panel/meta_controllers' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+  <%= link_to({ controller: 'com/panel/meta_controllers' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_controllers', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('com.panel.meta_controllers.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'com/panel/meta_models' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+  <%= link_to({ controller: 'com/panel/meta_models' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_models', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('com.panel.meta_models.index.title') %></span>
   <% end %>
   <%= link_to({ controller: 'com/panel/states' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
@@ -42,7 +42,7 @@
   <%= link_to({ controller: 'com/panel/err_bots' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('com.panel.err_bots.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'com/panel/err_summaries' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+  <%= link_to({ controller: 'com/panel/err_summaries' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: ['err_summaries', 'errs'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('com.panel.err_summaries.index.title') %></span>
   <% end %>
   <%= link_to({ controller: 'com/panel/csps' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>

@@ -8,7 +8,7 @@
     <span><%= current_user&.name %></span>
   </div>
   <div class="navbar-dropdown is-right">
-    <%= link_to({ controller: '/my/home' }, class: active_helper(controllers: ['my/home'], active: 'navbar-item is-active', item: 'navbar-item')) do %>
+    <%= link_to({ controller: '/my/home' }, data: { turbo_frame: 'main' }, class: active_helper(controllers: ['my/home'], active: 'navbar-item is-active', item: 'navbar-item')) do %>
       <span><%= t('my.home.index.title') %></span>
     <% end %>
     <%= button_to({ controller: '/auth/sessions', action: 'destroy' }, method: :delete, data: { turbo_confirm: '确认退出' }, form: { class: 'navbar-item' }) do %>
