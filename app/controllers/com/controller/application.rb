@@ -251,7 +251,7 @@ module Com
     end
 
     def state_skip_back
-      current_state.update skip_back: true
+      current_state.update skip_back: true if current_state
     end
 
     def state_reset_filter
