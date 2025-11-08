@@ -1,7 +1,7 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
   <%= render 'alert' %>
-  <turbo-frame id="main" refresh="morph" data-turbo-action="advance">
+  <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="has-animate-background">
     <div class="container">
       <ul class="breadcrumb my-3 flex-grow-0"><%= render 'breadcrumb' %></ul>
       <div class="columns">
