@@ -1,18 +1,20 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
   <%= render 'alert' %>
-  <main class="columns container">
-    <div class="column is-narrow" style="width: 260px;">
-      <%= render 'nav' %>
-    </div>
-    <turbo-frame id="body" refresh="morph" data-turbo-action="advance" class="column">
-      <div class="breadcrumb has-succeeds-separator">
-        <ul>
-          <%= render 'breadcrumb' %>
-        </ul>
+  <turbo-frame id="main" refresh="morph" data-turbo-action="advance">
+    <main class="columns container">
+      <div class="column is-narrow" style="width: 260px;">
+        <%= render 'nav' %>
       </div>
-      <%= yield %>
-    </turbo-frame>
-  </main>
+      <turbo-frame id="body" refresh="morph" data-turbo-action="advance" class="column">
+        <div class="breadcrumb has-succeeds-separator">
+          <ul>
+            <%= render 'breadcrumb' %>
+          </ul>
+        </div>
+        <%= yield %>
+      </turbo-frame>
+    </main>
+  </turbo-frame>
   <%= render 'footer' %>
 <% end %>
