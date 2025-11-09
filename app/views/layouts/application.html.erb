@@ -3,7 +3,7 @@
   <%= render 'alert' %>
   <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="has-animate-background">
     <div class="container">
-      <ul class="breadcrumb my-3 flex-grow-0"><%= render 'breadcrumb' %></ul>
+      <ul class="breadcrumb has-succeeds-separator my-3"><%= render 'breadcrumb' %></ul>
       <div class="columns">
         <%= yield %>
       </div>
