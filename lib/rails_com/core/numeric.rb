@@ -10,6 +10,14 @@ class Numeric
 
 end
 
+class Integer
+
+  def to_16_str
+    to_s(16).rjust(2, '0')
+  end
+
+end
+
 class BigDecimal
 
   def inspect

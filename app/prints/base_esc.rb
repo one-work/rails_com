@@ -75,7 +75,7 @@ class BaseEsc
   end
 
   def render_raw
-    @data.map {|i| i.to_s(16).rjust(2, '0') }.join('')
+    @data.map {|i| i.to_16_str }.join('')
   end
 
   def render_0x
