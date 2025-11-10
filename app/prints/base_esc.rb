@@ -51,10 +51,10 @@ class BaseEsc
   def initialize
     @data = []
     @data.push(0x1b, 0x40)  # 初始化打印机：清除打印缓存，各参数恢复默认值
-    @data.push(0x1b, 0x4c) # 页模式
+    #@data.push(0x1b, 0x4c) # 页模式
     @data.push(0x1d, 0x4c, 0x12, 0x00)  # 设置左限（左边距）：向右移动 18（0x12）点
-    @data.push(0x1c, 0x26) # 启用 16×16 点阵中文打印模式
-    @data.push(0x1c, 0x21, 0x00)  # 中文字间距为 0 点
+    #@data.push(0x1c, 0x26) # 启用 16×16 点阵中文打印模式
+    #@data.push(0x1c, 0x21, 0x00)  # 中文字间距为 0 点
   end
 
   def partial_cut!
