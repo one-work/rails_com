@@ -19,6 +19,7 @@ module Com
     def create_all
       all_tables = PgPublication.connection.tables - RailsCom::Models.ignore_tables - [
         'com_errs',
+        'com_logs',
         'com_err_summaries',
         'com_states',
         'com_state_hierarchies'
