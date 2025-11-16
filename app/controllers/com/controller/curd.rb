@@ -99,6 +99,11 @@ module Com
         model.update position: { before: params[:subsequent_id] }
       end
 
+      scope_values = model.attributes.slice(*model.class.positioning_columns.dig(:position, :scope_columns))
+      scope_values.each do |key, value|
+        params[key] = value unless params.key?(key)
+      end
+
       index
     end
 
