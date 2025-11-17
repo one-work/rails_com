@@ -180,3 +180,6 @@ weui_search:
   all:
     normal: weui-cell
     error: weui-cell
+switch:
+  wrap:
+    checkbox: label.switch.is-primary
