@@ -19,6 +19,13 @@ module RailsCom::ActiveRecord
       tree
     end
 
+    def remove_duplicates_by(field)
+      select(field).group(field).having('COUNT(*) > 1').pluck(field).each do |value|
+        records = where(field => value).order(:id)
+        records.offset(1).destroy_all
+      end
+    end
+
     def to_fixture
       require 'rails/generators/test_unit/model/model_generator'
 
