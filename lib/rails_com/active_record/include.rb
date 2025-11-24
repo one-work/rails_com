@@ -16,7 +16,13 @@ module RailsCom::ActiveRecord
 
     def column_had?(*columns)
       columns.flatten.all? do |col|
-        public_send(col).attached?
+        if attachment_reflections.keys.include?(col.to_s)
+          public_send(col).attached?
+        elsif attributes.key? col.to_s
+          attributes[col.to_s].present?
+        else
+          false
+        end
       end
     end
 
