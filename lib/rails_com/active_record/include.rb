@@ -11,15 +11,13 @@ module RailsCom::ActiveRecord
     end
 
     def column_needed?(*columns)
-      all_x = columns[0...-1].flatten.all? do |col|
-        public_send(col).attached?
-      end
-
-      all_x && Array(columns[-1]).any?(&:blank?)
+      column_had?(*columns[0...-1]) && Array(columns[-1]).any?(&:blank?)
     end
 
     def column_had?(*columns)
-
+      columns.flatten.all? do |col|
+        public_send(col).attached?
+      end
     end
 
     def reset_attributes
