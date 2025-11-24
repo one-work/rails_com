@@ -11,18 +11,20 @@ module RailsCom::ActiveRecord
     end
 
     def column_needed?(*columns)
-      column_had?(*columns[0...-1]) && Array(columns[-1]).any?(&:blank?)
+      column_had?(*columns[0...-1]) && Array(columns[-1]).any? { |col| column_present?(col) }
     end
 
     def column_had?(*columns)
-      columns.flatten.all? do |col|
-        if attachment_reflections.keys.include?(col.to_s)
-          public_send(col).attached?
-        elsif attributes.key? col.to_s
-          attributes[col.to_s].present?
-        else
-          false
-        end
+      columns.flatten.all? { |col| column_present?(col) }
+    end
+
+    def column_present?(col)
+      if attachment_reflections.keys.include?(col.to_s)
+        public_send(col).attached?
+      elsif attributes.key? col.to_s
+        attributes[col.to_s].present?
+      else
+        false
       end
     end
 
