@@ -10,7 +10,7 @@ module RailsCom::ActiveRecord
       errors.full_messages.join("\n")
     end
 
-    def column_needed?(columns)
+    def column_needed?(*columns)
       all_x = columns[0...-1].flatten.all? do |col|
         public_send(col).attached?
       end
@@ -18,7 +18,7 @@ module RailsCom::ActiveRecord
       all_x && Array(columns[-1]).any?(&:blank?)
     end
 
-    def column_xx(column, columns)
+    def column_had?(*columns)
 
     end
 
