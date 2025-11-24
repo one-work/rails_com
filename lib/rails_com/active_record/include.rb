@@ -10,26 +10,16 @@ module RailsCom::ActiveRecord
       errors.full_messages.join("\n")
     end
 
-    def update_json_counter(column: 'counters', **cols)
-      sql_str = cols.inject(column) do |sql, (col, num)|
-        "jsonb_set(#{sql}, '{#{col}}', (COALESCE(counters->>'#{col}', '0')::numeric #{num.negative? ? '-' : '+'} #{num.abs})::text::jsonb, true)"
+    def column_needed?(columns)
+      all_x = columns[0...-1].flatten.all? do |col|
+        public_send(col).attached?
       end
 
-      self.class.where(id: id).update_all "#{column} = #{sql_str}"
+      all_x && Array(columns[-1]).any?(&:blank?)
     end
 
-    def increment_json_counter(*cols, column: 'counters')
-      to_cols = cols.each_with_object({}) do |col, h|
-        h.merge! col => 1
-      end
-      update_json_counter(column: column, **to_cols)
-    end
+    def column_xx(column, columns)
 
-    def decrement_json_counter(*cols, column: 'counters')
-      to_cols = cols.each_with_object({}) do |col, h|
-        h.merge! col => -1
-      end
-      update_json_counter(column: column, **to_cols)
     end
 
     def reset_attributes
