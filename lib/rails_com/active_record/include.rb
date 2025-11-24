@@ -11,7 +11,7 @@ module RailsCom::ActiveRecord
     end
 
     def column_needed?(*columns)
-      column_had?(*columns[0...-1]) && Array(columns[-1]).any? { |col| column_present?(col) }
+      column_had?(*columns[0...-1]) && Array(columns[-1]).any? { |col| !column_present?(col) }
     end
 
     def column_had?(*columns)
