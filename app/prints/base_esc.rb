@@ -64,6 +64,7 @@ class BaseEsc
   def render
     data_push *(CTL_LF * 10)
     cut!
+    @data
   end
 
   def render_raw
