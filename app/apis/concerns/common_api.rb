@@ -5,7 +5,7 @@ require 'http/form_data'
 module CommonApi
   attr_reader :app, :client
 
-  def initialize(app)
+  def initialize(app = nil)
     @app = app
     @client = HTTPX.with(
       ssl: {
