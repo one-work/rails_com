@@ -118,7 +118,7 @@ class BaseEsc
   end
 
   def center(data = '')
-    data_push 0x1b, 0x24, 0x80, 0x00, *data.bytes, *TXT_ALIGN_LT
+    data_push 0x1b, 0x61, 0x01, *data.bytes, *TXT_ALIGN_LT
   end
 
   # Inverted color text
