@@ -40,7 +40,7 @@ class BaseEsc
   def initialize
     @data = []
     data_push 0x1b, 0x40  # 初始化打印机：清除打印缓存，各参数恢复默认值
-    #@data.push(0x1b, 0x4c) # 页模式
+    set_pad
   end
 
   def set_pad
@@ -100,10 +100,8 @@ class BaseEsc
     data_push 0x1b, 0x61, 0x01
     data_push 0x1d, 0x21, 0x11 # Quad area text
     data_push *data.encode('gb18030').bytes
-    data_push 0x0a
-    data_push *TXT_NORMAL
-    data_push *TXT_ALIGN_LT
     data_push *CTL_LF
+    data_push *TXT_ALIGN_LT
   end
 
   def double_width(data)
