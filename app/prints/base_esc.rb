@@ -41,6 +41,9 @@ class BaseEsc
     @data = []
     data_push 0x1b, 0x40  # 初始化打印机：清除打印缓存，各参数恢复默认值
     #@data.push(0x1b, 0x4c) # 页模式
+  end
+
+  def set_pad
     data_push 0x1d, 0x4c, 0x12, 0x00  # 设置左限（左边距）：向右移动 18（0x12）点
   end
 
