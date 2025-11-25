@@ -73,7 +73,7 @@ class BaseEsc
   end
 
   def render
-    @data.push(*(CTL_LF * 5))
+    @data.push(*(CTL_LF * 10))
     cut!
   end
 
