@@ -9,9 +9,9 @@
   <% end %>
 </td>
 <td>
-<% if model.default %>
-  <span class="tag is-primary"><%= model.default_i18n %></span>
-<% end %>
+  <%= form_with theme: 'switch', model: model, scope: :role, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :default, data: { action: 'input#submit' }, id: nil %>
+  <% end %>
 </td>
 <td>
 <% model.role_types.each do |role_type| %>

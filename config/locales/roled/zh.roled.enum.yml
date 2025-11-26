@@ -11,7 +11,3 @@ zh:
         status:
           available: 可用
           unavailable: 不可用
-      roled/role:
-        default:
-          true: 默认角色
-          false: 非默认角色
