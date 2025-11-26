@@ -83,6 +83,10 @@ module Roled
       def visible_roles
         Role.joins(:role_types).where(role_types: { who_type: name }).visible
       end
+
+      def reset_role_cache!
+        find_each { |i| i.compute_role_cache! }
+      end
     end
 
   end
