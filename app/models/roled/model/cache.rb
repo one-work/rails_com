@@ -11,6 +11,7 @@ module Roled
       has_many :roles, through: :cache_roles
 
       after_save :sync_role_caches, if: -> { saved_change_to_str_role_ids? }
+      after_destroy :change_caches
     end
 
     def sync_role_caches
@@ -31,6 +32,10 @@ module Roled
 
     def default_roles
       Role.joins(:role_types).where(role_types: { who_type: who_type }).default
+    end
+
+    def change_caches
+      who_type.constantize.where(cache_id: id).find_each { |who| who.compute_role_cache! }
     end
 
   end

@@ -33,7 +33,7 @@ module Roled
       after_save :sync, if: -> { saved_change_to_role_hash? }
       after_save :reset_cache!, if: -> { saved_change_to_role_hash? }
       after_save :reset_type_cache!, if: -> { saved_change_to_default? }
-      after_destroy :reset_cache!
+      after_destroy :destroy_cache!
     end
 
     def reset_cache!
@@ -41,6 +41,14 @@ module Roled
         reset_type_cache!
       else
         caches.find_each { |i| i.reset_role_hash! }
+      end
+    end
+
+    def destroy_cache!
+      if default
+        reset_type_cache!
+      else
+        caches.each(&:destroy)
       end
     end
 
