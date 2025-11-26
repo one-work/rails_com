@@ -40,7 +40,7 @@ module Roled
     end
 
     def reset_all_cache!
-      caches.where(who_type: role_types.pluck(:who_type)).find_each { |i| i.reset_role_hash! }
+      role_types.each { |i| i.reset_role_cache! }
     end
 
     def has_role?(business: nil, namespace: nil, controller: nil, action: nil, **params)
