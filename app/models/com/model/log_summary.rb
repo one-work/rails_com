@@ -22,7 +22,7 @@ module Com
     class_methods do
 
       def xx
-        
+
       end
 
     end
