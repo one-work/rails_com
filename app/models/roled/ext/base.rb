@@ -34,9 +34,7 @@ module Roled
     end
 
     def all_roles
-      member_roles = Role.where(default: true)
-
-      roles.where.not(id: member_roles.map(&:id)) + member_roles
+      (roles + default_roles).uniq
     end
 
     def role_whos_hash
