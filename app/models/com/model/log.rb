@@ -26,6 +26,7 @@ module Com
       attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
       attribute :accept, :string, as: "headers#>>'{ACCEPT}'", virtual: true
       attribute :referer, :string, as: "headers#>>'{REFERER}'", virtual: true
+      attribute :identifier, :string, as: "controller_name || '#' || action_name", virtual: true
     end
 
     def real_path
