@@ -62,8 +62,13 @@
         <%= image_tag 'icons/wxpay.svg', class: 'icon is-medium' %>
         <span class="size-7 text-grey mt-1">微信支付</span>
       <% end %>
-      <% if RailsBluetooth %>
-        <%= render 'bluetooth_nav' %>
+      <%= link_to({ controller: 'print/admin/home' }, class: 'cell has-column-centered') do %>
+        <div class="text-primary">
+          <%= svg_tag 'bluetooth', class: 'icon is-medium' %>
+        </div>
+        <div class="size-7 text-grey mt-1">
+          <p><%= t('print.admin.home.index.title') %></p>
+        </div>
       <% end %>
     </div>
   </div>
