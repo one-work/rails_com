@@ -1,15 +1,3 @@
-<dl class="grid as-show is-striped">
-  <div>
-    <dt>ID</dt>
-    <dd><%= model.id %></dd>
-  </div>
+<%= render layout: 'show_layout' do %>
   <%= render 'show_table' %>
-  <div>
-    <dt>添加时间</dt>
-    <dd><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></dd>
-  </div>
-  <div>
-    <dt>更新时间</dt>
-    <dd><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></dd>
-  </div>
-</dl>
+<% end %>

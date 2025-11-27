@@ -1,16 +1,6 @@
 <%= render 'show_table_form' %>
-<div id="box" data-controller="single-input" class="fixed-grid has-2-cols as-boxed">
-  <dl class="grid as-show is-striped">
-    <div>
-      <dt></dt>
-      <dd><%= model.id %></dd>
-    </div>
-    <%= render 'show_table' %>
-    <div>
-      <%= link_to({ action: 'edit' }, class: 'text-grey') do %>
-        <%= svg_tag 'pencil' %>
-        <span class="ml-1"><%= t('.edit.title') %></span>
-      <% end %>
-    </div>
-  </dl>
+<div id="box" data-controller="single-input" class="fixed-grid has-2-cols">
+  <%= render layout: 'show_layout', locals: local_assigns do %>
+    <%= render partial: 'show_table', locals: local_assigns %>
+  <% end %>
 </div>
