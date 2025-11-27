@@ -55,11 +55,6 @@
         <%= render 'admin/cms_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsBluetooth) && role_permit?(business: 'bluetooth', namespace: 'admin') %>
-      <li class="<%= active_helper(modules: 'bluetooth/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
-        <%= render 'admin/bluetooth_nav_popup' %>
-      </li>
-    <% end %>
     <% if defined?(RailsMarkdown) && role_permit?(business: 'markdown', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'markdown/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/markdown_nav_popup' %>
