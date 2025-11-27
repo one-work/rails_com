@@ -10,26 +10,22 @@ module RailsCom::ActiveRecord
       errors.full_messages.join("\n")
     end
 
-    def update_json_counter(column: 'counters', **cols)
-      sql_str = cols.inject(column) do |sql, (col, num)|
-        "jsonb_set(#{sql}, '{#{col}}', (COALESCE(counters->>'#{col}', '0')::numeric #{num.negative? ? '-' : '+'} #{num.abs})::text::jsonb, true)"
-      end
-
-      self.class.where(id: id).update_all "#{column} = #{sql_str}"
+    def column_needed?(*columns)
+      column_had?(*columns[0...-1]) && Array(columns[-1]).any? { |col| !column_present?(col) }
     end
 
-    def increment_json_counter(*cols, column: 'counters')
-      to_cols = cols.each_with_object({}) do |col, h|
-        h.merge! col => 1
-      end
-      update_json_counter(column: column, **to_cols)
+    def column_had?(*columns)
+      columns.flatten.all? { |col| column_present?(col) }
     end
 
-    def decrement_json_counter(*cols, column: 'counters')
-      to_cols = cols.each_with_object({}) do |col, h|
-        h.merge! col => -1
+    def column_present?(col)
+      if attachment_reflections.keys.include?(col.to_s)
+        public_send(col).attached?
+      elsif attributes.key? col.to_s
+        attributes[col.to_s].present?
+      else
+        false
       end
-      update_json_counter(column: column, **to_cols)
     end
 
     def reset_attributes

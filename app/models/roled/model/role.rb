@@ -8,7 +8,7 @@ module Roled
       attribute :description, :string
       attribute :visible, :boolean, default: false
       attribute :role_hash, :json, default: {}
-      attribute :default, :boolean
+      attribute :default, :boolean, default: false
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
@@ -30,13 +30,30 @@ module Roled
 
       validates :name, presence: true
 
-      after_update :set_default, if: -> { default? && saved_change_to_default? }
       after_save :sync, if: -> { saved_change_to_role_hash? }
       after_save :reset_cache!, if: -> { saved_change_to_role_hash? }
+      after_save :reset_type_cache!, if: -> { saved_change_to_default? }
+      after_destroy :destroy_cache!
     end
 
     def reset_cache!
-      caches.find_each { |i| i.reset_role_hash! }
+      if default
+        reset_type_cache!
+      else
+        caches.find_each { |i| i.reset_role_hash! }
+      end
+    end
+
+    def destroy_cache!
+      if default
+        reset_type_cache!
+      else
+        caches.each(&:destroy)
+      end
+    end
+
+    def reset_type_cache!
+      role_types.each { |i| i.reset_role_cache! }
     end
 
     def has_role?(business: nil, namespace: nil, controller: nil, action: nil, **params)
@@ -53,10 +70,6 @@ module Roled
       logger.debug "\e[35m business: #{business}, namespace: #{namespace}, controller: #{controller}, action: #{action}, params: #{params} \e[0m"
     ensure
       0
-    end
-
-    def set_default
-      self.class.where.not(id: self.id).update_all(default: false)
     end
 
     def role_types_hash

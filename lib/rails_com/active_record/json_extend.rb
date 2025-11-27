@@ -1,5 +1,5 @@
 module RailsCom::ActiveRecord
-  module ExtendJson
+  module JsonExtend
 
     def increment_json_counter(*cols, column: 'counters', num: 1)
       sql_str = cols.inject(column) do |sql, col|
@@ -50,5 +50,5 @@ module RailsCom::ActiveRecord
 end
 
 ActiveSupport.on_load :active_record do
-  extend RailsCom::ActiveRecord::ExtendJson
+  extend RailsCom::ActiveRecord::JsonExtend
 end
