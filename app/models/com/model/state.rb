@@ -28,7 +28,7 @@ module Com
       belongs_to :user, class_name: 'Auth::User', optional: true
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
-      has_one :organ_domain, -> (o){ where(organ_id: o.organ_id) }, class_name: 'Org::OrganDomain', primary_key: :host, foreign_key: :host
+      has_one :organ_domain, class_name: 'Org::OrganDomain', primary_key: [:organ_id, :host], foreign_key: [:organ_id, :host]
 
       after_find :destroy_after_used, if: -> { destroyable? }
       after_save :destroy_after_used, if: -> { destroyable? && saved_change_to_destroyable? }
@@ -60,22 +60,34 @@ module Com
 
     def url(**options)
       if get? && default_path == '/board'
-        organ_domain.redirect_url(**options)
+        if organ_domain
+          organ_domain.redirect_url(**options)
+        else
+          default_url(**options)
+        end
       elsif get?
-        Rails.application.routes.url_for(
-          host: host,
-          controller: controller_path,
-          action: action_name,
-          **params.compact_blank,
-          **options
-        )
+        default_url(**options)
       elsif referer.present?
         uri = URI(referer)
         uri.query = URI.encode_www_form(URI.decode_www_form(uri.query.to_s).to_h.merge(**options))
         uri.to_s
       else
-        organ_domain.redirect_url(**options)
+        if organ_domain
+          organ_domain.redirect_url(**options)
+        else
+          default_url(**options)
+        end
       end
+    end
+
+    def default_url(**options)
+      Rails.application.routes.url_for(
+        host: host,
+        controller: controller_path,
+        action: action_name,
+        **params.compact_blank,
+        **options
+      )
     end
 
     def default_path
