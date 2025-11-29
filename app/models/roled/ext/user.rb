@@ -7,9 +7,5 @@ module Roled
       attribute :admin, :boolean, default: false
     end
 
-    def admin?
-      id == 1 || super
-    end
-
   end
 end
