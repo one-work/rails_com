@@ -1,7 +1,5 @@
 <% if defined?(current_organ) && current_member %>
   <%= render 'profile_item' %>
-<% elsif current_user %>
-  <%= render 'board/profile_item' %>
 <% else %>
   <%= render 'profile_blank' %>
 <% end %>
