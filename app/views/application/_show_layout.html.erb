@@ -13,8 +13,8 @@
     <dd><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></dd>
   </div>
 </dl>
-<div>
-  <%= link_to({ action: 'edit' }, class: 'text-grey') do %>
+<div class="text-centered">
+  <%= button_to({ action: 'edit' }, class: 'text-grey') do %>
     <%= svg_tag 'pencil' %>
     <span class="ml-1"><%= t('.edit.title') %></span>
   <% end %>
