@@ -40,7 +40,6 @@ class BaseEsc
   def initialize
     @data = []
     data_push 0x1b, 0x40  # 初始化打印机：清除打印缓存，各参数恢复默认值
-    set_pad
   end
 
   def set_pad
@@ -178,6 +177,19 @@ class BaseEsc
     end
 
     data_push *text_position, *bar_height, *bar_width, *bar_format, *data.bytes, 0x00
+  end
+
+  def dash(paper_mm = 58)
+    text '-' * 32
+  end
+
+  def table_3(headers: ['商品', '单价', '数目', '小计'], cols: [])
+    #
+    data_push 0x1b, 0x44, 16, 22, 28, 0x00
+    data_push *headers.map { |h| h.encode('gb18030').bytes << 0x09 }.flatten, 0x0d
+    cols.each do |col|
+      data_push *col.map { |h| h.encode('gb18030').bytes << 0x09 }.flatten, 0x0d
+    end
   end
 
   def partial_cut
