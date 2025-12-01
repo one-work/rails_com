@@ -9,14 +9,14 @@
   </div>
   <div class="fixed-grid has-2-cols p-3">
     <div class="grid">
-      <div class="has-column-centered">
+      <%= link_to({ controller: 'org/board/organs' }, class: 'has-column-centered') do %>
         <p class="size-4"><%= current_user.counters['owned'].to_i %></p>
         <p class="size-7 text-grey">我创建的</p>
-      </div>
-      <div class="has-column-centered">
+      <% end %>
+      <%= link_to({ controller: 'org/board/organs' }, class: 'cell has-column-centered') do %>
         <p class="size-4"><%= current_user.counters['joined'].to_i %></p>
         <p class="size-7 text-grey">我加入的</p>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
