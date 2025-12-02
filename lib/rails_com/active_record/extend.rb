@@ -191,7 +191,11 @@ module RailsCom::ActiveRecord
 
     def attributes_by_default
       if table_exists?
-        [primary_key.to_sym] + all_timestamp_attributes_in_model.map(&:to_sym)
+        if primary_key.is_a? Array
+          primary_key.map(&:to_sym) + all_timestamp_attributes_in_model.map(&:to_sym)
+        else
+          [primary_key.to_sym] + all_timestamp_attributes_in_model.map(&:to_sym)
+        end
       else
         []
       end

@@ -54,17 +54,22 @@ module RailsCom::Models
         r[:belongs_attributes] ||= {}
         r[:belongs_attributes].reverse_merge! node.attributes_by_belongs
 
-        if r[:model_attributes][node.primary_key.to_sym]
-          table_options = {
-            id: r[:model_attributes].delete(node.primary_key.to_sym)[:migrate_type]
-          }
-          table_options.merge! default: 'uuidv7()' if table_options[:id] == :uuid
+        if node.primary_key.is_a? Array
+          table_options = { id: false }
         else
-          table_options = {
-            id: :uuid,
-            default: 'uuidv7()'
-          }
+          if r[:model_attributes][node.primary_key.to_sym]
+            table_options = {
+              id: r[:model_attributes].delete(node.primary_key.to_sym)[:migrate_type]
+            }
+            table_options.merge! default: 'uuidv7()' if table_options[:id] == :uuid
+          else
+            table_options = {
+              id: :uuid,
+              default: 'uuidv7()'
+            }
+          end
         end
+
         r[:table_options] = table_options.inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
       end
 
