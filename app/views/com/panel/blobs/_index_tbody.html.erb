@@ -19,7 +19,14 @@
 <td><%= simple_format(model.metadata) %></td>
 <td>
   <% model.attachments.each do |attachment| %>
-    <%= link_to "#{attachment.record_type}_#{attachment.name}", { controller: 'attachments', action: 'show', id: attachment.id } %>
+    <%= link_to({ controller: 'attachments', action: 'show', id: attachment.id }) do %>
+      <div>
+        <span><%= attachment.record_type %></span>
+        <span class="text-grey">[</span>
+        <span><%= attachment.name %></span>
+        <span class="text-grey">]</span>
+      </div>
+    <% end %>
   <% end %>
 </td>
 <td>
