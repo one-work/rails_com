@@ -19,7 +19,7 @@
 <td><%= simple_format(model.metadata) %></td>
 <td>
   <% model.attachments.each do |attachment| %>
-    <%= link_to "#{attachment.record_type}_#{attachment.record_id}", { controller: 'com/panel/attachments', id: attachment.id } %>
+    <%= link_to "#{attachment.record_type}_#{attachment.name}", { controller: 'attachments', action: 'show', id: attachment.id } %>
   <% end %>
 </td>
 <td>

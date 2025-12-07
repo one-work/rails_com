@@ -201,7 +201,7 @@ Rails.application.routes.draw do
       resources :infos
       resources :cache_lists
       resources :inbound_emails
-      resources :attachments, only: [:index, :destroy] do
+      resources :attachments, only: [:index, :show, :destroy] do
         collection do
           get :garbled
         end
