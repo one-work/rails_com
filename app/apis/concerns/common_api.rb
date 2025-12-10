@@ -24,8 +24,17 @@ module CommonApi
     request('GET', path, origin: origin, params: params, headers: headers, debug: debug)
   end
 
+  def get_xml(path = '/', **params)
+    r = @client.plugin(:xml).get(path, origin: @app.base_url, params: params)
+    parse_response(r)
+  end
+
   def post(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
     request('POST', path, payload, origin: origin, params: params, headers: headers, debug: debug)
+  end
+
+  def post_form(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
+    request_form('POST', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
   def post_array(path, payload, origin: @app.base_url, params: {}, headers: {}, debug: nil)
@@ -44,7 +53,7 @@ module CommonApi
     request('DELETE', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
-  def request(method, path, payload, origin: @app.base_url, params: {}, headers: {}, debug: nil)
+  def request(method, path, payload = nil, origin: @app.base_url, params: {}, headers: {}, debug: nil)
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
 
@@ -76,7 +85,7 @@ module CommonApi
   protected
   def with_access_token(tries: 2, params: {}, headers: {}, payload: {})
     @app.refresh_access_token unless @app.access_token_valid?
-    params.merge!(access_token: @app.access_token)
+    headers.merge! 'Authorization' => "Bearer #{@app.access_token}"
     yield
   rescue AccessTokenExpiredError
     @app.refresh_access_token
