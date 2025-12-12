@@ -3,7 +3,7 @@
   <head>
     <%= render 'head_title' %>
     <meta name="turbo-cache-control" content="no-preview">
-    <meta name="turbo-prefetch" content="<%= false && !Rails.env.local? %>">
+    <meta name="turbo-prefetch" content="<%= !Rails.env.local? %>">
     <meta name="view-transition" content="same-origin">
     <link rel="icon" href="/icon.png" type="image/png">
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
