@@ -13,6 +13,13 @@ Rails.application.routes.draw do
     get :index
   end
 
+  namespace :board, defaults: { namespace: 'board' } do
+    root 'home#index' unless has_named_route? 'board_root'
+    controller :home do
+      get :index
+    end
+  end
+
   namespace :panel, defaults: { namespace: 'panel' } do
     root 'home#index'
     controller :home do

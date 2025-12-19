@@ -4,7 +4,11 @@ module Com
     include Controller::Curd
 
     def require_member_or_user
-      require_user unless current_member
+      if defined? current_member
+        require_user unless current_member
+      else
+        require_user
+      end
     end
 
     def index
