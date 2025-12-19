@@ -3,6 +3,7 @@ require 'httpx'
 require 'http/form_data'
 
 module CommonApi
+  module AccessTokenExpiredError; end
   attr_reader :app, :client
 
   def initialize(app = nil)
@@ -63,6 +64,14 @@ module CommonApi
     end
   end
 
+  def request_form(method, path, payload, origin:, params: {}, headers: {}, debug: nil)
+    with_options = { origin: origin }
+    with_options.merge! debug: STDOUT, debug_level: 2 if debug
+
+    response = @client.with_headers(headers).with(with_options).request(method, path, params: params, form: payload)
+    debug ? response : parse_response(response)
+  end
+
   def post_file(path, file, file_key: 'media', content_type: nil, params: {}, headers: {}, origin: nil, debug: nil, **options)
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
@@ -110,7 +119,7 @@ module CommonApi
         JSON.parse(response.body.to_s)
       end
     else
-      raise "Request get fail, response status #{response}"
+      raise AccessTokenExpiredError, "Request get fail, response status #{response}"
     end
   end
 
