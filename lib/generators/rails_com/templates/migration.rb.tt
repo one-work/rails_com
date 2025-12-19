@@ -27,7 +27,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
     <%- attributes[:indexes].each do |index| -%>
       t.index <%= index[:index].inspect %><%= index[:index_options] %>
     <%- end -%>
-    end
+    end unless table_exists? <%= table_name.inspect %>
   <%- end -%>
 <%- end -%>
   end

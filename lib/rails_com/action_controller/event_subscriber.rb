@@ -34,4 +34,4 @@ module RailsCom::ActionController
     end
 
   end
-end
+end if defined? ActiveSupport::StructuredEventSubscriber
