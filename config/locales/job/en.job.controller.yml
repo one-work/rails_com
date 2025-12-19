@@ -1,0 +1,45 @@
+en:
+  job:
+    panel:
+      title: Jobs
+      home:
+        index:
+          title: Jobs
+      queues:
+        index:
+          title: Queues
+      processes:
+        index:
+          title: Processes
+      jobs:
+        index:
+          title: Done
+        failed:
+          title: Failed
+        todo:
+          title: To Do
+        lost:
+          title: Lost
+        blocked:
+          title: Blocked
+        running:
+          title: Running
+        ready:
+          title: Ready
+        clearable:
+          title: Clearable
+        clear_all:
+          title: Clear All
+          confirm: Confirm
+        batch_destroy:
+          title: Batch Destroy
+          confirm: Confirm
+        batch_retry:
+          title: Batch Retry
+          confirm: Confirm
+        retry:
+          title: Retry
+          confirm: Confirm
+        retry_all:
+          title: Retry All
+          confirm: Confirm
