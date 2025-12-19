@@ -1,0 +1,26 @@
+<div id="<%= "#{model.controller_path}/#{model.action_name}" %>" class="control">
+  <div class="tags has-addons">
+    <%= link_to({ controller: model.controller_path, action: model.action_name }, class: 'tag') do %>
+      <span><%= model.name %></span>
+    <% end %>
+    <% if current_member.all_shortcuts.key?("#{model.controller_path}/#{model.action_name}") %>
+      <%= button_to(
+            { controller: 'org/admin/shortcuts', action: 'destroy', id: current_member.all_shortcuts["#{model.controller_path}/#{model.action_name}"] },
+            method: :delete,
+            aria: { label: t('org.admin.shortcuts.destroy.title') },
+            form: { class: 'tag' }
+          ) do %>
+        <%= svg_tag 'star', class: 'icon is-small text-warning' %>
+      <% end %>
+    <% else %>
+      <%= button_to(
+            { controller: 'org/admin/shortcuts', action: 'create' },
+            params: { 'shortcut[controller]': model.controller_path, 'shortcut[action]': model.action_name },
+            aria: { label: t('org.admin.shortcuts.create.title') },
+            form: { class: 'tag' }
+          ) do %>
+        <%= svg_tag 'star' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

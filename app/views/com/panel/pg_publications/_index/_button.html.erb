@@ -1,0 +1,8 @@
+<%= button_to({ action: 'new', **request.query_parameters.except(:id) }, class: 'button is-rounded is-primary') do %>
+  <%= svg_tag 'plus' %>
+  <span class="ml-1"><%= t('.new.title') %></span>
+<% end %>
+<%= button_to({ action: 'create_all' }, params: { pubname: 'alltables' }, class: 'button is-rounded is-danger') do %>
+  <%= svg_tag 'plus' %>
+  <span class="ml-1"><%= t('.create_all.title') %></span>
+<% end %>

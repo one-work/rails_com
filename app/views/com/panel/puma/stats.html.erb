@@ -1,0 +1,39 @@
+<dl class="as-show as-boxed">
+<% @stats.except('worker_status', 'versions').each do |k, v| %>
+  <div>
+    <dt><%= k %></dt>
+    <dd><%= v %></dd>
+  </div>
+<% end %>
+</dl>
+
+<table class="table is-border">
+  <thead>
+    <tr>
+      <th>index</th>
+      <th>pid</th>
+      <th>booted</th>
+      <th>phase</th>
+      <th>
+        <p>started_at</p>
+        <p>last_checkin</p>
+      </th>
+      <th>last_status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @stats['worker_status'].each do |worker| %>
+    <tr>
+      <td><%= worker['index'] %></td>
+      <td><%= worker['pid'] %></td>
+      <td><%= worker['booted'] %></td>
+      <td><%= worker['phase'] %></td>
+      <td>
+        <p><time data-controller="time" data-format="human"><%= worker['started_at'] %></time></p>
+        <p><time data-controller="time" data-format="human"><%= worker['last_checkin'] %></time></p>
+      </td>
+      <td><pre><%= worker['last_status'].to_format_yaml %></pre></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

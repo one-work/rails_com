@@ -1,0 +1,6 @@
+one:
+  record_class: Com::AcmeAccount
+  name: private_pem
+two:
+  record_class: Com::AcmeAccount
+  name: private_pem

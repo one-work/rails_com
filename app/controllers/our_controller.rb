@@ -1,0 +1,3 @@
+class OurController < AdminController
+
+end

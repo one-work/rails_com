@@ -1,0 +1,3 @@
+<div id="column_wrapper" class="field is-horizontal">
+  <%= f.collection_select :meta_column_id, @meta_columns, :id, :column_name, all: { select: nil }, label: '字段' %>
+</div>

@@ -1,0 +1,27 @@
+<details
+  data-controller="details"
+  data-details-url-value="<%= url_for(action: 'remote_status', id: model.id) %>"
+  class="details as-boxed"
+  open
+>
+  <summary>1.开通服务器</summary>
+  <p>去开通服务器</p>
+  <p id="remote_status">正在检查服务器...</p>
+</details>
+<details data-controller="details" class="details as-boxed mt-3">
+  <summary>2.导入 SSH 公钥</summary>
+  <div data-controller="clipboard">
+    <span data-clipboard-target="source" class="is-wrap text-grey"><%= model.public_key %></span>
+    <button data-action="clipboard#copyInner" class="tag is-warning">复制 SSH 公钥</button>
+  </div>
+</details>
+<details data-controller="details" class="details as-boxed mt-3">
+  <summary>3.开始部署</summary>
+  <%= render 'index_actions' %>
+  <div
+    data-controller="log-channel"
+    class="p-4 pb-6 background-black text-white overflow-y-auto"
+    style="height: 50em"
+  >
+  </div>
+</details>

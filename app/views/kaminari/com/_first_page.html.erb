@@ -1,0 +1,3 @@
+<%= link_to url, disabled: current_page.first?, data: { turbo_action: 'replace' }, class: 'pagination-previous', title: t('views.pagination.first') do %>
+  <%= svg_tag 'backward-fast' %>
+<% end %>

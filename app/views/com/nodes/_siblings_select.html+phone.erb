@@ -1,0 +1,14 @@
+<div class="weui-cell weui-cell_active weui-cell_select">
+  <%= f.label :parent_ancestors %>
+  <div class="media-content">
+  <% if f.object.new_record? %>
+    <%= render partial: 'com/nodes/siblings_options', locals: { f: f, node: f.object } %>
+  <% elsif f.object.ancestors.present? %>
+    <% f.object.ancestors.reverse_each do |item| %>
+      <%= render partial: 'com/nodes/self_and_siblings_options', locals: { f: f, node: item } %>
+    <% end %>
+  <% else %>
+    <%= render partial: 'com/nodes/siblings_options', locals: { f: f, node: f.object } %>
+  <% end %>
+  </div>
+</div>

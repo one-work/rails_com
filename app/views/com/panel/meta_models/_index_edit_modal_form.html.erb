@@ -1,0 +1,8 @@
+<%= form_with theme: 'modal', scope: nil, url: { action: 'index_update' } do |f| %>
+  <%= render 'modal_header' %>
+  <section class="modal-card-body">
+    <%= f.text_field :old_index, value: params[:old_name], readonly: true %>
+    <%= f.text_field :new_index %>
+  </section>
+  <%= f.submit %>
+<% end %>

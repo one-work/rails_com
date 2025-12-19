@@ -1,0 +1,4 @@
+<tr id="tr_<%= model.id %>" data-controller="show">
+  <%= yield %>
+  <td><%= render partial: 'index_tr_actions', locals: { model: model } %></td>
+</tr>

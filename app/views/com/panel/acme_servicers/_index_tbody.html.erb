@@ -1,0 +1,10 @@
+<td>
+  <p><%= model.key %></p>
+  <p><%= model.secret %></p>
+</td>
+<td>
+<% model.acme_domains.each do |acme_domain| %>
+  <p><%= acme_domain.domain %></p>
+<% end %>
+</td>
+

@@ -1,0 +1,19 @@
+<%= f.select :type, options_for_select(Com::AcmeServicer.options_i18n(:type), f.object.type) %>
+<%= f.text_field :key %>
+<%= f.text_field :secret %>
+<%= f.fields :acme_domains, wrap: { all: nil, input: 'field' }, label: false, placeholder: true do |ef| %>
+  <div class="field is-horizontal" data-controller="field" data-field-index-value="<%= ef.index %>">
+    <% if ef.index == 0 %>
+      <%= ef.label :domain %>
+    <% else %>
+      <label class="field-label"></label>
+    <% end %>
+    <div class="field-body">
+      <%= ef.text_field :domain, label: nil, wrap: { all: nil, input: 'field' }, placeholder: Com::AcmeDomain.human_attribute_name(:domain) %>
+      <span class="field has-addons has-addons-middle">
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+      </span>
+    </div>
+  </div>
+<% end %>

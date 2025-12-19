@@ -1,0 +1,42 @@
+<td><%= image_tag model.url, class: 'image is-64-h' if model.image? && model.url.present? %></td>
+<td>
+  <p><%= model.id %></p>
+  <p class="family-monospace"><%= model.key %></p>
+  <p><span class="tag"><%= model.service_name %></span></p>
+</td>
+<td>
+  <% if model.url.present? %>
+    <p><%= link_to model.filename, model.url %></p>
+  <% else %>
+    <p><%= model.filename %></p>
+  <% end %>
+  <p>
+    <span><%= model.content_type %></span>
+    <span class="tag"><%= number_to_human_size(model.byte_size) %></span>
+  </p>
+  <p><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
+</td>
+<td><%= simple_format(model.metadata) %></td>
+<td>
+  <% model.attachments.each do |attachment| %>
+    <%= link_to({ controller: 'attachments', action: 'show', id: attachment.id }) do %>
+      <div>
+        <span><%= attachment.record_type %></span>
+        <span class="text-grey">[</span>
+        <span><%= attachment.name %></span>
+        <span class="text-grey">]</span>
+      </div>
+    <% end %>
+  <% end %>
+</td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%=button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    <% end %>
+    <%= link_to({ controller: '/com/audios', action: 'show', id:model.id }, target: '_blank', aria: { label: t('.play') }, class: 'button is-small is-borderless') do %>
+      <i class="fa-solid fa-play text-primary"></i>
+    <% end %>
+  </div>
+</td>
+

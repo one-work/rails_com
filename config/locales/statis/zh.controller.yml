@@ -1,0 +1,28 @@
+zh:
+  statis:
+    panel:
+      title: 统计
+      home:
+        index:
+          title: 统计
+      statistics:
+        index:
+          title: 统计
+        statistical:
+          title: 统计类型
+        months:
+          title: 月度
+        do_cache:
+          title: 缓存当前月
+      configs:
+        index:
+          title: 统计设置
+      counter_days:
+        index:
+          title: 计数汇总
+      statistic_days:
+        index:
+          title: 缓存详情
+      statistic_months:
+        index:
+          title: 月度统计

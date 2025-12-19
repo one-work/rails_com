@@ -1,0 +1,18 @@
+<td>
+  <p><%= model.statistical_type %></p>
+</td>
+<td>
+  <p><%= model.begin_on %></p>
+  <p><%= model.end_on %></p>
+</td>
+<td><%= model.today_begin_id %></td>
+<td>
+  <% model.scopes.each do |key| %>
+    <p><%= key %></p>
+  <% end %>
+</td>
+<td>
+<% model.keys.each do |key| %>
+  <p><%= key %></p>
+<% end %>
+</td>

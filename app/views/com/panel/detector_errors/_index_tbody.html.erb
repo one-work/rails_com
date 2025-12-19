@@ -1,0 +1,6 @@
+<td><%= model.status %></td>
+<% if model.error.present? %>
+  <td><%= model.error %></td>
+<% else %>
+  <td><%= model.body %></td>
+<% end %>

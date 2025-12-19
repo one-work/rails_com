@@ -1,0 +1,32 @@
+<div class="sidebar">
+
+<div class="ui vertical inverted icon menu">
+  <div class="header center link item" id="test_side">
+    <i class="content icon"></i>
+  </div>
+  <div class="ui dropdown item">
+
+    <div class="menu">
+      <%= link_to '用户管理', admin_users_path, class: active_helper(controller: 'users') %>
+      <%= link_to '员工管理', admin_employees_path, class: active_helper(controller: 'employees') %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#test_side').click(function(){
+    $('.ui.side').addClass('invisible');
+    $('.ui.side .ui.menu').removeClass('accordion');
+    $('.ui.side .ui.menu').addClass('icon');
+  });
+  $('.ui.accordion').accordion({
+    selector: {
+      trigger: '.title'
+    }
+  });
+  $('.ui.dropdown.item').dropdown({
+    on: 'hover'
+  })
+</script>
+
+</div>

@@ -1,0 +1,5 @@
+<%= link_to t('crm.admin.contacts.index.title'), { controller: 'crm/admin/contacts' }, class: active_helper(controllers: ['contacts', 'productions'], active: 'navbar-item is-active', item: 'navbar-item') %>
+<%= link_to t('crm.admin.wechat_users.online.title'), { controller: 'crm/admin/wechat_users', action: 'online' }, class: active_helper(controllers: ['wechat_users'], active: 'navbar-item is-active', item: 'navbar-item') %>
+<%= link_to t('factory.agent.productions.index.title'), { controller: 'factory/agent/productions' }, class: active_helper(controllers: 'factory/agent/productions', active: 'navbar-item is-active',item: 'navbar-item') %>
+<%= link_to t('trade.agent.carts.index.title'), { controller: 'trade/agent/carts' }, class: active_helper(controllers: ['trade/agent/carts'], active: 'navbar-item is-active', item: 'navbar-item') %>
+<%= link_to t('trade.agent.orders.index.title'), { controller: 'trade/agent/orders' }, class: active_helper(controllers: ['trade/agent/orders'], active: 'navbar-item is-active', item: 'navbar-item') %>

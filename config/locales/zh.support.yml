@@ -1,0 +1,45 @@
+zh:
+  number:
+    human:
+      format:
+        delimiter: ''
+        precision: 0
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: 字节
+            other: 字节
+          kb: KB
+          mb: MB
+          gb: GB
+          tb: TB
+          pb: PB
+          eb: EB
+      decimal_units:
+        format: "%n %u"
+        units:
+          femto: Quadrillionth
+          pico: Trillionth
+          nano: Billionth
+          micro: Millionth
+          mili: Thousandth
+          centi: 分
+          deci: 角
+          unit: ''
+          ten:
+            one: 拾
+            other: 拾
+          hundred: 佰
+          thousand: 仟
+          million: 佰万
+          billion: 十亿
+          trillion: Trillion
+          quadrillion: Quadrillion
+  support:
+    array:
+      words_connector: ' '
+      two_words_connector: ' '
+      last_word_connector: ' '

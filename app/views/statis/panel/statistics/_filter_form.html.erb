@@ -1,0 +1,9 @@
+<%= form_with theme: 'search', model: Com::Statistic.new, url: { action: params[:action] }, data: { switch_target: 'src' }, class: params.key?('column') ? '' : 'display-none' do |f| %>
+  <div class="field-body">
+    <%= f.text_field :column, autocomplete: 'off' %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:column]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>

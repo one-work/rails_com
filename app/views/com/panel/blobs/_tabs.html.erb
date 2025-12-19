@@ -1,0 +1,6 @@
+<div class="tabs">
+  <ul>
+    <li class="<%= active_helper(action: 'index', active: 'is-active') %>"><%= link_to t('.index.title'), { action: 'index' } %></li>
+    <li class="<%= active_helper(action: 'unattached', active: 'is-active') %>"><%= link_to t('.unattached.title'), { action: 'unattached' } %></li>
+  </ul>
+</div>

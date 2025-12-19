@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    enum:
+      roled/role:
+        type:
+          Roled::UserRole: User
+          Roled::OrganRole: Organization
+          Roled::JobTitleRole: Job Title
+          Roled::MemberRole: Member
+      roled/role_rule:
+        status:
+          available: Available
+          unavailable: Unavailable

@@ -1,0 +1,46 @@
+<div class="tabs is-centered">
+  <ul>
+    <li class="<%= active_helper(action: 'index', active: 'is-active') %>">
+      <%= link_to({ action: 'index' }) do %>
+        <span><%= t('.index.title') %></span>
+        <span class="tag"><%= @count[:index].value %></span>
+      <% end %>
+    </li>
+    <li class="<%= active_helper(action: 'failed', active: 'is-active') %>">
+      <%= link_to({ action: 'failed' }) do %>
+        <span><%= t('.failed.title') %></span>
+        <span class="tag"><%= @count[:failed].value %></span>
+      <% end %>
+    </li>
+    <li class="<%= active_helper(action: 'todo', active: 'is-active') %>">
+      <%= link_to({ action: 'todo' }) do %>
+        <span><%= t('.todo.title') %></span>
+        <span class="tag"><%= @count[:todo].value %></span>
+      <% end %>
+    </li>
+    <li class="<%= active_helper(action: 'blocked', active: 'is-active') %>">
+      <%= link_to({ action: 'blocked' }) do %>
+        <span><%= t('.blocked.title') %></span>
+        <span class="tag"><%= @count[:blocked].value %></span>
+      <% end %>
+    </li>
+    <li class="<%= active_helper(action: 'running', active: 'is-active') %>">
+      <%= link_to({ action: 'running' }) do %>
+        <span><%= t('.running.title') %></span>
+        <span class="tag"><%= @count[:running].value %></span>
+      <% end %>
+    </li>
+    <li class="<%= active_helper(action: 'ready', active: 'is-active') %>">
+      <%= link_to({ action: 'ready' }) do %>
+        <span><%= t('.ready.title') %></span>
+        <span class="tag"><%= @count[:ready].value %></span>
+      <% end %>
+    </li>
+    <li class="<%= active_helper(action: 'clearable', active: 'is-active') %>">
+      <%= link_to({ action: 'clearable' }) do %>
+        <span><%= t('.clearable.title') %></span>
+        <span class="tag"><%= @count[:clearable].value %></span>
+      <% end %>
+    </li>
+  </ul>
+</div>

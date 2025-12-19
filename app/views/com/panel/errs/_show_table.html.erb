@@ -1,0 +1,44 @@
+<div>
+  <dt><%= Com::Err.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @err.created_at.to_fs(:iso8601) %></time></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:exception_object) %></dt>
+  <dd><%= @err.exception_object %></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:path) %></dt>
+  <dd><%= @err.path %></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:controller_name) %></dt>
+  <dd><%= @err.controller_name %></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:action_name) %></dt>
+  <dd><%= @err.action_name %></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:params) %></dt>
+  <dd><pre><%= @err.params.to_format_yaml %></pre></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:cookie) %></dt>
+  <dd><pre><%= @err.cookie.to_format_yaml %></pre></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:session) %></dt>
+  <dd><pre><%= @err.session.to_format_yaml %></pre></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:headers) %></dt>
+  <dd><pre><%= @err.headers.to_format_yaml %></pre></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:exception) %></dt>
+  <dd><pre><%= @err.exception %></pre></dd>
+</div>
+<div>
+  <dt><%= Com::Err.human_attribute_name(:exception_backtrace) %></dt>
+  <dd><pre style="overflow-x: auto"><%= @err.exception_backtrace.to_format_yaml %></pre></dd>
+</div>

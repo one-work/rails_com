@@ -1,0 +1,11 @@
+<td><%= model.status %></td>
+<td>
+<% if model.error.present? %>
+  <%= model.error %>
+<% end %>
+</td>
+<td>
+  <p><time data-controller="time" data-format="human"><%= model.started_at.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
+</td>
+<td><%= model.spend %></td>

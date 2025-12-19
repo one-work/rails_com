@@ -1,0 +1,11 @@
+<div class="navbar-item has-dropdown is-hoverable display-none-touch">
+  <div class="navbar-link is-arrowless">
+    <%= svg_tag 'globe' %>
+    <span><%= t(I18n.locale) %></span>
+  </div>
+  <div class="navbar-dropdown">
+    <% Auth::User.options_i18n(:locale).each do |text, value| %>
+      <%= link_to text, { locale: value, **request.query_parameters.except(:locale) }, data: { turbo_frame: '_top' }, class: 'navbar-item' %>
+    <% end if defined? RailsAuth %>
+  </div>
+</div>

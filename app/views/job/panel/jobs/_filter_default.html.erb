@@ -1,0 +1,21 @@
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button">
+      <span>分类</span>
+      <span class="icon is-small">
+        <i class="fa-solid fa-angle-down"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu">
+    <div class="dropdown-content">
+      <%= link_to t('.all'), filter_params(except: [:class_name]), class: active_helper(class_name: '', active: 'dropdown-item is-active', item: 'dropdown-item') %>
+      <% @class_names.each do |class_name, count| %>
+        <%= link_to filter_params(class_name: class_name), class: active_helper(class_name: class_name, active: 'dropdown-item is-active', item: 'dropdown-item') do %>
+          <span><%= class_name %></span>
+          <span class="tag"><%= count %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

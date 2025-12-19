@@ -1,0 +1,17 @@
+<div>
+  <dt><%= Com::ErrSummary.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @err_summary.created_at.to_fs(:iso8601) %></time></dd>
+</div>
+<div>
+  <dt><%= Com::ErrSummary.human_attribute_name(:exception_object) %></dt>
+  <dd><%= @err_summary.exception_object %></dd>
+</div>
+<div>
+  <dt><%= Com::ErrSummary.human_attribute_name(:controller_name) %></dt>
+  <dd><%= @err_summary.controller_name %></dd>
+</div>
+<div>
+  <dt><%= Com::ErrSummary.human_attribute_name(:action_name) %></dt>
+  <dd><%= @err_summary.action_name %></dd>
+</div>
+

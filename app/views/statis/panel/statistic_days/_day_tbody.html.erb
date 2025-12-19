@@ -1,0 +1,6 @@
+<td><%= model.date %></td>
+<td><%= model.value %></td>
+<td>
+  <p><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></p>
+</td>

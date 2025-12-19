@@ -1,0 +1,11 @@
+<div id="tbody" class="cards is-4">
+  <%= render partial: 'index_card', collection: @ssh_keys, as: :model %>
+  <%= render partial: 'button_card' %>
+</div>
+
+<div class="content as-boxed mt-3 p-4">
+  <h2>注意事项：</h2>
+  <ol>
+    <li>在添加前完成域名解析；</li>
+  </ol>
+</div>

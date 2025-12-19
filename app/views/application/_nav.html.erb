@@ -1,0 +1,12 @@
+<div data-controller="menu" class="menu is-radius p-3">
+  <div class="menu-list">
+    <%= link_to t('my.home.index.title'), { controller: '/my/home' }, data: { turbo_frame: 'body' }, class: active_helper(controllers: 'home', active: 'is-active') %>
+  </div>
+  <%= render 'board/auth_nav' if defined? RailsAuth %>
+  <%= render 'my/trade_nav' if defined? RailsTrade %>
+  <%= render 'my/ship_nav' if defined? RailsShip %>
+  <%= render 'my/notice_nav' if defined? RailsNotice %>
+  <%= render 'my/wechat_nav' if defined? RailsWechat %>
+  <%= render 'board/org_nav' if defined? RailsOrg %>
+  <%= render 'my/com_nav' %>
+</div>

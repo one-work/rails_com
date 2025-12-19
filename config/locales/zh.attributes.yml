@@ -1,0 +1,11 @@
+zh:
+  activerecord:
+    attributes:
+      com/acme_order:
+        acme_identifiers_attributes: 域名
+      com/err:
+        path: 路径
+        controller_name: Controller
+        action_name: Action
+      com/detector_log:
+        spend: 耗时（毫秒）

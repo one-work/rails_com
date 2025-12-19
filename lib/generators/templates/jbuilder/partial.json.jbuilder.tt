@@ -1,0 +1,17 @@
+json.extract!(
+  <%= singular_name %>,
+  <%= full_attributes_list %>
+)
+<%- virtual_attributes.each do |attribute| -%>
+<%- if attribute.type == :rich_text -%>
+json.<%= attribute.name %> <%= singular_name %>.<%= attribute.name %>.to_s
+<%- elsif attribute.type == :attachment -%>
+json.<%= attribute.name %> url_for(<%= singular_name %>.<%= attribute.name %>)
+<%- elsif attribute.type == :attachments -%>
+json.<%= attribute.name %> do
+  json.array!(<%= singular_name %>.<%= attribute.name %>) do |<%= attribute.singular_name %>|
+    json.id <%= attribute.singular_name %>.id
+  end
+end
+<%- end -%>
+<%- end -%>

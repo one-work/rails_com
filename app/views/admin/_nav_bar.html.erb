@@ -1,0 +1,13 @@
+<ul class="breadcrumb has-succeeds-separator">
+  <% if request.subdomain == 'admin' %>
+    <li><%= link_to t('me.home.index.title'), { controller: '/me/home' } %></li>
+  <% else %>
+    <li><%= link_to t('me.home.index.title'), '/me' %></li>
+  <% end %>
+  <% if current_page?(controller: 'home') && controller_path != 'me/home' %>
+    <li class="is-active"><%= t('.home.index.title') %></li>
+  <% elsif controller_path != 'me/home' %>
+    <li><%= link_to t('.home.index.title'), { controller: 'home' } %></li>
+  <% end %>
+  <%= render 'breadcrumb' %>
+</ul>

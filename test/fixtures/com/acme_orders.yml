@@ -1,0 +1,12 @@
+one:
+  acme_account: one
+  orderid: MyString
+  url: MyString
+  issued_at: <%= Time.current %>
+  status: MyString
+two:
+  acme_account: one
+  orderid: MyString
+  url: MyString
+  issued_at: <%= Time.current %>
+  status: MyString

@@ -1,0 +1,26 @@
+zh:
+  activerecord:
+    enum:
+      meta_action:
+        operation:
+          admin: 管理
+          list: 列表页
+          read: 详情页
+          add: 新增
+          edit: 编辑
+          remove: 移除
+      com/err_bot:
+        type:
+          Com::FeishuBot: 飞书
+          Com::SlackBot: Slack
+          Com::WorkWechatBot: 企业微信
+      com/detector_bot:
+        type:
+          Com::DetectorFeishu: 飞书
+          Com::DetectorSlack: Slack
+          Com::DetectorWorkWechat: 企业微信
+      com/acme_servicer:
+        type:
+          Com::AliServicer: 阿里云
+          Com::AwsServicer: AWS
+          Com::TencentServicer: 腾讯云（DNSPOD）

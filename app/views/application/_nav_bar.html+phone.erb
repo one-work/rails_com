@@ -1,0 +1,26 @@
+<nav class="navbar is-sticky is-light" data-controller="navbar" data-navbar-scroll-value="true" data-navbar-new-class="is-dark" data-navbar-old-class="is-light">
+  <div class="navbar-brand">
+    <%= render 'nav_brand' %>
+    <a data-action="navbar#toggle" class="navbar-burger">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu" data-navbar-target="menu">
+    <div class="navbar-start">
+      <% if defined?(current_user) && current_user %>
+        <%= render 'nav_with_login' %>
+      <% else %>
+        <%= render 'nav_without_login' %>
+      <% end %>
+    </div>
+    <div class="navbar-end">
+      <% if defined?(current_user) && current_user %>
+        <%= render partial: 'notice_navbar' if defined? RailsNotice %>
+        <%= render partial: 'auth_navbar' %>
+      <% end %>
+    </div>
+  </div>
+</nav>

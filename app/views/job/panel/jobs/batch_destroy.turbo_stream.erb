@@ -1,0 +1,2 @@
+<%= turbo_stream.update 'tbody', partial: "job/panel/jobs/_#{params[:from_action]}/index_tbody", layout: 'index_tr', collection: @jobs, as: :model %>
+<%= turbo_stream.replace 'xxd', partial: 'index_th_check' %>

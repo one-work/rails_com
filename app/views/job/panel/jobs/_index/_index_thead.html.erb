@@ -1,0 +1,11 @@
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:id) %></p>
+  <p><%= SolidQueue::Job.human_attribute_name(:status) %></p>
+</th>
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:job_class) %></p>
+  <p class="text-success">
+    <%= link_to SolidQueue::Job.human_attribute_name(:finished_at), filter_params('finished_at-desc': 1) %>
+  </p>
+</th>
+<th><%= SolidQueue::Job.human_attribute_name(:arguments) %></th>

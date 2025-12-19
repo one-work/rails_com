@@ -1,0 +1,13 @@
+<%= form_with theme: 'modal', model: @pg_subscription, url: { action: 'create' } do |f| %>
+  <%= render 'modal_header' %>
+  <section class="modal-card-body">
+    <%= f.text_field :subname %>
+    <%= f.text_field :host %>
+    <%= f.text_field :port, value: 5432 %>
+    <%= f.text_field :dbname %>
+    <%= f.text_field :user, value: 'postgres' %>
+    <%= f.text_field :password, value: 'postgres' %>
+    <%= f.text_field :pubname %>
+  </section>
+  <%= f.submit %>
+<% end %>

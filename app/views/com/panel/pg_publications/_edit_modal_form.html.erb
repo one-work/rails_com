@@ -1,0 +1,7 @@
+<%= form_with theme: 'modal', model: @pg_publication, url: { action: 'update' } do |f| %>
+  <%= render 'modal_header' %>
+  <section class="modal-card-body">
+    <%= f.collection_check_boxes :tables, @tables, :to_s, :to_s %>
+  </section>
+  <%= f.submit %>
+<% end %>

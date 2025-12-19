@@ -1,0 +1,50 @@
+<div data-controller="picture" class="picture">
+  <div data-picture-target="upload" class="file is-boxed is-fullwidth">
+    <label class="file-label">
+      <%=
+        f.file_field(
+          target.name,
+          multiple: true,
+          direct_upload: true,
+          wrap: { input: false },
+          all: { normal: false },
+          label: nil,
+          data: { action: 'picture#upload', service: f.object.attachment_reflections[target.name].options[:service_name] },
+          class: 'file-input',
+          **local_assigns.slice(:form)
+        )
+      %>
+      <% target.each do |file| %>
+        <%= f.hidden_field target.name, multiple: true, value: file.signed_id, id: nil %>
+      <% end %>
+      <span class="file-cta">
+        <span class="file-icon">
+          <%= svg_tag 'upload' %>
+        </span>
+        <span>选择文件</span>
+      </span>
+    </label>
+  </div>
+  <div class="fixed-grid has-3-cols mb-3">
+    <div class="grid">
+      <div data-picture-target="preview" class="cell as-boxed position-relative display-none">
+        <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
+          <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
+        </button>
+        <div class="image is-64x64 overflow-y-hidden">
+          <%= image_tag 'avatar.png', data: { picture_target: 'src' } %>
+        </div>
+      </div>
+      <% target.each do |file| %>
+        <div data-picture-target="preview" class="cell as-boxed position-relative">
+          <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
+            <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
+          </button>
+          <div class="image is-64x64 overflow-y-hidden">
+            <%= image_tag file, data: { picture_target: 'src' } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="field is-horizontal" data-controller="field" data-field-index-value="<%= ef.index %>">
+  <% if ef.index == 0 %>
+    <%= ef.label :detector_bots %>
+  <% else %>
+    <label class="field-label"></label>
+  <% end %>
+  <div class="field-body">
+    <%= ef.select :type, options_for_select(Com::DetectorBot.options_i18n(:type), ef.object.type) %>
+    <%= ef.text_field :hook_url, label: nil, placeholder: Com::DetectorBot.human_attribute_name(:hook_url) %>
+    <span class="field has-addons has-addons-middle">
+      <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+      <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+    </span>
+  </div>
+</div>

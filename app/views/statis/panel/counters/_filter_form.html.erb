@@ -1,0 +1,11 @@
+<%= form_with theme: 'search', model: Com::Counter.new, url: { action: params[:action] }, data: { switch_target: 'src' }, class: params.key?('column') ? '' : 'display-none' do |f| %>
+  <div class="field-body">
+    <%= f.text_field :column, autocomplete: 'off' %>
+    <%= f.select :key, options_for_select(@statistic_config.keys, params[:key]) %>
+    <%= f.text_field :value %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:column]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>

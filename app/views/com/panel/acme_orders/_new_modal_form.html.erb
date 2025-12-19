@@ -1,0 +1,8 @@
+<%= form_with theme: 'modal', model: @acme_order, url: { action: 'create' } do |f| %>
+  <%= render 'modal_header' %>
+  <div class="modal-card-body">
+    <%= render 'error_messages', target: @acme_order %>
+    <%= render partial: 'form', locals: { f: f } %>
+  </div>
+  <%= f.submit %>
+<% end %>

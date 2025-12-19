@@ -1,0 +1,18 @@
+<div class="ui basic segment">
+  <%= image_tag 'verification.jpg', class: 'ui centered image' %>
+  <h3 class="ui green center aligned header">
+    您的请求过于频繁，喝口茶休息一下吧
+  </h3>
+  <h4 class="ui center aligned header">
+    如果希望继续访问，请输入验证码
+
+  </h4>
+  <div class="ui center aligned basic segment">
+    <%= form_tag do %>
+      <%= rucaptcha_input_tag(class: 'form-control', placeholder: 'Input Captcha') %>
+    <% end %>
+    <%= rucaptcha_image_tag(alt: 'Captcha') %>
+  </div>
+
+
+</div>

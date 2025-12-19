@@ -1,0 +1,7 @@
+<%= turbo_stream.update 'actionsheet_menu' do %>
+<% if defined? model %>
+  <%= render partial: "#{params[:meta_controller]}/_#{params[:meta_action]}/actions", locals: { model: model } %>
+<% else %>
+  <%= render partial: "#{params[:meta_controller]}/_#{params[:meta_action]}/actions" %>
+<% end %>
+<% end %>

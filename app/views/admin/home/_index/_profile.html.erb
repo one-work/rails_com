@@ -1,0 +1,10 @@
+<table class="table as-show is-borderless is-striped is-fullwidth">
+  <tr>
+    <th class="text-right">组织角色</th>
+    <td>
+    <% current_organ.roles.each do |role| %>
+      <span class="tag"><%= role.name %></span>
+    <% end %>
+    </td>
+  </tr>
+</table>

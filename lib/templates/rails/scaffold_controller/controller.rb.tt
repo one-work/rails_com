@@ -1,0 +1,3 @@
+class <%= controller_class_name %>Controller < <%= controller_class_path.map(&:camelize).join('::') %>::BaseController
+
+end

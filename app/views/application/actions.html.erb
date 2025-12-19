@@ -1,0 +1,5 @@
+<% if defined? model %>
+  <%= render partial: 'actions', locals: { model: model } %>
+<% else %>
+  <%= render partial: 'actions', locals: { model: instance_variable_get("@#{model_name}") } %>
+<% end %>

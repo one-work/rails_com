@@ -1,0 +1,12 @@
+one:
+  name: MyString
+  record_name: MyString
+  description: MyString
+  defined_db: false
+  customizable: false
+two:
+  name: MyString
+  record_name: MyString
+  description: MyString
+  defined_db: false
+  customizable: false

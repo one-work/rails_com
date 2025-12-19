@@ -1,0 +1,5 @@
+<%= form_with model: model, scope: model_name, url: { action: 'create' } do |f| %>
+  <%= render 'error_messages', target: f.object if f.object.errors.present? %>
+  <%= render partial: 'form', locals: { f: f } %>
+  <%= f.submit %>
+<% end %>

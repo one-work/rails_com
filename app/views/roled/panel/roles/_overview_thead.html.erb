@@ -1,0 +1,7 @@
+<th><%= Roled::Govern.human_attribute_name(:govern_taxon_id) %></th>
+<th>Govern (Code)</th>
+<th>
+  <%= link_to({ action: 'show'}, class: 'button is-small is-link') do %>
+    <i></i><span><%= t('role.panel.roles.show.title') %></span>
+  <% end %>
+</th>

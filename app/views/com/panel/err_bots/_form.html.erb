@@ -1,0 +1,7 @@
+<%= f.select :type, options_for_select(Com::ErrBot.options_i18n(:type), @err_bot.type) %>
+<%= f.text_field :hook_url %>
+<%= f.check_box :first_time %>
+<%= f.fields :err_notices, wrap: { all: nil, input: 'field' }, label: false, placeholder: true do |ef| %>
+  <%= render partial: 'item_form', locals: { ef: ef } %>
+<% end %>
+<%= f.text_field :secret %>

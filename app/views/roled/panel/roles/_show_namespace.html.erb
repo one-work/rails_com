@@ -1,0 +1,28 @@
+<tr id="<%= meta_namespace.tr_id(business_identifier) %>" data-controller="tree-remote" data-tree-remote-target="item" data-tree-remote-hide-value="<%= defined?(hide) && hide ? true : false %>">
+  <td style="padding-left: 2em">
+    <%= button_to({ action: 'controllers' }, params: { business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier }) do %>
+      <% if defined?(expand) && expand %>
+        <%= svg_tag 'caret-down', data: { action: 'click->tree-remote#collapse' }, class: 'icon is-small clickable' %>
+      <% else %>
+        <%= svg_tag 'caret-right', data: { action: 'click->tree-remote#expand' }, class: 'icon is-small clickable' %>
+      <% end %>
+    <% end %>
+    <% case @role.namespace_role(meta_namespace, business_identifier) when 1 %>
+      <%= button_to({ action: 'namespace_off' }, params: { business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
+        <%= svg_tag 'square-check', class: 'icon' %>
+        <span><%= meta_namespace.name %></span>
+      <% end %>
+    <% when 0 %>
+      <%= button_to({ action: 'namespace_on' }, params: { business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
+        <%= svg_tag 'square', class: 'icon' %>
+        <span><%= meta_namespace.name %></span>
+      <% end %>
+    <% else %>
+      <%= button_to({ action: 'namespace_on' }, params: { business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier, expand: defined?(expand) && expand }, method: :patch, form: { data: { tree_remote_target: 'checkbox' } }) do %>
+        <%= svg_tag 'square-minus', class: 'icon' %>
+        <span><%= meta_namespace.name %></span>
+      <% end %>
+    <% end %>
+  </td>
+  <td></td>
+</tr>

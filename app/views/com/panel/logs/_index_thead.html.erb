@@ -1,0 +1,21 @@
+<th><%= Com::Log.human_attribute_name(:path) %></th>
+<th>
+  <p><%= Com::Log.human_attribute_name(:controller_name) %></p>
+  <p><%= Com::Log.human_attribute_name(:action_name) %></p>
+</th>
+<th>
+  <p><%= Com::Log.human_attribute_name(:duration) %></p>
+  <p><%= Com::Log.human_attribute_name(:view_duration) %></p>
+</th>
+<th>
+  <p><%= Com::Log.human_attribute_name(:status) %></p>
+  <p><%= Com::Log.human_attribute_name(:format) %></p>
+</th>
+<th>
+  <p><%= Com::Log.human_attribute_name(:query_count) %></p>
+  <p><%= Com::Log.human_attribute_name(:query_cached_count) %></p>
+</th>
+<th>
+  <p class="text-grey"><%= Com::Log.human_attribute_name(:created_at) %></p>
+  <p class="text-primary"><%= Com::Log.human_attribute_name(:ip) %></p>
+</th>

@@ -1,0 +1,15 @@
+<%= form_with url: { action: 'batch_destroy' }, method: :delete, class: 'button_to' do |f| %>
+  <%= f.hidden_field :ids, data: { form_target: 'ids' } %>
+  <%= f.hidden_field :from_action, value: params[:action] %>
+  <%= button_tag data: { form_target: 'submit' }, disabled: true, class: 'button is-danger' do %>
+    <%= svg_tag 'trash-list' %>
+    <span class="ml-1"><%= t('.batch_destroy.title') %></span>
+  <% end %>
+<% end %>
+<%= form_with url: { action: 'batch_retry' }, class: 'button_to' do |f| %>
+  <%= f.hidden_field :ids, data: { form_target: 'ids' } %>
+  <%= button_tag data: { form_target: 'submit' }, disabled: true, class: 'button is-success' do %>
+    <%= svg_tag 'circle-play' %>
+    <span class="ml-1"><%= t('.batch_retry.title') %></span>
+  <% end %>
+<% end %>

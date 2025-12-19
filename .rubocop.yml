@@ -1,0 +1,34 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - bin/**/*
+    - test/**/*
+    - node_modules/**/*
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Exclude:
+    - 'app/controllers/**/*_controller.rb'
+    - 'app/models/**/*.rb'
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'app/views/**/*.jbuilder'
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Style/WordArray:
+  EnforcedStyle: brackets
+Style/EmptyMethod:
+  Enabled: false
+Metrics/AbcSize:
+  IgnoredMethods:
+    - 'params'
+    - 'q_params'
+Bundler/OrderedGems: # Gems 根据功能进行分组，依据重要程度排序，其他情况 a-z 排序
+  Enabled: false
+Layout/EmptyLinesAroundClassBody: #
+  Enabled: false
+Layout/LineLength:
+  Max: 150

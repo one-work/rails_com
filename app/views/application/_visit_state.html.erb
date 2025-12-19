@@ -1,0 +1,6 @@
+<div
+  data-controller="visit"
+  data-visit-url-value="<%= url_for(state_uuid: state.id, **state.detail) %>"
+  data-visit-method-value="<%= state.request_method %>"
+  data-visit-params-value="<%= state.body.to_json %>"
+></div>

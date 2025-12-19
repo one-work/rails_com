@@ -1,0 +1,24 @@
+<div class="dropdown is-right is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span><%= "#{params[:per].presence || 25}" %> / 页</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu">
+    <div class="dropdown-content">
+    <% [25, 50, 100].each do |number| %>
+      <%= link_to "#{number} / 页", filter_params(per: number), class: active_helper(per: number, active: 'dropdown-item is-active', item: 'dropdown-item') %>
+    <% end %>
+    </div>
+  </div>
+</div>
+<% if models.respond_to?(:total_pages) %>
+  <div>
+    <span>共</span>
+    <span><%= models.total_pages %></span>
+    <span>页</span>
+  </div>
+<% end %>

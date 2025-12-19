@@ -1,0 +1,7 @@
+<%= form_with model: @blob_default, url: { action: 'create' } do |f| %>
+  <%= render 'error_messages', target: f.object %>
+  <%= f.hidden_field :record_class, value: params[:record_class] %>
+  <%= f.hidden_field :name, value: params[:name] %>
+  <%= f.file_field :file %>
+  <%= f.submit %>
+<% end %>

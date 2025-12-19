@@ -1,0 +1,40 @@
+<td>
+  <p><%= link_to model.name, { controller: 'role_whos', role_id: model.id } %></p>
+  <p class="text-grey"><%= model.tip %></p>
+</td>
+<td><%= model.description %></td>
+<td>
+  <%= form_with theme: 'switch', model: model, scope: :role, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :visible, data: { action: 'input#submit' }, id: nil %>
+  <% end %>
+</td>
+<td>
+  <%= form_with theme: 'switch', model: model, scope: :role, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :default, data: { action: 'input#submit' }, id: nil %>
+  <% end %>
+</td>
+<td>
+<% model.role_types.each do |role_type| %>
+  <span class="tag"><%= role_type.who_type_i18n %></span>
+<% end %>
+</td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'pencil', class: 'icon text-link' %>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, class: 'button is-small is-borderless', form: { data: { turbo_confirm: t('.destroy.confirm') } }) do %>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    <% end %>
+  </div>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= link_to({ action: 'show', id: model.id }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'gears' %>
+      <span class="ml-1"><%= t('.show.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'tabs', role_id: model.id }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'house' %>
+      <span class="ml-1"><%= t('.tabs.index.title') %></span>
+    <% end %>
+  </div>
+</td>

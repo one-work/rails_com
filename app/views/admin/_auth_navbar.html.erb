@@ -1,0 +1,22 @@
+<div data-controller="computed-style" class="dropdown is-hoverable pop-right pop-right-bottom is-fullwidth">
+  <div class="dropdown-trigger">
+    <% if current_member.avatar.present? %>
+      <%= image_tag current_member.avatar, class: 'image is-32x32 mx-auto' %>
+    <% else %>
+      <%= image_tag 'avatar.png', class: 'image is-64x64 mx-auto' %>
+    <% end %>
+  </div>
+  <div data-computed-style-target="aim" class="dropdown-menu">
+    <div class="dropdown-content">
+      <%= link_to({ controller: '/me/home' }, class: 'dropdown-item') do %>
+        <span><%= t('me.home.index.title') %></span>
+      <% end %>
+      <%= link_to({ debug_mode: true }, class: 'dropdown-item') do %>
+        <span>Debug Mode</span>
+      <% end %>
+      <%= link_to({ controller: 'org/board/members', action: 'logout' }, data: { turbo_confirm: '确认退出' }, class: 'dropdown-item') do %>
+        <span><%= t('org.board.members.logout.title') %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

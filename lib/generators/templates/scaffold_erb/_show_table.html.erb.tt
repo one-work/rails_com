@@ -1,0 +1,6 @@
+<% attributes.each do |attribute| -%>
+<tr>
+  <td><%%= <%= class_name %>.human_attribute_name(:<%= attribute.name %>) %></td>
+  <td><%%= @<%= singular_name %>.<%= attribute.name %> %></td>
+</tr>
+<% end -%>

@@ -1,0 +1,35 @@
+class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+
+  def change
+<% tables.each do |table_name, attributes| -%>
+
+  <%- if attributes[:table_exists] -%>
+  <%- attributes[:add_references].each do |reference, options| -%>
+    add_belongs_to <%= table_name.inspect %>, <%= options[:name].inspect %><%= options[:reference_options] %>
+  <%- end -%>
+  <%- attributes[:add_attributes].each do |attribute, options| -%>
+    add_column <%= table_name.inspect %>, <%= attribute.inspect %>, <%= options[:migrate_type].inspect %><%= options[:attribute_options] %>
+  <%- end -%>
+  <%- attributes[:remove_attributes].each do |attribute, options| -%>
+    remove_column <%= table_name.inspect %>, <%= attribute.inspect %>, <%= options[:migrate_type].inspect %><%= options[:attribute_options] %>
+  <%- end -%>
+  <%- else -%>
+    create_table <%= table_name.inspect %><%= attributes[:table_options] %> do |t|
+    <%- attributes[:add_references].each do |reference, options| -%>
+      t.belongs_to <%= options[:name].inspect %><%= options[:reference_options] %>
+    <%- end -%>
+    <%- attributes[:add_attributes].each do |attribute, options| -%>
+      t.<%= options[:migrate_type] %> <%= attribute.inspect %><%= options[:attribute_options] %>
+    <%- end -%>
+    <%- if attributes[:timestamps].blank? -%>
+      t.timestamps
+    <%- end -%>
+    <%- attributes[:indexes].each do |index| -%>
+      t.index <%= index[:index].inspect %><%= index[:index_options] %>
+    <%- end -%>
+    end
+  <%- end -%>
+<%- end -%>
+  end
+
+end

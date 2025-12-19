@@ -1,0 +1,11 @@
+<div id="alert">
+<% flash.each do |type, msg| %>
+  <div data-controller="notice" data-turbo-cache="false" class="has-animate-auto-fade">
+    <div class="notification radiusless is-danger mb-0">
+      <button class="delete" data-action="notice#close"></button>
+      <div><%= msg %></div>
+    </div>
+    <progress data-notice-target="progress" class="progress is-tiny is-danger radiusless" max="100" value="100"></progress>
+  </div>
+<% end %>
+</div>

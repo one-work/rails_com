@@ -1,0 +1,12 @@
+<div class="menu-brand">
+<% if defined?(current_organ) && current_organ && current_organ.logo.attached? %>
+  <%= link_to({ controller: '/home' }) do %>
+    <%= image_tag current_organ.logo.variant(resize_to_limit: [64, 64]), class: 'image' %>
+  <% end %>
+<% else %>
+  <%= link_to({ controller: '/home' }, class: 'text-centered') do %>
+    <%= svg_tag 'grip' %>
+    <span><%= t('admin.home.index.title') %></span>
+  <% end %>
+<% end %>
+</div>

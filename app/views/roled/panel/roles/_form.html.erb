@@ -1,0 +1,5 @@
+<%= f.text_field :name %>
+<%= f.text_field :tip %>
+<%= f.text_area :description %>
+<%= f.check_box :visible, tag: 'div', after: { checkbox: 'x' } %>
+<%= render partial: 'type_form' %>

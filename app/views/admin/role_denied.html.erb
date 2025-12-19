@@ -1,0 +1,5 @@
+<% if rails_role_user.is_a?(Org::Member) %>
+  <div>没有权限，请联系管理员</div>
+<% else %>
+  <div data-controller="visit" data-visit-url-value="<%= url_for(controller: 'org/board/organs', **params.permit(:role_id)) %>"></div>
+<% end %>

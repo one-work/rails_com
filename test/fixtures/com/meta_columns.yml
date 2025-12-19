@@ -1,0 +1,22 @@
+one:
+  record_name: MyString
+  column_name: MyString
+  sql_type: MyString
+  column_type: MyString
+  column_limit: 1
+  comment: MyString
+  defined_db: false
+  defined_model: false
+  belongs_enable: false
+  belongs_table: MyString
+two:
+  record_name: MyString
+  column_name: MyString
+  sql_type: MyString
+  column_type: MyString
+  column_limit: 1
+  comment: MyString
+  defined_db: false
+  defined_model: false
+  belongs_enable: false
+  belongs_table: MyString

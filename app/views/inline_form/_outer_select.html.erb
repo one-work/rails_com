@@ -1,0 +1,14 @@
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label"><%= model_klass.human_attribute_name(name) %></label>
+  </div>
+  <div class="field-body">
+  <% if f.object.public_send(column[:outer])&.ancestors.present? %>
+    <% f.object.public_send(column[:outer]).ancestors.reverse_each do |node| %>
+      <%= render partial: 'com/nodes/outer_options', locals: { f: f, node: node, depth: node.depth, outer: column[:outer] } %>
+    <% end %>
+  <% else %>
+    <%= render partial: 'com/nodes/outer_options', locals: { f: f, node: f.object.public_send(column[:outer]), depth: 0, outer: column[:outer] } %>
+  <% end %>
+  </div>
+</div>

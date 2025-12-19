@@ -1,0 +1,49 @@
+<% module_namespacing do -%>
+class <%= controller_class_name %>Controller < ApplicationController
+  before_action :set_<%= singular_name %>, only: [:show, :update, :destroy]
+
+  def index
+    @<%= plural_name %> = <%= class_name %>.page(params[:page])
+  end
+
+  def show
+  end
+
+  def create
+    @<%= singular_name %> = <%= orm_class.build(class_name, "#{singular_name}_params") %>
+
+    if @<%= orm_instance(singular_name).save %>
+      render :create, status: :created
+    else
+      render :new, locals: { model: @<%= singular_name %> }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @<%= singular_name %>.assign_attributes(<%= singular_name %>_params)
+
+    if @<%= orm_instance(singular_name).save %>
+      render :update, status: :ok
+    else
+      render :edit, locals: { model: @<%= singular_name %> }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @<%= orm_instance(singular_name).destroy %>
+  end
+
+  private
+  def set_<%= singular_name %>
+    @<%= singular_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+  end
+
+  def <%= "#{singular_name}_params" %>
+    <%- if attributes_names.empty? -%>
+    params.fetch(<%= ":#{singular_name}" %>, {})
+    <%- else -%>
+    params.require(<%= ":#{singular_name}" %>).permit(<%= permitted_params %>)
+    <%- end -%>
+  end
+end
+<% end -%>

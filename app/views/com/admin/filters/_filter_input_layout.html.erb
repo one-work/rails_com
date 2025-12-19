@@ -1,0 +1,12 @@
+<div id="popup_overlay" data-action="click->popup#close" class="overlay"></div>
+<div
+  id="filter_popup_box"
+  data-controller="filter-input"
+  data-popup-target="popup"
+  class="panel p-3 is-light as-popdown background-white overflow-y-hidden"
+>
+  <% params[:extra].each do |key, value| %>
+    <%= hidden_field_tag(params[:scope].present? ? "#{params[:scope]}[#{key}]" : key, value, autocomplete: 'off', form: 'filter_search_form') %>
+  <% end if params[:extra].is_a?(ActionController::Parameters) %>
+  <%= yield %>
+</div>

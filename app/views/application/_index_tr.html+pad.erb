@@ -1,0 +1,17 @@
+<tr id="tr_<%= model.id %>">
+  <%= yield %>
+  <td>
+    <%= button_to({ action: 'show', id: model.id }, class: 'button is-small is-rounded is-info') do %>
+      <%= svg_tag 'eye', class: 'icon text-info' %>
+      <span class="ml-1"><%= t('.show.title') %></span>
+    <% end %>
+    <%= button_to({ action: 'edit', id: model.id }, class: 'button is-small is-rounded is-link') do %>
+      <%= svg_tag 'pencil' %>
+      <span class="ml-1"><%= t('.edit.title') %></span>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, class: 'button is-small is-rounded is-danger', form: { data: { turbo_confirm: t('.destroy.confirm') } }) do %>
+      <%= svg_tag 'trash' %>
+      <span class="ml-1"><%= t('.destroy.title') %></span>
+    <% end %>
+  </td>
+</tr>

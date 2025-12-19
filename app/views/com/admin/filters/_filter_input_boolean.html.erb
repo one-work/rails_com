@@ -1,0 +1,26 @@
+<div class="field">
+  <label class="radio">
+    <%=
+      radio_button_tag(
+        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}]" : @meta_column.column_name,
+        true,
+        params[:value] == 'true',
+        data: { action: 'filter-input#submit' },
+        form: 'filter_search_form'
+      )
+    %>
+    <span><%= @meta_column.record_class.enum_i18n(params[:column_name], 'true') %></span>
+  </label>
+  <label class="radio">
+    <%=
+      radio_button_tag(
+        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}]" : @meta_column.column_name,
+        false,
+        params[:value] == 'false',
+        data: { action: 'filter-input#submit' },
+        form: 'filter_search_form'
+      )
+    %>
+    <span><%= @meta_column.record_class.enum_i18n(params[:column_name], 'false') %></span>
+  </label>
+</div>

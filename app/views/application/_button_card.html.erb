@@ -1,0 +1,8 @@
+<div id="new_card" class="card">
+  <div class="card-content has-column-centered">
+    <%= button_to({ action: 'new' }, class: 'button is-large is-borderless') do %>
+      <%= svg_tag 'plus', class: 'icon is-large' %>
+    <% end %>
+    <p><%= t('.new.title') %></p>
+  </div>
+</div>

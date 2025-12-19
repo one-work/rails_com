@@ -1,0 +1,14 @@
+<%= render 'index_th_check' %>
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:id) %></p>
+  <p><%= SolidQueue::Job.human_attribute_name(:status) %></p>
+</th>
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:class_name) %></p>
+  <p><%= SolidQueue::Job.human_attribute_name(:created_at) %></p>
+  <p><%= SolidQueue::Job.human_attribute_name(:scheduled_at) %></p>
+</th>
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:arguments) %></p>
+  <p><%= SolidQueue::FailedExecution.human_attribute_name(:error) %></p>
+</th>

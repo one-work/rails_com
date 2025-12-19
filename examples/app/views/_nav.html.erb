@@ -1,0 +1,25 @@
+<div class="ui vertical inverted fluid icon menu">
+  <div class="header center link item" id="close_side">
+    <i class="content icon"></i>
+  </div>
+  <div class="item ui dropdown">
+    <a class="title">
+      <i class="alarm outline icon"></i>
+      <span>用户</span>
+    </a>
+    <div class="menu content">
+      <%= link_to '用户管理', admin_users_path, class: active_helper(controller: 'users') %>
+      <%= link_to '员工管理', admin_employees_path, class: active_helper(controller: 'employees') %>
+      <%= link_to '权限管理', admin_whos_path, class: active_helper(controller: 'whos') %>
+    </div>
+  </div>
+  <div class="item ui dropdown">
+    <a class="title">
+      <i class="share alternate square icon"></i>
+      <span>CRM</span>
+    </a>
+    <div class="menu content">
+      <%= link_to 'companies admin', crm_companies_path, class: active_helper(controller: 'companies') %>
+    </div>
+  </div>
+</div>

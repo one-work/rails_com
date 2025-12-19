@@ -1,0 +1,24 @@
+<div class="box is-padding-less">
+  <%= render 'profile_item' %>
+  <%# render 'cart_column' %>
+</div>
+
+<div class="box is-padding-less">
+  <div class="p-3">
+    <span class="has-border-left-primary size-7">功能</span>
+  </div>
+  <div class="fixed-grid has-3-cols is-shadow-top p-3">
+    <div class="grid">
+      <%= link_to({ controller: 'trade/our/orders' }, class: 'cell has-column-centered') do %>
+        <%= svg_tag 'list', class: 'icon is-medium text-primary' %>
+        <div class="text-grey size-7 mt-1"><%= t('trade.our.orders.index.title') %></div>
+      <% end %>
+      <%= link_to({ controller: 'trade/our/items' }, class: 'cell has-column-centered') do %>
+        <%= svg_tag 'list', class: 'icon is-medium text-primary' %>
+        <div class="text-grey size-7 mt-1"><%= t('trade.our.items.index.title') %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'powered_by' %>

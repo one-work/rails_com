@@ -1,0 +1,75 @@
+<% if defined?(current_organ) && current_member %>
+  <%= render 'profile_item' %>
+<% else %>
+  <%= render 'profile_blank' %>
+<% end %>
+
+<% if defined?(current_organ) && current_organ %>
+  <%= render 'index_summary_organ' %>
+<% else %>
+  <%= render 'index_summary' %>
+<% end %>
+
+<div class="box is-padding-less">
+  <div class="box-header">
+    <span class="has-border-left-primary size-7">常用功能</span>
+    <%= link_to({ controller: 'admin/home' }) do %>
+      <%= svg_tag 'up-right-and-down-left-from-center' %>
+      <span class="size-7 ml-1">更多功能</span>
+    <% end %>
+  </div>
+  <div class="fixed-grid has-3-cols is-shadow-top p-3">
+    <div class="grid">
+      <%= render 'common_nav' %>
+    </div>
+  </div>
+</div>
+
+<div class="box is-padding-less">
+  <div class="box-header">
+    <span class="has-border-left-primary size-7">门店管理</span>
+  </div>
+  <div class="fixed-grid has-3-cols is-shadow-top p-3">
+    <div class="grid">
+      <% if defined?(current_organ) && current_organ %>
+        <%= link_to({ controller: 'factory/productions', host: current_organ.host }, class: 'cell has-column-centered') do %>
+          <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
+          <span class="size-7 text-grey mt-1">门店预览</span>
+        <% end if @organ_tabs.include?('/factory/productions') %>
+        <%= link_to({ controller: 'factory/productions', action: 'swift', host: current_organ.host }, class: 'cell has-column-centered') do %>
+          <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
+          <span class="size-7 text-grey mt-1">快捷下单预览</span>
+        <% end if @organ_tabs.include?('/factory/productions/swift') %>
+        <div
+          data-controller="mini-program"
+          data-mini-program-nav-value="true"
+          data-mini-program-url-value="/pages/share/index"
+          data-mini-program-data-value="<%= @share.to_json %>"
+          data-action="click->mini-program#link"
+          class="cell has-column-centered"
+        >
+          <%= svg_tag 'share', class: 'icon is-medium text-primary' %>
+          <span class="size-7 text-grey mt-1">分享门店</span>
+        </div>
+      <% end %>
+      <%= link_to({ controller: 'factory/admin/organs', action: 'show' }, class: 'cell has-column-centered') do %>
+        <%= svg_tag 'shop', class: 'icon is-medium text-primary' %>
+        <span class="size-7 text-grey mt-1">门店设置</span>
+      <% end %>
+      <%= link_to({ controller: 'wechat/admin/registers', action: 'new' }, class: 'cell has-column-centered') do %>
+        <%= image_tag 'icons/wxpay.svg', class: 'icon is-medium' %>
+        <span class="size-7 text-grey mt-1">微信支付</span>
+      <% end %>
+      <%= link_to({ controller: 'print/admin/home' }, class: 'cell has-column-centered') do %>
+        <div class="text-primary">
+          <%= svg_tag 'bluetooth', class: 'icon is-medium' %>
+        </div>
+        <div class="size-7 text-grey mt-1">
+          <p><%= t('print.admin.home.index.title') %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'powered_by' %>

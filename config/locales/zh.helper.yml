@@ -1,0 +1,10 @@
+zh:
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 创建
+      update: 更新
+      submit: 提交
+      search: 搜索
+      next: 下一步

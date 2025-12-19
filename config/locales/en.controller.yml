@@ -1,0 +1,96 @@
+en:
+  application:
+    index:
+      title: List
+    show:
+      title: General
+    new:
+      title: Add
+    edit:
+      title: Edit
+    destroy:
+      title: Delete
+    batch_destroy:
+      title: Batch Destroy
+  my:
+    home:
+      index:
+        title: Profile
+  board:
+    title: User Settings
+    home:
+      index:
+        title: User Settings
+  admin:
+    home:
+      index:
+        title: Dashboard
+  panel:
+    title: Platform
+    home:
+      index:
+        title: Platform
+  com:
+    title: Settings
+    panel:
+      title: Common Settings
+      acme_accounts:
+        index:
+          title: SSL
+      acme_orders:
+        index:
+          title: SSL Orders
+          order: 生成订单
+          verify: DNS验证
+          cert: 办法证书
+      acme_identifiers:
+        index:
+          title: SSL Details
+      blob_defaults:
+        index:
+          title: Default Blobs
+        new:
+          title: Add Default Blob
+      blobs:
+        index:
+          title: All Blobs
+        unattached:
+          title: Unattached Blobs
+      attachments:
+        index:
+          title: All Attachments
+        garbled:
+          title: Garbled Attachments
+      errs:
+        index:
+          title: System Errors
+      err_summaries:
+        index:
+          title: Errors
+      csps:
+        index:
+          title: Content Secure
+      inbound_emails:
+        index:
+          title: Emails
+      meta_actions:
+        index:
+          title: Actions
+      meta_businesses:
+        index:
+          title: Businesses
+      meta_controllers:
+        index:
+          title: Controllers
+      meta_models:
+        index:
+          title: Models
+      meta_columns:
+        index:
+          title: Columns
+      states:
+        index:
+          title: States
+  job:
+    panel:
+      title: Job Admin

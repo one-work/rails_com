@@ -1,0 +1,4 @@
+en:
+  number:
+    format:
+      delimiter_pattern: !ruby/regexp /(\d)(?=((\d\d)+(\d\d\d)(?!\d)|(\d\d\d){1}(?!\d)))/  # 印度数字格式

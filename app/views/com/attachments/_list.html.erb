@@ -1,0 +1,31 @@
+<% if target.is_a?(ActiveStorage::Attached::One) && target.attachment.present? %>
+  <% if target.content_type.to_s.start_with?('image') %>
+    <%= image_tag target, style: 'max-width: 100%', class: 'image is-48x48' %>
+  <% elsif target.content_type.to_s.start_with?('video') %>
+    <%= link_to target.filename, rails_ext_video_path(video), target: '_blank' %>
+  <% else %>
+    <p id="attachment_<%= target.id %>">
+      <%= link_to target.filename, rails_blob_path(target) %>
+    </p>
+  <% end %>
+<% elsif target.is_a?(ActiveStorage::Attached::Many) %>
+  <% target.each do |file| %>
+    <% if file.content_type.to_s.start_with?('image') %>
+      <figure class="image is-128x128">
+        <%= image_tag file, style: 'max-width: 100%' %>
+      </figure>
+    <% elsif file.content_type.to_s.start_with?('video') %>
+      <figure id="attachment_<%= file.id %>" class="image is-128x128">
+        <%= video_tag file, controls: true %>
+        <figcaption><%= link_to file.filename, rails_ext_video_path(file), target: '_blank' %></figcaption>
+        <%= button_to({ controller: 'com/panel/attachments', action: 'destroy', id: file.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, form: { class: 'delete' }) do %>
+          <%= svg_tag 'xmark' %>
+        <% end %>
+      </figure>
+    <% else %>
+      <p id="attachment_<%= file.id %>">
+        <%= link_to file.filename, rails_blob_path(file) %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>

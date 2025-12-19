@@ -1,0 +1,50 @@
+en:
+  roled:
+    title: 权限
+    admin:
+      title: 权限配置
+      who_roles:
+        index:
+          title: 用户权限
+        edit:
+          title: 权限设置
+    panel:
+      title: Roles
+      roles:
+        index:
+          title: Roles
+        show:
+          title: Config
+        overview:
+          title: Overview
+        create:
+          role_created: 角色已创建
+        update:
+          role_updated: 角色已更新
+        change:
+          role_updated: 角色已更新
+        rule_form:
+          new_govern_placeholder: 新章节名称
+          create_govern: 创建新章节
+          new_rule_placeholder: 新规则名称
+          create_rule: 创建新规则
+        govern_form:
+          new_govern_placeholder: 新章节名称
+          create_govern: 创建新章节
+          new_rule_placeholder: 新规则名称
+          create_rule: 创建新规则
+        new:
+          title: Add Role
+        role:
+          role_name: 角色名称
+          title:     角色标题
+          role_description: 角色描述
+          delete_govern: 删除章节
+          govern_delete_confirm: '你想要删除章节?'
+          rule_delete_confirm: '你想删除规则?'
+          enable: 可用
+          disable: 不可用
+          delete_rule: 删除规则
+      whos:
+        edit:
+          title: 编辑

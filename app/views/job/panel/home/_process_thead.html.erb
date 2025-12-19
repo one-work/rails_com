@@ -1,0 +1,7 @@
+<th>Process UUID</th>
+<th><%= SolidQueue::Process.human_attribute_name(:hostname) %></th>
+<th>
+  <p><%= SolidQueue::Process.human_attribute_name(:created_at) %></p>
+  <p><%= SolidQueue::Process.human_attribute_name(:last_heartbeat_at) %></p>
+</th>
+<th>State</th>

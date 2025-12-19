@@ -1,0 +1,23 @@
+<%= form_with theme: nil, model: filter, url: { controller: 'com/admin/filters', action: 'update', id: filter.id }, id: "filter_update_#{filter.id}", class: 'button_to' do |f| %>
+  <%= f.hidden_field :controller_path %>
+  <%= f.hidden_field :action_name %>
+  <%= f.fields :filter_columns do |ef| %>
+    <%= ef.hidden_field :column %>
+    <%= ef.hidden_field :value, value: request.query_parameters[ef.object.column] %>
+    <%= ef.hidden_field :_destroy, value: !request.query_parameters.key?(ef.object.column) %>
+  <% end %>
+  <%= f.fields :filter_columns_attributes do |ef| %>
+    <% request.query_parameters.except(:filter_id, *f.object.filter_columns.pluck(:column)).each_with_index do |col, index| %>
+      <%= ef.hidden_field :column, value: col[0], index: f.object.filter_columns.size + index %>
+      <%= ef.hidden_field :value, value: col[1], index: f.object.filter_columns.size + index %>
+    <% end %>
+  <% end %>
+  <button type="submit" class="button">
+    <span class="icon">
+      <i class="fa-solid fa-floppy-disk"></i>
+    </span>
+    <% if filter.detect_change(request) %>
+      <span class="ml-1">Update</span>
+    <% end %>
+  </button>
+<% end %>

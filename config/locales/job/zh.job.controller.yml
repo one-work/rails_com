@@ -1,0 +1,45 @@
+zh:
+  job:
+    panel:
+      title: 后台任务
+      home:
+        index:
+          title: 后台任务
+      queues:
+        index:
+          title: 队列
+      processes:
+        index:
+          title: 进程
+      jobs:
+        index:
+          title: 已完成
+        failed:
+          title: 已失败
+        todo:
+          title: 计划中
+        lost:
+          title: 不再执行
+        blocked:
+          title: Blocked
+        running:
+          title: 运行中
+        ready:
+          title: 待执行
+        clearable:
+          title: 可清理的
+        clear_all:
+          title: 清理全部
+          confirm: 确认
+        batch_destroy:
+          title: 删除选中
+          confirm: 确认
+        batch_retry:
+          title: 重试选中
+          confirm: 确认重试
+        retry:
+          title: 重试
+          confirm: 确认
+        retry_all:
+          title: 重试所有
+          confirm: 确认

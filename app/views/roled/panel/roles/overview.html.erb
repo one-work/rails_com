@@ -1,0 +1,17 @@
+<table class="table is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <%= render 'overview_thead' %>
+    </tr>
+  </thead>
+  <tbody>
+  <% @role.role_hash.each do |business_identifier, namespaces| %>
+    <tr>
+      <td rowspan="<%= @role.governs.where(govern_taxon_id: taxon.id).count + 1 %>"><%= taxon.desc %></td>
+    </tr>
+    <% @role.governs.includes(:rules).where(govern_taxon_id: taxon.id).each do |govern| %>
+      <%= render partial: 'overview_govern', locals: { govern: govern } %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

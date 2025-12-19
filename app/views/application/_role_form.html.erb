@@ -1,0 +1,35 @@
+<%= form_with theme: 'modal', model: model, url: { action: 'update' } do |f| %>
+  <%= render 'modal_header' %>
+  <div class="modal-card-body">
+    <%= render 'error_messages', target: model %>
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <label class="label text-grey"><%= model.class.human_attribute_name(:role_ids) %></label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+          <% @roles.each_with_index do |role, index| %>
+            <% if model.role_whos_hash.key?(role.id) %>
+              <label class="checkbox">
+                <span>
+                  <%= hidden_field_tag "#{model.model_name.param_key}[role_whos_attributes][#{index}][id]", model.role_whos_hash[role.id].id %>
+                  <%= hidden_field_tag "#{model.model_name.param_key}[role_whos_attributes][#{index}][_destroy]", 1 %>
+                  <%= check_box_tag "#{model.model_name.param_key}[role_whos_attributes][#{index}][_destroy]", 0, true %>
+                </span>
+                <span><%= role.name %></span>
+              </label>
+            <% else %>
+              <label class="checkbox">
+                <%= check_box_tag "#{model.model_name.param_key}[role_whos_attributes][#{index}][role_id]", role.id %>
+                <span><%= role.name %></span>
+              </label>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>

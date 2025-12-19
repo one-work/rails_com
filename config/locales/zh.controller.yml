@@ -1,0 +1,187 @@
+zh:
+  controller:
+    index:
+      title: 列表页
+      export: 导出
+      sync: 加载默认配置
+      all: 所有
+      log: 操作日志
+      approve: 接受
+      reject: 拒绝
+      clear: 重置
+      back: 返回
+    show:
+      title: 详情
+    new:
+      title: 添加
+      save: 保存
+    create:
+      title: 添加
+    new_form:
+      title: 新增
+    edit:
+      title: 编辑
+      save: 保存
+    update:
+      title: 编辑
+    edit_form:
+      title: 编辑
+    destroy:
+      title: 删除
+      confirm: 确认删除
+  home:
+    index:
+      title: 首页
+  my:
+    home:
+      index:
+        title: 个人中心
+  me:
+    home:
+      index:
+        title: 工作台
+  admin:
+    home:
+      index:
+        title: 所有功能
+  agent:
+    home:
+      index:
+        title: 收银台
+  panel:
+    home:
+      index:
+        title: 后台
+  board:
+    home:
+      index:
+        title: 账号
+  com:
+    common:
+      state_return:
+        title: 返回登录前页面
+    admin:
+      filters:
+        detect:
+          title: 保存搜索
+    my:
+      ssh_keys:
+        index:
+          title: 私有部署
+        deploy:
+          title: 部署
+    panel:
+      title: 系统配置
+      home:
+        index:
+          title: 系统配置
+      acme_accounts:
+        index:
+          title: SSL 证书申请
+      acme_orders:
+        index:
+          title: SSL 订单
+        order:
+          title: 生成订单
+        verify:
+          title: DNS验证
+        cert:
+          title: 颁发证书
+      acme_identifiers:
+        index:
+          title: SSL 订单详情
+      acme_servicers:
+        index:
+          title: 域名托管商
+      blob_defaults:
+        index:
+          title: 默认图片
+        new:
+          title: 新建图片
+      blobs:
+        index:
+          title: 文件
+        unattached:
+          title: 游离文件
+      attachments:
+        index:
+          title: 附件管理
+      detectors:
+        index:
+          title: 监测器
+      err_bots:
+        index:
+          title: 报错机器人
+      err_summaries:
+        index:
+          title: 错误日志
+        destroy:
+          title: 删除汇总
+        clean:
+          title: 删除明细
+      errs:
+        index:
+          title: 错误日志
+        clean_other:
+          title: 删除其他错误
+          confirm: 确认
+      logs:
+        index:
+          title: 日志
+      log_sqls:
+        index:
+          title: SQL 日志
+      csps:
+        index:
+          title: 内容安全
+      inbound_emails:
+        index:
+          title: 邮件管理
+      meta_businesses:
+        index:
+          title: 业务
+      meta_namespaces:
+        index:
+          title: 命名空间
+      meta_controllers:
+        index:
+          title: 控制器（Controller)
+      meta_actions:
+        index:
+          title: 方法（Action）
+      meta_models:
+        index:
+          title: 模型（Model）
+        reflections:
+          title: 关联
+        indexes:
+          title: 索引
+        index_edit:
+          title: 修改索引
+      meta_columns:
+        index:
+          title: 属性列表
+        sync:
+          title: 同步
+        test:
+          title: 测试
+      pg_publications:
+        index:
+          title: 发布者
+        create_all:
+          title: 全量复制
+      pg_publication_tables:
+        index:
+          title: 开通表
+      pg_replication_slots:
+        index:
+          title: 复制槽
+      puma:
+        stats:
+          title: Puma 运行状态
+      states:
+        index:
+          title: 状态
+      ssh_keys:
+        index:
+          title: SSH

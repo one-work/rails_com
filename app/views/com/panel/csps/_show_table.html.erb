@@ -1,0 +1,48 @@
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:document_uri) %></dt>
+  <dd><%= @csp.document_uri %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:referrer) %></dt>
+  <dd><%= @csp.referrer %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:blocked_uri) %></dt>
+  <dd><%= @csp.blocked_uri %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:violated_directive) %></dt>
+  <dd><%= @csp.violated_directive %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:effective_directive) %></dt>
+  <dd><%= @csp.effective_directive %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:original_policy) %></dt>
+  <dd><%= simple_format @csp.original_policy.split('; ') %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:disposition) %></dt>
+  <dd><%= @csp.disposition %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:source_file) %></dt>
+  <dd><%= @csp.source_file %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:line_number) %></dt>
+  <dd><%= @csp.line_number %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:column_number) %></dt>
+  <dd><%= @csp.column_number %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:status_code) %></dt>
+  <dd><%= @csp.status_code %></dd>
+</div>
+<div>
+  <dt><%= Com::Csp.human_attribute_name(:script_sample) %></dt>
+  <dd><%= @csp.script_sample %></dd>
+</div>

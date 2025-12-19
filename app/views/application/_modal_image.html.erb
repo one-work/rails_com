@@ -1,0 +1,37 @@
+<div class="modal as-preview">
+  <div data-action="click->preview#hide" class="modal-background has-animate-fade-in"></div>
+  <div data-preview-target="window" class="images has-block-centered py-4">
+    <% images.each_with_index do |image, index| %>
+      <figure class="image is-32x32" data-index="<%= index %>" data-title="<%= image[:title] %>" data-action="click->preview#current">
+        <%= image_tag image[:url] %>
+      </figure>
+    <% end %>
+  </div>
+  <p class="text-centered mt-2 zindex-1">
+    <span class="tag is-black is-large">
+      <span data-preview-target="position"></span>
+      <span class="mx-1">/</span>
+      <span><%= images.size %></span>
+    </span>
+  </p>
+  <div class="modal-content">
+    <img
+      data-preview-target="preview"
+      src="https://bulma.io/assets/images/placeholders/1280x960.png"
+      alt=""
+      class="image"
+    >
+    <p data-preview-target="title" class="mt-3 text-centered text-white"></p>
+  </div>
+  <button
+    data-action="preview#hide"
+    class="modal-close is-large"
+    style="--bulma-modal-close-top: 5rem"
+  ></button>
+  <button data-action="preview#prev" class="modal-prev button is-rounded is-outlined">
+    <%= svg_tag 'chevron-left' %>
+  </button>
+  <button data-action="preview#next" class="modal-next button is-rounded is-outlined">
+    <%= svg_tag 'chevron-right' %>
+  </button>
+</div>

@@ -1,0 +1,23 @@
+<nav data-controller="switch" class="level mb-2 box is-narrow">
+  <div class="level-left">
+    <button data-action="switch#toggle" data-id="filter_form" class="button">
+      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-3' %>
+    </button>
+    <%= render 'filter_form' %>
+    <div data-switch-target="src" class="buttons">
+      <% if current_filters.present? %>
+        <%= link_to t('.all'), {}, class: 'button is-light' %>
+        <%= render partial: 'filter_form_tag', collection: current_filters, as: :filter %>
+      <% end %>
+      <%= render 'filter_default' %>
+    </div>
+  </div>
+  <div class="level-right">
+    <% if filter = current_filters.find(&->(i){ i.id.to_s == params[:filter_id] }) %>
+      <%= render partial: 'filter_form_update', locals: { filter: filter } %>
+    <% elsif request.query_parameters.key?('taxon_id') %>
+      <%= render 'filter_form_create' %>
+    <% end %>
+    <%= render 'filter_dropdown' %>
+  </div>
+</nav>

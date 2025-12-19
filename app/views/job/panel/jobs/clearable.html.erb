@@ -1,0 +1,9 @@
+<%= render 'tabs' %>
+<%= render 'index_bar' %>
+<%= render 'index_actions' %>
+
+<%= render layout: 'index_table' do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @jobs, as: :model %>
+<% end %>
+
+<%= paginate @jobs %>

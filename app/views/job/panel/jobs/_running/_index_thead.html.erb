@@ -1,0 +1,9 @@
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:id) %></p>
+  <p><%= SolidQueue::Job.human_attribute_name(:status) %></p>
+</th>
+<th>
+  <p><%= SolidQueue::Job.human_attribute_name(:class_name) %></p>
+  <p><%= SolidQueue::Job.human_attribute_name(:scheduled_at) %></p>
+</th>
+<th><%= SolidQueue::Job.human_attribute_name(:arguments) %></th>

@@ -1,0 +1,3 @@
+<div id="model_wrapper" class="field is-horizontal">
+  <%= f.collection_select :record_name, @meta_models, :record_name, :display_name, { all: { select: nil }, label: '模型' }, data: { controller: 'input', action: 'input#link', input_method_value: 'POST', input_url_value:  url_for(action: 'columns', dom_id: 'model_wrapper', **params.permit(:dom_scope)) } %>
+</div>

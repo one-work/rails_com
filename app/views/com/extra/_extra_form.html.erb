@@ -1,0 +1,5 @@
+<%= f.fields :extra, model: OpenStruct.new(f.object.extra) do |ef| %>
+  <% taxon.parameters.each do |k, v| %>
+    <%= render partial: "extra_form/#{DefaultForm.config.mapping[v.to_sym][:input]}", locals: { f: f, ef: ef, name: k }  %>
+  <% end %>
+<% end %>

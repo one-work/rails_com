@@ -1,0 +1,7 @@
+<%= render layout: 'index_table' do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @queues, as: :model %>
+<% end %>
+
+<%= render layout: 'process_table' do %>
+  <%= render partial: 'process_tbody', layout: 'process_tr', collection: @processes, as: :model %>
+<% end %>

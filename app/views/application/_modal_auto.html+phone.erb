@@ -1,0 +1,14 @@
+<div id="modal" data-controller="modal" class="modal is-mobile is-mobile-top is-active">
+  <div data-action="click->modal#close" class="modal-background has-animate-fade-in"></div>
+  <div class="modal-card has-animate-slide-top-down">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><%= t('.title') %></p>
+    </header>
+    <section class="modal-card-body">
+      <%= yield %>
+    </section>
+    <footer class="modal-card-foot justify-content-center">
+      <button type="button" data-action="modal#close" class="button is-danger is-light">取消</button>
+    </footer>
+  </div>
+</div>

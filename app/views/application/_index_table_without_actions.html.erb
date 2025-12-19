@@ -1,0 +1,15 @@
+<table class="table is-fullwidth as-boxed">
+  <thead>
+    <tr>
+      <%= render 'index_thead' %>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+    <%= yield %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <%= render 'index_tfoot' %>
+    </tr>
+  </tfoot>
+</table>

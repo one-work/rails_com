@@ -1,0 +1,6 @@
+<p id="attachment_<%= video.id %>">
+  <%= hidden_field_tag "#{f.object_name}[#{video.name}#{}][]", video.signed_id, id: nil %>
+  <%= link_to video.filename, rails_ext_video_path(video), target: '_blank' %>
+  <%= link_to 'x', panel_attachment_path(video.id), method: :delete, data: {turbo_confirm: t('.destroy.confirm')} %>
+</p>
+

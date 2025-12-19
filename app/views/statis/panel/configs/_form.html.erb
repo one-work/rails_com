@@ -1,0 +1,60 @@
+<%= f.text_field :statistical_type %>
+<%= f.date_field :begin_on %>
+<%= f.date_field :end_on %>
+<%= f.text_field :note %>
+<% f.object.keys.each_with_index do |key, index| %>
+  <div data-controller="field" data-field-index-value="<%= index %>" class="field is-horizontal">
+    <% if index == 0 %>
+      <%= f.label :keys %>
+    <% else %>
+      <div class="field-label is-normal"></div>
+    <% end %>
+    <div class="field-body">
+      <%= f.text_field :keys, value: key, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
+      <span class="field is-narrow has-addons has-addons-middle">
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+      </span>
+    </div>
+  </div>
+<% end %>
+<% if f.object.keys.blank? %>
+  <div data-controller="field" data-field-index-value="0" class="field is-horizontal">
+    <%= f.label :keys %>
+    <div class="field-body">
+      <%= f.text_field :keys, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
+      <span class="field is-narrow has-addons has-addons-middle">
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+      </span>
+    </div>
+  </div>
+<% end %>
+<% f.object.scopes.each_with_index do |key, index| %>
+  <div data-controller="field" data-field-index-value="<%= index %>" class="field is-horizontal">
+    <% if index == 0 %>
+      <%= f.label :scopes %>
+    <% else %>
+      <div class="field-label is-normal"></div>
+    <% end %>
+    <div class="field-body">
+      <%= f.text_field :scopes, value: key, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
+      <span class="field is-narrow has-addons has-addons-middle">
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+      </span>
+    </div>
+  </div>
+<% end %>
+<% if f.object.scopes.blank? %>
+  <div data-controller="field" data-field-index-value="0" class="field is-horizontal">
+    <%= f.label :scopes %>
+    <div class="field-body">
+      <%= f.text_field :scopes, label: nil, all: { normal: nil }, wrap: { input: 'field' }, multiple: true %>
+      <span class="field is-narrow has-addons has-addons-middle">
+        <%= svg_tag 'plus', data: { action: 'click->field#add' }, class: 'icon clickable' %>
+        <%= svg_tag 'minus', data: { action: 'click->field#remove' }, class: 'icon clickable ml-2' %>
+      </span>
+    </div>
+  </div>
+<% end %>

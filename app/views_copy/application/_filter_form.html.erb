@@ -1,0 +1,9 @@
+<%= form_with theme: 'search', model: model_klass.new, url: { action: params[:action] }, data: { switch_target: 'src' }, class: params.key?('name-like') ? '' : 'display-none' do |f| %>
+  <div class="field-body">
+    <%= f.text_field 'name-like', autocomplete: 'off' %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:name]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>

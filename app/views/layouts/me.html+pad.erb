@@ -1,0 +1,12 @@
+<%= render layout: 'layouts/application_head' do %>
+  <%= render 'nav_bar' %>
+  <div id="alert"></div>
+  <main class="container">
+    <div class="breadcrumb has-succeeds-separator px-3 pt-3">
+      <ul>
+        <%= render 'breadcrumb' %>
+      </ul>
+    </div>
+    <%= yield %>
+  </main>
+<% end %>

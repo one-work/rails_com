@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-theme="light" class="overflow-y-hidden">
+  <head>
+    <%= render 'head_title' %>
+    <meta name="turbo-cache-control" content="no-preview">
+    <meta name="turbo-prefetch" content="<%= !Rails.env.local? %>">
+    <meta name="view-transition" content="same-origin">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= render 'head_extra_js' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= csp_meta_tag %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

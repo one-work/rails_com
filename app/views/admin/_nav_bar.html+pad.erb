@@ -1,0 +1,15 @@
+<nav class="navbar is-sticky is-light" data-controller="navbar" data-navbar-scroll-value="true" data-navbar-new-class="is-dark" data-navbar-old-class="is-light">
+  <div class="navbar-brand">
+    <%= render 'nav_brand' %>
+  </div>
+  <div class="navbar-menu" data-navbar-target="menu">
+    <div class="navbar-start">
+      <%= render 'nav_with_login' %>
+    </div>
+    <div class="navbar-end">
+      <%= render partial: 'locales' %>
+      <%= render partial: 'notice_navbar' if defined? RailsNotice %>
+      <%= render partial: 'auth_navbar' %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+<% @roled_tabs.each do |tab| %>
+  <%= link_to(tab.path, data: { turbo_action: 'replace' }, class: active_helper(paths: tab.path, active: 'is-active')) do %>
+    <%= svg_tag tab.icon, class: 'icon is-medium mr-0' %>
+    <span class="family-monospace size-7"><%= tab.name %></span>
+  <% end %>
+<% end %>
+<% if current_user.organs.include?(current_organ) %>
+  <%= link_to({ controller: 'me/home', host: "admin.#{Rails.application.routes.default_url_options[:host]}" }, class: 'text-warning') do %>
+    <%= svg_tag 'arrows-rotate', class: 'icon is-medium mr-0' %>
+    <span class="family-monospace size-7">后台管理</span>
+  <% end %>
+<% end if current_user && current_organ %>

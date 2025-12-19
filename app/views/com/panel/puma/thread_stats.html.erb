@@ -1,0 +1,8 @@
+<dl class="as-show as-boxed">
+<% @backtraces.each do |thread| %>
+  <div>
+    <dt><%= thread[:name] %></dt>
+    <dd><pre><%= thread[:backtrace].to_format_yaml %></pre></dd>
+  </div>
+<% end %>
+</dl>

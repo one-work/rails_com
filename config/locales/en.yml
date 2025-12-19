@@ -1,0 +1,37 @@
+en:
+  site_name: Rails Application
+  en: English
+  powered_by: Powered By
+  copyright: Work Design
+  controller:
+    confirm: Confirm
+    search: Search
+  views:
+    pagination:
+      first: First
+      last: Last
+      previous: Prev
+      next: Next
+      truncate: ...
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+    select:
+      prompt: "Please select"
+    submit:
+      create: 'Creates %{model}'
+      update: 'Updates %{model}'
+      submit: 'Saves %{model}'
+      search: Search
+  number:
+    human:
+      storage_units:
+        units:
+          h: Hours
+          m: Min

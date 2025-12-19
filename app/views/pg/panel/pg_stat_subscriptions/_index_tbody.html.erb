@@ -1,0 +1,14 @@
+<td><%= model.respond_to?(:worker_type) && model.worker_type %></td>
+<td>
+  <p><%= model.pid %></p>
+  <p><%= model.leader_pid %></p>
+</td>
+<td>
+  <p><%= model.received_lsn %></p>
+  <p><%= model.latest_end_lsn %></p>
+</td>
+<td>
+  <p><time data-controller="time"><%= model.last_msg_send_time.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time"><%= model.last_msg_receipt_time.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time"><%= model.latest_end_time.to_fs(:iso8601) %></time></p>
+</td>

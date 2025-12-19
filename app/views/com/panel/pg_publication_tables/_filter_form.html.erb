@@ -1,0 +1,9 @@
+<%= form_with theme: 'search', model: Com::PgPublicationTable.new, url: { action: params[:action] } do |f| %>
+  <div class="field-body">
+    <%= f.text_field :tablename %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:tablename]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>

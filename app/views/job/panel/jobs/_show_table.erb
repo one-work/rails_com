@@ -1,0 +1,14 @@
+<div>
+  <dt><%= SolidQueue::Job.human_attribute_name(:arguments) %></dt>
+  <dd><pre class="text-left"><%= @job.arguments.to_format_yaml %></pre></dd>
+</div>
+<% if @job.failed_execution %>
+  <div>
+    <dt><%= SolidQueue::FailedExecution.human_attribute_name(:message) %></dt>
+    <dd><pre class="text-left"><%= @job.failed_execution.error['message'] %></pre></dd>
+  </div>
+  <div>
+    <dt><%= SolidQueue::FailedExecution.human_attribute_name(:backtrace) %></dt>
+    <dd><pre class="text-left"><%= @job.failed_execution.error['backtrace'].join("\n") %></pre></dd>
+  </div>
+<% end %>

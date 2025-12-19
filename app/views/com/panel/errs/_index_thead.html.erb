@@ -1,0 +1,10 @@
+<th id="xxd" data-controller="check" data-check-form-outlet="form.button_to">
+  <%= check_box_tag 'xxd', 'xx', false, data: { check_target: 'all', action: 'check#toggleAll' }, id: nil %>
+</th>
+<th>
+  <p><%= Com::Err.human_attribute_name(:path) %></p>
+  <p><%= Com::Err.human_attribute_name(:params) %></p>
+  <p><%= Com::Err.human_attribute_name(:session) %></p>
+  <p><%= Com::Err.human_attribute_name(:exception) %></p>
+</th>
+<th><%= Com::Err.human_attribute_name(:created_at) %></th>

@@ -1,0 +1,103 @@
+<p class="size-7 text-grey mb-1">文件</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/blob_defaults' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.blob_defaults.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/blobs' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.blobs.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/attachments' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.attachments.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">系统数据</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/meta_businesses' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.meta_businesses.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/meta_controllers' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_controllers', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('com.panel.meta_controllers.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/meta_models' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_models', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('com.panel.meta_models.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/states' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.states.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/puma', action: 'stats' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.puma.stats.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">SSL 证书管理</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/acme_accounts' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.acme_accounts.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/acme_servicers' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.acme_servicers.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">运营</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/err_bots' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.err_bots.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/err_summaries' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: ['err_summaries', 'errs'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('com.panel.err_summaries.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/csps' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.csps.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/detectors' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.detectors.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/ssh_keys' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.ssh_keys.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">日志</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/logs' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.logs.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/logs', action: 'ip' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.logs.ip.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/log_sqls' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.log_sqls.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">邮件</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/inbound_emails' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.inbound_emails.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">Postgresql</p>
+<div class="grid">
+  <%= link_to({ controller: 'com/panel/pg_publications' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.pg_publications.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'com/panel/pg_replication_slots' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('com.panel.pg_replication_slots.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1"><%= t('statis.panel.title') %></p>
+<div class="grid">
+  <%= link_to({ controller: 'statis/panel/configs' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('statis.panel.configs.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1"><%= t('job.panel.title') %></p>
+<div class="grid">
+  <%= link_to({ controller: 'job/panel/home' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('job.panel.home.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1"><%= t('roled.panel.title') %></p>
+<div class="grid">
+  <%= link_to({ controller: 'roled/panel/roles' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'roles', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('roled.panel.roles.index.title') %></span>
+  <% end %>
+</div>
+

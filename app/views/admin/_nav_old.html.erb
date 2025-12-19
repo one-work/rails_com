@@ -1,0 +1,19 @@
+<aside id="admin_menu" data-controller="menu" class="menu as-wrap p-3" style="<%= defined?(current_organ) && current_organ&.admin_theme %>">
+  <%= render 'brand_nav' %>
+  <%= render 'admin/factory_simple_nav' if defined?(RailsFactory) && role_permit?(business: 'factory', namespace: 'admin') %>
+  <%= render 'in/trade_nav' if defined?(RailsTrade) && role_permit?(business: 'trade', namespace: 'in') %>
+  <%= render 'admin/trade_simple_nav' if defined?(RailsTrade) && role_permit?(business: 'trade', namespace: 'admin') %>
+  <%= render 'admin/crm_nav' if defined?(RailsCrm) && role_permit?(business: 'trade', namespace: 'admin') %>
+  <%= render 'admin/ship_simple_nav' if defined?(RailsShip) && role_permit?(business: 'trade', namespace: 'admin') %>
+  <%= render 'admin/finance_nav' if defined?(RailsFinance) && role_permit?(business: 'finance', namespace: 'admin') %>
+  <%= render 'admin/space_nav' if defined?(RailsSpace) && role_permit?(business: 'space', namespace: 'admin') %>
+  <%= render 'admin/sync_nav' if defined?(RailsSync) && role_permit?(business: 'sync', namespace: 'admin') %>
+  <%= render 'admin/qingflow_nav' if defined?(RailsQingflow) && role_permit?(business: 'qingflow', namespace: 'admin') %>
+  <%= render 'admin/data_nav' if defined?(RailsData) && role_permit?(business: 'data', namespace: 'admin') %>
+  <%= render 'admin/auth_nav' if defined?(RailsAuth) && role_permit?(business: 'auth', namespace: 'admin') %>
+  <%= render 'admin/notice_nav' if defined?(RailsNotice) && role_permit?(business: 'notice', namespace: 'admin') %>
+  <%= render 'admin/org_simple_nav' if defined?(RailsOrg) && role_permit?(business: 'org', namespace: 'admin') %>
+  <%= render 'admin/bench_nav' if defined?(RailsBench) && role_permit?(business: 'bench', namespace: 'admin') %>
+  <%= render 'admin/detail_nav' if defined?(RailsDetail) && role_permit?(business: 'detail', namespace: 'admin') %>
+  <%= render 'admin/print_nav' if defined?(RailsPrint) && role_permit?(business: 'print', namespace: 'admin') %>
+</aside>

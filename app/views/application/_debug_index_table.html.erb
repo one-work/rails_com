@@ -1,0 +1,12 @@
+<table class="table is-striped is-fullwidth as-boxed">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <%= render 'index_thead' %>
+      <%= render 'index_thead_actions' %>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+    <%= yield %>
+  </tbody>
+</table>

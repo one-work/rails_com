@@ -1,0 +1,8 @@
+<tr>
+  <td><%= model[0] %></td>
+  <td>
+  <%= link_to({ action: 'month', month: model[0] }) do %>
+    <span><%= model[1] %></span>
+  <% end %>
+  </td>
+</tr>

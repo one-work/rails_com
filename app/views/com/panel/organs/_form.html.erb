@@ -1,0 +1,5 @@
+<%= f.fields :theme_settings, model: OpenStruct.new(f.object.theme_settings) do |ef| %>
+  <%= ef.fields :panel_menu, model: OpenStruct.new(ef.object['panel_menu']) do |pf| %>
+    <%= render partial: 'input_color_range', locals: { f: pf } %>
+  <% end %>
+<% end %>

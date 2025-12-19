@@ -1,0 +1,79 @@
+zh:
+  zh: 中文
+  site_name: 网站
+  powered_by: 技术支持
+  copyright: Work Design
+  confirm: 确认操作
+  search: 搜索
+  attributes:
+    id: ID
+    name: 名称
+    title: 标题
+    type: 类型
+    description: 描述
+    note: 备注
+    birthday: 生日
+    gender: 性别
+    avatar: 头像
+    position: 序号
+    parent_ancestors: 上级
+    start_at: 开始时间
+    finish_at: 截止时间
+    code: 编码
+    created_at: 创建时间
+    updated_at: 更新时间
+  errors:
+    format: '%{attribute}%{message}'
+    messages:
+      model_invalid: 验证失败：%{errors}
+      blank: 不能为空
+      too_short: 过短（最短为 %{count} 个字符）
+      required: 必须存在
+      taken: 已经被使用
+      accepted: 必须是可被接受的
+      present: 必须是空白
+      confirmation: 不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      odd: 必须为单数
+      too_long: 过长（最长为 %{count} 个字符）
+      wrong_length: 长度非法（必须为 %{count} 个字符）
+      other_than: 长度非法（不可为 %{count} 个字符
+    template:
+      body: 如下字段出现错误：
+      header: 有 %{count} 个错误发生导致“%{model}”无法被保存。
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 验证失败：%{errors}
+        restrict_dependent_destroy:
+          has_one: "Cannot delete record because a dependent %{record} exists"
+          has_many: "Cannot delete record because dependent %{record} exist"
+  views:
+    pagination:
+      first: 第一页
+      last: 最后一页
+      previous: 上一页
+      next: 下一页
+      truncate: ...
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+  rails_role:
+    access_denied: 没有权限

@@ -1,0 +1,12 @@
+<tr id="tr_<%= rule.identifier %>" data-controller="tree-remote" data-tree-remote-target="item">
+  <td>
+    <span style="width: 4.29em; display: inline-block"></span>
+    <span><%= rule.name %></span>
+    <span class="text-grey"><%= rule.action_name %></span>
+  </td>
+  <td>
+    <%= form_with theme: 'switch', model: rule, url: { controller: 'rules', action: 'update', govern_id: params[:govern_id], id: rule.id }, data: { controller: 'input' } do |f| %>
+      <%= f.check_box :landmark, data: { action: 'input#submit' }, id: nil %>
+    <% end %>
+  </td>
+</tr>

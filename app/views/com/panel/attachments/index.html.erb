@@ -1,0 +1,8 @@
+<%= render 'filter_form' %>
+<%= render 'tabs' %>
+
+<%= render layout: 'index_table' do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @attachments, as: :model %>
+<% end %>
+
+<%= paginate @attachments %>

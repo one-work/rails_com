@@ -1,0 +1,17 @@
+<table class="table is-border">
+  <thead>
+    <tr>
+      <th colspan="2" class="text-centered">
+        <p><%= col.name %></p>
+        <p><%= col.klass.name %></p>
+      </th>
+    </tr>
+  </thead>
+  <tbody data-controller="draw-line" data-action="click->draw-line#link">
+  <% Array(col.foreign_key).each_with_index do |key, index| %>
+    <tr>
+      <td data-id="<%= Array(col.active_record_primary_key)[index] %>"><%= key %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

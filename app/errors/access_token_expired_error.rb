@@ -1,0 +1,2 @@
+class AccessTokenExpiredError < StandardError
+end

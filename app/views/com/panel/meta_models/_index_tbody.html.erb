@@ -1,0 +1,26 @@
+<td><%= model.name %></td>
+<td><%= link_to model.record_name, { controller: 'meta_columns', meta_model_id: model.id, **request.GET.except(:id, :page, :per, :record_name) } %></td>
+<td><%= model.description %></td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'eye', class: 'icon text-info' %>
+    <% end %>
+    <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'pencil', class: 'icon text-link' %>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, class: 'button is-small is-borderless', form: { data: { turbo_confirm: t('.destroy.confirm') } }) do %>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    <% end %>
+  </div>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= link_to({ action: 'reflections', id: model.id, **request.query_parameters.except(:id, :page, :per, :table_name) }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'sitemap' %>
+      <span class="ml-1"><%= t('.reflections.title') %></span>
+    <% end %>
+    <%= link_to({ action: 'indexes', id: model.id, **request.query_parameters.except(:id, :page, :per, :table_name) }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'sitemap' %>
+      <span class="ml-1"><%= t('.indexes.title') %></span>
+    <% end %>
+  </div>
+</td>

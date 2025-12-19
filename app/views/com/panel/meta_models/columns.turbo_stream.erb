@@ -1,0 +1,2 @@
+<%= turbo_stream.remove 'column_wrapper' %>
+<%= turbo_stream.after params[:dom_id], partial: 'meta_columns_options', locals: { f: form_object(scope: params[:dom_scope]) } %>

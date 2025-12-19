@@ -1,0 +1,13 @@
+<div class="as-bar">
+  <% if current_state %>
+    <%= link_to(current_state.prev_path, text: true, class: 'px-4') do %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
+    <% end %>
+  <% else %>
+    <%= link_to({ controller: '/my/home' }, class: 'px-4') do %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
+    <% end %>
+  <% end %>
+  <div class="bar-title"><%= t('.title', default: '') %></div>
+  <i class="px-5"></i>
+</div>

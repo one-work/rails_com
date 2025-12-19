@@ -1,0 +1,15 @@
+<div id="modal" data-controller="modal" class="modal is-mobile is-mobile-bottom is-active">
+  <div data-action="click->modal#close" class="modal-background has-animate-fade-in"></div>
+  <%= form_with theme: params.fetch(:theme, 'phone_modal'), model: model, scope: model_name, url: { action: 'update' } do |f| %>
+    <header class="as-bar">
+      <button type="button" data-action="modal#close" class="button is-borderless px-5">
+        <%= svg_tag 'xmark' %>
+      </button>
+      <p class="bar-title"><%= f.object.class.human_attribute_name(params[:field]) %></p>
+      <span class="px-5"></span>
+    </header>
+    <section class="modal-card-body">
+      <%= render partial: params[:field_type], locals: { f: f, name: params[:field] } %>
+    </section>
+  <% end %>
+</div>

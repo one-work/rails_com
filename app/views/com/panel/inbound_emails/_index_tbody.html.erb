@@ -1,0 +1,10 @@
+<td><%= model.status_i18n %></td>
+<td>
+  <p><%= simple_format model.mail.to %></p>
+  <p class="text-grey"><%= simple_format model.mail.from %></p>
+</td>
+<td>
+  <p><%= link_to model.mail.subject, { action: 'show', id: model.id } %></p>
+  <p class="text-grey"><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
+</td>
+

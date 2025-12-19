@@ -1,0 +1,3 @@
+<%= link_to url, disabled: current_page.last?, data: { turbo_action: 'replace' }, class: 'pagination-next', title: t('views.pagination.next') do %>
+  <%= svg_tag 'forward-step' %>
+<% end %>

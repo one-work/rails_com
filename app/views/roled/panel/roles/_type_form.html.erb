@@ -1,0 +1,29 @@
+<div class="field is-horizontal">
+  <div class="field-label">
+    <label class="label text-grey"><%= Roled::Role.human_attribute_name(:role_types) %></label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+      <% Roled::RoleType.options_i18n(:who_type).each_with_index do |(text, who_type), index| %>
+        <% if @role.role_types_hash.key?(who_type.to_s) %>
+          <label class="checkbox">
+            <span>
+              <%= hidden_field_tag "role[role_types_attributes][#{index}][id]", @role.role_types_hash[who_type.to_s].id %>
+              <%= hidden_field_tag "role[role_types_attributes][#{index}][_destroy]", 1 %>
+              <%= check_box_tag "role[role_types_attributes][#{index}][_destroy]", 0, true %>
+            </span>
+            <span><%= text %></span>
+          </label>
+        <% else %>
+          <label class="checkbox">
+            <%= check_box_tag "role[role_types_attributes][#{index}][who_type]", who_type %>
+            <span><%= text %></span>
+          </label>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

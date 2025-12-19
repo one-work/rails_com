@@ -1,0 +1,5 @@
+<%= form_with model: @blob, url: { action: 'create' } do |f| %>
+  <%= render 'error_messages', target: @blob %>
+  <%= f.file_field :io %>
+  <%= f.submit %>
+<% end %>

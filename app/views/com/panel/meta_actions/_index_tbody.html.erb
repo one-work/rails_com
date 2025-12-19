@@ -1,0 +1,9 @@
+<td><%= model.name %></td>
+<td><%= model.action_name %></td>
+<td><%= model.operation_i18n %></td>
+<td>
+<% model.required_parts.each do |part| %>
+  <p class="text-grey"><%= part %></p>
+<% end %>
+</td>
+

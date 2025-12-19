@@ -1,0 +1,10 @@
+<div class="level">
+  <div class="level-left"></div>
+  <div class="level-right">
+    <%= link_to t('.show.title'), { action: 'show' }, class: 'button is-small is-link' %>
+  </div>
+</div>
+
+<div id="box" class="box px-6">
+  <%= render partial: 'edit_form', locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") } %>
+</div>

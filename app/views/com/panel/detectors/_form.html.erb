@@ -1,0 +1,5 @@
+<%= f.text_field :name %>
+<%= f.text_field :url %>
+<%= f.fields :detector_bots, wrap: { all: nil, input: 'field' }, label: false, placeholder: true do |ef| %>
+  <%= render partial: 'item_form', locals: { ef: ef } %>
+<% end %>

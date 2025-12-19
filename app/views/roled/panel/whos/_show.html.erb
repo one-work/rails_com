@@ -1,0 +1,8 @@
+<% @who.available_roles.each do |role| %>
+  <%= form_with theme: nil, url: { controller: 'roled/admin/who_roles', action: 'update', who_type: @who.base_class_name, who_id: @who.id }, method: 'patch', data: { controller: 'input' }, class: 'is-inline' do |f| %>
+    <label>
+      <%= f.check_box :role_id, { checked: @who.role_ids.include?(role.id), data: { input_target: 'checkbox', action: 'input#toggle' }, id: nil }, role.id, role.id %>
+      <%= role.name %>
+    </label>
+  <% end %>
+<% end %>

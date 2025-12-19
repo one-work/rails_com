@@ -1,0 +1,4 @@
+<%= form_with theme: 'inline', model: model, scope: model_name, url: { action: 'update' } do |f| %>
+  <%= render partial: params[:field_type], locals: { f: f, name: params[:field] } %>
+  <%= f.submit %>
+<% end %>

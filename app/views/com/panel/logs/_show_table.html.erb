@@ -1,0 +1,72 @@
+<div>
+  <dt><%= Com::Log.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @log.created_at.iso8601(6) %></time></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:path) %></dt>
+  <dd><%= @log.real_path %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:referer) %></dt>
+  <dd><%= @log.referer %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:status) %></dt>
+  <dd><%= @log.status %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:duration) %></dt>
+  <dd><%= @log.duration %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:db_duration) %></dt>
+  <dd><%= @log.db_duration %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:view_duration) %></dt>
+  <dd><%= @log.view_duration %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:query_count) %></dt>
+  <dd><%= @log.query_count %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:query_cached_count) %></dt>
+  <dd><%= @log.query_cached_count %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:controller_name) %></dt>
+  <dd><%= @log.controller_name %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:action_name) %></dt>
+  <dd><%= @log.action_name %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:ip) %></dt>
+  <dd><%= @log.ip %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:user_agent) %></dt>
+  <dd><%= simple_format @log.user_agents %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:accept) %></dt>
+  <dd><%= @log.accept %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:format) %></dt>
+  <dd><%= @log.format %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:headers) %></dt>
+  <dd><%= simple_format @log.slim_headers %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:params) %></dt>
+  <dd><%= simple_format @log.params %></dd>
+</div>
+<div>
+  <dt><%= Com::Log.human_attribute_name(:session) %></dt>
+  <dd><%= simple_format @log.session %></dd>
+</div>

@@ -1,0 +1,5 @@
+<% if request.variant.include?(:mini_program) %>
+  <title><%= current_organ_name %></title>
+<% else %>
+  <title><%= current_title %></title>
+<% end %>

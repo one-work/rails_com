@@ -1,0 +1,37 @@
+<%# link_to '管理后台', { controller: '/panel/home' }, class: active_helper(modules: 'panel', active: 'navbar-item is-active', item: 'navbar-item') %>
+<% current_organ.ancestors.reverse.each do |node| %>
+  <%= link_to filter_params(host: node.host), class: 'navbar-item' do %>
+    <%= image_tag node.logo, class: 'image' if node.logo.attached? %>
+    <span><%= node.name %></span>
+  <% end %>
+<% end if current_organ %>
+<% if current_organ.siblings.present? && !current_organ.root? %>
+<div class="navbar-item has-dropdown is-hoverable">
+  <div class="navbar-link">
+    <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
+    <%= current_organ.name %>
+  </div>
+  <% unless current_organ.root? %>
+  <div class="navbar-dropdown">
+    <% current_organ.siblings.each do |node| %>
+      <%= link_to node.name, filter_params(host: node.host), class: 'navbar-item' %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<% else %>
+  <%= link_to '/admin', class: 'navbar-item' do %>
+    <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
+    <%= current_organ.name %>
+  <% end %>
+<% end if current_organ %>
+<% if current_organ.children.count > 0 %>
+  <div class="navbar-item has-dropdown is-hoverable">
+    <div class="navbar-link">More</div>
+    <div class="navbar-dropdown">
+      <% current_organ.children.each do |node| %>
+        <%= link_to node.name, filter_params(host: node.host), class: 'navbar-item' %>
+      <% end %>
+    </div>
+  </div>
+<% end if current_organ %>

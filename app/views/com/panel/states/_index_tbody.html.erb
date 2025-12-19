@@ -1,0 +1,20 @@
+<td class="family-monospace"><%= model.id %></td>
+<td>
+  <p><%= model.controller_path %></p>
+  <p><%= model.action_name %></p>
+</td>
+<td><%= model.destroyable %></td>
+<td>
+  <p><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></p>
+</td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'eye', class: 'icon text-info' %>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    <% end %>
+  </div>
+</td>

@@ -1,0 +1,9 @@
+<th><%= ActionMailbox::InboundEmail.human_attribute_name(:status) %></th>
+<th>
+  <p><%= ActionMailbox::InboundEmail.human_attribute_name(:to) %></p>
+  <p><%= ActionMailbox::InboundEmail.human_attribute_name(:from) %></p>
+</th>
+<th>
+  <p><%= ActionMailbox::InboundEmail.human_attribute_name(:subject) %></p>
+  <p><%= ActionMailbox::InboundEmail.human_attribute_name(:created_at) %></p>
+</th>

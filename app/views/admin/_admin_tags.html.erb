@@ -1,0 +1,15 @@
+<% if role_permit?(business: model.identifier, namespace: 'admin') %>
+<div id="<%= model.identifier %>_admin" class="media">
+  <figure class="media-left text-link">
+    <%= svg_tag model.svg_icon, kind: 'duotone', class: 'image is-64x64' %>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <strong><%= t("#{model.identifier}.admin.title") %></strong>
+    </div>
+    <div class="field is-grouped is-grouped-multiline">
+      <%= render partial: 'admin_tag_link', collection: Com::MetaAction.admin_list(model.identifier), as: :model %>
+    </div>
+  </div>
+</div>
+<% end %>

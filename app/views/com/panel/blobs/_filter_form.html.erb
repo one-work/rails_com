@@ -1,0 +1,13 @@
+<%= form_with theme: 'search', url: { action: params[:action] } do |f| %>
+  <div class="field-body">
+    <%= f.text_field :key, placeholder: ActiveStorage::Blob.human_attribute_name(:key) %>
+    <%= f.text_field :filename, placeholder: ActiveStorage::Blob.human_attribute_name(:filename) %>
+    <%= f.text_field :content_type, placeholder: ActiveStorage::Blob.human_attribute_name(:content_type) %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:key, :filename, :content_type]), class: 'button is-narrow' %>
+    </div>
+  </div>
+<% end %>
+
+

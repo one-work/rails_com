@@ -1,0 +1,64 @@
+require 'test_helper'
+<% module_namespacing do -%>
+class <%= controller_class_name %>ControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    @<%= singular_name %> = <%= fixture_file_name %>(:one)
+  end
+
+  test 'index ok' do
+    get url_for(controller: '<%= controller_name %>')
+
+    assert_response :success
+  end
+
+  test 'new ok' do
+    get url_for(controller: '<%= controller_name %>')
+
+    assert_response :success
+  end
+
+  test 'create ok' do
+    assert_difference('<%= class_name %>.count') do
+      post(
+        url_for(controller: '<%= controller_name %>', action: 'create'),
+        params: { <%= "#{singular_name}: { #{attributes_string} }" %> },
+        as: :turbo_stream
+      )
+    end
+
+    assert_response :success
+  end
+
+  test 'show ok' do
+    get url_for(controller: '<%= controller_name %>', action: 'show', id: @<%= singular_name %>.id)
+
+    assert_response :success
+  end
+
+  test 'edit ok' do
+    get url_for(controller: '<%= controller_name %>', action: 'edit', id: @<%= singular_name %>.id)
+
+    assert_response :success
+  end
+
+  test 'update ok' do
+    patch(
+      url_for(controller: '<%= controller_name %>', action: 'update', id: @<%= singular_name %>.id),
+      params: { <%= "#{singular_name}: { #{attributes_string} }" %> },
+      as: :turbo_stream
+    )
+
+    assert_response :success
+  end
+
+  test 'destroy ok' do
+    assert_difference('<%= class_name %>.count', -1) do
+      delete url_for(controller: '<%= controller_name %>', action: 'destroy', id: @<%= singular_name %>.id), as: :turbo_stream
+    end
+
+    assert_response :success
+  end
+
+end
+<% end -%>

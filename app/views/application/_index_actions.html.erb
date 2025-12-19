@@ -1,0 +1,11 @@
+<nav data-controller="switch" class="level box is-narrow">
+  <div class="level-left">
+    <div data-switch-target="src" class="buttons are-small">
+      <%= render 'button_actions' %>
+      <%= render 'button' %>
+    </div>
+  </div>
+  <div class="level-right">
+    <%= render partial: 'filter_per', locals: { models: instance_variable_get("@#{pluralize_model_name}") } if instance_variable_defined? "@#{pluralize_model_name}" %>
+  </div>
+</nav>

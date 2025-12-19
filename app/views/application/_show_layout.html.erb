@@ -1,0 +1,21 @@
+<dl class="as-show is-striped">
+  <div>
+    <dt>ID</dt>
+    <dd><%= model.id %></dd>
+  </div>
+  <%= yield %>
+  <div>
+    <dt>添加时间</dt>
+    <dd><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></dd>
+  </div>
+  <div>
+    <dt>更新时间</dt>
+    <dd><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></dd>
+  </div>
+</dl>
+<div class="text-centered">
+  <%= button_to({ action: 'edit' }, class: 'text-grey') do %>
+    <%= svg_tag 'pencil' %>
+    <span class="ml-1"><%= t('.edit.title') %></span>
+  <% end %>
+</div>

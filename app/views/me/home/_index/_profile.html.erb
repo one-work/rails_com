@@ -1,0 +1,23 @@
+<table class="table as-show is-fullwidth">
+  <tr>
+    <td>组织权限</td>
+    <td>
+    <% current_organ.roles.each do |role| %>
+      <span class="tag"><%= role.name %></span>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>用户权限</td>
+    <td>
+    <% current_member.roles.each do |role| %>
+      <span class="tag"><%= role.name %></span>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="text-centered">
+
+    </td>
+  </tr>
+</table>

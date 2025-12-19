@@ -1,0 +1,13 @@
+<%= render layout: 'layouts/application_head' do %>
+  <%= render 'nav_bar' %>
+  <%= render 'alert' %>
+  <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="has-animate-background">
+    <div class="container">
+      <ul class="breadcrumb has-succeeds-separator my-3"><%= render 'breadcrumb' %></ul>
+      <div class="columns">
+        <%= yield %>
+      </div>
+    </div>
+  </turbo-frame>
+  <%= render 'footer' %>
+<% end %>

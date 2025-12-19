@@ -1,0 +1,13 @@
+<%= form_with theme: 'modal', model: @filter, url: { action: 'create' }, id: 'detect_form' do |f| %>
+  <%= render 'modal_header' %>
+  <section class="modal-card-body">
+    <%= f.hidden_field :controller_path %>
+    <%= f.hidden_field :action_name %>
+    <%= f.text_field :name %>
+    <%= f.fields :filter_columns do |ef| %>
+      <%= ef.hidden_field :column %>
+      <%= ef.hidden_field :value %>
+    <% end %>
+  </section>
+  <%= f.submit %>
+<% end %>

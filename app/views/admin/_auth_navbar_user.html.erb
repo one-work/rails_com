@@ -1,0 +1,19 @@
+<div data-controller="computed-style" class="dropdown is-hoverable pop-right pop-right-bottom is-fullwidth">
+  <div class="dropdown-trigger">
+    <% if current_user.avatar.present? %>
+      <%= image_tag current_user.avatar, class: 'image is-32x32 mx-auto' %>
+    <% else %>
+      <%= image_tag 'avatar.png', class: 'image is-64x64 mx-auto' %>
+    <% end %>
+  </div>
+  <div data-computed-style-target="aim" class="dropdown-menu">
+    <div class="dropdown-content">
+      <%= link_to({ controller: '/board/home' }, class: 'dropdown-item') do %>
+        <span><%= t('board.home.index.title') %></span>
+      <% end %>
+      <%= button_to({ controller: '/auth/sessions', action: 'destroy' }, method: :delete, data: { turbo_confirm: '确认退出' }, form: { class: 'dropdown-item' }) do %>
+        <span><%= t('auth.sessions.destroy.title') %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

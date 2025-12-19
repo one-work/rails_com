@@ -1,0 +1,9 @@
+<div
+  data-controller="visit"
+  data-visit-url-value="<%= url_for(auth_token: auth_token, state_uuid: state.id, **state.detail) %>"
+  data-visit-method-value="<%= state.request_method %>"
+  data-visit-params-value="<%= state.body.to_json %>"
+  style="height: 100%;display: flex;justify-content: center;align-items: center"
+>
+  <span style="color: darkgrey">返回登录前页面</span>
+</div>

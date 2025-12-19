@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" style="height: 100%">
+  <head>
+    <title><%= t('.title') %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="turbo-cache-control" content="no-preview">
+    <% if request.variant.include?(:work_wechat) %>
+      <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
+      <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js" referrerpolicy="origin" data-turbo-track="reload" id="wxwork_script" async></script>
+      <%= javascript_include_tag 'qy', 'data-turbo-track': 'reload' %>
+    <% elsif request.variant.include?(:wechat) %>
+      <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
+      <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
+    <% end %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= csp_meta_tag %>
+  </head>
+  <body style="height: 100%; margin: 0">
+    <%= yield %>
+  </body>
+</html>

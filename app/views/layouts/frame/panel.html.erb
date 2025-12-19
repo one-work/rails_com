@@ -1,0 +1,8 @@
+<turbo-frame id="panel" title="<%= current_title %>">
+  <div class="loading">loading...</div>
+  <ul class="breadcrumb has-succeeds-separator ml-3"><%= render 'breadcrumb' %></ul>
+  <%= render 'alert' %>
+  <div class="box as-body">
+    <%= yield %>
+  </div>
+</turbo-frame>

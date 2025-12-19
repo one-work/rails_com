@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-theme="light">
+  <head>
+    <%= render 'head_title' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="turbo-cache-control" content="no-preview">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <script src="https://wwcdn.weixin.qq.com/node/wework/wwopen/js/wwLogin-1.2.7.js" referrerpolicy="origin" data-turbo-track="reload" defer="defer"></script>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= csp_meta_tag %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

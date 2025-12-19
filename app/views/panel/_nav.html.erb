@@ -1,0 +1,89 @@
+<div class="menu as-wrap flex-grow-1 flex flex-direction-column">
+  <div class="menu-brand">
+    <%= link_to('/panel', data: { turbo_frame: 'panel' }, class: 'text-centered') do %>
+      <%= image_tag 'logo_avatar.png' %>
+    <% end %>
+  </div>
+  <ul class="menu-list">
+    <% if defined?(RailsCom) && role_permit?(business: 'com', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'com_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsEmail) && role_permit?(business: 'email', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'email_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsAuth) && role_permit?(business: 'auth', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'auth_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsOrg) && role_permit?(business: 'org', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'org_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsFactory) && role_permit?(business: 'factory', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'factory_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsTrade) && role_permit?(business: 'trade', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'trade_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsShip) && role_permit?(business: 'ship', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'ship_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsBench) && role_permit?(business: 'bench', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'bench_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsCrm) && role_permit?(business: 'crm', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'crm_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsData) && role_permit?(business: 'datum', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'data_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsPrint) && role_permit?(business: 'print', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'print_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsMarkdown) && role_permit?(business: 'markdown', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'markdown_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsAudit) && role_permit?(business: 'audit', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'audit_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsOneAi) && role_permit?(business: 'one_ai', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'one_ai_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsDouyin) && role_permit?(business: 'douyin', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'douyin_nav_popup' %>
+      </li>
+    <% end %>
+    <% if defined?(RailsWechat) && role_permit?(business: 'wechat', namespace: 'panel') %>
+      <li class="menu-item p-0">
+        <%= render 'wechat_nav_popup' %>
+      </li>
+    <% end %>
+  </ul>
+</div>

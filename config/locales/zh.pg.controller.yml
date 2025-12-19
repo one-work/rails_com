@@ -1,0 +1,11 @@
+zh:
+  pg:
+    panel:
+      pg_subscriptions:
+        index:
+          title: 订阅者
+        refresh:
+          title: 更新
+      pg_stat_subscriptions:
+        index:
+          title: 订阅状态

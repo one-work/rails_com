@@ -1,0 +1,24 @@
+[Unit]
+Description=sidekiq
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/webuser/apps/sg/current
+ExecStart=/bin/bash -lc '/home/webuser/.rvm/rubies/ruby-2.6.3/bin/bundle exec sidekiq -e staging'
+User=webuser
+Group=webuser
+UMask=0002
+
+Environment=MALLOC_ARENA_MAX=2
+
+RestartSec=1
+Restart=on-failure
+
+StandardOutput=syslog
+StandardError=syslog
+
+SyslogIdentifier=sidekiq
+
+[Install]
+WantedBy=multi-user.target

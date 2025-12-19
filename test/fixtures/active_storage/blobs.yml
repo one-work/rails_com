@@ -1,0 +1,16 @@
+one:
+  metadata:
+  key: MyString
+  filename: MyString
+  content_type: 'image/jpeg'
+  byte_size: 1
+  checksum: MyString
+  service_name: local
+two:
+  metadata:
+  key: MyString1
+  filename: MyString
+  content_type: 'image/jpeg'
+  byte_size: 1
+  checksum: MyString
+  service_name: local

@@ -1,0 +1,15 @@
+<th style="width: 30%">
+  <p><%= Com::Err.human_attribute_name(:controller_name) %></p>
+  <p><%= Com::Err.human_attribute_name(:action_name) %></p>
+</th>
+<th><%= Com::Err.human_attribute_name(:exception_object) %></th>
+<th>
+  <%= link_to filter_params('errs_count-desc': 1) do %>
+    <span><%= Com::Err.human_attribute_name(:errs_count) %></span>
+    <% if params['errs_count-desc'] === '1' %><%= svg_tag 'arrow-down' %><% end %>
+  <% end %>
+</th>
+<th>
+  <p class="text-success"><%= Com::Err.human_attribute_name(:updated_at) %></p>
+  <p class="text-grey"><%= Com::Err.human_attribute_name(:created_at) %></p>
+</th>

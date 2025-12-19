@@ -1,0 +1,4 @@
+<tr id="tr_<%= model.id %>">
+  <%= yield %>
+</tr>
+<%= render partial: 'process_tbody', layout: 'process_tr', collection: model.supervisees, as: :model %>

@@ -1,0 +1,16 @@
+<div>
+  <dt><%= ActiveStorage::Attachment.human_attribute_name(:record_type) %></dt>
+  <dd><%= @attachment.record_type %></dd>
+</div>
+<div>
+  <dt><%= ActiveStorage::Attachment.human_attribute_name(:name) %></dt>
+  <dd><%= @attachment.name %></dd>
+</div>
+<div>
+  <dt><%= ActiveStorage::Attachment.human_attribute_name(:record_id) %></dt>
+  <dd><%= @attachment.record_id %></dd>
+</div>
+<div>
+  <dt><%= ActiveStorage::Attachment.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @attachment.created_at.iso8601(6) %></time></dd>
+</div>

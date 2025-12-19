@@ -1,0 +1,3 @@
+class AgentController < MeController
+
+end

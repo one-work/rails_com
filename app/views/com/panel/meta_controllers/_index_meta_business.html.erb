@@ -1,0 +1,10 @@
+<tr id="<%= meta_business.tr_id %>" data-controller="tree-remote show" data-tree-remote-target="item">
+  <td>
+    <%= button_to({ action: 'meta_namespaces', business_identifier: meta_business.identifier }, data: { turbo_frame: 'visit' }) do %>
+      <%= svg_tag 'caret-right', data: { action: 'click->tree-remote#expand' }, class: 'icon is-small clickable' %>
+    <% end %>
+    <span><%= meta_business.name %></span>
+    <span class="text-grey">(<%= meta_business.identifier %>)</span>
+  </td>
+  <td></td>
+</tr>

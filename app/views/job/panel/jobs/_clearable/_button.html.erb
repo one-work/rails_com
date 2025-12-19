@@ -1,0 +1,5 @@
+<% if params[:class_name] %>
+  <%= button_to({ action: 'clear_all', **params.permit(:class_name) }, method: :delete, class: 'button is-danger', form: { data: { turbo_confirm: t('.clear_all.confirm') } }) do %>
+    <span><%= t('.clear_all.title') %></span>
+  <% end %>
+<% end %>

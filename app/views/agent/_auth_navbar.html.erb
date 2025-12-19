@@ -1,0 +1,17 @@
+<div class="navbar-item has-dropdown is-hoverable display-none-touch">
+  <div class="navbar-link">
+    <%= image_tag current_member.avatar if current_member.avatar.present? %>
+    <span><%= current_member.name %></span>
+  </div>
+  <div class="navbar-dropdown is-right">
+    <%= link_to({ controller: '/me/home' }, data: { turbo_frame: '_top' }, class: active_helper(controllers: ['me/home'], active: 'navbar-item is-active', item: 'navbar-item')) do %>
+      <span><%= t('me.home.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: '/admin/home', **current_organ.admin_url_options(request, auth_token: Current.session.id) }, class: active_helper(controllers: ['admin/home'], active: 'navbar-item is-active', item: 'navbar-item')) do %>
+      <span><%= t('admin.home.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: '/auth/sign', action: 'logout' }, data: { turbo_frame: '_top', turbo_confirm: '确认退出' }, class: 'navbar-item') do %>
+      <span><%= t('auth.sign.logout.title') %></span>
+    <% end %>
+  </div>
+</div>

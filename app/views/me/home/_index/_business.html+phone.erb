@@ -1,0 +1,24 @@
+<div class="box is-padding-less">
+  <div class="box-header">
+    <div class="is-several">
+      <%= image_tag meta[0].logo, class: 'image is-32x32' if meta[0].logo.present? %>
+      <span><%= meta[0].name %></span>
+    </div>
+  </div>
+  <div class="weui-panel__bd">
+    <div class="weui-media-box weui-media-box_small-appmsg">
+      <div class="weui-cells" data-empty-target="content">
+      <% meta[1].each do |meta_action| %>
+        <%= link_to({ controller: meta_action.controller_path, action: meta_action.action_name, **params.except(:business, :namespace, :controller, :action).permit! }, class: 'media') do %>
+          <div class="media-content">
+            <span><%= meta_action.name %></span>
+          </div>
+          <div class="media-right">
+            <%= svg_tag 'chevron-right' %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

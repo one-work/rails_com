@@ -1,0 +1,14 @@
+<div class="field is-horizontal">
+  <%= f.label "#{outer}_id" %>
+  <div class="field-body">
+  <% node.self_and_ancestors.reverse_each do |node| %>
+    <%= render partial: 'com/nodes/outer_options', locals: { f: f, node: node, depth: node.depth, outer: outer } %>
+  <% end if node.self_and_ancestors.present? %>
+  <% if node.self_and_ancestors.blank? %>
+    <%= render partial: 'com/nodes/outer_options', locals: { f: f, node: node, depth: node.depth, outer: outer } %>
+  <% end %>
+  <% if node.children.present? %>
+    <%= render partial: 'com/nodes/outer_options', locals: { f: f, node: node.children.build, depth: node.children[0].depth, outer: outer } %>
+  <% end %>
+  </div>
+</div>

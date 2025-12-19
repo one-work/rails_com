@@ -1,0 +1,3 @@
+<li><%= link_to t('.meta_models.index.title'), { controller: 'meta_models', **request.query_parameters.except(:id, :page, :per) } %></li>
+<li><span class="px-3"><%= @meta_model.record_name %></span></li>
+<li class="is-active"><%= t('.title') %></li>

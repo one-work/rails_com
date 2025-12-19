@@ -1,0 +1,11 @@
+<% if target.errors.any? %>
+<div class="notification is-danger" data-controller="notice" data-turbo-cache="false">
+  <button class="delete" data-action="notice#close"></button>
+  <div class="header"><%= target.errors.count %> <% if target.errors.count == 1 %> error <% else %> errors <% end %>:</div>
+  <ul class="list">
+  <% target.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>

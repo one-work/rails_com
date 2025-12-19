@@ -1,0 +1,12 @@
+<% if request.method == 'POST' %>
+  <%= turbo_stream.append 'body', partial: 'alert_message', layout: 'modal', locals: { message: message } %>
+<% else %>
+  <%= turbo_stream.update request.headers['turbo-frame'].presence || 'alert' do %>
+    <div data-controller="notice" class="notification is-danger radiusless">
+      <button class="delete" data-action="notice#close"></button>
+      <ul class="list">
+        <li><%= message %></li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

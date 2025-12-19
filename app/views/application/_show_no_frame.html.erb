@@ -1,0 +1,16 @@
+<div class="level">
+  <div class="level-left"></div>
+  <div class="level-right">
+    <%= link_to t('.edit.title'), { action: 'edit' }, class: 'button is-small is-link' %>
+  </div>
+</div>
+
+<div class="fixed-grid has-2-cols">
+  <div class="grid">
+    <div class="box">
+      <dl class="as-show">
+        <%= render 'show_table' %>
+      </dl>
+    </div>
+  </div>
+</div>

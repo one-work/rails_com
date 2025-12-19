@@ -1,0 +1,15 @@
+<%= render layout: 'layouts/admin_head' do %>
+  <main class="columns">
+    <div class="column is-narrow p-0 display-flex flex-direction-column">
+      <div class="flex-grow-1">
+        <%= render 'chat_list' %>
+      </div>
+      <div class="flex-shrink-0">
+        <%# render 'menu_bar' %>
+      </div>
+    </div>
+    <turbo-frame id="main" data-turbo-action="advance" autoscroll data-autoscroll-block="end" class="column py-0">
+      <%= yield %>
+    </turbo-frame>
+  </main>
+<% end %>

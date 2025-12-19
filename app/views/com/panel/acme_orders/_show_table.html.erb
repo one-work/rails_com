@@ -1,0 +1,16 @@
+<div>
+  <dt><%= Com::AcmeOrder.human_attribute_name(:identifiers) %></dt>
+  <dd><pre><%= @acme_order.identifiers.to_format_yaml %></pre></dd>
+</div>
+<div>
+  <dt><%= Com::AcmeOrder.human_attribute_name(:url) %></dt>
+  <dd><%= @acme_order.url %></dd>
+</div>
+<div>
+  <dt><%= Com::AcmeOrder.human_attribute_name(:sync_host) %></dt>
+  <dd><%= @acme_order.sync_host %></dd>
+</div>
+<div>
+  <dt><%= Com::AcmeOrder.human_attribute_name(:sync_path) %></dt>
+  <dd><%= @acme_order.sync_path %></dd>
+</div>

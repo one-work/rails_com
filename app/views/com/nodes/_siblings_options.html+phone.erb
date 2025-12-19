@@ -1,0 +1,4 @@
+<% f_method = "parent_ancestors(#{node.depth}i)" %>
+<div class="field is-narrow control" id="<%= "#{f_method}_input" %>" data-controller="taxon" data-taxon-url-value="nodes/children" data-taxon-title-value="parent_ancestors_input" data-taxon-params-value="<%= { node_type: node.class.base_class.name, index: f.index, method: f_method }.compact.to_json %>">
+  <%= f.collection_select(f_method, node.siblings, :id, :name, { selected: node.id, include_blank: true, label: false, wrap: { all: nil, select: 'select is-fullwidth' } }, { data: { action: 'taxon#choose' } }) %>
+</div>

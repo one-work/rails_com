@@ -1,0 +1,10 @@
+zh:
+  activerecord:
+    attributes:
+      solid_queue/job:
+        active_job_id: 任务ID
+        scheduled_at: 任务执行时间
+        finished_at: 完成时间
+        status: 状态
+        queue_name: 队列
+

@@ -1,0 +1,20 @@
+default: &default
+  host: http://xxx.clouddn.com/
+  bucket:
+  access_key:
+  secret_key:
+
+development:
+  <<: *default
+
+staging:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  host:
+  bucket:
+

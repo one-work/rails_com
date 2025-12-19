@@ -1,0 +1,7 @@
+<td>
+  <p><%= model.host %></p>
+  <p><%= model.ssh_user %></p>
+  <p><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></p>
+</td>
+<td class="family-monospace"><%= model.public_key %></td>
+

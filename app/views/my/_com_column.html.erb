@@ -1,0 +1,24 @@
+<div class="box is-padding-less">
+  <div class="box-header">
+    <span class="size-7 has-border-left-primary">设置</span>
+  </div>
+  <div class="fixed-grid has-3-cols is-shadow-top p-3">
+    <div class="grid">
+      <%= link_to({ controller: 'ship/my/addresses' }, class: 'cell has-column-centered') do %>
+        <%= svg_tag 'location-dot', class: 'icon is-medium text-primary' %>
+        <div class="text-grey size-7 mt-1"><%= t('ship.my.addresses.index.title') %></div>
+      <% end %>
+      <%= link_to({ controller: 'wechat/my/users', action: 'invite_qrcode' }, class: 'cell has-column-centered') do %>
+        <div class="text-primary left-badge">
+          <%= svg_tag 'qrcode', class: 'icon is-medium' %>
+          <span class="weui-badge">邀请有礼</span>
+        </div>
+        <div class="text-grey size-7 mt-1">邀请好友</div>
+      <% end %>
+      <%= link_to({ controller: 'auth/board/home' }, class: 'cell has-column-centered') do %>
+        <%= svg_tag 'ellipsis', class: 'icon is-medium text-primary' %>
+        <div class="text-grey size-7 mt-1"><%= t('auth.board.home.index.title') %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

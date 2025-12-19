@@ -1,0 +1,8 @@
+<%= render 'index_bar' %>
+<%= render 'index_actions' %>
+
+<%= render layout: 'index_table' do %>
+  <%= render partial: 'day_tbody', layout: 'index_tr', collection: @counter_days, as: :model %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @counter_months, as: :model %>
+  <%= render partial: 'year_tbody', layout: 'index_tr', collection: @counter_years, as: :model %>
+<% end %>

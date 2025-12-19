@@ -1,0 +1,3 @@
+<% if @node.children.present? %>
+  <%= turbo_stream.after params[:html_id], partial: 'children_options', locals: { f: form_object(@new_node, **params.permit(:index).to_h.to_options), node: @node, depth: @node.depth + 1 } %>
+<% end %>
