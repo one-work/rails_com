@@ -15,23 +15,18 @@ Rails.application.routes.draw do
 
   namespace :board, defaults: { namespace: 'board' } do
     root 'home#index' unless has_named_route? 'board_root'
-    controller :home do
-      get :index
-    end
   end
 
   namespace :panel, defaults: { namespace: 'panel' } do
-    root 'home#index'
-    controller :home do
-      get :index
-    end
+    root 'home#index' unless has_named_route? 'panel_root'
   end
 
   namespace :admin, defaults: { namespace: 'admin' } do
     root 'home#index' unless has_named_route? 'admin_root'
-    controller :home do
-      get :index
-    end
+  end
+
+  namespace :my do
+    root 'home#index' unless has_named_route? 'my_root'
   end
 
   namespace :me, defaults: { namespace: 'me' } do
