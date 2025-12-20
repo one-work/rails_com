@@ -7,10 +7,10 @@ module RailsCom::Models
     @models_hash = root.subclasses_tree
   end
 
-  def models
+  def models(root = ActiveRecord::Base)
     return @models if defined? @models
     Zeitwerk::Loader.eager_load_all
-    @models = ActiveRecord::Base.descendants
+    @models = root.descendants
     @models.reject!(&:abstract_class?)
     @models
   end
@@ -61,12 +61,16 @@ module RailsCom::Models
             table_options = {
               id: r[:model_attributes].delete(node.primary_key.to_sym)[:migrate_type]
             }
-            table_options.merge! default: 'uuidv7()' if table_options[:id] == :uuid
-          else
+            if table_options[:id] == :uuid
+              table_options.merge! default: 'uuidv7()'
+            end
+          elsif node.connection.adapter_name == 'PostgreSQL'
             table_options = {
               id: :uuid,
               default: 'uuidv7()'
             }
+          else
+            table_options = {}
           end
         end
 
