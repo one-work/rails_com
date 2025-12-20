@@ -224,8 +224,9 @@ module RailsCom::ActiveRecord
       refs.each do |_, ref|
         r = { name: ref.name }
         if ref.polymorphic?
-          r.merge! polymorphic: true, type: :uuid
-        else
+          r.merge! polymorphic: true
+        end
+        if connection.adapter_name == 'PostgreSQL'
           r.merge! type: :uuid
         end
         r.merge! reference_options: r.slice(:polymorphic, :type).inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
