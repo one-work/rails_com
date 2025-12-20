@@ -55,6 +55,11 @@
         <%= render 'admin/cms_nav_popup' %>
       </li>
     <% end %>
+    <% if defined?(RailsCms) && role_permit?(business: 'cms', namespace: 'admin') %>
+      <li class="<%= active_helper(modules: 'cms/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'admin/cms_nav_popup' %>
+      </li>
+    <% end %>
     <% if defined?(RailsMarkdown) && role_permit?(business: 'markdown', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'markdown/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/markdown_nav_popup' %>
