@@ -62,6 +62,7 @@ module RailsCom::RoleHelper
 
     result = organ_permitted && user_permitted
     if Rails.configuration.x.role_debug || !result
+      logger.debug "\e[35m  #{'-' * 50} #{result} #{'-' * 50}  \e[0m"
       logger.debug "\e[35m  Meta Params: #{meta_params}, Extra Params: #{extra_params}  \e[0m"
       logger.debug "\e[35m  Organ: #{current_organ&.base_class_name}, ID: #{current_organ&.id}: #{organ_permitted.inspect}  \e[0m" if defined?(current_organ)
       logger.debug "\e[35m  Role User: #{rails_role_user&.base_class_name}, ID: #{rails_role_user&.id}: #{user_permitted.inspect}  \e[0m"
