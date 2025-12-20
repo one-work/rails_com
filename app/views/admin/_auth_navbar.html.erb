@@ -1,6 +1,6 @@
 <div data-controller="computed-style" class="dropdown is-hoverable pop-right pop-right-bottom is-fullwidth">
   <div class="dropdown-trigger">
-    <% if current_member.avatar.present? %>
+    <% if defined?(current_member) && current_member.avatar.present? %>
       <%= image_tag current_member.avatar, class: 'image is-32x32 mx-auto' %>
     <% else %>
       <%= image_tag 'avatar.png', class: 'image is-64x64 mx-auto' %>

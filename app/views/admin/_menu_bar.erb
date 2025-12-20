@@ -1,4 +1,4 @@
-<% if current_member %>
+<% if defined?(current_member) && current_member %>
   <%= render partial: 'admin/auth_navbar' %>
 <% else %>
   <%= render partial: 'auth_navbar_user' %>
