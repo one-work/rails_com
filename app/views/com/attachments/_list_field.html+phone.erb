@@ -1,6 +1,10 @@
 <div class="field">
   <%= f.label target.name %>
   <div class="control">
-    <%= render partial: 'com/attachments/list_edit', locals: local_assigns %>
+  <% if target.is_a?(ActiveStorage::Attached::One) %>
+    <%= render partial: 'com/attachments/file_upload_one', locals: local_assigns %>
+  <% else %>
+    <%= render partial: 'com/attachments/file_upload', locals: local_assigns %>
+  <% end %>
   </div>
 </div>
