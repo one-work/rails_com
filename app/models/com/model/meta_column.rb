@@ -7,7 +7,7 @@ module Com
       attribute :column_name, :string
       attribute :sql_type, :string
       attribute :column_type, :string
-      attribute :column_limit, :integer
+      attribute :column_limit, :big_integer
       attribute :comment, :string
       attribute :defined_db, :boolean, default: false
       attribute :defined_model, :boolean, default: false
