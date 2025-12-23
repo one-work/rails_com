@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <div id="filter_container" data-controller="popup">
-    <%= button_to({ action: 'filter' }, params: { keys: request.GET.keys }, class: 'button is-small') do %>
+    <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: request.GET.keys }, class: 'button is-small') do %>
       <span class="icon">
         <%= svg_tag 'plus' %>
       </span>
