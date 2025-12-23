@@ -5,6 +5,7 @@ module RailsCom::ActionDispatch
       if parent_resource.actions.include?(:index)
         collection do
           post :preview
+          post :filter
         end
       end
       if parent_resource.actions.include?(:new)
