@@ -4,10 +4,13 @@
     <% if instance_variable_defined? "@#{pluralize_model_name}" %>
       <p class="text-grey">
         <span>共</span>
-        <span><%= instance_variable_get("@#{pluralize_model_name}").count %></span>
+        <span><%= instance_variable_get("@#{pluralize_model_name}").total_count %></span>
         <span>条记录</span>
       </p>
     <% end %>
-    <%= render 'filter_form' %>
+  </div>
+  <div class="level-right">
+    <%= render partial: 'filter_per', locals: { models: instance_variable_get("@#{pluralize_model_name}") } if instance_variable_defined? "@#{pluralize_model_name}" %>
   </div>
 </nav>
+<%= render 'filter_form' %>
