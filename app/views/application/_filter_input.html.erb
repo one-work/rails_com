@@ -1,10 +1,8 @@
 <div class="field display-flex">
-  <%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' }, class: 'weui-search-bar__form flex-grow-1' do |f| %>
+  <%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' }, class: 'weui-search-bar flex-grow-1' do |f| %>
     <div class="control has-icons-right">
       <%= f.search_field 'name-like', value: params['name-like'], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { search_input_target: 'input', action: 'change->search-input#cancel' } %>
-      <span class="icon is-small is-right">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </span>
+      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-right p-2' %>
     </div>
   <% end %>
   <button data-action="switch#toggle" class="button ml-2">
