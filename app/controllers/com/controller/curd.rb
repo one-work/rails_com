@@ -5,6 +5,7 @@ module Com
 
     included do
       helper_method :permit_keys, :model_klass, :model_name, :pluralize_model_name
+      before_action :set_filter_columns, only: [:filter]
     end
 
     def index
@@ -17,6 +18,9 @@ module Com
 
     def preview
       index
+    end
+
+    def filter
     end
 
     def debug
@@ -158,6 +162,18 @@ module Com
         model_klass.com_column_names & send("#{model_name}_permit_params").map(&:to_s)
       else
         model_klass.com_column_names
+      end
+    end
+
+    def set_filter_columns
+      @filter_columns = set_filter_i18n('name-like')
+    end
+
+    def set_filter_i18n(*keys)
+      items = keys.map(&:to_s)
+      items -= params[:keys] if params[:keys]
+      items.each_with_object({}) do |i, h|
+        h.merge! i => model_klass.human_attribute_name(i.sub(/-like|-gte/, ''))
       end
     end
 
