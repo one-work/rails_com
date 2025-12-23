@@ -10,7 +10,7 @@ module Me
 
     private
     def require_member_or_user
-      return if current_member
+      return if defined?(current_member) && current_member
       return if current_user
       require_user
     end

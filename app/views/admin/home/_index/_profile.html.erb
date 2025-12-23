@@ -4,7 +4,7 @@
     <td>
     <% current_organ.roles.each do |role| %>
       <span class="tag"><%= role.name %></span>
-    <% end %>
+    <% end if defined?(current_organ) && current_organ %>
     </td>
   </tr>
 </table>
