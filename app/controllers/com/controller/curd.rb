@@ -167,7 +167,7 @@ module Com
     end
 
     def set_filter_i18n(default = [], **items)
-      items.except(*params[:keys]).each_with_object([]) do |(k, v), arr|
+      items.each_with_object([]) do |(k, v), arr|
         arr << {
           title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
           record_name: model_klass.name,
