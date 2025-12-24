@@ -12,15 +12,9 @@
     <%= render partial: 'filter_per', locals: { models: instance_variable_get("@#{pluralize_model_name}") } if instance_variable_defined? "@#{pluralize_model_name}" %>
   </div>
 </nav>
-<div data-controller="switch" class="level">
-  <div class="level-left">
-    <div class="level-item">
-      <%= render 'filter_input' %>
-    </div>
-    <div class="level-item">
-      <%= render partial: 'filter_extend', locals: { record_class: model_klass } %>
-    </div>
-  </div>
+
+<div class="field">
+  <%= render partial: 'filter_form/filter_extend', locals: { record_class: model_klass } %>
 </div>
 
 <%= render 'filter_table' %>
