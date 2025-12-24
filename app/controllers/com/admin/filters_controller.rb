@@ -7,6 +7,9 @@ module Com
 
     def column
       @meta_column = MetaColumn.find_by(record_name: params[:record_name], column_name: params[:column_name])
+      logger.debug "\e[35m  Meta Column: #{@meta_column&.id}  \e[0m"
+
+      @filter_type = @meta_column&.filter_type || 'filter_input_string'
     end
 
     def column_single

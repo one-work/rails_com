@@ -173,7 +173,7 @@ module Com
       items = keys.map(&:to_s)
       items -= params[:keys] if params[:keys]
       items.each_with_object({}) do |i, h|
-        h.merge! i => model_klass.human_attribute_name(i.sub(/-like|-gte/, ''))
+        h.merge! i => model_klass.human_attribute_name(i.sub(/-like|-gte|-lte/, ''))
       end
     end
 
