@@ -26,6 +26,6 @@
     %>
   </div>
   <div class="field">
-    <%= submit_tag '确认', data: { action: 'filter-input#submit' }, class: 'button', form: 'filter_search_form' %>
+    <%= submit_tag '确认', name: nil, data: { action: 'filter-input#submitButton', item: ['created_at-gte', 'created_at-lte'].join(',') }, class: 'button', form: 'filter_search_form' %>
   </div>
 </div>
