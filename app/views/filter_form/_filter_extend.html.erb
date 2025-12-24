@@ -1,13 +1,13 @@
 <%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' }, class: 'weui-search-bar' do |f| %>
-  <% unless params.key?('name-like') %>
-  <div class="field-body">
-    <div class="control has-icons-right">
+  <div class="field has-addons">
+    <div class="control has-icons-left">
       <%= f.search_field 'name-like', value: params['name-like'], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { search_input_target: 'input', action: 'change->search-input#cancel' } %>
-      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-right p-2' %>
+      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-2' %>
     </div>
-    <%= f.submit 'Search', name: nil, data: { action: 'form#filter' }, class: 'button ml-2' %>
+    <div class="control">
+      <%= f.submit 'Search', name: nil, data: { action: 'form#filter' }, class: 'button is-info' %>
+    </div>
   </div>
-  <% end %>
 <% end %>
 
 <div class="tags are-large">
