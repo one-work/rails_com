@@ -5,7 +5,7 @@ module Com
 
     included do
       helper_method :permit_keys, :model_klass, :model_name, :pluralize_model_name
-      before_action :set_filter_columns, only: [:index, :filter]
+      before_action :set_filter_columns, only: [:index]
     end
 
     def index
@@ -18,9 +18,6 @@ module Com
 
     def preview
       index
-    end
-
-    def filter
     end
 
     def debug
