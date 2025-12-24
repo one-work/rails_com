@@ -2,15 +2,19 @@
   <div class="control">
     <%=
       text_field_tag(
-        params[:scope].present? ? "#{params[:scope]}[#{params[:column_name]}]" : params[:column_name],
+        @column_name,
         params[:value],
         placeholder: @meta_column ? "请输入#{@meta_column.i18n_name}" : '',
         autofocus: true,
         autocomplete: 'off',
         data: { action: 'keydown.enter->filter-input#submit' },
         class: 'input',
+        id: nil,
         form: 'filter_search_form'
       )
     %>
+  </div>
+  <div class="field">
+    <%= submit_tag '确认', name: nil, data: { action: 'filter-input#submitButton', item: @column_name }, class: 'button', form: 'filter_search_form' %>
   </div>
 </div>

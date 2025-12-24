@@ -1,4 +1,5 @@
 <%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' }, class: 'weui-search-bar' do |f| %>
+  <% unless params.key?('name-like') %>
   <div class="field-body">
     <div class="control has-icons-right">
       <%= f.search_field 'name-like', value: params['name-like'], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { search_input_target: 'input', action: 'change->search-input#cancel' } %>
@@ -6,9 +7,10 @@
     </div>
     <%= f.submit 'Search', name: nil, data: { action: 'form#filter' }, class: 'button ml-2' %>
   </div>
-<% end unless params.key?('name-like') %>
+  <% end %>
+<% end %>
 
-<div class="<% raw_filter_params.present? ? 'tags' : 'tags display-none' %>">
+<div class="<%= raw_filter_params.present? ? 'tags' : 'tags display-none' %>">
   <% raw_filter_params.each do |key, value| %>
     <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
       <% if record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :boolean %>
