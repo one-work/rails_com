@@ -1,0 +1,10 @@
+<%= turbo_stream.append 'filter_container' do %>
+  <div id="popup_overlay" data-action="click->popup#close" class="overlay"></div>
+  <div id="filter_popup_box" data-popup-target="popup" class="panel is-light as-popdown background-white overflow-y-hidden">
+  <% @filter_columns.each do |name, title| %>
+    <%= button_to({ controller: 'com/admin/filters', action: 'column' }, params: { record_name: params[:record_class], column_name: name }, form: { class: 'panel-block' }) do %>
+      <span><%= title %></span>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>

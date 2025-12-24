@@ -166,7 +166,7 @@ module Com
     end
 
     def set_filter_columns
-      @filter_columns = set_filter_i18n('name-like')
+      @filter_columns = set_filter_i18n('name-like' => 'string')
     end
 
     def set_filter_i18n(*keys)
