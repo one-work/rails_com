@@ -20,7 +20,7 @@
       <% else %>
         <%= render partial: 'filter_form/filter_extend_text', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
       <% end %>
-      <%= link_to({ **request.GET.except(key) }, class: 'tag is-primary as-attached-right') do %>
+      <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-primary as-attached-right') do %>
         <i class="delete"></i>
       <% end %>
     </div>
