@@ -10,7 +10,7 @@
   <% end %>
 <% end %>
 
-<div class="<%= raw_filter_params.present? ? 'tags are-large' : 'tags are-large display-none' %>">
+<div class="tags are-large">
   <% raw_filter_params.each do |key, value| %>
     <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
       <% if record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :boolean %>
@@ -25,7 +25,7 @@
       <% end %>
     </div>
   <% end %>
-  <div id="filter_container" data-controller="popup" class="ml-2">
+  <div id="filter_container" data-controller="popup">
     <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: request.GET.keys }, class: 'button') do %>
       <span class="icon">
         <%= svg_tag 'plus' %>

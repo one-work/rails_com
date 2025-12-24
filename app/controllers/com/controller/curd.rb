@@ -169,12 +169,13 @@ module Com
       @filter_columns = set_filter_i18n('name-like' => 'string')
     end
 
-    def set_filter_i18n(*keys)
-      items.except(*params[:keys]).each_with_object([]) do |i, arr|
+    def set_filter_i18n(**items)
+      items.except(*params[:keys]).each_with_object([]) do |(k, v), arr|
         arr << {
-          title: model_klass.human_attribute_name(i.sub(/-like|-gte|-lte/, '')),
+          title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
           record_name: params[:record_class],
-          column_name: i
+          type: v,
+          column_name: k
         }
       end
     end
