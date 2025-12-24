@@ -118,6 +118,10 @@ module Com
       self.class.root_module.const_get(controller_name.classify)
     end
 
+    def model_klass_defined?
+      self.class.root_module.const_defined?(controller_name.classify)
+    end
+
     def model_object
       if instance_variable_defined? "@#{model_name}"
         instance_variable_get "@#{model_name}"
@@ -167,6 +171,7 @@ module Com
     end
 
     def set_filter_i18n(default = [], **items)
+      return [] unless model_klass_defined?
       items.each_with_object([]) do |(k, v), arr|
         arr << {
           title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
