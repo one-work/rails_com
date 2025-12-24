@@ -163,7 +163,7 @@ module Com
     end
 
     def set_filter_columns
-      @filter_columns = set_filter_i18n('name-like' => 'string')
+      @filter_columns = set_filter_i18n('name-like' => 'text')
     end
 
     def set_filter_i18n(default = [], **items)

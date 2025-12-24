@@ -2,7 +2,7 @@
   <label class="radio">
     <%=
       radio_button_tag(
-        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}]" : @meta_column.column_name,
+        params[:scope].present? ? "#{params[:scope]}[#{params[:column_name]}]" : params[:column_name],
         true,
         params[:value] == 'true',
         data: { action: 'filter-input#submit' },
@@ -14,7 +14,7 @@
   <label class="radio">
     <%=
       radio_button_tag(
-        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}]" : @meta_column.column_name,
+        params[:scope].present? ? "#{params[:scope]}[#{params[:column_name]}]" : params[:column_name],
         false,
         params[:value] == 'false',
         data: { action: 'filter-input#submit' },

@@ -2,7 +2,7 @@
   <div class="field">
     <%=
       datetime_field_tag(
-        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}-gte]" : "#{@meta_column.column_name}-gte",
+        params[:scope].present? ? "#{params[:scope]}[#{params[:column_name]}-gte]" : "#{params[:column_name]}-gte",
         params.fetch('value', {})['gte'],
         placeholder: "请输入#{@meta_column.i18n_name}",
         data: { action: 'filter-input#confirm' },
@@ -15,7 +15,7 @@
   <div class="field">
     <%=
       datetime_field_tag(
-        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}-lte]" : "#{@meta_column.column_name}-lte",
+        params[:scope].present? ? "#{params[:scope]}[#{params[:column_name]}-lte]" : "#{params[:column_name]}-lte",
         params.fetch('value', {})['lte'],
         placeholder: "请输入#{@meta_column.i18n_name}",
         data: { action: 'filter-input#confirm' },

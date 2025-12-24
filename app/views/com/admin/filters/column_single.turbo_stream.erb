@@ -1,1 +1,1 @@
-<%= turbo_stream.append "filter_container_#{params[:column_name]}", partial: @meta_column&.filter_type || 'filter_input_string', layout: 'filter_input_layout' %>
+<%= turbo_stream.append "filter_container_#{params[:column_name]}", partial: "filter_input_#{params[:type]}", layout: 'filter_input_layout' %>

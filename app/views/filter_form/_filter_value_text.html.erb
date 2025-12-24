@@ -2,12 +2,15 @@
   <%=
     button_to(
       { controller: 'com/admin/filters', action: 'column_single' },
-      params: { record_name: record_class.name, column_name: key, value: value, scope: scope }.compact,
+      params: { record_name: record_class.name, column_name: key, type: 'text', value: value, scope: scope }.compact,
       class: 'tags has-addons mb-0'
     ) do
   %>
     <span class="tag"><%= record_class.human_attribute_name(key) %></span>
-    <span class="tag is-primary as-attached-left"><%= value %></span>
+    <span class="tag is-info as-attached-left"><%= value %></span>
+  <% end %>
+  <%= link_to({ **request.GET.except(key) }, class: 'tag is-info as-attached-right') do %>
+    <i class="delete"></i>
   <% end %>
   <%= hidden_field_tag scope.present? ? "#{scope}[#{key}]" : key, value, id: nil, form: form %>
 </div>
