@@ -170,10 +170,12 @@ module Com
     end
 
     def set_filter_i18n(*keys)
-      items = keys.map(&:to_s)
-      items -= params[:keys] if params[:keys]
-      items.each_with_object({}) do |i, h|
-        h.merge! i => model_klass.human_attribute_name(i.sub(/-like|-gte|-lte/, ''))
+      items.except(*params[:keys]).each_with_object([]) do |i, arr|
+        arr << {
+          title: model_klass.human_attribute_name(i.sub(/-like|-gte|-lte/, '')),
+          record_name: params[:record_class],
+          column_name: i
+        }
       end
     end
 
