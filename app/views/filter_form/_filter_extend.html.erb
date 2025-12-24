@@ -1,4 +1,11 @@
-<%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' }, class: 'weui-search-bar flex-grow-1' do |f| %>
+<%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' }, class: 'weui-search-bar' do |f| %>
+  <div class="field-body">
+    <div class="control has-icons-right">
+      <%= f.search_field 'name-like', value: params['name-like'], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { search_input_target: 'input', action: 'change->search-input#cancel' } %>
+      <%= svg_tag 'magnifying-glass', class: 'icon is-small is-right p-2' %>
+    </div>
+    <%= f.submit 'Search', class: 'button ml-2' %>
+  </div>
 <% end %>
 <div class="<% raw_filter_params.present? ? 'tags' : 'tags display-none' %>">
   <% raw_filter_params.each do |key, value| %>
@@ -15,8 +22,8 @@
       <% end %>
     </div>
   <% end %>
-  <div id="filter_container" data-controller="popup">
-    <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: request.GET.keys }, class: 'button is-small') do %>
+  <div id="filter_container" data-controller="popup" class="ml-2">
+    <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: request.GET.keys }, class: 'button') do %>
       <span class="icon">
         <%= svg_tag 'plus' %>
       </span>
