@@ -1,6 +1,6 @@
 <div class="dropdown is-hoverable is-left">
   <div class="dropdown-trigger">
-    <button class="button">
+    <button class="button radius-right-none">
       <span><%= record_class.human_attribute_name(key) %></span>
       <%= svg_tag 'angle-down' %>
     </button>
@@ -13,7 +13,7 @@
     </div>
   </div>
 </div>
-<div class="tag"><%= value %></div>
+<div class="tag is-primary radius-none"><%= value %></div>
 <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-primary as-attached-right') do %>
   <i class="delete"></i>
 <% end %>
