@@ -1,4 +1,4 @@
-<div class="field">
+<div class="field is-grouped">
   <div class="control">
     <%=
       text_field_tag(
@@ -14,7 +14,7 @@
       )
     %>
   </div>
-  <div class="field">
+  <div class="control">
     <%= submit_tag '确认', name: nil, data: { action: 'filter-input#submitButton', item: @column_name }, class: 'button', form: 'filter_search_form' %>
   </div>
 </div>
