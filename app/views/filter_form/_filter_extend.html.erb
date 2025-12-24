@@ -1,14 +1,12 @@
 <div class="tags are-large">
   <% @filter_columns.each do |column| %>
-    <div id="filter_container_<%= column[:column_name] %>" data-controller="popup" class="max-fullwidth size-0">
-      <% if column[:value] %>
-        <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
-      <% elsif column[:default] %>
-        <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
-      <% else %>
-        <% keys << column[:column_name] %>
-      <% end %>
-    </div>
+    <% if column[:value] %>
+      <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
+    <% elsif column[:default] %>
+      <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
+    <% else %>
+      <% keys << column[:column_name] %>
+    <% end %>
   <% end %>
   <div id="filter_container" data-controller="popup">
     <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: keys }, class: 'button') do %>
