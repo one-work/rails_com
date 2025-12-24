@@ -1,0 +1,9 @@
+<div class="field has-addons">
+  <div class="control has-icons-left">
+    <%= search_field_tag 'name-like', params['name-like'], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { search_input_target: 'input', action: 'change->search-input#cancel' }, form: 'filter_search_form' %>
+    <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-2' %>
+  </div>
+  <div class="control">
+    <%= f.submit 'Search', name: nil, data: { action: 'form#filter' }, form: 'filter_search_form', class: 'button is-info' %>
+  </div>
+</div>
