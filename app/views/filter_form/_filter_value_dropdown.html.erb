@@ -17,3 +17,4 @@
 <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-primary as-attached-right') do %>
   <i class="delete"></i>
 <% end %>
+<%= hidden_field_tag scope.present? ? "#{scope}[#{key}]" : key, value, id: nil, form: form %>
