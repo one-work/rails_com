@@ -3,7 +3,7 @@
     <%=
       datetime_field_tag(
         params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}-gte]" : "#{@meta_column.column_name}-gte",
-        params.dig('value', 'gte'),
+        params.fetch('value', {})['gte'],
         placeholder: "请输入#{@meta_column.i18n_name}",
         data: { action: 'filter-input#confirm' },
         class: 'input',
@@ -16,7 +16,7 @@
     <%=
       datetime_field_tag(
         params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}-lte]" : "#{@meta_column.column_name}-lte",
-        params.dig('value', 'lte'),
+        params.fetch('value', {})['lte'],
         placeholder: "请输入#{@meta_column.i18n_name}",
         data: { action: 'filter-input#confirm' },
         class: 'input',

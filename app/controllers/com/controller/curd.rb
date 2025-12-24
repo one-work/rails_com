@@ -170,7 +170,7 @@ module Com
       items.except(*params[:keys]).each_with_object([]) do |(k, v), arr|
         arr << {
           title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
-          record_name: params[:record_class],
+          record_name: model_klass.name,
           type: v,
           default: default.include?(k),
           column_name: k,
