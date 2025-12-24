@@ -3,7 +3,8 @@
     { controller: 'com/admin/filters', action: 'column_single' },
     params: { record_name: record_class.name, column_name: key, value: value, scope: scope }.compact,
     class: 'tags has-addons mb-0'
-  ) do %>
+  ) do
+%>
   <span class="tag"><%= record_class.human_attribute_name(key) %></span>
   <span class="tag is-primary as-attached-left"><%= value %></span>
 <% end %>
