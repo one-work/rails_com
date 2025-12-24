@@ -13,5 +13,8 @@
     <%= render partial: 'filter_per', locals: { models: instance_variable_get("@#{pluralize_model_name}") } if instance_variable_defined? "@#{pluralize_model_name}" %>
   </div>
 </nav>
-<%= render 'filter_form' %>
-<%= render 'filter_table' %>
+
+<div class="field is-grouped">
+  <%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' } do %><% end %>
+  <%= render partial: 'filter_form/filter_extend', locals: { record_class: model_klass, keys: @filter_columns.pluck(:column_name) } %>
+</div>
