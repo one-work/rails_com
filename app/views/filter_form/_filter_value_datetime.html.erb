@@ -6,11 +6,14 @@
       class: 'tags has-addons mb-0'
     ) do %>
     <span class="tag"><%= record_class.human_attribute_name(key) %></span>
-    <span class="tag is-primary justify-content-flex-start overflow-x-hidden as-attached-left">
+    <span class="tag is-info justify-content-flex-start overflow-x-hidden as-attached-left">
       <time data-controller="time"><%= value['gte'] %></time>
       <span>-</span>
       <time data-controller="time"><%= value['lte'] %></time>
     </span>
+  <% end %>
+  <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-info as-attached-right') do %>
+    <i class="delete"></i>
   <% end %>
   <%= hidden_field_tag scope.present? ? "#{scope}[#{key}-gte]" : "#{key}-gte", value['gte'], id: nil, form: form %>
   <%= hidden_field_tag scope.present? ? "#{scope}[#{key}-lte]" : "#{key}-lte", value['lte'], id: nil, form: form %>

@@ -174,7 +174,7 @@ module Com
           type: v,
           default: default.include?(k),
           column_name: k,
-          value: request.GET.dig(k)
+          value: raw_filter_params[k]
         }
       end
     end
