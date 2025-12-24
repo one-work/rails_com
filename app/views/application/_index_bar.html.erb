@@ -15,6 +15,5 @@
 
 <div class="field is-grouped">
   <%= form_with theme: nil, method: :get, id: 'filter_search_form', data: { controller: 'search-input' } do %><% end %>
-  <%= render 'filter_default' %>
-  <%= render partial: 'filter_form/filter_extend', locals: { record_class: model_klass } %>
+  <%= render partial: 'filter_form/filter_extend', locals: { record_class: model_klass, keys: [] } %>
 </div>

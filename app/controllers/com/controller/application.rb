@@ -14,7 +14,7 @@ module Com
       layout -> { turbo_frame_layout }
       before_action :set_locale, :set_timezone, :set_variant
       before_action :set_roled_tabs, if: -> { request.variant.any?(:phone) }
-      helper_method :current_title, :current_organ_name, :current_state, :current_filters, :default_params, :turbo_frame_request_id, :tab_item_items, :raw_filter_params
+      helper_method :current_title, :current_organ_name, :current_state, :current_filters, :default_params, :turbo_frame_request_id, :tab_item_items
       after_action :set_state, if: -> { request.variant.any? :phone }
     end
 
@@ -25,23 +25,6 @@ module Com
 
     def raw_state_params
       request.path_parameters.except(:business, :namespace, :controller, :action).merge!(request.query_parameters)
-    end
-
-    def raw_filter_params
-      request.GET.each_with_object({}) do |(k, v), h|
-        next if v.blank?
-        if k.include?('-')
-          key, suffix = k.split('-')
-          if ['like'].include? suffix
-            h[k] = v
-          else
-            h[key] ||= {}
-            h[key][suffix] = v
-          end
-        else
-          h[k] = v
-        end
-      end
     end
 
     def state_enter(

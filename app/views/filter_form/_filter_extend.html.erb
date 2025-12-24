@@ -1,21 +1,20 @@
-
 <div class="tags are-large">
-  <% raw_filter_params.each do |key, value| %>
-    <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
-      <% if record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :boolean %>
-        <%= render partial: 'filter_form/filter_extend_boolean', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
-      <% elsif record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :datetime %>
-        <%= render partial: 'filter_form/filter_extend_datetime', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
+  <% @filter_columns.each do |column| %>
+    <div id="filter_container_<%= column[:key] %>" data-controller="popup" class="max-fullwidth size-0">
+      <% if column[:value] %>
+        <%= render partial: "filter_form/filter_extend_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
+        <%= link_to({ **request.GET.except(column[:key], "#{column[:key]}-gte", "#{column[:key]}-lte") }, class: 'tag is-primary as-attached-right') do %>
+          <i class="delete"></i>
+        <% end %>
+      <% elsif column[:default] %>
+        <%= render partial: "filter_form/filter_extend_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
       <% else %>
-        <%= render partial: 'filter_form/filter_extend_text', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
-      <% end %>
-      <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-primary as-attached-right') do %>
-        <i class="delete"></i>
+        <%= keys << column[:column_name] %>
       <% end %>
     </div>
   <% end %>
   <div id="filter_container" data-controller="popup">
-    <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: request.GET.keys }, class: 'button') do %>
+    <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: keys }, class: 'button') do %>
       <span class="icon">
         <%= svg_tag 'plus' %>
       </span>

@@ -5,7 +5,7 @@ module Com
 
     included do
       helper_method :permit_keys, :model_klass, :model_name, :pluralize_model_name
-      before_action :set_filter_columns, only: [:filter]
+      before_action :set_filter_columns, only: [:index, :filter]
     end
 
     def index
@@ -169,14 +169,33 @@ module Com
       @filter_columns = set_filter_i18n('name-like' => 'string')
     end
 
-    def set_filter_i18n(**items)
+    def set_filter_i18n(default = [], **items)
       items.except(*params[:keys]).each_with_object([]) do |(k, v), arr|
         arr << {
           title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
           record_name: params[:record_class],
           type: v,
-          column_name: k
+          default: default.include?(k),
+          column_name: k,
+          value: request.GET.dig(k)
         }
+      end
+    end
+
+    def raw_filter_params
+      request.GET.each_with_object({}) do |(k, v), h|
+        next if v.blank?
+        if k.include?('-')
+          key, suffix = k.split('-')
+          if ['like'].include? suffix
+            h[k] = v
+          else
+            h[key] ||= {}
+            h[key][suffix] = v
+          end
+        else
+          h[k] = v
+        end
       end
     end
 
