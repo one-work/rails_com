@@ -10,7 +10,7 @@
   <% end %>
 <% end %>
 
-<div class="<%= raw_filter_params.present? ? 'tags' : 'tags display-none' %>">
+<div class="<%= raw_filter_params.present? ? 'tags are-large' : 'tags are-large display-none' %>">
   <% raw_filter_params.each do |key, value| %>
     <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
       <% if record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :boolean %>
