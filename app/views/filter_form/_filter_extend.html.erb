@@ -1,15 +1,12 @@
 <div class="tags are-large">
   <% @filter_columns.each do |column| %>
-    <div id="filter_container_<%= column[:key] %>" data-controller="popup" class="max-fullwidth size-0">
+    <div id="filter_container_<%= column[:column_name] %>" data-controller="popup" class="max-fullwidth size-0">
       <% if column[:value] %>
-        <%= render partial: "filter_form/filter_extend_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
-        <%= link_to({ **request.GET.except(column[:key], "#{column[:key]}-gte", "#{column[:key]}-lte") }, class: 'tag is-primary as-attached-right') do %>
-          <i class="delete"></i>
-        <% end %>
+        <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
       <% elsif column[:default] %>
-        <%= render partial: "filter_form/filter_extend_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
+        <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
       <% else %>
-        <%= keys << column[:column_name] %>
+        <% keys << column[:column_name] %>
       <% end %>
     </div>
   <% end %>
