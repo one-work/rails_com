@@ -120,6 +120,10 @@ module Job
       @class_names = @jobs.select(:class_name).group(:class_name).count
     end
 
+    def model_klass
+      SolidQueue::Job
+    end
+
     def q_params
       q = { queue_name: params[:queue_id] }
       q.merge! params.permit(:class_name, 'finished_at-desc')
