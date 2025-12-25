@@ -1,9 +1,9 @@
-<div id="filter_search_field_<%= key %>" data-controller="search-input" class="field has-addons mb-0">
+<div data-controller="search-input" class="field has-addons mb-0">
   <div class="control has-icons-left">
     <%= search_field_tag key, params[key], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { action: 'input->search-input#cancel' }, form: 'filter_search_form' %>
     <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-2' %>
   </div>
   <div class="control">
-    <%= submit_tag 'Search', name: nil, data: { action: 'form#filter' }, form: 'filter_search_form', class: 'button is-info' %>
+    <%= submit_tag 'Search', name: nil, data: { action: 'search-input#filter' }, form: 'filter_search_form', class: 'button is-info' %>
   </div>
 </div>
