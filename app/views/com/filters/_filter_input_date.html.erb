@@ -1,0 +1,16 @@
+<div class="field-body">
+  <div class="field">
+    <%=
+      datetime_field_tag(
+        params[:scope].present? ? "#{params[:scope]}[#{params[:column_name]}]" : params[:column_name],
+        params[:value],
+        data: { action: 'filter-input#confirm' },
+        class: 'input',
+        form: 'filter_search_form'
+      )
+    %>
+  </div>
+  <div>
+    <%= submit_tag '确认', data: { action: 'filter-input#submit' }, class: 'button is-small', form: 'filter_search_form' %>
+  </div>
+</div>
