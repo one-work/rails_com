@@ -15,7 +15,7 @@
     <div data-popup-target="overlay" data-action="click->popup#hidden" class="overlay display-none"></div>
     <div id="filter_popup_box" data-popup-target="popup" class="panel is-light as-popdown background-white overflow-y-hidden display-none">
       <% @filter_columns.each do |column| %>
-        <%= button_to({ controller: 'com/admin/filters', action: 'column' }, params: column.except(:title), form: { class: 'panel-block' }) do %>
+        <%= button_to({ controller: 'com/filters', action: 'column' }, params: column.except(:title), form: { class: 'panel-block' }) do %>
           <span><%= column[:title] %></span>
         <% end %>
       <% end %>

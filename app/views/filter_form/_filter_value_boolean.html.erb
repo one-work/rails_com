@@ -1,7 +1,7 @@
 <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
   <%=
     button_to(
-      { controller: 'com/admin/filters', action: 'column_single' },
+      { controller: 'com/filters', action: 'column_single' },
       params: { record_name: record_class.name, column_name: key, value: value, scope: scope }
     ) do %>
     <span class="tag is-primary as-attached-left"><%= record_class.enum_i18n(key, value) %></span>

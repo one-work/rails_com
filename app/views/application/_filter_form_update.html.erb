@@ -1,4 +1,4 @@
-<%= form_with theme: nil, model: filter, url: { controller: 'com/admin/filters', action: 'update', id: filter.id }, id: "filter_update_#{filter.id}", class: 'button_to' do |f| %>
+<%= form_with theme: nil, model: filter, url: { controller: 'com/filters', action: 'update', id: filter.id }, id: "filter_update_#{filter.id}", class: 'button_to' do |f| %>
   <%= f.hidden_field :controller_path %>
   <%= f.hidden_field :action_name %>
   <%= f.fields :filter_columns do |ef| %>

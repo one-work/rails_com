@@ -1,4 +1,4 @@
-<%= form_with theme: nil, scope: :filter, url: { controller: 'com/admin/filters', action: 'detect' }, class: 'button_to' do |f| %>
+<%= form_with theme: nil, scope: :filter, url: { controller: 'com/filters', action: 'detect' }, class: 'button_to' do |f| %>
   <%= f.hidden_field :controller_path, value: controller_path %>
   <%= f.hidden_field :action_name, value: action_name %>
   <%= f.fields :filter_columns_attributes do |ef| %>
