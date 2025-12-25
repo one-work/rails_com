@@ -81,6 +81,13 @@ Rails.application.routes.draw do
       end
     end
     resources :blob_temps
+    resources :filters do
+      collection do
+        post :detect
+        post :column
+        post :column_single
+      end
+    end
   end
 
   namespace :com, defaults: { business: 'com' } do
@@ -94,13 +101,6 @@ Rails.application.routes.draw do
     end
     namespace :admin, defaults: { namespace: 'admin' } do
       resource :organ
-      resources :filters do
-        collection do
-          post :detect
-          post :column
-          post :column_single
-        end
-      end
       resources :blob_defaults do
         collection do
           match :add, via: [:get, :post]

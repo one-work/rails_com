@@ -4,7 +4,7 @@
       text_field_tag(
         params[:column_name],
         params[:value],
-        placeholder: @meta_column ? "请输入#{@meta_column.i18n_name}" : '',
+        placeholder: "请输入#{@record_class.human_attribute_name(params[:column_name])}",
         autofocus: true,
         autocomplete: 'off',
         data: { action: 'keydown.enter->filter-input#submit' },

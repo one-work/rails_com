@@ -1,13 +1,12 @@
 module Com
-  class Admin::FiltersController < Admin::BaseController
+  class FiltersController < BaseController
     before_action :set_new_filter, only: [:new, :create, :detect]
 
     def detect
     end
 
     def column
-      @meta_column = MetaColumn.find_by(record_name: params[:record_name], column_name: params[:column_name])
-      logger.debug "\e[35m  Meta Column: #{@meta_column&.id}  \e[0m"
+      @record_class = params[:record_name].safe_constantize
     end
 
     def column_single
