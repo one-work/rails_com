@@ -167,20 +167,21 @@ module Com
     end
 
     def set_filter_columns
-      @filter_columns = set_filter_i18n('name-like' => 'text')
+      @filter_columns = set_filter_i18n(
+        'name-like' => { type: 'search', default: true }
+      )
     end
 
-    def set_filter_i18n(default = [], **items)
+    def set_filter_i18n(**items)
       return [] unless model_klass_defined?
       items.each_with_object([]) do |(k, v), arr|
-        arr << {
+        arr << v.with_defaults(
           title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
           record_name: model_klass.name,
-          type: v,
-          default: default.include?(k),
+          default: false,
           column_name: k,
           value: raw_filter_params[k]
-        }
+        )
       end
     end
 
