@@ -173,15 +173,26 @@ module Com
     end
 
     def set_filter_i18n(**items)
-      return [] unless model_klass_defined?
       items.each_with_object([]) do |(k, v), arr|
-        arr << v.with_defaults(
-          title: model_klass.human_attribute_name(k.sub(/-like|-gte|-lte/, '')),
-          record_name: model_klass.name,
-          default: false,
-          column_name: k,
-          value: raw_filter_params[k]
-        )
+        unless v.is_a?(Hash)
+          v = { type: v.to_s }
+        end
+
+        if model_klass_defined?
+          arr << v.with_defaults(
+            title: model_klass.human_attribute_name(k.to_s.sub(/-like|-gte|-lte/, '')),
+            record_name: model_klass.name,
+            default: false,
+            column_name: k.to_s,
+            value: raw_filter_params[k.to_s]
+          )
+        else
+          arr << v.with_defaults(
+            default: false,
+            column_name: k.to_s,
+            value: raw_filter_params[k.to_s]
+          )
+        end
       end
     end
 
