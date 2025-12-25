@@ -5,6 +5,7 @@ module Job
     before_action :set_common_jobs
     before_action :set_count
     before_action :set_job, only: [:show, :retry, :destroy]
+    before_action :set_filter_columns, only: [:index, :failed, :todo, :blocked, :running, :ready, :clearable]
 
     def index
       @jobs = @common_jobs.finished.page(params[:page]).per(params[:per])
