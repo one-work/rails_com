@@ -7,15 +7,15 @@
       <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
     <% end %>
   <% end %>
-  <div data-controller="popup">
+  <div id="popup" data-controller="popup">
     <button data-action="popup#open" class="button">
       <span class="icon">
         <%= svg_tag 'plus' %>
       </span>
     </button>
     <div data-popup-target="overlay" data-action="click->popup#hidden" class="overlay display-none"></div>
-    <div id="filter_popup_box" data-popup-target="popup" class="panel is-light as-popdown background-white overflow-y-hidden display-none">
-      <% @filter_columns.each do |column| %>
+    <div data-popup-target="menu" class="panel is-light as-popdown background-white overflow-y-hidden display-none">
+      <% @filter_columns.reject(&->(i){ i[:default] }).each do |column| %>
         <%= button_to({ controller: 'com/filters', action: 'column' }, params: column.except(:title), form: { class: 'panel-block' }) do %>
           <span><%= column[:title] %></span>
         <% end %>

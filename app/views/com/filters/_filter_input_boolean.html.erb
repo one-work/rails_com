@@ -9,7 +9,7 @@
         form: 'filter_search_form'
       )
     %>
-    <span><%= @meta_column.record_class.enum_i18n(params[:column_name], 'true') %></span>
+    <span><%= @record_class.enum_i18n(params[:column_name], 'true') %></span>
   </label>
   <label class="radio">
     <%=
@@ -21,6 +21,6 @@
         form: 'filter_search_form'
       )
     %>
-    <span><%= @meta_column.record_class.enum_i18n(params[:column_name], 'false') %></span>
+    <span><%= @record_class.enum_i18n(params[:column_name], 'false') %></span>
   </label>
 </div>
