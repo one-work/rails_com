@@ -37,6 +37,9 @@ en:
       acme_accounts:
         index:
           title: SSL
+      acme_servicers:
+        index:
+          title: ACME Servicers
       acme_orders:
         index:
           title: SSL Orders
@@ -64,9 +67,15 @@ en:
       errs:
         index:
           title: System Errors
+      err_bots:
+        index:
+          title: Error Notice Bots
       err_summaries:
         index:
           title: Errors
+      detectors:
+        index:
+          title: Detectors
       csps:
         index:
           title: Content Secure
@@ -99,6 +108,9 @@ en:
       states:
         index:
           title: States
+      ssh_keys:
+        index:
+          title: SSH Keys
   job:
     panel:
       title: Job Admin
