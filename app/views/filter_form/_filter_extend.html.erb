@@ -8,4 +8,4 @@
   <% end %>
 <% end %>
 </div>
-<%= render partial: 'filter_form/filter_extend_plus', locals: { extra_columns: @filter_columns.reject(&->(i){ i[:default] }) } %>
+<%= render partial: 'filter_form/filter_extend_plus', locals: { extra_columns: @filter_columns.reject(&->(i){ i[:default] || i[:value] }) } %>
