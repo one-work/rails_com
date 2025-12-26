@@ -4,6 +4,6 @@
     <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-2' %>
   </div>
   <div class="control">
-    <%= submit_tag 'Search', name: nil, data: { action: 'search-input#filter' }, form: 'filter_search_form', class: 'button is-info' %>
+    <%= submit_tag 'Search', name: nil, disabled: true, data: { search_input_target: 'submit' }, form: 'filter_search_form', class: 'button is-info' %>
   </div>
 </div>
