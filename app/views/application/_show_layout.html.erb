@@ -8,10 +8,12 @@
     <dt>添加时间</dt>
     <dd><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></dd>
   </div>
+  <% if model.respond_to? :updated_at %>
   <div>
     <dt>更新时间</dt>
     <dd><time data-controller="time" data-format="human"><%= model.updated_at.to_fs(:iso8601) %></time></dd>
   </div>
+  <% end %>
 </dl>
 <div class="text-centered">
   <%= button_to({ action: 'edit' }, class: 'text-grey') do %>
