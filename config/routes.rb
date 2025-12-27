@@ -138,6 +138,7 @@ Rails.application.routes.draw do
       resources :logs do
         collection do
           get :ip
+          get :latest
         end
       end
       resources :log_sqls

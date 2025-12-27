@@ -16,7 +16,7 @@
   <% end %>
 </dl>
 <div class="text-centered">
-  <%= button_to({ action: 'edit' }, class: 'text-grey') do %>
+  <%= button_to({ action: 'edit', id: model.id }, class: 'text-grey') do %>
     <%= svg_tag 'pencil' %>
     <span class="ml-1"><%= t('.edit.title') %></span>
   <% end %>
