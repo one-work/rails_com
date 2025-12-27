@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  <div class="tag is-info radius-none"><%= value %></div>
+  <div class="tag is-info radius-none"><%= record_class.enum_i18n(key, value) %></div>
   <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-info as-attached-right') do %>
     <i class="delete"></i>
   <% end %>
