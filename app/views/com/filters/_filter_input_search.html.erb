@@ -1,0 +1,20 @@
+<div class="field is-grouped">
+  <div class="control">
+    <%=
+      search_field_tag(
+        params[:column_name],
+        params[:value],
+        placeholder: "请输入#{@record_class.human_attribute_name(params[:column_name])}",
+        autofocus: true,
+        autocomplete: 'off',
+        data: { action: 'keydown.enter->filter-input#submit' },
+        class: 'input',
+        id: nil,
+        form: 'filter_search_form'
+      )
+    %>
+  </div>
+  <div class="control">
+    <%= submit_tag '确认', name: nil, data: { action: 'filter-input#submitButton', item: params[:column_name] }, class: 'button', form: 'filter_search_form' %>
+  </div>
+</div>
