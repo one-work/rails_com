@@ -6,17 +6,17 @@ module RailsCom::FormatHelper
 
     hash_text.map do |k, v|
       if k.to_s.rstrip.end_with?(':')
-        text = k.to_s + ' ' + v.to_s
+        split_text = content_tag('span', '')
       else
-        text = k.to_s + ': ' + v.to_s
+        split_text = content_tag('span', ':')
       end
-      code_text = content_tag(:code, text)
+      text = content_tag('span', k.to_s) + split_text + content_tag('span', v.to_s)
 
-      content_tag(wrapper_tag, code_text, html_options)
+      content_tag(wrapper_tag, text, html_options)
     end.join("\n\n").html_safe
   end
 
-  def ex_simple_format(text, html_options={}, options={})
+  def ex_simple_format(text, html_options = {}, options = {})
     text = '' if text.nil?
     text = text.dup
     start_tag = tag('p', html_options, true)
