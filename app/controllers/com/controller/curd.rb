@@ -4,7 +4,7 @@ module Com
     include Controller::Actions
 
     included do
-      helper_method :permit_keys, :model_klass, :model_name, :pluralize_model_name
+      helper_method :permit_keys, :model_name
       before_action :set_filter_columns, only: [:index]
     end
 
@@ -114,10 +114,6 @@ module Com
     end
 
     private
-    def model_klass
-      self.class.root_module.const_get(controller_name.classify)
-    end
-
     def model_klass_defined?
       self.class.root_module.const_defined?(controller_name.classify)
     end
@@ -136,10 +132,6 @@ module Com
       else
         instance_variable_set("@#{model_name}", model_klass.new(model_params))
       end
-    end
-
-    def pluralize_model_name
-      controller_name.pluralize
     end
 
     def model_params
