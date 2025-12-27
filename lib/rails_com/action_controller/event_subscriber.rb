@@ -11,6 +11,10 @@ module RailsCom::ActionController
       raw_headers = payload.fetch(:headers, {})
       real_headers = Com::Err.request_headers(raw_headers)
 
+      if ['Com::Panel::LogsController'].include? payload[:controller]
+        return
+      end
+
       emit_event(
         'controller.process_action',
         path: request.fullpath,
