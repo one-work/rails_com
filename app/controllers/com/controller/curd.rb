@@ -30,7 +30,7 @@ module Com
     end
 
     def create
-      model = model_new_object
+      model = model_create_object
 
       if model.save
         render :create, locals: { model: model }, status: :created
@@ -127,6 +127,14 @@ module Com
     end
 
     def model_new_object
+      if instance_variable_defined? "@#{model_name}"
+        instance_variable_get "@#{model_name}"
+      else
+        instance_variable_set("@#{model_name}", model_klass.new)
+      end
+    end
+
+    def model_create_object
       if instance_variable_defined? "@#{model_name}"
         instance_variable_get "@#{model_name}"
       else
