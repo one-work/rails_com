@@ -13,7 +13,7 @@
   </div>
 </nav>
 
-<% unless instance_variable_defined?('@filter_columns') %>
+<% if instance_variable_defined?(:@filter_columns) %>
 <div class="field is-grouped">
   <%= render partial: 'filter_form/filter_extend', locals: { record_class: model_klass, keys: @filter_columns.pluck(:column_name) } %>
 </div>
