@@ -173,31 +173,7 @@ module Com
     end
 
     def set_filter_i18n(**items)
-      items.each_with_object([]) do |(k, v), arr|
-        unless v.is_a?(Hash)
-          v = { type: v.to_s }
-        end
-
-        if model_klass_defined?
-          arr << v.with_defaults(
-            title: model_klass.human_attribute_name(k.to_s.sub(/-like|-gte|-lte/, '')),
-            record_name: model_klass.name,
-            default: false,
-            column_name: k.to_s,
-            value: raw_filter_params[k.to_s]
-          )
-        else
-          arr << v.with_defaults(
-            default: false,
-            column_name: k.to_s,
-            value: raw_filter_params[k.to_s]
-          )
-        end
-      end
-    end
-
-    def raw_filter_params
-      request.GET.each_with_object({}) do |(k, v), h|
+      filter_params = request.GET.each_with_object({}) do |(k, v), h|
         next if v.blank?
 
         if k.include?('-')
@@ -210,6 +186,28 @@ module Com
           end
         else
           h[k] = v
+        end
+      end
+
+      items.each_with_object([]) do |(k, v), arr|
+        unless v.is_a?(Hash)
+          v = { type: v.to_s }
+        end
+
+        if model_klass_defined?
+          arr << v.with_defaults(
+            title: model_klass.human_attribute_name(k.to_s.sub(/-like|-gte|-lte/, '')),
+            record_name: model_klass.name,
+            default: false,
+            column_name: k.to_s,
+            value: filter_params[k.to_s]
+          )
+        else
+          arr << v.with_defaults(
+            default: false,
+            column_name: k.to_s,
+            value: filter_params[k.to_s]
+          )
         end
       end
     end
