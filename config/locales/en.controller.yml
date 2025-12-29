@@ -1,9 +1,9 @@
 en:
-  application:
+  controller:
     index:
       title: List
     show:
-      title: General
+      title: Details
     new:
       title: Add
     edit:
