@@ -2,9 +2,9 @@
 <div class="tags are-large">
 <% @filter_columns.each do |column| %>
   <% if column[:value] %>
-    <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
+    <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], scope: nil, form: 'filter_search_form', **column } %>
   <% elsif column[:default] %>
-    <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], value: column[:value], scope: nil, form: 'filter_search_form' } %>
+    <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], scope: nil, form: 'filter_search_form', **column } %>
   <% end %>
 <% end %>
 </div>
