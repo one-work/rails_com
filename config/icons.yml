@@ -52,6 +52,8 @@ light:
   - xmark
 regular:
   - angle-left
+  - arrow-down
+  - arrow-up
 duotone:
   - bluetooth
   - building-user
