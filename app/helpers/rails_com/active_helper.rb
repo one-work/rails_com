@@ -84,18 +84,18 @@ module RailsCom::ActiveHelper
     end
   end
 
-  def filter_params(options = {})
-    only = Array(options.delete(:only)).map(&:to_s)
-    except = Array(options.delete(:except)).map(&:to_s)
+  def filter_params(only: [], except: [], **options)
+    _only = Array(only).map(&:to_s)
+    _except = Array(except).map(&:to_s)
     query = request.GET.dup
     options.stringify_keys!
     query.merge! options
     query.reject! { |key, _| request.GET[key] == options[key].to_s }  # 如果当前值相等，则可反查
 
-    if only.present?
-      query = query.extract!(*only)
+    if _only.present?
+      query = query.extract!(*_only)
     else
-      excepts = except + ['commit', 'utf8', 'page']
+      excepts = _except + ['commit', 'utf8', 'page']
       query.except!(*excepts)
     end
 
