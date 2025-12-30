@@ -11,8 +11,8 @@
 <td><%= model.size %></td>
 <td>
   <% if model.paused? %>
-    <%= button_to "Resume", { controller: 'queues', action: 'resume', id: model.name }, class: 'button is-warning' %>
+    <%= button_to 'Resume', { controller: 'queues', action: 'resume', id: model.name }, class: 'button is-warning' %>
   <% else %>
-    <%= button_to "Pause", { controller: 'queues', action: 'pause', id: model.name }, class: 'button is-success' %>
+    <%= button_to 'Pause', { controller: 'queues', action: 'pause', id: model.name }, class: 'button is-success' %>
   <% end %>
 </td>
