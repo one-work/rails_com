@@ -1,5 +1,5 @@
 <% if defined?(RailsWechat) && current_wechat_app %>
-  <%= link_to({ controller: '/wechat/wechat', action: 'user_login' }, data: { controller: 'session-init-channel' }, class: 'navbar-item') do %>
+  <%= link_to({ controller: '/wechat/wechat', action: 'user_login' }, data: { turbo_frame: 'main', controller: 'session-init-channel' }, class: 'navbar-item') do %>
     <%= svg_tag 'user' %>
     <span><%= t('wechat.wechat.user_login.title') %></span>
   <% end %>
