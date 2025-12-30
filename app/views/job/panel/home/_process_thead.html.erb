@@ -1,7 +1,14 @@
-<th>Process UUID</th>
-<th><%= SolidQueue::Process.human_attribute_name(:hostname) %></th>
+<th>
+  <p><%= SolidQueue::Process.human_attribute_name(:kind) %></p>
+  <p><%= SolidQueue::Process.human_attribute_name(:pid) %></p>
+</th>
+<th><%= SolidQueue::Process.human_attribute_name(:id) %></th>
+<th>
+  <p><%= SolidQueue::Process.human_attribute_name(:name) %></p>
+  <p><%= SolidQueue::Process.human_attribute_name(:hostname) %></p>
+</th>
 <th>
   <p><%= SolidQueue::Process.human_attribute_name(:created_at) %></p>
   <p><%= SolidQueue::Process.human_attribute_name(:last_heartbeat_at) %></p>
 </th>
-<th>State</th>
+<th><%= SolidQueue::Process.human_attribute_name(:metadata) %></th>
