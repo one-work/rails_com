@@ -16,20 +16,11 @@ module Statis
     end
 
     def configs
-
     end
 
     def cache_from_config_later
       CounterJob.perform_later(self)
     end
-
-
-
-
-
-
-
-
 
   end
 end
