@@ -25,7 +25,7 @@ class EventRequestSubscriber
     uuid = SecureRandom.uuid
 
     conn = ActiveRecord::Base.connection.raw_connection
-    conn.copy_data "COPY com_logs(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
+    conn.copy_data "COPY log_requests(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
       buf.each do |item|
         conn.put_copy_data item << uuid, @coder
       end

@@ -30,7 +30,7 @@ class EventSqlSubscriber
     uuid = SecureRandom.uuid
 
     conn = ActiveRecord::Base.connection.raw_connection
-    conn.copy_data "COPY com_log_sqls(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
+    conn.copy_data "COPY log_queries(#{COLUMNS.join(', ')}, commit_uuid) FROM STDIN" do
       buf.each do |item|
         conn.put_copy_data item << uuid, @coder
       end

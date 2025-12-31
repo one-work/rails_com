@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', model: Com::Log.new, url: { action: params[:action] } do |f| %>
+<%= form_with theme: 'search', model: Log::Request.new, url: { action: params[:action] } do |f| %>
   <div class="field-body">
     <%= f.text_field :ip %>
     <div class="field is-narrow">

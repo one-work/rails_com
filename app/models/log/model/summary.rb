@@ -1,5 +1,5 @@
-module Com
-  module Model::LogSummary
+module Log
+  module Model::Summary
     extend ActiveSupport::Concern
 
     included do

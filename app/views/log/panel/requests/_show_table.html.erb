@@ -1,0 +1,72 @@
+<div>
+  <dt><%= Log::Request.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @request.created_at.iso8601(6) %></time></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:path) %></dt>
+  <dd><%= @request.real_path %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:referer) %></dt>
+  <dd><%= @request.referer %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:status) %></dt>
+  <dd><%= @request.status %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:duration) %></dt>
+  <dd><%= @request.duration %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:db_duration) %></dt>
+  <dd><%= @request.db_duration %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:view_duration) %></dt>
+  <dd><%= @request.view_duration %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:query_count) %></dt>
+  <dd><%= @request.query_count %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:query_cached_count) %></dt>
+  <dd><%= @request.query_cached_count %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:controller_name) %></dt>
+  <dd><%= @request.controller_name %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:action_name) %></dt>
+  <dd><%= @request.action_name %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:ip) %></dt>
+  <dd><%= @request.ip %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:user_agent) %></dt>
+  <dd><%= simple_format @request.user_agents %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:accept) %></dt>
+  <dd><%= @request.accept %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:format) %></dt>
+  <dd><%= @request.format %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:headers) %></dt>
+  <dd><%= simple_format @request.slim_headers %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:params) %></dt>
+  <dd><%= simple_format @request.params %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:session) %></dt>
+  <dd><%= simple_format @request.session %></dd>
+</div>

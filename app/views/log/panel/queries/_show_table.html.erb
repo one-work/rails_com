@@ -1,0 +1,19 @@
+<div>
+  <dt><%= Log::Query.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @query.created_at.iso8601(6) %></time></dd>
+</div>
+<div>
+  <dt><%= Log::Query.human_attribute_name(:name) %></dt>
+  <dd><%= @query.name %></dd>
+</div>
+<div>
+  <dt><%= Log::Query.human_attribute_name(:sql) %></dt>
+  <dd><%= @query.sql %></dd>
+</div>
+<div>
+  <dt><%= Log::Request.human_attribute_name(:duration) %></dt>
+  <dd>
+    <span><%= @query.duration %></span>
+    <span class="size-7 text-grey">ms</span>
+  </dd>
+</div>

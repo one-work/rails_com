@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   draw :job
+  draw :log
   draw :pg
   draw :roled
   draw :statis
@@ -135,13 +136,6 @@ Rails.application.routes.draw do
         end
       end
       resources :err_bots
-      resources :logs do
-        collection do
-          get :ip
-          get :latest
-        end
-      end
-      resources :log_sqls
       resources :csps, only: [:index, :show, :destroy]
       resources :states
       resources :meta_namespaces do
