@@ -1,9 +1,9 @@
 module Statis
   module Model::CounterMonth
     extend ActiveSupport::Concern
+    include Ext::Month
 
     included do
-
       attribute :count, :integer
       attribute :filter, :json
 

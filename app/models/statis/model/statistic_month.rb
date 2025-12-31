@@ -1,11 +1,9 @@
 module Statis
   module Model::StatisticMonth
     extend ActiveSupport::Concern
+    include Ext::Month
 
     included do
-      attribute :year, :integer
-      attribute :month, :integer
-      attribute :year_month, :string, index: true
       attribute :value, :decimal
 
       belongs_to :statistic, counter_cache: true
