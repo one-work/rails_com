@@ -57,14 +57,14 @@
 </div>
 <p class="size-7 text-grey mb-1">日志</p>
 <div class="grid">
-  <%= link_to({ controller: 'com/panel/logs' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('com.panel.logs.index.title') %></span>
+  <%= link_to({ controller: 'log/panel/requests' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('log.panel.requests.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'com/panel/logs', action: 'ip' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('com.panel.logs.ip.title') %></span>
+  <%= link_to({ controller: 'log/panel/requests', action: 'ip' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('log.panel.requests.ip.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'com/panel/log_sqls' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('com.panel.log_sqls.index.title') %></span>
+  <%= link_to({ controller: 'log/panel/queries' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('log.panel.queries.index.title') %></span>
   <% end %>
 </div>
 <p class="size-7 text-grey mb-1">邮件</p>
