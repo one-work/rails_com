@@ -2,7 +2,7 @@ module Log
   class RequestDailyJob < ApplicationJob
 
     def perform(today = Date.yesterday)
-      Request.where(duration: 300..).select(:identifier).distinct.pluck(:identifier).each do |identifier|
+      Request.where(created_at: today.beginning_of_day ... today.next_day.beginning_of_day, duration: 300..).select(:identifier).distinct.pluck(:identifier).each do |identifier|
         RequestDaily.find_or_create_by(date: today, identifier: identifier)
       end
 
