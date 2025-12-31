@@ -9,14 +9,19 @@ module Log
       attribute :duration_max, :float
       attribute :duration_min, :float
       attribute :total, :integer
+
+      has_many :requests, primary_key: :identifier, foreign_key: :identifier
+
+      before_action :compute!
     end
 
-    class_methods do
-
-      def xx
-
-      end
-
+    def compute!
+      reqs = requests.where(created_at: time_range)
+      self.duration_avg = reqs.average(:duration)
+      self.duration_max = reqs.maximun(:duration)
+      self.duration_min = reqs.minimum(:duration)
+      self.total = reqs.count
+      self.save
     end
 
   end

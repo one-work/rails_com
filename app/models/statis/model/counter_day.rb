@@ -10,20 +10,6 @@ module Statis
       belongs_to :config, counter_cache: true
       belongs_to :counter_month, foreign_key: [:config_id, :year_month], primary_key: [:config_id, :year_month], optional: true
       belongs_to :counter_year, foreign_key: [:config_id, :year], primary_key: [:config_id, :year], optional: true
-
-      after_initialize :init_year_month, if: -> { new_record? && date.present? }
-    end
-
-    def init_year_month
-      self.year = date.year
-      self.month = date.month
-      self.day = date.day
-      self.year_month = "#{year}-#{month.to_s.rjust(2, '0')}"
-    end
-
-    def time_range
-      the_day = Date.new(year, month, day)
-      the_day.beginning_of_day ... (the_day + 1).beginning_of_day
     end
 
     def cache_value
