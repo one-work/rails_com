@@ -1,0 +1,13 @@
+zh:
+  log:
+    panel:
+      requests:
+        index:
+          title: 日志
+        latest:
+          title: 最新日志
+        ip:
+          title: IP 统计
+      queries:
+        index:
+          title: SQL 日志

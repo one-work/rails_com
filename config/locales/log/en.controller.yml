@@ -1,0 +1,11 @@
+en:
+  log:
+    panel:
+      requests:
+        index:
+          title: Requests
+        ip:
+          title: IP
+      queries:
+        index:
+          title: Queries

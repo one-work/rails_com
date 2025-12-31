@@ -125,16 +125,6 @@ zh:
         clean_other:
           title: 删除其他错误
           confirm: 确认
-      logs:
-        index:
-          title: 日志
-        latest:
-          title: 最新日志
-        ip:
-          title: IP 统计
-      log_sqls:
-        index:
-          title: SQL 日志
       csps:
         index:
           title: 内容安全

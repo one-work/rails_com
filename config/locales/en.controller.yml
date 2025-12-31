@@ -82,14 +82,6 @@ en:
       inbound_emails:
         index:
           title: Emails
-      logs:
-        index:
-          title: Logs
-        ip:
-          title: IP
-      log_sqls:
-        index:
-          title: Log Sqls
       meta_actions:
         index:
           title: Actions
