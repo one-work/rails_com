@@ -12,16 +12,15 @@ module Log
 
       has_many :requests, primary_key: :identifier, foreign_key: :identifier
 
-      before_create :compute!
+      before_create :compute
     end
 
-    def compute!
+    def compute
       reqs = requests.where(created_at: time_range)
       self.duration_avg = reqs.average(:duration)
       self.duration_max = reqs.maximum(:duration)
       self.duration_min = reqs.minimum(:duration)
       self.total = reqs.count
-      self.save
     end
 
   end
