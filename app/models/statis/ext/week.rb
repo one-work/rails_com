@@ -5,8 +5,10 @@ module Statis
     included do
       attribute :year, :integer
       attribute :cweek, :integer
-      attribute :start_at, :datetime
-      attribute :finish_at, :datetime
+    end
+
+    def time_range
+      date.beginning_of_day ... date.next_day.beginning_of_day
     end
 
   end

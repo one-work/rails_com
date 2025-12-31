@@ -12,7 +12,7 @@ module Log
 
       has_many :requests, primary_key: :identifier, foreign_key: :identifier
 
-      before_action :compute!
+      before_create :compute!
     end
 
     def compute!

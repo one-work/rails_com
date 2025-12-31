@@ -9,7 +9,7 @@ module Log
       attribute :duration_min, :float
       attribute :total, :integer
 
-      before_action :compute!
+      before_create :compute!
     end
 
     def compute!
