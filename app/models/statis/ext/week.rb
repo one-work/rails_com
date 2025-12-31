@@ -1,13 +1,10 @@
 module Statis
-  module Ext::Day
+  module Ext::Week
     extend ActiveSupport::Concern
 
     included do
       attribute :year, :integer
-      attribute :month, :integer
-      attribute :day, :integer
-      attribute :date, :date
-      attribute :year_month, :string, index: true
+      attribute :cweek, :integer
       attribute :start_at, :datetime
       attribute :finish_at, :datetime
     end
