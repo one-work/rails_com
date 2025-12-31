@@ -3,10 +3,10 @@ module Log
 
     def perform(today = Date.yesterday)
       Request.where(duration: 300..).select(:identifier).distinct.pluck(:identifier).each do |identifier|
-        RequestDaily.create(date: today, identifier: identifier)
+        RequestDaily.find_or_create_by(date: today, identifier: identifier)
       end
 
-      SummaryDaily.create(date: today)
+      SummaryDaily.find_or_create_by(date: today)
     end
 
   end
