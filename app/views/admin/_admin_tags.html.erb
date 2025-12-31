@@ -8,7 +8,7 @@
       <strong><%= t("#{model.identifier}.admin.title") %></strong>
     </div>
     <div class="field is-grouped is-grouped-multiline">
-      <%= render partial: 'admin_tag_link', collection: model.admin_actions, as: :model %>
+      <%= render partial: 'admin_tag_link', collection: model.admin_actions, as: :model, cached: cache_with_model('admin') %>
     </div>
   </div>
 </div>
