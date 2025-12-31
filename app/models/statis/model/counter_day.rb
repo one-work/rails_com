@@ -1,9 +1,9 @@
 module Statis
   module Model::CounterDay
     extend ActiveSupport::Concern
+    include Ext::Day
 
     included do
-
       attribute :count, :integer
       attribute :filter, :json
 

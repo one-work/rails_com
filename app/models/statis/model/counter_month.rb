@@ -3,9 +3,7 @@ module Statis
     extend ActiveSupport::Concern
 
     included do
-      attribute :year, :integer
-      attribute :month, :integer
-      attribute :year_month, :string, index: true
+
       attribute :count, :integer
       attribute :filter, :json
 
