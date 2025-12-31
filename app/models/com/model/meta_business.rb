@@ -10,6 +10,13 @@ module Com
 
       has_many :meta_controllers, foreign_key: :business_identifier, primary_key: :identifier
       has_many :meta_actions, foreign_key: :business_identifier, primary_key: :identifier
+      has_many(
+        :admin_actions,
+        ->{ where(required_parts: [], action_name: 'index', namespace_identifier: 'admin') },
+        foreign_key: :business_identifier,
+        primary_key: :identifier,
+        class_name: 'MetaAction'
+      )
 
       has_one_attached :logo
 

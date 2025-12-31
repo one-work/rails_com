@@ -3,7 +3,7 @@ module Admin
     skip_before_action :require_role, only: [:index] if whether_filter :require_role
 
     def index
-      @meta_businesses = Com::MetaBusiness.where.not(identifier: ['', 'design'])
+      @meta_businesses = Com::MetaBusiness.includes(:admin_actions).where.not(identifier: ['', 'design'])
     end
 
   end

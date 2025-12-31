@@ -38,13 +38,14 @@ module RailsCom::ActionView
 
     def collection_by_cache_keys(view, template, collection, layout)
       seed = callable_cache_key? ? @options[:cached] : ->(i) { i }
-
       template_digest_path = view.digest_path_from_template(template)
-      layout_digest_path = view.digest_path_from_template(layout)
-      digest_path = "#{template_digest_path}:#{layout_digest_path}"
+      if layout
+        digest_path = "#{template_digest_path}:#{view.digest_path_from_template(layout)}"
+      else
+        digest_path = template_digest_path
+      end
 
       collection.preload! if callable_cache_key?
-
       collection.each_with_object([{}, []]) do |item, (hash, ordered_keys)|
         key = expanded_cache_key(seed.call(item), view, template, digest_path)
         ordered_keys << key
