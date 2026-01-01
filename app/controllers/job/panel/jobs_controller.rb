@@ -97,10 +97,10 @@ module Job
       @count = {
         index: @common_jobs.finished.async_count,
         failed: @common_jobs.failed.async_count,
-        todo: @common_jobs.scheduled.where(scheduled_at: Time.current..).async_count,
-        blocked: @common_jobs.where.associated(:blocked_execution).async_count,
-        running: @common_jobs.where.associated(:claimed_execution).async_count,
-        ready: @common_jobs.where.associated(:ready_execution).async_count,
+        todo: @common_jobs.todo.async_count,
+        blocked: @common_jobs.blocked.async_count,
+        running: @common_jobs.running.async_count,
+        ready: @common_jobs.ready.async_count,
         clearable: @common_jobs.clearable.async_count
       }
     end
