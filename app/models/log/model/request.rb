@@ -41,5 +41,15 @@ module Log
       headers.except('USER_AGENT', 'REFERER', 'ACCEPT')
     end
 
+    class_methods do
+
+      def init_stats(day: Date.yesterday)
+        day.prev_month.upto(day) do |date|
+          RequestDailyJob.perform_now(date)
+        end
+      end
+
+    end
+
   end
 end

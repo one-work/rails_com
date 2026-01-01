@@ -12,5 +12,15 @@ module Log
       attribute :duration, :float
     end
 
+    class_methods do
+
+      def init_stats(day: Date.yesterday)
+        day.prev_month.upto(day) do |date|
+          QueryDailyJob.perform_now(date)
+        end
+      end
+
+    end
+
   end
 end

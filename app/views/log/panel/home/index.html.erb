@@ -27,6 +27,8 @@
     <% end %>
   </div>
   <div class="column is-half">
-
+    <%= render layout: 'query_daily_table' do %>
+      <%= render partial: 'request_daily_tbody', layout: 'request_daily_tr', collection: @query_dailies, as: :model %>
+    <% end %>
   </div>
 </div>

@@ -14,7 +14,7 @@ module Log
 
     def compute
       requests = Request.where(created_at: time_range)
-      self.duration_avg = requests.average(:duration)
+      self.duration_avg = requests.average(:duration).round(2)
       self.duration_max = requests.maximum(:duration)
       self.duration_min = requests.minimum(:duration)
       self.total = requests.count
