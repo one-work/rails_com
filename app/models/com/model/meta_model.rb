@@ -9,7 +9,7 @@ module Com
       attribute :description, :string
       attribute :defined_db, :boolean, default: false
       attribute :customizable, :boolean, default: false, comment: '是否允许用户定制'
-      attribute :business_identifier, :string, default: '', null: false, index: true
+      attribute :business_identifier, :string, default: '', index: true
 
       has_many :meta_columns, foreign_key: :record_name, primary_key: :record_name, inverse_of: :meta_model
 
