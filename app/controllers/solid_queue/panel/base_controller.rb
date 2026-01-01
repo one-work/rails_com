@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Job
+module SolidQueue
   class Panel::BaseController < PanelController
     # protect_from_forgery with: :exception
 

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Job
+module SolidQueue
   class Panel::JobsController < Panel::BaseController
     before_action :set_queue
     before_action :set_common_jobs
@@ -50,7 +50,7 @@ module Job
     end
 
     def clear_all
-      SolidQueue::Job.clear_finished_in_batches(class_name: params[:class_name])
+      Job.clear_finished_in_batches(class_name: params[:class_name])
     end
 
     def retry
@@ -58,12 +58,12 @@ module Job
     end
 
     def retry_all
-      jobs = SolidQueue::Job.failed.default_where(q_params)
-      SolidQueue::FailedExecution.retry_all(jobs)
+      jobs = Job.failed.default_where(q_params)
+      FailedExecution.retry_all(jobs)
     end
 
     def batch_destroy
-      SolidQueue::Job.where(id: params[:ids].split(',')).each(&:destroy)
+      Job.where(id: params[:ids].split(',')).each(&:destroy)
 
       if ['failed', 'ready', 'clearable'].include? params[:from_action]
         public_send params[:from_action]
@@ -71,7 +71,7 @@ module Job
     end
 
     def batch_retry
-      SolidQueue::Job.where(id: params[:ids].split(',')).each(&:retry)
+      Job.where(id: params[:ids].split(',')).each(&:retry)
     end
 
     def destroy
@@ -80,16 +80,16 @@ module Job
 
     private
     def set_queue
-      @queue = SolidQueue::Queue.new(params[:queue_id])
+      @queue = Queue.new(params[:queue_id])
     end
 
     def set_common_jobs
-      today_begin = SolidQueue::Job.where(created_at: ...Date.today.beginning_of_month.beginning_of_day.to_fs(:human)).order(id: :desc).first
+      today_begin = Job.where(created_at: ...Date.today.beginning_of_month.beginning_of_day.to_fs(:human)).order(id: :desc).first
 
       if today_begin
-        @common_jobs = SolidQueue::Job.default_where(q_params).where(id: today_begin.id..)
+        @common_jobs = Job.default_where(q_params).where(id: today_begin.id..)
       else
-        @common_jobs = SolidQueue::Job.default_where(q_params)
+        @common_jobs = Job.default_where(q_params)
       end
     end
 
@@ -106,7 +106,7 @@ module Job
     end
 
     def set_job
-      @job = SolidQueue::Job.find params[:id]
+      @job = Job.find params[:id]
     end
 
     def set_class_names
@@ -114,7 +114,7 @@ module Job
     end
 
     def model_klass
-      SolidQueue::Job
+      Job
     end
 
     def q_params
