@@ -84,33 +84,25 @@ module Job
     end
 
     def set_common_jobs
-      @common_jobs = SolidQueue::Job.default_where(q_params)
-    end
-
-    def set_count
       today_begin = SolidQueue::Job.where(created_at: ...Date.today.beginning_of_month.beginning_of_day.to_fs(:human)).order(id: :desc).first
 
       if today_begin
-        @count = {
-          index: @common_jobs.where(id: today_begin.id..).finished.async_count,
-          failed: @common_jobs.where(id: today_begin.id..).failed.async_count,
-          todo: @common_jobs.where(id: today_begin.id..).scheduled.where(scheduled_at: Time.current..).async_count,
-          blocked: @common_jobs.where(id: today_begin.id..).where.associated(:blocked_execution).async_count,
-          running: @common_jobs.where(id: today_begin.id..).where.associated(:claimed_execution).async_count,
-          ready: @common_jobs.where(id: today_begin.id..).where.associated(:ready_execution).async_count,
-          clearable: @common_jobs.where(id: today_begin.id..).clearable.async_count
-        }
+        @common_jobs = SolidQueue::Job.default_where(q_params).where(id: today_begin.id..)
       else
-        @count = {
-          index: @common_jobs.finished.async_count,
-          failed: @common_jobs.failed.async_count,
-          todo: @common_jobs.scheduled.where(scheduled_at: Time.current..).async_count,
-          blocked: @common_jobs.where.associated(:blocked_execution).async_count,
-          running: @common_jobs.where.associated(:claimed_execution).async_count,
-          ready: @common_jobs.where.associated(:ready_execution).async_count,
-          clearable: @common_jobs.clearable.async_count
-        }
+        @common_jobs = SolidQueue::Job.default_where(q_params)
       end
+    end
+
+    def set_count
+      @count = {
+        index: @common_jobs.finished.async_count,
+        failed: @common_jobs.failed.async_count,
+        todo: @common_jobs.scheduled.where(scheduled_at: Time.current..).async_count,
+        blocked: @common_jobs.where.associated(:blocked_execution).async_count,
+        running: @common_jobs.where.associated(:claimed_execution).async_count,
+        ready: @common_jobs.where.associated(:ready_execution).async_count,
+        clearable: @common_jobs.clearable.async_count
+      }
     end
 
     def set_job
