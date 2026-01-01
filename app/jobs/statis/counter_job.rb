@@ -1,4 +1,4 @@
-module Com
+module Statis
   class CounterJob < ApplicationJob
     queue_as :statistic
 

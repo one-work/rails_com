@@ -1,4 +1,4 @@
-module Com
+module Statis
   class CounterDailyJob < ApplicationJob
 
     def perform
