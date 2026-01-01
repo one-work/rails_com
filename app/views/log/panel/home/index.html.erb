@@ -1,14 +1,32 @@
-<div class="box">
-  <div
-    data-controller="antv-bar"
-    data-antv-bar-data-value="<%= @data.to_json %>"
-    data-antv-bar-options-value="<%=
-      {
-        encode: {
-          x: 'date',
-          y: 'duration_avg'
-        }
-      }.to_json
-    %>"
-  ></div>
+<div class="columns">
+  <div class="column is-half">
+    <div class="box">
+      <div
+        data-controller="antv-bar"
+        data-antv-bar-data-value="<%= @data.to_json %>"
+        data-antv-bar-options-value="<%=
+          {
+            encode: {
+              x: 'date',
+              y: 'duration_avg'
+            }
+          }.to_json
+        %>"
+      ></div>
+    </div>
+  </div>
+  <div class="column is-half">
+    <div class="box"></div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    <%= render layout: 'request_daily_table' do %>
+      <%= render partial: 'request_daily_tbody', layout: 'request_daily_tr', collection: @request_dailies, as: :model %>
+    <% end %>
+  </div>
+  <div class="column is-half">
+
+  </div>
 </div>
