@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 namespace :solid_queue, defaults: { business: 'solid_queue' } do
   namespace :panel, defaults: { namespace: 'panel' } do
