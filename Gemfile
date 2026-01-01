@@ -4,7 +4,7 @@ gemspec
 
 gem 'rails', github: 'rails/rails'
 gem 'puma'
-gem 'pg'
+gem 'sqlite3'
 gem 'image_processing'
 gem 'propshaft'
 

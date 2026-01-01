@@ -245,7 +245,6 @@ GEM
     nokogiri (1.19.0-arm64-darwin)
       racc (~> 1.4)
     ostruct (0.6.3)
-    pg (1.6.3-arm64-darwin)
     positioning (0.4.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
@@ -306,6 +305,7 @@ GEM
       fugit (~> 1.11)
       railties (>= 7.1)
       thor (>= 1.3.1)
+    sqlite3 (2.9.0-arm64-darwin)
     sshkey (3.0.0)
     stringio (3.2.0)
     thor (1.4.0)
@@ -338,12 +338,12 @@ DEPENDENCIES
   image_processing
   listen
   minitest-hooks
-  pg
   propshaft
   puma
   rails!
   rails_com!
   sdoc
+  sqlite3
 
 CHECKSUMS
   acme-client (2.0.30) sha256=fd87896fcbf5e143cde380a73cfbd87d816f50f619fded50e8fbb62b8ba70616
@@ -415,7 +415,6 @@ CHECKSUMS
   nio4r (2.7.5) sha256=6c90168e48fb5f8e768419c93abb94ba2b892a1d0602cb06eef16d8b7df1dca1
   nokogiri (1.19.0-arm64-darwin) sha256=0811dfd936d5f6dd3f6d32ef790568bf29b2b7bead9ba68866847b33c9cf5810
   ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
-  pg (1.6.3-arm64-darwin) sha256=7240330b572e6355d7c75a7de535edb5dfcbd6295d9c7777df4d9dddfb8c0e5f
   positioning (0.4.7) sha256=c9a8cfba8b99180bd2b05022cdbcc7b234ea8bb1aa9101010e06bdda9a7bb220
   pp (0.6.3) sha256=2951d514450b93ccfeb1df7d021cae0da16e0a7f95ee1e2273719669d0ab9df6
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
@@ -444,6 +443,7 @@ CHECKSUMS
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   solid_cache (1.0.10) sha256=bc05a2fb3ac78a6f43cbb5946679cf9db67dd30d22939ededc385cb93e120d41
   solid_queue (1.2.4) sha256=bb60f9552a969ac377d87601b0ff6a088f5e6f20b0cbbe3844a59d022cac0e4b
+  sqlite3 (2.9.0-arm64-darwin) sha256=a917bd9b84285766ff3300b7d79cd583f5a067594c8c1263e6441618c04a6ed3
   sshkey (3.0.0) sha256=655ba351d6e01a48dfe59d65530af8975c777b8cc57a061770de3228ff2d11cd
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
   thor (1.4.0) sha256=8763e822ccb0f1d7bee88cde131b19a65606657b847cc7b7b4b82e772bcd8a3d
