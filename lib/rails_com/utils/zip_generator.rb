@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require 'zip'
-
 module ZipGenerator
   extend self
 
   def involve(input_dir = Rails.root.join('tmp', 'zip'), out_name = 'xx.zip')
+    require 'zip'
     input_dir.exist? || input_dir.mkdir
     output_file = input_dir.join(out_name)
 
