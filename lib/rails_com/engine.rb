@@ -43,6 +43,12 @@ module RailsCom
       end
     end
 
+    initializer 'rails_com.extend_solid_queue_job' do
+      Rails.autoloaders.main.on_load('SolidQueue::Job') do
+        SolidQueue::Job.include Job::Model::Queue
+      end
+    end
+
     initializer 'rails_com.quiet_logs' do |app|
       app.middleware.insert_before ::Rails::Rack::Logger, ::RailsCom::QuietLogs
     end

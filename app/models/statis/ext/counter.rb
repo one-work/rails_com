@@ -16,6 +16,7 @@ module Statis
     end
 
     def configs
+      config = configs.build(statistical_type: self.base_class_name)
     end
 
     def cache_from_config_later
