@@ -95,7 +95,7 @@ module Job
 
     def set_count
       @count = {
-        index: @common_jobs.finished.async_count,
+        index: Statis::Config.where(x:1).count + @common_jobs.finished.async_count,
         failed: @common_jobs.failed.async_count,
         todo: @common_jobs.todo.async_count,
         blocked: @common_jobs.blocked.async_count,
