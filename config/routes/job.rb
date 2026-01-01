@@ -1,5 +1,5 @@
 
-namespace :solid_queue, defaults: { business: 'solid_queue' } do
+namespace :job, defaults: { business: 'job' } do
   namespace :panel, defaults: { namespace: 'panel' } do
     root 'home#index'
     resources :executions, only: [:index, :show, :destroy] do

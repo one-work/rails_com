@@ -91,10 +91,10 @@
     <span><%= t('statis.panel.configs.index.title') %></span>
   <% end %>
 </div>
-<p class="size-7 text-grey mb-1"><%= t('solid_queue.panel.title') %></p>
+<p class="size-7 text-grey mb-1"><%= t('job.panel.title') %></p>
 <div class="grid">
-  <%= link_to({ controller: 'solid_queue/panel/home' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('solid_queue.panel.home.index.title') %></span>
+  <%= link_to({ controller: 'job/panel/home' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('job.panel.home.index.title') %></span>
   <% end %>
 </div>
 <p class="size-7 text-grey mb-1"><%= t('roled.panel.title') %></p>

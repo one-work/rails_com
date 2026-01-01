@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module SolidQueue
+module Job
   class Panel::QueuesController < Panel::BaseController
     before_action :set_queue, only: [:pause, :resume]
 
