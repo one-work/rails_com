@@ -1,5 +1,6 @@
 <turbo-frame id="panel" title="<%= current_title %>">
   <div class="loading">加载中...</div>
+  <%= render 'head_extra_js' %>
   <ul class="breadcrumb has-succeeds-separator ml-3"><%= render 'breadcrumb' %></ul>
   <%= render 'alert' %>
   <div class="box flex-grow-1 radius-bottom-none">
