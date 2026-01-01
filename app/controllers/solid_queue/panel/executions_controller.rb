@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Job
+module SolidQueue
   class Panel::ExecutionsController < Panel::BaseController
     before_action :set_execution, only: [:show, :perform]
     before_action :set_job_classes, only: [:index, :scheduled, :running]
