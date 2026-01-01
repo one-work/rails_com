@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  draw :solid_queue
+  draw :queue
   draw :log
   draw :pg
   draw :roled
