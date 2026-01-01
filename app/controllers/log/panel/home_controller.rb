@@ -2,7 +2,7 @@ module Log
   class Panel::HomeController < Panel::BaseController
 
     def index
-      @data = SummaryDaily.where(date: Date.today..).select(:date, :duration_avg).as_json(only: ['date', 'duration_avg'])
+      @data = SummaryDaily.where(date: Date.today.prev_month..).select(:date, :duration_avg).as_json(only: ['date', 'duration_avg'])
     end
 
   end
