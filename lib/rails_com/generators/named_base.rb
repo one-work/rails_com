@@ -4,6 +4,10 @@ require 'rails/generators'
 module RailsCom::Generators
   module NamedBase
 
+    def namespace
+      @namespace
+    end
+
     def class_name
       file_name.classify
     end
