@@ -4,7 +4,7 @@ module RailsCom::ActionDispatch
     def test_create_ok
       assert_difference -> { @task.class.count } do
         post(
-          url_for(controller: 'print/tasks', action: 'create', printer_id: @task.mqtt_printer_id),
+          url_for(controller: 'print/tasks', action: 'create', printer_id: 'dddddd'),
           params: {
             task: {
               body: @task.body
@@ -19,6 +19,5 @@ module RailsCom::ActionDispatch
 
   end
 end
-
 
 ActionDispatch::IntegrationTest.prepend RailsCom::ActionDispatch::CommonTest
