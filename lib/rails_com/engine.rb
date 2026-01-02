@@ -3,6 +3,10 @@
 module RailsCom
   class Engine < ::Rails::Engine #:nodoc:
 
+    def railtie_namespace
+      Com
+    end
+
     config.autoload_paths += Dir[
       "#{config.root}/app/models/role",
       "#{config.root}/app/models/who_role",
