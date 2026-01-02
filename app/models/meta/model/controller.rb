@@ -47,6 +47,18 @@ module Meta
       namespace_identifier
     end
 
+    def test_klass
+      "#{controller_path.camelize}ControllerTest".safe_constantize
+    end
+
+    def test_run
+      reporter = Minitest::SummaryReporter.new($stdout)
+      reporter.start
+      Minitest.seed = 2
+      test_klass.run_suite(reporter)
+      reporter.report
+    end
+
     def name
       t = I18n.t "#{controller_path.to_s.split('/').join('.')}.index.title", default: nil
       return t if t
