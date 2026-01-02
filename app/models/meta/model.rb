@@ -1,5 +1,5 @@
 module Meta
   class Model < ApplicationRecord
-    include Model::Model
+    include ::Meta::Model::Model
   end
 end
