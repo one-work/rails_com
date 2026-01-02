@@ -11,7 +11,7 @@ module Meta
       attribute :customizable, :boolean, default: false, comment: '是否允许用户定制'
       attribute :business_identifier, :string, default: '', index: true
 
-      has_many :meta_columns, foreign_key: :record_name, primary_key: :record_name, inverse_of: :meta_model
+      has_many :columns, foreign_key: :record_name, primary_key: :record_name, inverse_of: :model
 
       before_validation :sync_business_identifier, if: -> { record_name_changed? }
     end
@@ -39,7 +39,7 @@ module Meta
           meta_model.defined_db = true
 
           model.columns.each do |column|
-            meta_column = meta_model.meta_columns.find_or_initialize_by(column_name: column.name)
+            meta_column = meta_model.columns.find_or_initialize_by(column_name: column.name)
             meta_column.column_type = column.type
             meta_column.sql_type = column.sql_type
             meta_column.column_limit = column.limit
@@ -47,12 +47,12 @@ module Meta
             meta_column.defined_db = true
             meta_column.defined_model = true if model.pending_attributes.keys.include?(column.name)
 
-            present_meta_columns = meta_model.meta_columns.pluck(:column_name)
+            present_meta_columns = meta_model.columns.pluck(:column_name)
             meta_model.meta_columns.select(&->(i){ (present_meta_columns - model.column_names).include?(i.column_name) }).each do |needless_column|
               needless_column.mark_for_destruction
             end
           end
-          meta_model.save if meta_model.meta_columns.length > 0
+          meta_model.save if meta_model.columns.length > 0
 
           present_models = self.pluck(:record_name)
           self.where(record_name: (present_models - RailsCom::Models.model_names)).each do |needless_model|

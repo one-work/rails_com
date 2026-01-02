@@ -10,17 +10,17 @@ module Meta
       attribute :synced_at, :datetime
       attribute :position, :integer
 
-      belongs_to :meta_namespace, foreign_key: :namespace_identifier, primary_key: :identifier, optional: true
-      belongs_to :meta_business, foreign_key: :business_identifier, primary_key: :identifier, optional: true
+      belongs_to :namespace, foreign_key: :namespace_identifier, primary_key: :identifier, optional: true
+      belongs_to :business, foreign_key: :business_identifier, primary_key: :identifier, optional: true
 
       has_many(
-        :meta_actions,
+        :actions,
         foreign_key: :controller_path,
         primary_key: :controller_path,
         dependent: :destroy_async,
-        inverse_of: :meta_controller
+        inverse_of: :controller
       )
-      accepts_nested_attributes_for :meta_actions, allow_destroy: true
+      accepts_nested_attributes_for :actions, allow_destroy: true
 
       scope :ordered, -> { order(position: :asc, id: :asc) }
 
@@ -71,16 +71,16 @@ module Meta
     end
 
     def role_hash
-      meta_actions.each_with_object({}) { |i, h| h.merge! i.action_name => i.role_hash }
+      actions.each_with_object({}) { |i, h| h.merge! i.action_name => i.role_hash }
     end
 
     class_methods do
 
       def actions
         result = {}
-        MetaBusiness.all.includes(meta_controllers: :meta_actions).each do |meta_business|
-          result.merge! meta_business.identifier => meta_business.meta_controllers.group_by(&:namespace_identifier).transform_values!(&->(meta_controllers){
-            meta_controllers.each_with_object({}) { |meta_controller, h| h.merge! meta_controller.controller_name => meta_controller.meta_actions.pluck(:action_name) }
+        Business.all.includes(controllers: :actions).each do |business|
+          result.merge! business.identifier => business.controllers.group_by(&:namespace_identifier).transform_values!(&->(controllers){
+            controllers.each_with_object({}) { |controller, h| h.merge! controller.controller_name => controller.actions.pluck(:action_name) }
           })
         end
         result
