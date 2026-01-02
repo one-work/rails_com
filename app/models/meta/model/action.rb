@@ -17,6 +17,7 @@ module Meta
       attribute :controller_path, :string, null: false, index: true
       attribute :controller_name, :string, null: false
       attribute :action_name, :string
+      attribute :identifier, :string
       attribute :path, :string
       attribute :verb, :string
       attribute :position, :integer
@@ -44,6 +45,7 @@ module Meta
 
       positioned on: [:business_identifier, :namespace_identifier, :controller_path]
 
+      before_validation :set_identifier, if: -> { (changes.keys & ['controller_path', 'action_name']).present? }
       before_validation :sync_from_controller, if: -> { controller && (controller_path_changed? || controller.new_record?) }
       before_validation :sync_from_action, if: -> { action_name_changed? }
     end
@@ -77,8 +79,8 @@ module Meta
       id
     end
 
-    def identifier
-      [business_identifier, namespace_identifier, controller_path, (action_name.blank? ? '_' : action_name)].join('_')
+    def set_identifier
+      self.identifier = "#{controller_path}##{action_name}"
     end
 
     def name
