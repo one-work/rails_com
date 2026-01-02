@@ -44,7 +44,7 @@ module Meta
 
       positioned on: [:business_identifier, :namespace_identifier, :controller_path]
 
-      before_validation :sync_from_controller, if: -> { controller && (controller_path_changed? || meta_controller.new_record?) }
+      before_validation :sync_from_controller, if: -> { controller && (controller_path_changed? || controller.new_record?) }
       before_validation :sync_from_action, if: -> { action_name_changed? }
     end
 
@@ -92,8 +92,8 @@ module Meta
     end
 
     def sync_from_controller
-      self.business_identifier = meta_controller.business_identifier
-      self.namespace_identifier = meta_controller.namespace_identifier
+      self.business_identifier = controller.business_identifier
+      self.namespace_identifier = controller.namespace_identifier
     end
 
   end
