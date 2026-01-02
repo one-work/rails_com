@@ -3,7 +3,7 @@ require 'test_helper'
 class <%= controller_class_name %>ControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @<%= singular_name %> = <%= fixture_file_name %>(:one)
+    @<%= singular_name %> = <%= fixture_name %>(:one)
   end
 
   test 'index ok' do
