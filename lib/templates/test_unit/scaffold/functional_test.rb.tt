@@ -22,7 +22,7 @@ class <%= controller_class_name %>ControllerTest < ActionDispatch::IntegrationTe
     assert_difference('<%= class_name %>.count') do
       post(
         url_for(controller: '<%= controller_name %>', action: 'create'),
-        params: { <%= "#{singular_name}: { #{attributes_string} }" %> },
+        params: { <%= "#{singular_name}: #{attributes_string}" %> },
         as: :turbo_stream
       )
     end
@@ -45,7 +45,7 @@ class <%= controller_class_name %>ControllerTest < ActionDispatch::IntegrationTe
   test 'update ok' do
     patch(
       url_for(controller: '<%= controller_name %>', action: 'update', id: @<%= singular_name %>.id),
-      params: { <%= "#{singular_name}: { #{attributes_string} }" %> },
+      params: { <%= "#{singular_name}: #{attributes_string}" %> },
       as: :turbo_stream
     )
 
