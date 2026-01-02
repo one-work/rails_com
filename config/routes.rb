@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  draw :job
   draw :log
+  draw :meta
   draw :pg
   draw :roled
-  draw :job
   draw :statis
 
   scope 'rails/active_storage', module: :com, defaults: { business: 'com' } do

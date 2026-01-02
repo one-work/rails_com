@@ -87,7 +87,7 @@ module Meta
       end
 
       def sync
-        Meta::Business.all.each { |i| i.sync_all }
+        Business.all.each { |i| i.sync_all }
       end
 
     end

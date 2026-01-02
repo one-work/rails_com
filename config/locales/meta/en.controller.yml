@@ -1,0 +1,21 @@
+en:
+  meta:
+    panel:
+      home:
+        index:
+          title: Meta
+      actions:
+        index:
+          title: Actions
+      businesses:
+        index:
+          title: Businesses
+      controllers:
+        index:
+          title: Controllers
+      models:
+        index:
+          title: Models
+      columns:
+        index:
+          title: Columns

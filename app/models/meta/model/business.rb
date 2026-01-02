@@ -39,7 +39,7 @@ module Meta
     end
 
     def meta_namespaces
-      MetaNamespace.where(identifier: meta_controllers.select(:namespace_identifier).distinct.pluck(:namespace_identifier))
+      Namespace.where(identifier: controllers.select(:namespace_identifier).distinct.pluck(:namespace_identifier))
     end
 
     def role_path
@@ -66,15 +66,15 @@ module Meta
     end
 
     def sync(now: Time.current)
-      RailsCom::Routes.actions[identifier].each do |namespace, controllers|
-        collected_controllers = controllers.map do |controller, actions|
-          meta_controller = meta_controllers.find { |i| i.controller_path == controller } || meta_controllers.build(controller_path: controller)
+      RailsCom::Routes.actions[identifier].each do |namespace, _controllers|
+        collected_controllers = _controllers.map do |controller, actions|
+          meta_controller = controllers.find { |i| i.controller_path == controller } || controllers.build(controller_path: controller)
           meta_controller.namespace_identifier = namespace
           meta_controller.controller_name = controller.to_s.split('/')[-1]
           meta_controller.synced_at = now
 
           collected_actions = actions.map do |action_name, action|
-            meta_action = meta_controller.meta_actions.find { |i| i.action_name == action_name } || meta_controller.meta_actions.build(action_name: action_name)
+            meta_action = meta_controller.actions.find { |i| i.action_name == action_name } || meta_controller.actions.build(action_name: action_name)
             meta_action.controller_name = meta_controller.controller_name
             meta_action.path = action[:path]
             meta_action.verb = action[:verb]
@@ -98,8 +98,8 @@ module Meta
     end
 
     def prune
-      meta_controllers.where.not(synced_at: synced_at).or(meta_controllers.where(synced_at: nil)).delete_all
-      meta_actions.where.not(synced_at: synced_at).or(meta_actions.where(synced_at: nil)).delete_all
+      controllers.where.not(synced_at: synced_at).or(controllers.where(synced_at: nil)).delete_all
+      actions.where.not(synced_at: synced_at).or(actions.where(synced_at: nil)).delete_all
     end
 
     def svg_icon

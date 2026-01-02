@@ -131,34 +131,6 @@ zh:
       inbound_emails:
         index:
           title: 邮件管理
-      meta_businesses:
-        index:
-          title: 业务
-      meta_namespaces:
-        index:
-          title: 命名空间
-      meta_controllers:
-        index:
-          title: 控制器（Controller)
-      meta_actions:
-        index:
-          title: 方法（Action）
-      meta_models:
-        index:
-          title: 模型（Model）
-        reflections:
-          title: 关联
-        indexes:
-          title: 索引
-        index_edit:
-          title: 修改索引
-      meta_columns:
-        index:
-          title: 属性列表
-        sync:
-          title: 同步
-        test:
-          title: 测试
       pg_publications:
         index:
           title: 发布者

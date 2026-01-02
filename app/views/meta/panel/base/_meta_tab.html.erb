@@ -1,0 +1,10 @@
+<div class="tabs">
+  <ul>
+    <li class="<%= active_helper(controller: 'businesses', active: 'is-active') %>">
+      <%= link_to t('meta.panel.businesses.index.title'), { controller: 'businesses' } %>
+    </li>
+    <li class="<%= active_helper(controller: 'namespaces', active: 'is-active') %>">
+      <%= link_to t('meta.panel.namespaces.index.title'), { controller: 'namespaces' } %>
+    </li>
+  </ul>
+</div>

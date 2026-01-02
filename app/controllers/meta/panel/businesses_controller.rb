@@ -10,7 +10,7 @@ module Meta
     end
 
     private
-    def meta_business_permit_params
+    def business_permit_params
       [
         :name,
         :logo

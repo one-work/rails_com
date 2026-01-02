@@ -1,0 +1,34 @@
+zh:
+  meta:
+    panel:
+      home:
+        index:
+          title: 元数据
+      businesses:
+        index:
+          title: 业务
+      namespaces:
+        index:
+          title: 命名空间
+      controllers:
+        index:
+          title: 控制器（Controller)
+      actions:
+        index:
+          title: 方法（Action）
+      models:
+        index:
+          title: 模型（Model）
+        reflections:
+          title: 关联
+        indexes:
+          title: 索引
+        index_edit:
+          title: 修改索引
+      columns:
+        index:
+          title: 属性列表
+        sync:
+          title: 同步
+        test:
+          title: 测试    

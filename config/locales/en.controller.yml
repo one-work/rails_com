@@ -82,21 +82,6 @@ en:
       inbound_emails:
         index:
           title: Emails
-      meta_actions:
-        index:
-          title: Actions
-      meta_businesses:
-        index:
-          title: Businesses
-      meta_controllers:
-        index:
-          title: Controllers
-      meta_models:
-        index:
-          title: Models
-      meta_columns:
-        index:
-          title: Columns
       states:
         index:
           title: States
