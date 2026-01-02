@@ -32,7 +32,7 @@ module RailsCom::ActiveRecord
       args = [
         self.name.underscore
       ]
-      cols = columns.reject(&->(i){ attributes_by_default.include?(i.name) }).map { |col| "#{col.name}:#{col.type}" }
+      cols = columns.reject(&->(i){ attributes_by_default.include?(i.name.to_sym) }).map { |col| "#{col.name}:#{col.type}" }
 
       generator = TestUnit::Generators::ModelGenerator.new(args + cols, destination_root: Rails.root, fixture: true)
       generator.instance_variable_set :@source_paths, Array(RailsCom::Engine.root.join('lib/templates', 'test_unit/model'))
