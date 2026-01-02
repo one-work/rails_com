@@ -4,7 +4,8 @@ module RailsCom::ActionDispatch
     def test_create_ok
       assert_difference -> { @task.class.count } do
         post(
-          url_for(controller: 'print/tasks', action: 'create', printer_id: 'dddddd'),
+          nil,
+          url: { controller: 'print/tasks', action: 'create', printer_id: 'dddddd' },
           params: {
             task: {
               body: @task.body
