@@ -76,7 +76,7 @@ module Roled
 
     def landmark_rules
       _rule_ids = role_hash.leaves
-      Com::MetaAction.where(id: _rule_ids, landmark: true)
+      Meta::Action.where(id: _rule_ids, landmark: true)
     end
 
     class_methods do

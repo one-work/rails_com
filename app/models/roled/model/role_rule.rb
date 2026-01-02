@@ -11,12 +11,12 @@ module Roled
       attribute :params_identifier, :string
 
       belongs_to :role, inverse_of: :role_rules
-      belongs_to :meta_action, class_name: 'Com::MetaAction'
-      belongs_to :meta_business, class_name: 'Com::MetaBusiness', foreign_key: :business_identifier, primary_key: :identifier, optional: true
-      belongs_to :meta_namespace, class_name: 'Com::MetaNamespace', foreign_key: :namespace_identifier, primary_key: :identifier, optional: true
-      belongs_to :meta_controller, class_name: 'Com::MetaController', foreign_key: :controller_path, primary_key: :controller_path, optional: true
+      belongs_to :meta_action, class_name: 'Meta::Action'
+      belongs_to :meta_business, class_name: 'Meta::Business', foreign_key: :business_identifier, primary_key: :identifier, optional: true
+      belongs_to :meta_namespace, class_name: 'Meta::Namespace', foreign_key: :namespace_identifier, primary_key: :identifier, optional: true
+      belongs_to :meta_controller, class_name: 'Meta::Controller', foreign_key: :controller_path, primary_key: :controller_path, optional: true
 
-      belongs_to :proxy_meta_action, ->(o){ where(controller_path: o.controller_path) }, class_name: 'Com::MetaAction', foreign_key: :action_name, primary_key: :action_name, optional: true
+      belongs_to :proxy_meta_action, ->(o){ where(controller_path: o.controller_path) }, class_name: 'Meta::Action', foreign_key: :action_name, primary_key: :action_name, optional: true
     end
 
     def fix_rule_relation

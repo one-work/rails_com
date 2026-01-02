@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-MetaBusiness = Com::MetaBusiness unless defined? MetaBusiness
+MetaBusiness = Meta::Business unless defined? MetaBusiness

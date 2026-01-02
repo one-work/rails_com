@@ -2,7 +2,8 @@ module RailsCom::ActionDispatch
   module CommonTest
 
     def test_create_ok
-      assert_difference('Task.count') do
+      binding.b
+      assert_difference -> { @task.class.count } do
         post(
           url_for(controller: 'print/tasks', action: 'create', printer_id: @task.mqtt_printer_id),
           params: {

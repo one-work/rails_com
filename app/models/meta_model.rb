@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-MetaModel = Com::MetaModel unless defined? MetaModel
+MetaModel = Meta::Model unless defined? MetaModel

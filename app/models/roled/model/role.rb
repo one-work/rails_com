@@ -192,7 +192,7 @@ module Roled
     def prune
       c = {}
 
-      businesses = Com::MetaBusiness.where(identifier: role_hash.keys)
+      businesses = Meta::Business.where(identifier: role_hash.keys)
       businesses.each do |business|
         r = role_hash.dig(business.identifier).diff_remove(business.role_hash)
         r.each do |namespace_identifier, controllers_hash|
@@ -215,7 +215,7 @@ module Roled
 
       role_rules.where(meta_action_id: rr_ids - leaves).delete_all
 
-      adds = Com::MetaAction.where(id: leaves - rr_ids).each_with_object([]) do |meta_action, arr|
+      adds = Meta::Action.where(id: leaves - rr_ids).each_with_object([]) do |meta_action, arr|
         arr << {
           business_identifier: meta_action.business_identifier,
           namespace_identifier: meta_action.namespace_identifier,

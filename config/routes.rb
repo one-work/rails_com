@@ -138,63 +138,6 @@ Rails.application.routes.draw do
       resources :err_bots
       resources :csps, only: [:index, :show, :destroy]
       resources :states
-      resources :meta_namespaces do
-        collection do
-          post :sync
-        end
-        member do
-          patch :move_lower
-          patch :move_higher
-        end
-      end
-      resources :meta_businesses do
-        collection do
-          post :sync
-        end
-        member do
-          patch :move_lower
-          patch :move_higher
-        end
-      end
-      resources :meta_controllers, only: [:index] do
-        collection do
-          post :sync
-          post :meta_namespaces
-          post :meta_controllers
-          post :meta_actions
-        end
-        member do
-          patch :move_lower
-          patch :move_higher
-        end
-        resources :meta_actions do
-          member do
-            patch :move_lower
-            patch :move_higher
-            get :roles
-          end
-        end
-      end
-      resources :meta_models do
-        collection do
-          post :sync
-          post :options
-          post :columns
-        end
-        member do
-          get :reflections
-          get :indexes
-          post :index_edit
-          post :index_update
-          patch :reorder
-        end
-        resources :meta_columns do
-          member do
-            patch :sync
-            patch :test
-          end
-        end
-      end
       resources :infos
       resources :cache_lists
       resources :inbound_emails
