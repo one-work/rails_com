@@ -5,7 +5,7 @@ module RailsCom::ActionDispatch
       if path.nil?
         path = url_for(url)
       end
-      binding.b
+
       super(method, path, params: params, headers: headers, env: env, xhr: xhr, as: as)
     end
 

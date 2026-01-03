@@ -51,11 +51,13 @@ module Meta
       "#{controller_path.camelize}ControllerTest".safe_constantize
     end
 
-    def test_run
+    def test_run(method_name)
       reporter = Minitest::SummaryReporter.new($stdout)
       reporter.start
       Minitest.seed = 2
-      test_klass.run_suite(reporter)
+      Minitest::Runnable.run test_klass, method_name, reporter
+
+      test_klass.new(method_name, ).run
       reporter.report
     end
 

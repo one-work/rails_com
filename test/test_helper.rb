@@ -16,7 +16,7 @@ class ActiveSupport::TestCase
   #parallelize(workers: :number_of_processors)
 
   def before_all
-    #Com::MetaBusiness.sync
+    #Meta::Business.sync
     #Com::MetaNamespace.sync
     #Com::MetaController.sync
   end
