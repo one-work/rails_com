@@ -12,6 +12,16 @@ module RailsCom::ActionDispatch
       super(name)
     end
 
+    def test_index_ok
+      get nil, url: { controller: @action.controller_path, action: @action.action_name }
+      assert_response :success
+    end
+
+    def test_new_ok
+      get nil, url: { controller: @action.controller_path, action: @action.action_name }, as: :turbo_stream
+      assert_response :success
+    end
+
     def test_create_ok
       params = @loaded_fixtures[@action.model_path].fixtures['create'].fixture
       url_parts = @model.attributes.slice(*@action.required_parts)
@@ -23,6 +33,35 @@ module RailsCom::ActionDispatch
           params: { @model.class.base_class.model_name.param_key => params },
           as: :turbo_stream
         )
+      end
+      assert_response :success
+    end
+
+    def test_show_ok
+      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream
+      assert_response :success
+    end
+
+    def test_edit_ok
+      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream
+      assert_response :success
+    end
+
+    def test_update_ok
+      params = @loaded_fixtures[@action.model_path].fixtures['update'].fixture
+
+      patch(
+        nil,
+        url: { controller: @action.controller_path, action: @action.action_name, id: @model.id },
+        params: { @model.class.base_class.model_name.param_key => params },
+        as: :turbo_stream
+      )
+      assert_response :success
+    end
+
+    def test_destroy_ok
+      assert_difference -> { @model.class.count }, -1 do
+        delete nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream
       end
 
       assert_response :success
