@@ -54,6 +54,10 @@ module Meta
       self.operation = MAPPINGS[action_name]
     end
 
+    def model_path
+      "#{business_identifier}/#{controller_name}"
+    end
+
     def test_run
       test_instance = controller.test_klass.new("test_#{action_name}_ok", self)
       test_instance.run
