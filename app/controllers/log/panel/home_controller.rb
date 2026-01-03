@@ -2,10 +2,12 @@ module Log
   class Panel::HomeController < Panel::BaseController
 
     def index
-      @data = SummaryDaily.where(date: Date.today.prev_month..).select(:date, :duration_avg).order(date: :asc).as_json(only: ['date', 'duration_avg'])
+      yesterday = Date.yesterday
 
-      @request_dailies = RequestDaily.where(date: Date.today.prev_day, total: 10..).order(duration_avg: :desc).limit(10)
-      @query_dailies = QueryDaily.where(date: Date.today.prev_day, total: 10..).order(duration_avg: :desc).limit(10)
+      @data = SummaryDaily.where(date: yesterday.prev_month..).select(:date, :duration_avg).order(date: :asc).as_json(only: ['date', 'duration_avg'])
+
+      @request_dailies = RequestDaily.where(date: yesterday, total: 10..).order(duration_avg: :desc).limit(10)
+      @query_dailies = QueryDaily.where(date: yesterday, total: 10..).order(duration_avg: :desc).limit(10)
     end
 
   end
