@@ -2,10 +2,10 @@
 <%= render 'index_actions' %>
 
 <%= render layout: 'index_table_without_striped' do %>
-  <% @meta_models.group_by(&:business_identifier).each do |business_identifier, meta_models| %>
+  <% @models.group_by(&:business_identifier).each do |business_identifier, meta_models| %>
     <%= render partial: 'business_tbody', locals: { business_identifier: business_identifier, size: meta_models.size + 1 } %>
     <%= render partial: 'index_tbody', layout: 'index_tr', collection: meta_models, as: :model %>
   <% end %>
 <% end %>
 
-<%= paginate @meta_models %>
+<%= paginate @models %>

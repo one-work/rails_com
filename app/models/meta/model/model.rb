@@ -48,7 +48,7 @@ module Meta
             meta_column.defined_model = true if model.pending_attributes.keys.include?(column.name)
 
             present_meta_columns = meta_model.columns.pluck(:column_name)
-            meta_model.meta_columns.select(&->(i){ (present_meta_columns - model.column_names).include?(i.column_name) }).each do |needless_column|
+            meta_model.columns.select(&->(i){ (present_meta_columns - model.column_names).include?(i.column_name) }).each do |needless_column|
               needless_column.mark_for_destruction
             end
           end
