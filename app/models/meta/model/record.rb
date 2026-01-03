@@ -1,5 +1,5 @@
 module Meta
-  module Model::Model
+  module Model::Record
     extend ActiveSupport::Concern
 
     included do
@@ -11,7 +11,7 @@ module Meta
       attribute :customizable, :boolean, default: false, comment: '是否允许用户定制'
       attribute :business_identifier, :string, default: '', index: true
 
-      has_many :columns, foreign_key: :record_name, primary_key: :record_name, inverse_of: :model
+      has_many :columns, primary_key: :record_name, foreign_key: :record_name, inverse_of: :record
 
       before_validation :sync_business_identifier, if: -> { record_name_changed? }
     end

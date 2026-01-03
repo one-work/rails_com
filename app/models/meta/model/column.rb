@@ -14,7 +14,7 @@ module Meta
       attribute :belongs_enable, :boolean, default: false
       attribute :belongs_table, :string
 
-      belongs_to :model, foreign_key: :record_name, primary_key: :record_name
+      belongs_to :record, foreign_key: :record_name, primary_key: :record_name
     end
 
     def sync

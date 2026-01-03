@@ -11,19 +11,19 @@ module Meta
       q_params = {}
       q_params.merge! params.permit(:business_identifier, :table_name, :record_name)
 
-      @models = MetaModel.default_where(q_params).order(record_name: :asc).page(params[:page])
+      @models = Model.default_where(q_params).order(record_name: :asc).page(params[:page])
     end
 
     def sync
-      MetaModel.sync
+      Model.sync
     end
 
     def options
-      @models = MetaModel.where(business_identifier: params.dig(params[:dom_scope], :business))
+      @models = Model.where(business_identifier: params.dig(params[:dom_scope], :business))
     end
 
     def columns
-      @columns = MetaColumn.where(record_name: params.dig(params[:dom_scope], :record_name))
+      @columns = Column.where(record_name: params.dig(params[:dom_scope], :record_name))
     end
 
     def indexes
@@ -40,15 +40,15 @@ module Meta
 
     private
     def set_model
-      @model = MetaModel.find(params[:id])
+      @model = Model.find(params[:id])
     end
 
     def set_new_model
-      @model = MetaModel.new(model_params)
+      @model = Model.new(model_params)
     end
 
     def set_business_identifiers
-      @business_identifiers = MetaModel.select(:business_identifier).distinct
+      @business_identifiers = Model.select(:business_identifier).distinct
     end
 
     def model_permit_params
