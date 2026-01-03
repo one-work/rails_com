@@ -49,6 +49,7 @@ light:
   - user
   - user-secret
   - users
+  - vial
   - xmark
 regular:
   - angle-left
