@@ -3,7 +3,7 @@
   <p><%= Meta::Column.human_attribute_name(:column_type) %></p>
   <p class="text-grey">
     <span><%= Meta::Column.human_attribute_name(:sql_type) %></span>
-    <span>(<%= @meta_model.record_class.connection.adapter_name %>)</span>
+    <span>(<%= @record.record_class.connection.adapter_name %>)</span>
   </p>
 </th>
 <th><%= Meta::Column.human_attribute_name(:column_limit) %></th>

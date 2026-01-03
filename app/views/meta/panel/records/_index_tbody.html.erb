@@ -1,5 +1,5 @@
 <td><%= model.name %></td>
-<td><%= link_to model.record_name, { controller: 'columns', model_id: model.id, **request.GET.except(:id, :page, :per, :record_name) } %></td>
+<td><%= link_to model.record_name, { controller: 'columns', record_id: model.id, **request.GET.except(:id, :page, :per, :record_name) } %></td>
 <td><%= model.description %></td>
 <td>
   <div data-show-target="item" class="visibility-hidden">
