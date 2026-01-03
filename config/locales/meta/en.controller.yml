@@ -13,7 +13,7 @@ en:
       controllers:
         index:
           title: Controllers
-      models:
+      records:
         index:
           title: Models
       columns:

@@ -18,8 +18,8 @@
   <%= link_to({ controller: 'meta/panel/controllers' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_controllers', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('meta.panel.controllers.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'meta/panel/models' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_models', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
-    <span><%= t('meta.panel.models.index.title') %></span>
+  <%= link_to({ controller: 'meta/panel/records' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'meta_models', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('meta.panel.records.index.title') %></span>
   <% end %>
 </div>
 <p class="size-7 text-grey mb-1">系统数据</p>

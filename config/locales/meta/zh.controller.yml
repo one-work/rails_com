@@ -16,7 +16,7 @@ zh:
       actions:
         index:
           title: 方法（Action）
-      models:
+      records:
         index:
           title: 模型（Model）
         reflections:

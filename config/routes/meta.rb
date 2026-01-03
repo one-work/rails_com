@@ -31,7 +31,7 @@ namespace :meta do
         patch :move_lower
         patch :move_higher
       end
-      resources :meta_actions do
+      resources :actions do
         member do
           patch :move_lower
           patch :move_higher
@@ -39,7 +39,7 @@ namespace :meta do
         end
       end
     end
-    resources :models do
+    resources :records do
       collection do
         post :sync
         post :options
@@ -52,7 +52,7 @@ namespace :meta do
         post :index_update
         patch :reorder
       end
-      resources :meta_columns do
+      resources :columns do
         member do
           patch :sync
           patch :test
