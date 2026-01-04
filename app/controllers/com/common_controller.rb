@@ -36,7 +36,7 @@ module Com
 
     def qrcode
       options = qrcode_params.to_h.symbolize_keys
-      buffer = QrcodeHelper.code_png(params[:url], **options)
+      buffer = QrcodeUtil.code_png(params[:url], **options)
 
       send_data buffer, filename: 'cert_file.png', disposition: 'inline', type: 'image/png'
     end

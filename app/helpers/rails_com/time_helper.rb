@@ -2,7 +2,7 @@
 module RailsCom::TimeHelper
 
   def exact_distance_time(from_time = Time.current, to_time, **options)
-    result = TimeHelper.exact_distance_pure_time(from_time, to_time)
+    result = TimeUtil.exact_distance_pure_time(from_time, to_time)
     options = {
       scope: 'datetime.prompts'
     }.merge!(options)

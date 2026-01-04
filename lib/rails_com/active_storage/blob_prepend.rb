@@ -24,7 +24,7 @@ module RailsCom::ActiveStorage
     end
 
     def duration_str
-      rh = TimeHelper.exact_distance_time(duration)
+      rh = TimeUtil.exact_distance_time(duration)
       "#{rh[:minute]}:#{rh[:second].to_s.rjust(2, '0')}"
     end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module UidHelper
+module UidUtil
   extend self
 
   def uuid(int, prefix: '', suffix: '', separator: '')

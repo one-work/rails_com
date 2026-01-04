@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TimeHelper
+module TimeUtil
   extend self
 
   def exact_distance_time(from_time = Time.current, to_time)

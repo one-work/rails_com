@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module QrcodeHelper
+module QrcodeUtil
   extend self
   OPTIONS = {
     resize_gte_to: false,

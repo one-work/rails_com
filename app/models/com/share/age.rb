@@ -26,13 +26,13 @@ module Com
 
     def age
       return 0 unless self.birthday
-      r_hash = TimeHelper.exact_distance_time(self.birthday, Date.today)
+      r_hash = TimeUtil.exact_distance_time(self.birthday, Date.today)
       r_hash[:year]
     end
 
     def age_str
       return '' unless self.birthday
-      r_hash = TimeHelper.exact_distance_time(self.birthday, Date.today)
+      r_hash = TimeUtil.exact_distance_time(self.birthday, Date.today)
       "#{r_hash[:year]}岁#{r_hash[:month]}月"
     end
 
@@ -46,11 +46,11 @@ module Com
     end
 
     def qrcode_enter_png
-      QrcodeHelper.code_png(enter_url, border_modules: 0, fill: 'pink')
+      QrcodeUtil.code_png(enter_url, border_modules: 0, fill: 'pink')
     end
 
     def qrcode_enter_url
-      QrcodeHelper.data_url(enter_url)
+      QrcodeUtil.data_url(enter_url)
     end
 
   end
