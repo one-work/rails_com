@@ -2,7 +2,7 @@
 
 # 亚洲最新ip地址
 # http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest
-module IpHelper
+module IpUtil
   extend self
 
   def read(name)

@@ -1,4 +1,4 @@
-module HexHelper
+module HexUtil
   extend self
 
   def sample

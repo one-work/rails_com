@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ZipGenerator
+module ZipUtil
   extend self
 
   def involve(input_dir = Rails.root.join('tmp', 'zip'), out_name = 'xx.zip')

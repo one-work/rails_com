@@ -16,13 +16,13 @@ require 'rails_com/core'
 require 'rails_com/env'
 require 'rails_com/event_request_subscriber'
 require 'rails_com/event_sql_subscriber'
-require 'rails_com/exports'
 require 'rails_com/generators'
 require 'rails_com/models'
 require 'rails_com/quiet_logs'
 require 'rails_com/routes'
 require 'rails_com/type'  # 支持的 attribute type 扩展
-require 'rails_com/utils'
+require 'rails_com/utils_class'
+require 'rails_com/utils_module'
 
 # Rails extension
 require 'generators/scaffold_generator'

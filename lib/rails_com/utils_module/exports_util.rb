@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RailsCom::Exports
+module ExportsUtil
   extend self
 
   def exports

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Jobber
+module JobberUtil
   extend self
 
   def deliver(job, *arguments)
