@@ -11,7 +11,7 @@ module Doc
       attribute :request_headers, :json
       attribute :request_type, :string
       attribute :request_body, :json
-      attribute :response_status, :string
+      attribute :response_status, :string, default: 200
       attribute :response_headers, :json
       attribute :response_type, :string
       attribute :response_body, :string

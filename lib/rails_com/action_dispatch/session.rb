@@ -14,8 +14,8 @@ module RailsCom::ActionDispatch
         doc_subject.response_body = @response.parsed_body
         doc_subject.response_type = type
 
-        doc_subject.class.transaction(requires_new: true) do
-          doc_subject.save
+        doc_subject.class.transaction(requires_new: true) do |t|
+          doc_subject.save!
           doc_subject.class.connection.commit_transaction
         end
       end
