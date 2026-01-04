@@ -1,5 +1,5 @@
 module Doc
-  class Subject < ApplicationRecord
+  class Subject < BaseRecord
     include Model::Subject
   end
 end

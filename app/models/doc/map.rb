@@ -1,5 +1,5 @@
 module Doc
-  class Map < ApplicationRecord
+  class Map < BaseRecord
     include Model::Map
   end
 end
