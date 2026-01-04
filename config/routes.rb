@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  draw :doc
   draw :job
   draw :log
   draw :meta
