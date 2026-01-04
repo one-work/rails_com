@@ -6,7 +6,15 @@ module RailsCom::ActionDispatch
         path = url_for(url)
       end
 
-      super(method, path, params: params, headers: headers, env: env, xhr: xhr, as: as)
+      r = super(method, path, params: params, headers: headers, env: env, xhr: xhr, as: as)
+
+      doc_subject = Doc::Subject.find_by(controller_path: url[:controller], action_name: url[:action], response_status: r)
+      if doc_subject
+        type = Mime::Type.lookup(@response.media_type).ref
+        doc_subject.response_body = @response.parsed_body
+        doc_subject.response_type = type
+        doc_subject.save
+      end
     end
 
   end
