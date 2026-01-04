@@ -11,9 +11,7 @@ require 'rails_com/utils_module/num_helper'
 require 'rails_com/utils_module/object_util'
 require 'rails_com/utils_module/qrcode_helper'
 require 'rails_com/utils_module/uid_helper'
-
 require 'rails_com/utils_module/jobber_util'
 require 'rails_com/utils_module/regexp_util'
-
 require 'rails_com/utils_module/url_util'
 require 'rails_com/utils_module/zip_util'
