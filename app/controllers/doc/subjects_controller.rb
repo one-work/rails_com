@@ -3,7 +3,6 @@ module Doc
     before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
     def index
-      @subjects = Subject.page(params[:page])
     end
 
     private
