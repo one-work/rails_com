@@ -1,8 +1,10 @@
-<div class="menu">
+<div class="menu p-3">
   <div class="menu-label">接口列表</div>
   <ul class="menu-list">
   <% @subjects.includes(:meta_action).each do |subject| %>
-    <li><%= link_to subject.meta_action.name, { controller: 'subjects', action: 'show', id: subject.id }, class: 'menu-item' %></li>
+    <li class="<%= active_helper(controller: 'subjects', action: 'show', id: subject.id, item: 'menu-item', active: 'menu-item is-active') %>">
+      <%= link_to subject.meta_action.name, { controller: 'subjects', action: 'show', id: subject.id } %>
+    </li>
   <% end %>
   </ul>
 </div>
