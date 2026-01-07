@@ -1,5 +1,5 @@
 module Meta
-  class Business < ApplicationRecord
+  class Business < BaseRecord
     include Model::Business
   end
 end

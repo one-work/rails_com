@@ -1,5 +1,5 @@
 module Meta
-  class Action < ApplicationRecord
+  class Action < BaseRecord
     include Model::Action
     include Roled::Ext::MetaAction
   end

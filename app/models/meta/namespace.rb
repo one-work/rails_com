@@ -1,5 +1,5 @@
 module Meta
-  class Namespace < ApplicationRecord
+  class Namespace < BaseRecord
     include Model::Namespace
   end
 end

@@ -1,5 +1,5 @@
 module Meta
-  class Operation < ApplicationRecord
+  class Operation < BaseRecord
     include Model::Operation
   end
 end

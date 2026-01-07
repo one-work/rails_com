@@ -1,5 +1,5 @@
 module Meta
-  class Column < ApplicationRecord
+  class Column < BaseRecord
     include Model::Column
   end
 end
