@@ -92,10 +92,6 @@ module Meta
       self.identifier = "#{controller_path}##{action_name}"
     end
 
-    def test_controller
-      reporter = Minitest::SummaryReporter.new($stdout)
-    end
-
     def name
       t1 = I18n.t "#{[business_identifier, namespace_identifier, controller_name, action_name].join('.')}.title", default: nil
       return t1 if t1

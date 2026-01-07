@@ -51,16 +51,6 @@ module Meta
       "#{controller_path.camelize}ControllerTest".safe_constantize
     end
 
-    def test_run(method_name)
-      reporter = Minitest::SummaryReporter.new($stdout)
-      reporter.start
-      Minitest.seed = 2
-      Minitest::Runnable.run test_klass, method_name, reporter
-
-      test_klass.new(method_name, ).run
-      reporter.report
-    end
-
     def name
       t = I18n.t "#{controller_path.to_s.split('/').join('.')}.index.title", default: nil
       return t if t
