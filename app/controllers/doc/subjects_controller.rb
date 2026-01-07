@@ -1,5 +1,5 @@
 module Doc
-  class HomeController < BaseController
+  class SubjectsController < BaseController
 
     def index
       @subjects = Subject.page(params[:page])

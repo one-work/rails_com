@@ -3,4 +3,6 @@ namespace :doc, defaults: { business: 'doc' } do
   controller :home do
     get :index
   end
+
+  resources :subjects
 end

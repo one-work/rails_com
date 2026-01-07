@@ -1,6 +1,8 @@
 <div class="menu">
   <div class="menu-label">接口列表</div>
-  <div class="menu-list">
-
-  </div>
+  <ul class="menu-list">
+  <% @subjects.includes(:meta_action).each do |subject| %>
+    <li><%= link_to subject.meta_action.name, { controller: 'subjects', action: 'show', id: subject.id }, class: 'menu-item' %></li>
+  <% end %>
+  </ul>
 </div>
