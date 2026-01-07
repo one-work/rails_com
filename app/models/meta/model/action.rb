@@ -58,6 +58,10 @@ module Meta
       "#{business_identifier}/#{controller_name}"
     end
 
+    def path_without_format
+      path.delete_suffix('(.:format)')
+    end
+
     def test_run
       test_instance = controller.test_klass.new("test_#{action_name}_ok", self)
       test_instance.run

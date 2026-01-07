@@ -61,7 +61,9 @@ module Meta
     def role_path
       {
         business_identifier.to_s => {
-          namespace_identifier.to_s => { controller_path => role_hash }
+          namespace_identifier.to_s => {
+            controller_path => role_hash
+          }
         }
       }
     end
