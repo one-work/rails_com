@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'csv'
   s.add_dependency 'mutex_m'
   s.add_dependency 'reline'
+  s.add_dependency 'psych-pure'
 
   s.add_development_dependency 'listen'
 end

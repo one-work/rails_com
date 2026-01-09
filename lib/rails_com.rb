@@ -44,5 +44,6 @@ require 'money-rails'
 require 'bigdecimal'
 require 'net/scp'
 require 'sshkey'
+require 'psych/pure'
 
 require 'rails_com/money/formatter'
