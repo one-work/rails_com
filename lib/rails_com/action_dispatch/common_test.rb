@@ -11,6 +11,7 @@ module RailsCom::ActionDispatch
         end
         @model = access_fixture @action.model_path, key
         @params = @loaded_fixtures[@action.model_path].fixtures[key].fixture
+        @comments = @loaded_fixtures[@action.model_path].comments[key]
       end
     end
 
@@ -20,12 +21,12 @@ module RailsCom::ActionDispatch
     end
 
     def test_index_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name }
+      get nil, url: { controller: @action.controller_path, action: @action.action_name }, comments: @comments
       assert_response :success
     end
 
     def test_new_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name }, as: :turbo_stream
+      get nil, url: { controller: @action.controller_path, action: @action.action_name }, as: :turbo_stream, comments: @comments
       assert_response :success
     end
 
@@ -37,19 +38,20 @@ module RailsCom::ActionDispatch
           nil,
           url: { controller: @action.controller_path, action: @action.action_name, **url_parts },
           params: { @model.class.base_class.model_name.param_key => @params },
-          as: :turbo_stream
+          as: :turbo_stream,
+          comments: @comments
         )
       end
       assert_response :success
     end
 
     def test_show_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream
+      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream, comments: @comments
       assert_response :success
     end
 
     def test_edit_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream
+      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream, comments: @comments
       assert_response :success
     end
 
@@ -58,14 +60,15 @@ module RailsCom::ActionDispatch
         nil,
         url: { controller: @action.controller_path, action: @action.action_name, id: @model.id },
         params: { @model.class.base_class.model_name.param_key => @params },
-        as: :turbo_stream
+        as: :turbo_stream,
+        comments: @comments
       )
       assert_response :success
     end
 
     def test_destroy_ok
       assert_difference -> { @model.class.count }, -1 do
-        delete nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream
+        delete nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream, comments: @comments
       end
 
       assert_response :success

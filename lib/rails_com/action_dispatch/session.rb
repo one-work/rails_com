@@ -1,7 +1,7 @@
 module RailsCom::ActionDispatch
   module Session
 
-    def process(method, path = nil, url: {}, params: nil, headers: nil, env: nil, xhr: false, as: nil)
+    def process(method, path = nil, url: {}, params: nil, headers: nil, env: nil, xhr: false, as: nil, **options)
       if path.nil?
         path = url_for(url)
       end
@@ -12,6 +12,7 @@ module RailsCom::ActionDispatch
       if doc_subject
         type = Mime::Type.lookup(@response.media_type).ref
         doc_subject.request_params = params
+        doc_subject.request_comments = options[:comments]
         doc_subject.request_type = as
         doc_subject.response_body = @response.parsed_body
         doc_subject.response_type = type

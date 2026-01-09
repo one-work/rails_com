@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RailsCom::ActiveRecord
-  module Taxon
+  module ExtendTaxon
 
     def has_taxons(*columns)
       columns.each do |column|
@@ -25,5 +25,5 @@ module RailsCom::ActiveRecord
 end
 
 ActiveSupport.on_load :active_record do
-  extend RailsCom::ActiveRecord::Taxon
+  extend RailsCom::ActiveRecord::ExtendTaxon
 end

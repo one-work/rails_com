@@ -8,6 +8,7 @@ module Doc
       attribute :action_name, :string
       attribute :path_params, :json
       attribute :request_params, :json
+      attribute :request_comments, :json
       attribute :request_headers, :json
       attribute :request_type, :string
       attribute :request_body, :json
