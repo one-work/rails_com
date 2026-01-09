@@ -63,6 +63,7 @@ module Meta
     end
 
     def test_run
+      return unless Rails.env.test?
       test_instance = controller.test_klass.new("test_#{action_name}_ok", self)
       test_instance.run
     end
