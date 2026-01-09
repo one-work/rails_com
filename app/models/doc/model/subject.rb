@@ -12,10 +12,10 @@ module Doc
       attribute :request_headers, :json
       attribute :request_type, :string
       attribute :request_body, :json
-      attribute :response_status, :string, default: 200
+      attribute :response_status, :integer, default: 200
       attribute :response_headers, :json
       attribute :response_type, :string
-      attribute :response_body, :string
+      attribute :response_body, :json
       attribute :note, :string
 
       belongs_to :meta_action, class_name: 'Meta::Action', foreign_key: [:controller_path, :action_name], primary_key: [:controller_path, :action_name], optional: true

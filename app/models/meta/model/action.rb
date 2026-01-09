@@ -23,6 +23,7 @@ module Meta
       attribute :position, :integer
       attribute :landmark, :boolean
       attribute :synced_at, :datetime
+      attribute :testable, :boolean
       if connection.adapter_name == 'PostgreSQL'
         attribute :required_parts, :string, array: true
       else
@@ -42,16 +43,22 @@ module Meta
       }, default: 'read'
 
       scope :admin_list, ->(business){ where(required_parts: [], action_name: 'index', business_identifier: business, namespace_identifier: 'admin') }
+      scope :testable, -> { where(testable: true) }
 
       positioned on: [:business_identifier, :namespace_identifier, :controller_path]
 
       before_validation :set_identifier, if: -> { (changes.keys & ['controller_path', 'action_name']).present? }
       before_validation :sync_from_controller, if: -> { controller && (controller_path_changed? || controller.new_record?) }
       before_validation :sync_from_action, if: -> { action_name_changed? }
+      before_validation :set_testable
     end
 
     def sync_from_action
       self.operation = MAPPINGS[action_name]
+    end
+
+    def set_testable
+      self.testable = true if controller.test_klass
     end
 
     def model_path
