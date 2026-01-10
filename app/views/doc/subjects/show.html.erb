@@ -19,8 +19,21 @@
 </div>
 
 <h2 class="title is-4">请求 Body</h2>
-<p class="box">
-  <%= @subject.request_params %>
+<p class="box as-boxed">
+  <table class="table is-striped is-fullwidth">
+    <tr>
+      <th>字段</th>
+      <th>说明</th>
+      <th>示例数据</th>
+    </tr>
+    <% @subject.request_params.each do |key, example| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= @subject.request_comments[key] %></td>
+        <td><%= example %></td>
+      </tr>
+    <% end %>
+  </table>
 </p>
 
 <h2 class="title is-4">响应</h2>
