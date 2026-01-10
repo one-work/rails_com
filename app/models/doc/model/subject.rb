@@ -17,6 +17,7 @@ module Doc
       attribute :response_type, :string
       attribute :response_body, :json
       attribute :note, :string
+      attribute :synced_at, :datetime
 
       belongs_to :meta_action, class_name: 'Meta::Action', foreign_key: [:controller_path, :action_name], primary_key: [:controller_path, :action_name], optional: true
     end
@@ -27,13 +28,15 @@ module Doc
 
     class_methods do
 
-      def sync
+      def sync(now = Time.current)
         DocUtil.docs_hash.each do |controller_path, action_names|
           action_names.each do |action_name|
             subject = self.find_or_initialize_by(controller_path: controller_path, action_name: action_name)
+            subject.synced_at = now
             subject.save
           end
         end
+        where(synced_at: ...now).delete_all
       end
 
     end
