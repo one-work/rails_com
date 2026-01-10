@@ -10,7 +10,7 @@ module Log
       @request_dailies = @request_dailies.where(total: request_min..).limit(10)
 
       @query_dailies = QueryDaily.where(date: yesterday).order(duration_avg: :desc)
-      query_min = @query_dailies.limit(10).minimum(:total)
+      query_min = @query_dailies.limit(10).minimum(:total) || 2
       @query_dailies = @query_dailies.where(total: query_min..).limit(10)
     end
 
