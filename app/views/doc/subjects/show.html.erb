@@ -28,7 +28,7 @@
       <th>说明</th>
       <th>示例数据</th>
     </tr>
-    <% @subject.request_params.each do |key, example| %>
+    <% @subject.request_body.each do |key, example| %>
       <tr>
         <td><%= key %></td>
         <td><%= @subject.request_comments[key] %></td>
