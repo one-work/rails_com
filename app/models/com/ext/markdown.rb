@@ -86,6 +86,7 @@ module Com
       self.deal_links_and_images
       self.deal_h1_and_blank
       self.html = document.to_html
+      self.set_title
     end
 
   end
