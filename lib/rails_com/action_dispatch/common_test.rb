@@ -37,8 +37,8 @@ module RailsCom::ActionDispatch
         post(
           nil,
           url: { controller: @action.controller_path, action: @action.action_name, **url_parts },
-          params: { @model.class.base_class.model_name.param_key => @params },
-          as: :turbo_stream,
+          params: @params,
+          as: :json,
           comments: @comments
         )
       end

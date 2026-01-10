@@ -1,11 +1,27 @@
 <h2 class="title is-4">URL</h2>
-<p class="box">
-  <span class="tag is-primary"><%= @subject.meta_action.verb %></span>
-  <span><%= @subject.meta_action.path_without_format %></span>
-</p>
+<div class="box">
+  <p>
+    <span class="tag is-primary"><%= @subject.meta_action.verb %></span>
+    <span><%= @subject.meta_action.path_without_format %></span>
+  </p>
+  <div class="mt-3">
+    <p class="size-7">Path 参数</p>
+    <table class="table is-striped is-bordered is-fullwidth is-radius">
+    <% @subject.meta_action.required_parts.each do |part| %>
+      <tr>
+        <td><%= part %></td>
+        <td></td>
+        <td>必需</td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
 
-<h2 class="title is-4">请求</h2>
-<p class="box"><%= @subject.request_params %></p>
+<h2 class="title is-4">请求 Body</h2>
+<p class="box">
+  <%= @subject.request_params %>
+</p>
 
 <h2 class="title is-4">响应</h2>
 <p class="box"><%= @subject.response_body %></p>
