@@ -1,6 +1,7 @@
 module Doc
   module Model::Subject
     extend ActiveSupport::Concern
+    include Com::Ext::Markdown
 
     included do
       attribute :name, :string
