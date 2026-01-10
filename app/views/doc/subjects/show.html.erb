@@ -12,7 +12,7 @@
     <% @subject.meta_action.required_parts.each do |part| %>
       <tr>
         <td><%= part %></td>
-        <td></td>
+        <td><%= @subject.meta_action.model_klass.human_attribute_name(part) %></td>
         <td>必需</td>
       </tr>
     <% end %>
@@ -25,12 +25,14 @@
   <table class="table is-striped is-fullwidth">
     <tr>
       <th>字段</th>
+      <th></th>
       <th>说明</th>
       <th>示例数据</th>
     </tr>
     <% @subject.request_body.each do |key, example| %>
       <tr>
         <td><%= key %></td>
+        <td><%= @subject.meta_action.model_klass.human_attribute_name(key) %></td>
         <td><%= @subject.request_comments[key] %></td>
         <td><%= example %></td>
       </tr>

@@ -73,6 +73,10 @@ module Meta
       "#{business_identifier}/#{controller_name}"
     end
 
+    def model_klass
+      model_path.classify.safe_constantize
+    end
+
     def path_without_format
       path.delete_suffix('(.:format)')
     end
