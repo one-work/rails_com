@@ -1,8 +1,11 @@
-<h2 class="title">URL</h2>
-<p><%= @subject.meta_action.path_without_format %></p>
+<h2 class="title is-4">URL</h2>
+<p class="box">
+  <span class="tag is-primary"><%= @subject.meta_action.verb %></span>
+  <span><%= @subject.meta_action.path_without_format %></span>
+</p>
 
-<h2 class="title">请求</h2>
-<p><%= @subject.request_params %></p>
+<h2 class="title is-4">请求</h2>
+<p class="box"><%= @subject.request_params %></p>
 
-<h2 class="title">响应</h2>
-<p><%= @subject.response_body %></p>
+<h2 class="title is-4">响应</h2>
+<p class="box"><%= @subject.response_body %></p>
