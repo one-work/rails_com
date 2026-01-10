@@ -2,6 +2,7 @@
 <div class="box">
   <p>
     <span class="tag is-primary"><%= @subject.meta_action.verb %></span>
+    <span><%= @subject.base_url(request) %></span>
     <span><%= @subject.meta_action.path_without_format %></span>
   </p>
   <div class="mt-3">

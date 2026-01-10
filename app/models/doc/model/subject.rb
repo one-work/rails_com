@@ -22,8 +22,17 @@ module Doc
       belongs_to :meta_action, class_name: 'Meta::Action', foreign_key: [:controller_path, :action_name], primary_key: [:controller_path, :action_name], optional: true
     end
 
-    def xx
+    def base_url(request = nil)
+      options = {}
+      if request
+        options.merge! scheme: request.scheme, port: request.port, host: request.host
+      end
+      options.merge! Rails.application.routes.default_url_options
+      if options.key?(:protocol)
+        options.merge! scheme: options[:protocol]
+      end
 
+      URI::Generic.build(**options).to_s
     end
 
     class_methods do
