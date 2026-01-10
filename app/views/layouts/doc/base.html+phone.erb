@@ -1,0 +1,11 @@
+<%= render layout: 'layouts/phone_head' do %>
+  <body>
+    <%= render 'top_bar' %>
+    <main id="weui-tab__panel">
+      <div class="box is-padding-less mt-3">
+        <%= yield %>
+      </div>
+    </main>
+    <%= render 'tab_bar' %>
+  </body>
+<% end %>
