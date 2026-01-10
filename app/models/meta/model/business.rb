@@ -42,6 +42,10 @@ module Meta
       Namespace.where(identifier: controllers.select(:namespace_identifier).distinct.pluck(:namespace_identifier))
     end
 
+    def engine
+      "Rails#{identifier.classify}::Engine".safe_constantize
+    end
+
     def role_path
       {
         identifier => role_hash

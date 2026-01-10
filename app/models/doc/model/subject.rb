@@ -38,6 +38,16 @@ module Doc
       URI::Generic.build(**options).to_s
     end
 
+    def sync_doc
+      engine = meta_action.business.engine
+      if engine
+        md_file = engine.root.join('docs', meta_action.controller_path, "#{meta_action.action_name}.md")
+        if md_file.exist?
+          self.markdown = md_file.read
+        end
+      end
+    end
+
     class_methods do
 
       def sync(now = Time.current)
