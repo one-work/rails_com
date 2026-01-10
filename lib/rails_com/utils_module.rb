@@ -3,7 +3,6 @@
 # Utils
 require 'rails_com/utils_module/cmd_util'
 require 'rails_com/utils_module/compress_util'
-require 'rails_com/utils_module/doc_util'
 require 'rails_com/utils_module/exports_util'
 require 'rails_com/utils_module/hex_util'
 require 'rails_com/utils_module/time_util'

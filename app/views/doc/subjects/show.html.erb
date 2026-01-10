@@ -39,4 +39,19 @@
 </p>
 
 <h2 class="title is-4">响应</h2>
-<p class="box"><%= @subject.response_body %></p>
+<p class="box">
+  <table class="table is-striped is-fullwidth">
+    <tr>
+      <th>字段</th>
+      <th>说明</th>
+      <th>示例数据</th>
+    </tr>
+    <% @subject.response_body.each do |key, example| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= @subject.response_comments[key] %></td>
+        <td><%= example %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
