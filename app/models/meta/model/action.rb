@@ -119,5 +119,15 @@ module Meta
       self.namespace_identifier = controller.namespace_identifier
     end
 
+    class_methods do
+
+      def sync
+        Business.sync
+        Namespace.sync
+        Controller.sync
+      end
+
+    end
+
   end
 end
