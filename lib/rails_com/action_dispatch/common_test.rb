@@ -27,7 +27,7 @@ module RailsCom::ActionDispatch
     end
 
     def test_new_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name }, as: :turbo_stream, comments: @comments
+      get nil, url: { controller: @action.controller_path, action: @action.action_name }, as: @action.request_as, comments: @comments
       assert_response :success
     end
 
@@ -37,7 +37,7 @@ module RailsCom::ActionDispatch
           nil,
           url: { controller: @action.controller_path, action: @action.action_name, **@url_parts },
           params: @params,
-          as: :json,
+          as: @action.request_as,
           comments: @comments
         )
       end
@@ -45,12 +45,12 @@ module RailsCom::ActionDispatch
     end
 
     def test_show_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream, comments: @comments
+      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: @action.request_as, comments: @comments
       assert_response :success
     end
 
     def test_edit_ok
-      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream, comments: @comments
+      get nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: @action.request_as, comments: @comments
       assert_response :success
     end
 
@@ -59,7 +59,7 @@ module RailsCom::ActionDispatch
         nil,
         url: { controller: @action.controller_path, action: @action.action_name, id: @model.id },
         params: { @model.class.base_class.model_name.param_key => @params },
-        as: :turbo_stream,
+        as: @action.request_as,
         comments: @comments
       )
       assert_response :success
@@ -67,7 +67,7 @@ module RailsCom::ActionDispatch
 
     def test_destroy_ok
       assert_difference -> { @model.class.count }, -1 do
-        delete nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: :turbo_stream, comments: @comments
+        delete nil, url: { controller: @action.controller_path, action: @action.action_name, id: @model.id }, as: @action.request_as, comments: @comments
       end
 
       assert_response :success

@@ -24,15 +24,12 @@ module Meta
       attribute :landmark, :boolean
       attribute :synced_at, :datetime
       attribute :testable, :boolean
+      attribute :request_as, :string, default: 'turbo_stream'
       if connection.adapter_name == 'PostgreSQL'
         attribute :required_parts, :string, array: true
       else
         attribute :required_parts, :json
       end
-
-      belongs_to :business, foreign_key: :business_identifier, primary_key: :identifier
-      belongs_to :namespace, foreign_key: :namespace_identifier, primary_key: :identifier
-      belongs_to :controller, foreign_key: :controller_path, primary_key: :controller_path
 
       enum :operation, {
         list: 'list',
@@ -41,6 +38,10 @@ module Meta
         edit: 'edit',
         remove: 'remove'
       }, default: 'read'
+
+      belongs_to :business, foreign_key: :business_identifier, primary_key: :identifier
+      belongs_to :namespace, foreign_key: :namespace_identifier, primary_key: :identifier
+      belongs_to :controller, foreign_key: :controller_path, primary_key: :controller_path
 
       scope :admin_list, ->(business){ where(required_parts: [], action_name: 'index', business_identifier: business, namespace_identifier: 'admin') }
       scope :testable, -> { where(testable: true) }
@@ -51,6 +52,7 @@ module Meta
       before_validation :sync_from_controller, if: -> { controller && (controller_path_changed? || controller.new_record?) }
       before_validation :sync_from_action, if: -> { action_name_changed? }
       before_validation :set_testable
+      before_validation :set_request_as, if: -> { namespace_identifier_changed? }
     end
 
     def sync_from_action
@@ -59,6 +61,12 @@ module Meta
 
     def set_testable
       self.testable = true if controller.test_klass
+    end
+
+    def set_request_as
+      if namespace_identifier == 'api'
+        self.request_as = 'json'
+      end
     end
 
     def model_path
