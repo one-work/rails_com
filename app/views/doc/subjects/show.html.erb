@@ -1,9 +1,9 @@
 <h2 class="title is-4">URL</h2>
 <div class="box">
-  <p>
+  <p class="has-inline-centered">
     <span class="tag is-primary"><%= @subject.meta_action.verb %></span>
-    <span><%= @subject.base_url(request) %></span>
-    <span><%= @subject.meta_action.path_without_format %></span>
+    <span aria-label="<%= @subject.base_url(request) %>" class="tag"><%= svg_tag 'plug' %></span>
+    <span class="tag is-medium"><%= @subject.meta_action.path_without_format %></span>
   </p>
   <div class="mt-3">
     <p class="size-7">Path 参数</p>
