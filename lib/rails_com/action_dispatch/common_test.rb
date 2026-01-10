@@ -10,7 +10,8 @@ module RailsCom::ActionDispatch
           key = 'default'
         end
         @model = access_fixture @action.model_path, key
-        @params = @loaded_fixtures[@action.model_path].fixtures[key].fixture
+        @url_parts = @model.attributes.slice(*@action.required_parts)
+        @params = @loaded_fixtures[@action.model_path].fixtures[key].fixture.except('id', 'created_at', 'updated_at', *@action.required_parts)
         @comments = @loaded_fixtures[@action.model_path].comments[key]
       end
     end
@@ -31,12 +32,10 @@ module RailsCom::ActionDispatch
     end
 
     def test_create_ok
-      url_parts = @model.attributes.slice(*@action.required_parts)
-
       assert_difference -> { @model.class.count } do
         post(
           nil,
-          url: { controller: @action.controller_path, action: @action.action_name, **url_parts },
+          url: { controller: @action.controller_path, action: @action.action_name, **@url_parts },
           params: @params,
           as: :json,
           comments: @comments
