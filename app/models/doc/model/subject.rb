@@ -26,7 +26,8 @@ module Doc
     def base_url(request = nil)
       options = {}
       if request
-        options.merge! scheme: request.scheme, port: request.port, host: request.host
+        options.merge! scheme: request.scheme, host: request.host
+        options.merge! port: request.port unless [80, 443].include?(request.port)
       end
       options.merge! Rails.application.routes.default_url_options
       if options.key?(:protocol)
