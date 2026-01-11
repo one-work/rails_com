@@ -14,7 +14,7 @@ module Roled
     def show
       q_params = {}
 
-      @controllers = Meta::Controller.includes(:meta_actions).default_where(q_params)
+      @controllers = Meta::Controller.includes(:actions).default_where(q_params)
       @businesses = Meta::Business.all
     end
 
@@ -24,7 +24,7 @@ module Roled
 
     def controllers
       @namespace = Meta::Namespace.find_by identifier: params[:namespace_identifier]
-      @controllers = Meta::Controller.includes(:meta_actions).where(params.permit(:business_identifier, :namespace_identifier))
+      @controllers = Meta::Controller.includes(:actions).where(params.permit(:business_identifier, :namespace_identifier))
     end
 
     def actions

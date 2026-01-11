@@ -1,13 +1,13 @@
 <tr id="tr_<%= meta_controller.identifier %>" data-controller="tree-remote" data-tree-remote-target="item">
   <td style="padding-left: 3.5em">
-    <%= link_to({ controller: 'actions', meta_controller_id: meta_controller.id }) do %>
+    <%= link_to({ controller: 'actions', controller_id: meta_controller.id }) do %>
       <span><%= meta_controller.name %></span>
     <% end %>
     <p class="text-grey"><%= meta_controller.controller_path %></p>
   </td>
   <td>
     <div class="tags">
-    <% meta_controller.meta_actions.each do |meta_action| %>
+    <% meta_controller.actions.each do |meta_action| %>
       <span aria-label="<%= meta_action.action_name %>" class="tag"><%= meta_action.name %></span>
     <% end %>
     </div>
