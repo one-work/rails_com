@@ -6,34 +6,34 @@ module Meta
       q_params = {}
       q_params.merge! params.permit(:business_identifier, :namespace_identifier)
 
-      @meta_businesses = MetaBusiness.order(position: :asc)
-      @meta_controllers = MetaController.includes(:meta_actions).default_where(q_params).page(params[:page])
+      @businesses = Business.order(position: :asc)
+      @controllers = Controller.includes(:actions).default_where(q_params).page(params[:page])
     end
 
     def sync
-      MetaController.sync
+      Controller.sync
     end
 
     def meta_namespaces
-      @meta_business = MetaBusiness.find_by identifier: params[:business_identifier]
-      @meta_namespaces = @meta_business.meta_namespaces
+      @business = MetaBusiness.find_by identifier: params[:business_identifier]
+      @namespaces = @business.meta_namespaces
     end
 
     def meta_controllers
       q_params = {}
       q_params.merge! params.permit(:business_identifier, :namespace_identifier)
 
-      @meta_controllers = MetaController.includes(:meta_actions).where(q_params)
+      @controllers = Controller.includes(:actions).where(q_params)
     end
 
     def meta_actions
-      @meta_controller = MetaController.find params[:meta_controller_id]
-      @meta_actions = @meta_controller.meta_actions
+      @controller = Controller.find params[:meta_controller_id]
+      @actions = @controller.actions
     end
 
     private
     def set_meta_controller
-      @meta_controller = MetaController.find(params[:id])
+      @controller = Controller.find(params[:id])
     end
 
     def meta_controller_permit_params

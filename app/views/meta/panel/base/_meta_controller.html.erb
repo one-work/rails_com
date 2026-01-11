@@ -1,6 +1,6 @@
 <tr id="tr_<%= meta_controller.identifier %>" data-controller="tree-remote" data-tree-remote-target="item">
   <td style="padding-left: 3.5em">
-    <%= link_to({ controller: 'meta_actions', meta_controller_id: meta_controller.id }) do %>
+    <%= link_to({ controller: 'actions', meta_controller_id: meta_controller.id }) do %>
       <span><%= meta_controller.name %></span>
     <% end %>
     <p class="text-grey"><%= meta_controller.controller_path %></p>

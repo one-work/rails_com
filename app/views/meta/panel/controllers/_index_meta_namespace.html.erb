@@ -1,7 +1,7 @@
-<% @meta_namespaces.each do |meta_namespace| %>
+<% @namespaces.each do |meta_namespace| %>
 <tr id="<%= meta_namespace.tr_id(params[:business_identifier]) %>" data-controller="tree-remote" data-tree-remote-target="item">
   <td style="padding-left: 2em">
-    <%= button_to({ action: 'meta_controllers', business_identifier: @meta_business.identifier, namespace_identifier: meta_namespace.identifier }, data: { turbo_frame: 'visit' }) do %>
+    <%= button_to({ action: 'meta_controllers', business_identifier: @business.identifier, namespace_identifier: meta_namespace.identifier }) do %>
       <%= svg_tag 'caret-right', data: { action: 'click->tree-remote#expand' }, class: 'icon is-small clickable' %>
     <% end %>
     <span><%= meta_namespace.name %></span>

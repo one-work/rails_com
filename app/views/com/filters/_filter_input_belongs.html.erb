@@ -1,9 +1,9 @@
 <div class="checkboxes">
-<% @meta_column.belongs_model.default_where(default_params).each do |member| %>
+<% @column.belongs_model.default_where(default_params).each do |member| %>
   <label class="checkbox">
     <%=
       check_box_tag(
-        params[:scope].present? ? "#{params[:scope]}[#{@meta_column.column_name}]" : @meta_column.column_name,
+        params[:scope].present? ? "#{params[:scope]}[#{@column.column_name}]" : @column.column_name,
         member.id,
         member.id.to_s == params[:value],
         data: { action: 'filter-input#submit' },

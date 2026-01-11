@@ -1,9 +1,9 @@
-<%= turbo_stream.replace "tr_#{@meta_controller.identifier}", partial: 'show_controller', locals: { meta_controller: @meta_controller, expand: true } %>
+<%= turbo_stream.replace "tr_#{@controller.identifier}", partial: 'show_controller', locals: { meta_controller: @controller, expand: true } %>
 <%=
   turbo_stream.replace(
-    @meta_controller.meta_namespace.tr_id(@meta_controller.business_identifier),
+    @controller.meta_namespace.tr_id(@controller.business_identifier),
     partial: 'show_namespace',
-    locals: { meta_namespace: @meta_controller.meta_namespace, business_identifier: @meta_controller.business_identifier, expand: true }
+    locals: { meta_namespace: @controller.meta_namespace, business_identifier: @controller.business_identifier, expand: true }
   )
 %>
-<%= turbo_stream.replace @meta_controller.meta_business.tr_id, partial: 'show_business', locals: { meta_business: @meta_controller.meta_business, expand: true } %>
+<%= turbo_stream.replace @controller.meta_business.tr_id, partial: 'show_business', locals: { meta_business: @controller.meta_business, expand: true } %>

@@ -2,13 +2,13 @@
   <thead>
     <tr>
       <th colspan="2" class="text-centered">
-        <p><%= @meta_model.record_name %></p>
+        <p><%= @model.record_name %></p>
         <p></p>
       </th>
     </tr>
   </thead>
   <tbody>
-  <% @meta_model.record_class.reflections_with_primary_keys.each do |key| %>
+  <% @model.record_class.reflections_with_primary_keys.each do |key| %>
     <tr>
       <td id="<%= key %>"><%= key %></td>
     </tr>

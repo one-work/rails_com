@@ -2,7 +2,7 @@
 <td><%= model.columns %></td>
 <td>
   <div data-show-target="item" class="visibility-hidden">
-    <%= button_to({ action: 'index_edit', id: @meta_model.id }, params: { old_name: model.name }, aria: { label: t('.index_edit.title') }, class: 'button is-small is-borderless') do %>
+    <%= button_to({ action: 'index_edit', id: @model.id }, params: { old_name: model.name }, aria: { label: t('.index_edit.title') }, class: 'button is-small is-borderless') do %>
       <%= svg_tag 'pencil', class: 'icon text-link' %>
     <% end %>
   </div>

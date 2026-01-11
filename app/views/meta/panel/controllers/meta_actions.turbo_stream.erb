@@ -1,1 +1,1 @@
-<%= turbo_stream.after "tr_#{@meta_controller.identifier}", partial: 'index_meta_action', collection: @meta_actions, as: :meta_action %>
+<%= turbo_stream.after "tr_#{@controller.identifier}", partial: 'index_meta_action', collection: @actions, as: :meta_action %>

@@ -3,6 +3,6 @@
     <%= render 'current_model' %>
   </div>
   <div class="column">
-    <%= render partial: 'has_many', collection: @meta_model.record_class.reflections_with_collection, as: :col %>
+    <%= render partial: 'has_many', collection: @model.record_class.reflections_with_collection, as: :col %>
   </div>
 </div>

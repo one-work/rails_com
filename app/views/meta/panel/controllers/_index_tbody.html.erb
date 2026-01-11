@@ -16,10 +16,10 @@
     <% meta_controller.meta_actions.each do |meta_action| %>
       <div>
         <span aria-label="<%= meta_action.action_name %>"><%= meta_action.name %></span>
-        <%= link_to({ controller: 'meta_actions', action: 'edit', meta_controller_id: meta_controller.id, id: meta_action.id }, id: "roles_#{meta_action.id}", class: 'text-grey-lighter') do %>
+        <%= link_to({ controller: 'actions', action: 'edit', meta_controller_id: meta_controller.id, id: meta_action.id }, id: "roles_#{meta_action.id}", class: 'text-grey-lighter') do %>
           <%= svg_tag 'users' %>
         <% end %>
-        <%= link_to({ controller: 'meta_actions', action: 'edit', meta_controller_id: meta_controller.id, id: meta_action.id }, aria: { label: t('.edit.title') }, class: 'text-grey-lighter') do %>
+        <%= link_to({ controller: 'actions', action: 'edit', meta_controller_id: meta_controller.id, id: meta_action.id }, aria: { label: t('.edit.title') }, class: 'text-grey-lighter') do %>
           <%= svg_tag 'pencil' %>
         <% end %>
       </div>
