@@ -56,7 +56,15 @@ module Meta
     end
 
     def sync_from_action
-      self.operation = MAPPINGS[action_name]
+      ope = if MAPPINGS.key? action_name
+        MAPPINGS[action_name]
+      elsif ['POST'].include? verb
+        'add'
+      else
+        'read'
+      end
+
+      self.operation = ope
     end
 
     def set_testable
@@ -83,7 +91,12 @@ module Meta
 
     def test_run
       return unless Rails.env.test?
-      test_instance = controller.test_klass.new("test_#{action_name}_ok", self)
+
+      if controller.test_klass.instance_methods.include? :"test_#{action_name}_ok"
+        test_instance = controller.test_klass.new("test_#{action_name}_ok", self)
+      else
+        test_instance = controller.test_klass.new("test_#{operation}_ok", self)
+      end
       test_instance.run
     end
 
