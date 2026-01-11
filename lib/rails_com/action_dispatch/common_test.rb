@@ -33,13 +33,7 @@ module RailsCom::ActionDispatch
 
     def test_create_ok
       assert_difference -> { @model.class.count } do
-        post(
-          nil,
-          url: { controller: @action.controller_path, action: @action.action_name, **@url_parts },
-          params: @params,
-          as: @action.request_as,
-          comments: @comments
-        )
+        common_add_request
       end
       assert_response :success
     end
@@ -75,14 +69,14 @@ module RailsCom::ActionDispatch
 
     def test_add_ok
       assert_difference -> { @model.class.count } do
-        common_request
+        common_add_request
       end
       assert_response :success
     end
 
     private
-    def common_request
-      integration_session.process(
+    def common_add_request
+      result = integration_session.process(
         @action.verb.downcase,
         nil,
         url: { controller: @action.controller_path, action: @action.action_name, **@url_parts },
@@ -91,6 +85,7 @@ module RailsCom::ActionDispatch
         comments: @comments
       )
       copy_session_variables!
+      result
     end
 
   end
