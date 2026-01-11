@@ -5,18 +5,18 @@
     <div data-show-target="item" class="visibility-hidden">
       <form class="button_to" method="post" action="">
         <button aria-label="详情" class="button is-small is-borderless" type="submit">
-          <svg class="icon text-info"><use href="http://lvh.me:3000/assets/icons_light-01a8b140.svg#eye"></use></svg>
+          <%= svg_tag 'eye', class: 'icon text-info' %>
         </button>
       </form>
       <form class="button_to" method="post" action="">
         <button aria-label="编辑" class="button is-small is-borderless" type="submit">
-          <svg class="icon text-link"><use href="http://lvh.me:3000/assets/icons_light-01a8b140.svg#pencil"></use></svg>
+          <%= svg_tag 'pencil', class: 'icon text-link' %>
         </button>
       </form>
       <form data-turbo-confirm="确认删除" class="button_to" method="post" action="">
         <input type="hidden" name="_method" value="delete">
         <button aria-label="删除" class="button is-small is-borderless" type="submit">
-          <svg class="icon text-danger"><use href="http://lvh.me:3000/assets/icons_light-01a8b140.svg#trash"></use></svg>
+          <%= svg_tag 'trash', class: 'icon text-danger' %>
         </button>
       </form>
     </div>
