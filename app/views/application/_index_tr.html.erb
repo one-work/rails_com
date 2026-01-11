@@ -3,7 +3,7 @@
   data-controller="show tr-actions"
   data-tr-actions-data-value="<%=
     [
-      { name: 'd', action: url_for(action: 'show', id: model.id) }
+      { title: t('.show.title'), icon: 'eye', action: url_for(action: 'show', id: model.id) }
     ].to_json
   %>"
 >
