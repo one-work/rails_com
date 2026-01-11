@@ -1,0 +1,7 @@
+<template id="template_tr_action">
+  <form data-turbo-confirm="确认删除" class="button_to" method="post" action="{action}">
+    <button aria-label="删除" class="button is-small is-borderless" type="submit">
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    </button>
+  </form>
+</template>
