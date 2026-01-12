@@ -15,15 +15,34 @@ module RailsCom::TrHelper
     defaults = []
 
     if icons.include?('show')
-      defaults << { title: t('.show.title'), icon: 'eye', action: url_for(action: 'show', id: model.id) }
+      defaults << {
+        title: t('.show.title'),
+        icon: 'eye',
+        action: url_for(action: 'show', id: model.id),
+        class: 'text-info',
+        position: 1
+      }
     end
 
     if icons.include?('edit')
-      defaults << { title: t('.edit.title'), icon: 'pencil', action: url_for(action: 'edit', id: model.id) }
+      defaults << {
+        title: t('.edit.title'),
+        icon: 'pencil',
+        action: url_for(action: 'edit', id: model.id),
+        class: 'text-link',
+        position: 1
+      }
     end
 
     if icons.include?('destroy')
-      defaults << { title: t('.destroy.title'), icon: 'trash', method: 'destroy', action: url_for(action: 'destroy', id: model.id) }
+      defaults << {
+        title: t('.destroy.title'),
+        icon: 'trash',
+        method: 'destroy',
+        action: url_for(action: 'destroy', id: model.id),
+        class: 'text-danger',
+        position: 1
+      }
     end
 
     (defaults + items).to_json
