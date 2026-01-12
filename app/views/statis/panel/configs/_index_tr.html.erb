@@ -1,26 +1,7 @@
-
-
-  <td>
-    <div data-show-target="item" class="visibility-hidden">
-      <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'eye', class: 'icon text-info' %>
-      <% end %>
-      <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'pencil', class: 'icon text-link' %>
-      <% end %>
-      <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'trash', class: 'icon text-danger' %>
-      <% end %>
-    </div>
-    <div data-show-target="item" class="visibility-hidden">
-      <%= link_to({ controller: 'statistics', config_id: model.id }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'eye', class: 'icon text-info' %>
-        <span class="ml-1"><%= t('.statistics.index.title') %></span>
-      <% end %>
-      <%= link_to({ controller: 'counter_days', config_id: model.id }, class: 'button is-small is-borderless') do %>
-        <%= svg_tag 'eye', class: 'icon text-info' %>
-        <span class="ml-1"><%= t('.counter_days.index.title') %></span>
-      <% end %>
-    </div>
-  </td>
-
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'statistics', config_id: model.id), icon: 'eye', title: t('.statistics.index.title') },
+    { href: url_for(controller: 'counter_days', config_id: model.id), title: t('.counter_days.index.title') }
+  )
+%>
