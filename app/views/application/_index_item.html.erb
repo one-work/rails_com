@@ -1,8 +1,0 @@
-<% tr_tag do %>
-  <% model_klass.com_column_names.each do |column| %>
-    <td><%= model.public_send(column) %></td>
-  <% end %>
-  <td>
-    <%= render partial: 'index_tr_actions', locals: { model: model } %>
-  </td>
-<% end %>
