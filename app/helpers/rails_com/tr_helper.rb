@@ -20,7 +20,7 @@ module RailsCom::TrHelper
         icon: 'eye',
         action: url_for(action: 'show', id: model.id),
         class: 'text-info',
-        position: 1
+        position: 0
       }
     end
 
@@ -30,7 +30,7 @@ module RailsCom::TrHelper
         icon: 'pencil',
         action: url_for(action: 'edit', id: model.id),
         class: 'text-link',
-        position: 1
+        position: 0
       }
     end
 
@@ -41,7 +41,7 @@ module RailsCom::TrHelper
         method: 'destroy',
         action: url_for(action: 'destroy', id: model.id),
         class: 'text-danger',
-        position: 1
+        position: 0
       }
     end
 
