@@ -38,7 +38,7 @@ module RailsCom::TrHelper
       defaults << {
         title: t('.destroy.title'),
         icon: 'trash',
-        method: 'destroy',
+        method: 'delete',
         action: url_for(action: 'destroy', id: model.id),
         class: 'text-danger',
         position: 0
