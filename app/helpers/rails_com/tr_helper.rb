@@ -46,6 +46,8 @@ module RailsCom::TrHelper
       }
     end
 
+    items.reject! { |i| i.key?(:enable) && i[:enable] }
+
     (defaults + items).to_json
   end
 
