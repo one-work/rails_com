@@ -41,6 +41,7 @@ module RailsCom::TrHelper
         method: 'delete',
         action: url_for(action: 'destroy', id: model.id),
         class: 'text-danger',
+        confirm: t('.destroy.confirm'),
         position: 0
       }
     end
