@@ -1,5 +1,9 @@
 <div class="columns m-0">
-  <div class="column">
+  <div 
+    data-controller="dd"
+    data-dd-dd-value="<%= current_member.all_shortcuts %>"
+    class="column"
+  >
     <%= render partial: 'admin_tags', collection: @businesses, as: :model, cached: cache_with_model('admin') %>
   </div>
   <div class="column">

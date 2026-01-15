@@ -1,0 +1,8 @@
+<template>
+<%= button_to({ controller: 'org/admin/shortcuts', action: 'destroy', id: 1 }, method: :delete, aria: { label: t('org.admin.shortcuts.destroy.title') }, form: { class: 'tag' }) do %>
+  <%= svg_tag 'star', class: 'icon is-small text-warning' %>
+<% end %>
+<%= button_to({ controller: 'org/admin/shortcuts', action: 'create' }, params: { 'shortcut[controller]': '', 'shortcut[action]': '' }, aria: { label: t('org.admin.shortcuts.create.title') }, form: { class: 'tag' }) do %>
+  <%= svg_tag 'star' %>
+<% end %>
+</template>
