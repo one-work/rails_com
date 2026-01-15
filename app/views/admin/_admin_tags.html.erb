@@ -8,7 +8,15 @@
       <strong><%= t("#{model.identifier}.admin.title") %></strong>
     </div>
     <div class="field is-grouped is-grouped-multiline">
-      <%= render partial: 'admin_tag_link', collection: model.admin_actions, as: :model, cached: cache_with_model('admin') %>
+    <% model.admin_actions.each do |action| %>
+      <div id="<%= "#{action.controller_path}/#{action.action_name}" %>" class="control">
+        <div class="tags has-addons">
+          <%= link_to({ controller: action.controller_path, action: action.action_name }, class: 'tag') do %>
+            <span><%= action.name %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
