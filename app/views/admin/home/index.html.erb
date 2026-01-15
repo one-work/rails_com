@@ -1,7 +1,7 @@
 <div class="columns m-0">
-  <div 
-    data-controller="dd"
-    data-dd-dd-value="<%= current_member.all_shortcuts %>"
+  <div
+    data-controller="admin-actions"
+    data-admin-actions-data-value="<%= current_member.all_shortcuts.to_json %>"
     class="column"
   >
     <%= render partial: 'admin_tags', collection: @businesses, as: :model, cached: cache_with_model('admin') %>

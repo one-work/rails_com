@@ -9,10 +9,19 @@
     </div>
     <div class="field is-grouped is-grouped-multiline">
     <% model.admin_actions.each do |action| %>
-      <div id="<%= "#{action.controller_path}/#{action.action_name}" %>" class="control">
+      <div id="<%= "#{action.controller_path}/#{action.action_name}" %>_control" class="control">
         <div class="tags has-addons">
           <%= link_to({ controller: action.controller_path, action: action.action_name }, class: 'tag') do %>
             <span><%= action.name %></span>
+          <% end %>
+          <%=
+            button_to(
+              { controller: 'org/admin/shortcuts', action: 'create' },
+              params: { 'shortcut[controller]': action.controller_path, 'shortcut[action]': action.action_name },
+              aria: { label: t('org.admin.shortcuts.create.title') },
+              form: { class: 'tag', id: "#{action.controller_path}/#{action.action_name}" }
+            ) do %>
+            <%= svg_tag 'star' %>
           <% end %>
         </div>
       </div>
