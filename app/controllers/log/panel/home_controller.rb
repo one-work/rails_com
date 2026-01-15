@@ -3,7 +3,7 @@ module Log
 
     def index
       yesterday = Date.yesterday
-      @data = SummaryDaily.where(date: yesterday.prev_month..).select(:date, :duration_avg).order(date: :asc).as_json(only: ['date', 'duration_avg'])
+      @data = SummaryDaily.where(date: yesterday.prev_month..).select(:date, :duration_avg, :total).order(date: :asc).as_json(only: ['date', 'duration_avg', 'total'])
 
       @request_dailies = RequestDaily.where(date: yesterday).order(duration_avg: :desc)
       request_min = @request_dailies.limit(10).minimum(:total)
