@@ -3,6 +3,7 @@
   button_to(
     { controller: 'org/admin/shortcuts', action: 'destroy', id: 1 },
     method: :delete,
+    authenticity_token: false,
     aria: { label: t('org.admin.shortcuts.destroy.title') },
     form: { class: 'tag' }
   ) do %>
