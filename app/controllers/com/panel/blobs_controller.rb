@@ -41,6 +41,10 @@ module Com
       params.fetch(:blob, {}).permit(*blob_permit_params)
     end
 
+    def model_klass
+      ActiveStorage::Blob
+    end
+
     def blob_permit_params
       [
         :key,
