@@ -9,7 +9,10 @@
       <%= yield %>
     </section>
     <footer class="modal-card-foot justify-content-center">
-      <%# button_to t('.edit.title'), { action: 'edit' }, class: 'button is-link' %>
+      <%= link_to({ action: 'edit' }, class: 'button is-borderless') do %>
+        <%= svg_tag 'pencil' %>
+        <span class="ml-1 text-grey"><%= t('.edit.title') %></span>
+      <% end %>
     </footer>
   </div>
 </turbo-frame>
