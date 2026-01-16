@@ -1,6 +1,6 @@
 <%= form_with theme: 'modal', model: model, scope: model_name, url: { action: 'update' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section class="modal-card-body form-horizontal">
     <%= render 'error_messages', target: f.object if f.object.errors.present? %>
     <%= render partial: 'form', locals: { f: f } %>
   </section>
