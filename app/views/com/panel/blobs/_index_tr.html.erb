@@ -1,1 +1,7 @@
-<%= tr_tag(model, icons: []) { yield } %>
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: '/com/audios', action: 'show', id:model.id), icon: 'play', title: t('.play') },
+    icons: ['destroy']
+  ) { yield }
+%>
