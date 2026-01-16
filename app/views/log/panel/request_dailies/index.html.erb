@@ -1,0 +1,8 @@
+<%= render 'index_bar' %>
+<%= render 'index_actions' %>
+
+<%= render layout: 'request_daily_table' do %>
+  <%= render partial: 'request_daily_tbody', layout: 'index_tr', collection: @request_dailies, as: :model %>
+<% end %>
+
+<%= paginate @request_dailies %>

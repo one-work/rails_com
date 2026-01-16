@@ -15,5 +15,6 @@ namespace :log do
       end
     end
     resources :queries
+    resources :request_dailies
   end
 end
