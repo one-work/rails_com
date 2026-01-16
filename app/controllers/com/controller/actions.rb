@@ -14,7 +14,11 @@ module Com
 
     private
     def model_klass
-      self.class.root_module.const_get(controller_name.classify)
+      if self.class.root_module.const_defined?(controller_name.classify)
+        self.class.root_module.const_get(controller_name.classify)
+      else
+        nil
+      end
     end
 
     def model_object

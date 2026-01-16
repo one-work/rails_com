@@ -114,10 +114,6 @@ module Com
     end
 
     private
-    def model_klass_defined?
-      self.class.root_module.const_defined?(controller_name.classify)
-    end
-
     def model_object
       if instance_variable_defined? "@#{model_name}"
         instance_variable_get "@#{model_name}"
@@ -194,7 +190,7 @@ module Com
           v = { type: v.to_s }
         end
 
-        if model_klass_defined?
+        if model_klass
           arr << v.with_defaults(
             title: model_klass.human_attribute_name(k.to_s.sub(/-like|-gte|-lte/, '')),
             record_name: model_klass.name,
