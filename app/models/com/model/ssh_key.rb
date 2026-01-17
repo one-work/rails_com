@@ -113,7 +113,8 @@ module Com
 
       def init_project
         CmdUtil.exec('git clone -b main --depth 1 root@yicanzhiji.com:work.design')
-        Dir.chdir('work.design') do
+        Dir.exist?('one.work') || Dir.mkdir('one.work')
+        Dir.chdir('one.work') do
           ['git submodule update --init'].each { |i| CmdUtil.exec(i) }
         end
       end
