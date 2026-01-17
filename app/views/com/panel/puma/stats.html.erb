@@ -7,7 +7,7 @@
 <% end %>
 </dl>
 
-<table class="table is-border">
+<table class="table is-border is-striped is-fullwidth">
   <thead>
     <tr>
       <th>index</th>
@@ -32,7 +32,7 @@
         <p><time data-controller="time" data-format="human"><%= worker['started_at'] %></time></p>
         <p><time data-controller="time" data-format="human"><%= worker['last_checkin'] %></time></p>
       </td>
-      <td><pre><%= worker['last_status'].to_format_yaml %></pre></td>
+      <td><%= simple_format worker['last_status'] %></td>
     </tr>
   <% end %>
   </tbody>
