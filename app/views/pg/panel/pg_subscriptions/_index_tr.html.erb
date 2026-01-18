@@ -1,0 +1,7 @@
+<%=
+  tr_tag(
+    model,
+    { action: url_for(action: 'refresh', id: model.id), icon: 'rotate', title: t('.refresh.title') },
+    { href: url_for(controller: 'pg_stat_subscriptions', pg_subscription_id: model.id), icon: 'list', title: t('.pg_stat_subscriptions.index.title') }
+  ) { yield }
+%>
