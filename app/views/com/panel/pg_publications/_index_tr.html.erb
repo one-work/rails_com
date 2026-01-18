@@ -1,0 +1,6 @@
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'pg_publication_tables', pg_publication_id: model.id), icon: 'sitemap', title: t('.pg_publication_tables.index.title') }
+  ) { yield }
+%>
