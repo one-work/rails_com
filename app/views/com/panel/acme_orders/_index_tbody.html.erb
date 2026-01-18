@@ -19,30 +19,3 @@
   <p><%= model.sync_host %></p>
   <p><%= model.sync_path %></p>
 </td>
-<td>
-  <div data-show-target="item" class="visibility-hidden">
-    <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'eye', class: 'icon text-info' %>
-    <% end %>
-    <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'pencil', class: 'icon text-link' %>
-    <% end %>
-    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'trash', class: 'icon text-danger' %>
-    <% end %>
-  </div>
-  <div data-show-target="item" class="visibility-hidden">
-    <%= link_to({ controller: 'acme_identifiers', acme_order_id: model.id }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'eye' %>
-      <span class="ml-1"><%= t('.acme_identifiers.index.title') %></span>
-    <% end %>
-    <%= button_to({ action: 'order', id: model.id }, method: :patch, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'cart-shopping' %>
-      <span class="ml-1"><%= t('.order.title') %></span>
-    <% end %>
-    <%= button_to({ action: 'cert', id: model.id }, method: :patch, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'certificate' %>
-      <span class="ml-1"><%= t('.cert.title') %></span>
-    <% end %>
-  </div>
-</td>

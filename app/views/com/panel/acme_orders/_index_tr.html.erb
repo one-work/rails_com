@@ -1,1 +1,8 @@
-<%= tr_tag(model, icons: []) { yield } %>
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'acme_identifiers', acme_order_id: model.id), icon: 'eye', title: t('.acme_identifiers.index.title') },
+    { action: url_for(action: 'order', id: model.id), method: :patch, icon: 'cart-shopping', title: t('.order.title') },
+    { action: url_for(action: 'cert', id: model.id), method: :patch, icon: 'certificate', title: t('.cert.title') }
+  ) { yield }
+%>
