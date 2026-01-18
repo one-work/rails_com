@@ -18,13 +18,3 @@
   <%= svg_tag 'xmark', class: 'icon is-small text-danger' %>
 <% end %>
 </td>
-<div data-show-target="item" class="visibility-hidden">
-  <%= button_to({ action: 'sync', id: model.id }, method: :patch, class: 'button is-small is-borderless') do %>
-    <%= svg_tag 'rotate' %>
-    <span class="ml-1"><%= t('.sync.title') %></span>
-  <% end %>
-  <%= button_to({ action: 'test', id: model.id }, method: :patch, class: 'button is-small is-borderless') do %>
-    <%= svg_tag 'vial' %>
-    <span class="ml-1"><%= t('.test.title') %></span>
-  <% end %>
-</div>

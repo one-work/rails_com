@@ -1,1 +1,13 @@
-<%= tr_tag(model, icons: []) { yield } %>
+<%=
+  tr_tag(
+    model,
+    {
+      action: url_for(action: 'clean', id: model.id),
+      method: 'delete',
+      icon: 'trash-arrow-up',
+      title: t('.clean.title'),
+      confirm: t('.clean.confirm')
+    },
+    icons: ['destroy']
+  ) { yield }
+%>

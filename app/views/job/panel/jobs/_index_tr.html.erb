@@ -1,1 +1,12 @@
-<%= tr_tag(model, icons: []) { yield } %>
+<%=
+  tr_tag(
+    model,
+    {
+      action: url_for(action: 'retry', id: model.id),
+      icon: 'circle-play',
+      title: t('.retry.title'),
+      confirm: t('.retry.confirm')
+    },
+    icons: ['show', 'destroy']
+  ) { yield }
+%>
