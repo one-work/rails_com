@@ -17,9 +17,9 @@ module RailsCom::TrHelper
 
     if icons.include?('show')
       defaults << {
-        title: t('.show.title'),
-        icon: 'eye',
         action: url_for(action: 'show', id: model.id),
+        icon: 'eye',
+        label: t('.show.title'),
         class: 'text-info',
         position: 0
       }
@@ -27,9 +27,9 @@ module RailsCom::TrHelper
 
     if icons.include?('edit')
       defaults << {
-        title: t('.edit.title'),
-        icon: 'pencil',
         action: url_for(action: 'edit', id: model.id),
+        icon: 'pencil',
+        label: t('.edit.title'),
         class: 'text-link',
         position: 0
       }
@@ -37,10 +37,10 @@ module RailsCom::TrHelper
 
     if icons.include?('destroy')
       defaults << {
-        title: t('.destroy.title'),
+        action: url_for(action: 'destroy', id: model.id),
+        label: t('.destroy.title'),
         icon: 'trash',
         method: 'delete',
-        action: url_for(action: 'destroy', id: model.id),
         class: 'text-danger',
         confirm: t('.destroy.confirm'),
         position: 0
