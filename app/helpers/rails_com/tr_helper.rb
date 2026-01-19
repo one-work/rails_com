@@ -7,7 +7,7 @@ module RailsCom::TrHelper
       controller: 'show tr-actions',
       tr_actions_data_value: tr_actions(model, *items, icons: icons)
     )
-    options.merge! id: "tr_#{model.id}" if model
+    options.with_defaults! id: "tr_#{model.id}" if model
 
     tag.tr(data: data, **options, &block)
   end
