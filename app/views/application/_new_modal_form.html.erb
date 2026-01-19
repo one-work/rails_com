@@ -1,8 +1,10 @@
 <%= form_with theme: 'modal', model: model, scope: model_name, url: { action: 'create' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body form-horizontal">
+  <section class="modal-card-body">
     <%= render 'error_messages', target: f.object if f.object.errors.present? %>
-    <%= render partial: 'form', locals: { f: f } %>
+    <div class="form-horizontal">
+      <%= render partial: 'form', locals: { f: f } %>
+    </div>
   </section>
   <%= f.submit %>
 <% end %>
