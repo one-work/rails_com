@@ -82,7 +82,7 @@ module Com
     end
 
     def cors_preflight_check
-      response.headers['Access-Control-Allow-Origin'] = request.origin
+      response.headers['Access-Control-Allow-Origin'] = request.host
       response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
       response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Timezone, Turbo-Frame, x-turbo-request-id, Token, Auth-Token, Email, X-Csrf-Token, X-User-Token, X-User-Email'
       response.headers['Access-Control-Max-Age'] = '1728000'
