@@ -1,6 +1,9 @@
 zh:
   log:
     panel:
+      home:
+        index:
+          title: 日志概览
       requests:
         index:
           title: 日志
@@ -8,6 +11,9 @@ zh:
           title: 最新日志
         ip:
           title: IP 统计
+      request_dailies:
+        index:
+          title: 请求汇总
       queries:
         index:
           title: SQL 日志
