@@ -4,8 +4,6 @@ module Admin
 
     def index
       @businesses = Meta::Business.includes(:admin_actions).where.not(identifier: ['', 'design'])
-
-      response.headers['Access-Control-Allow-Headers'] = 'Timezone'
     end
 
   end
