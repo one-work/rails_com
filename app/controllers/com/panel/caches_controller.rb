@@ -20,7 +20,8 @@ module Com
     def set_filter_columns
       @filter_columns = set_filter_i18n(
         'key' => { type: 'search', default: true },
-        'key_hash' => { type: 'search', default: true }
+        'key_hash' => { type: 'search', default: true },
+        'created_at' => 'datetime'
       )
     end
 

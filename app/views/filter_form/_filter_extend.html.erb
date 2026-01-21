@@ -1,5 +1,4 @@
-<div data-controller="form" class="field is-grouped">
-  <%= form_with theme: nil, method: :get, id: 'filter_search_form', class: 'display-none' do %><% end %>
+<%= form_with theme: nil, method: :get, id: 'filter_search_form', class: 'field is-grouped' do %>
   <div class="tags are-large">
   <% @filter_columns.each do |column| %>
     <% if column[:value] %>
@@ -10,4 +9,4 @@
   <% end %>
   </div>
   <%= render partial: 'filter_form/filter_extend_plus', locals: { extra_columns: @filter_columns.reject(&->(i){ i[:default] || i[:value] }) } %>
-</div>
+<% end %>
