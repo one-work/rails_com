@@ -124,6 +124,7 @@ Rails.application.routes.draw do
         resources :detector_logs
         resources :detector_errors
       end
+      resources :caches, only:[:index, :show, :destroy]
       resources :err_summaries, only: [:index, :show, :destroy] do
         member do
           delete :clean

@@ -1,0 +1,6 @@
+<td>
+  <p><%= model.key %></p>
+  <p><%= model.key_hash %></p>
+</td>
+<td><%= model.byte_size %></td>
+<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
