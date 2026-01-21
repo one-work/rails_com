@@ -48,6 +48,9 @@
   <%= link_to({ controller: 'com/panel/err_summaries' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: ['err_summaries', 'errs'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('com.panel.err_summaries.index.title') %></span>
   <% end %>
+  <%= link_to({ controller: 'com/panel/caches' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: ['caches'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('com.panel.caches.index.title') %></span>
+  <% end %>
   <%= link_to({ controller: 'com/panel/csps' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('com.panel.csps.index.title') %></span>
   <% end %>
