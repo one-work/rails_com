@@ -1,11 +1,13 @@
-<%= form_with theme: nil, method: :get, id: 'filter_search_form', class: 'display-none' do %><% end %>
-<div class="tags are-large">
-<% @filter_columns.each do |column| %>
-  <% if column[:value] %>
-    <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], scope: nil, form: 'filter_search_form', **column } %>
-  <% elsif column[:default] %>
-    <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], scope: nil, form: 'filter_search_form', **column } %>
+<div data-controller="form" class="field is-grouped">
+  <%= form_with theme: nil, method: :get, id: 'filter_search_form', class: 'display-none' do %><% end %>
+  <div class="tags are-large">
+  <% @filter_columns.each do |column| %>
+    <% if column[:value] %>
+      <%= render partial: "filter_form/filter_value_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], scope: nil, form: 'filter_search_form', **column } %>
+    <% elsif column[:default] %>
+      <%= render partial: "filter_form/filter_default_#{column[:type]}", locals: { record_class: record_class, key: column[:column_name], scope: nil, form: 'filter_search_form', **column } %>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
+  <%= render partial: 'filter_form/filter_extend_plus', locals: { extra_columns: @filter_columns.reject(&->(i){ i[:default] || i[:value] }) } %>
 </div>
-<%= render partial: 'filter_form/filter_extend_plus', locals: { extra_columns: @filter_columns.reject(&->(i){ i[:default] || i[:value] }) } %>
