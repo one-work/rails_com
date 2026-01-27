@@ -5,6 +5,8 @@
   <ul class="breadcrumb has-succeeds-separator ml-3"><%= render 'breadcrumb' %></ul>
   <%= render 'alert' %>
   <div class="box flex-grow-1 radius-bottom-none">
-    <%= yield %>
+    <%= render 'frame_layout_panel' do %>
+      <%= yield %>
+    <% end %>
   </div>
 </turbo-frame>
