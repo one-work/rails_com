@@ -99,6 +99,11 @@ module Job
       }
     end
 
+    @filter_columns = set_filter_i18n(
+      'state' => { type: 'dropdown', default: true },
+      'created_at' => 'datetime'
+    )
+
     def set_count
       @count = {
         index: @common_jobs.finished.async_count,
