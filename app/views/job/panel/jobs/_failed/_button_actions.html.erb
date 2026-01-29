@@ -6,7 +6,7 @@
     <span class="ml-1"><%= t('.batch_destroy.title') %></span>
   <% end %>
 <% end %>
-<%= form_with url: { action: 'batch_retry' **request.GET }, class: 'button_to' do |f| %>
+<%= form_with url: { action: 'batch_retry', **request.GET }, class: 'button_to' do |f| %>
   <%= f.hidden_field :ids, data: { form_target: 'ids' } %>
   <%= button_tag data: { form_target: 'submit' }, disabled: true, class: 'button is-success' do %>
     <%= svg_tag 'circle-play' %>
