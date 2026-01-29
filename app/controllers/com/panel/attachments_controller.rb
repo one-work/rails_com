@@ -27,5 +27,9 @@ module Com
       @attachment = ActiveStorage::Attachment.find(params[:id])
     end
 
+    def model_klass
+      ActiveStorage::Attachment
+    end
+
   end
 end
