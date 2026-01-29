@@ -1,6 +1,15 @@
 <%=
   tr_tag(
     model,
-    { href: url_for(controller: 'tabs', role_id: model.id), icon: 'house', title: t('.tabs.index.title') }
+    {
+      href: url_for(action: 'show', id: model.id),
+      icon: 'gears',
+      title: t('.show.title')
+    },
+    {
+      href: url_for(controller: 'tabs', role_id: model.id),
+      icon: 'house',
+      title: t('.tabs.index.title')
+    }
   ) { yield }
 %>
