@@ -11,4 +11,4 @@
   <p><time data-controller="time" data-format="human"><%= model.scheduled_at.to_fs(:iso8601) %></time></p>
   <p class="text-success"><time data-controller="time" data-format="human"><%= model.finished_at.to_fs(:iso8601) %></time></p>
 </td>
-<td><%= simple_format model.arguments['arguments'][0] %></td>
+<td><%= simple_format model.arguments['arguments'] %></td>
