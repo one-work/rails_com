@@ -2,14 +2,14 @@
 
 <%= render layout: 'index_table' do %>
   <%= render partial: 'index_tbody', layout: 'index_tr', collection: @queues, as: :model %>
-  <%= render layout: 'index_tr' do %>
+  <tr>
     <td>
       <%= link_to({ controller: 'recurring_tasks' }) do %>
         <span><%= t('.recurring_tasks.index.title') %></span>
       <% end %>
     </td>
     <td colspan="3"></td>
-  <% end %>
+  </tr>
 <% end %>
 
 <%= render layout: 'process_table' do %>
