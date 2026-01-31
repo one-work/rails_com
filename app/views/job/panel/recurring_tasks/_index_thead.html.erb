@@ -1,0 +1,7 @@
+<th><%= SolidQueue::RecurringTask.human_attribute_name(:class_name) %></th>
+<th><%= SolidQueue::RecurringTask.human_attribute_name(:key) %></th>
+<th><%= SolidQueue::RecurringTask.human_attribute_name(:queue_name) %></th>
+<th>
+  <p><%= SolidQueue::RecurringTask.human_attribute_name(:last_enqueued_time) %></p>
+  <p><%= SolidQueue::RecurringTask.human_attribute_name(:next_time) %></p>
+</th>

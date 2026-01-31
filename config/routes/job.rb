@@ -34,7 +34,7 @@ namespace :job, defaults: { business: 'job' } do
         end
       end
     end
-    resources :cron_entries, only: [:index, :show] do
+    resources :recurring_tasks, only: [:index, :show] do
       member do
         post :enqueue
       end

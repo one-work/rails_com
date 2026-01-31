@@ -43,3 +43,8 @@ zh:
         retry_all:
           title: 重试所有
           confirm: 确认
+      recurring_tasks:
+        index:
+          title: 循环任务
+        enqueue:
+          title: 立即执行
