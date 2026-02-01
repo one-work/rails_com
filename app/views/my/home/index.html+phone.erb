@@ -1,9 +1,9 @@
 <div class="box is-padding-less">
   <%= render 'profile_item' %>
-  <%= render 'cart_column' %>
+  <%= render 'cart_column' if defined? RailsTrade %>
 </div>
 
-<%= render 'trade_column' %>
+<%= render 'trade_column' if defined? RailsTrade %>
 <%= render 'com_column' %>
 
 <%= render 'powered_by' %>
