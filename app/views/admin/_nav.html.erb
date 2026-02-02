@@ -70,6 +70,11 @@
         <%= render 'admin/finance_nav_popup' %>
       </li>
     <% end %>
+    <% if defined?(RailsEvent) && role_permit?(business: 'eventual', namespace: 'admin') %>
+      <li class="<%= active_helper(modules: 'eventual/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'admin/eventual_nav_popup' %>
+      </li>
+    <% end %>
     <% if defined?(RailsNotice) && role_permit?(business: 'notice', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'notice/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/notice_nav_popup' %>
