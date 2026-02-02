@@ -25,7 +25,7 @@ module RailsCom::Models
     migrate_tables_hash.group_by { |_, v| v[:migrations_paths] }.transform_values!(&:to_h)
   end
 
-  def tables_hash(root = ActiveRecord::Base, records_hash = models_hash)
+  def tables_hash(root = ApplicationRecord, records_hash = models_hash(root))
     @tables ||= {}
 
     records_hash[root].each_key do |node|
