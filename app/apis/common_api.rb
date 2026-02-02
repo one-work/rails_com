@@ -68,8 +68,10 @@ module CommonApi
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
 
-    response = @client.with_headers(headers).with(with_options).request(method, path, params: params, form: payload)
-    debug ? response : parse_response(response)
+    with_access_token(params: params, headers: headers, payload: payload) do
+      response = @client.with_headers(headers).with(with_options).request(method, path, params: params, form: payload)
+      debug ? response : parse_response(response)
+    end
   end
 
   def post_file(path, file, file_key: 'media', content_type: nil, params: {}, headers: {}, origin: nil, debug: nil, **options)
