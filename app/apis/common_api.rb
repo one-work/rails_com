@@ -107,12 +107,13 @@ module CommonApi
     if response.respond_to?(:status) && response.status >= 200 && response.status < 300
       content_type = response.content_type.mime_type
 
-      if content_type =~ /image|audio|video/
+      body = if content_type =~ /image|audio|video/
         data = Tempfile.new('tmp')
         data.binmode
         data.write(response.body.to_s)
         data.rewind
-        data
+
+        return data
       elsif content_type =~ /html|xml/
         Hash.from_xml(response.body.to_s)
       elsif content_type =~ /json/
@@ -120,9 +121,15 @@ module CommonApi
       else
         JSON.parse(response.body.to_s)
       end
+
+      extra(body)
     else
       raise AccessTokenExpiredError, "Request get fail, response status #{response}"
     end
+  end
+
+  def extra(body)
+    body
   end
 
   def logger
