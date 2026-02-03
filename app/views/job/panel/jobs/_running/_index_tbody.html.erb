@@ -10,8 +10,8 @@
   <p><%= model.class_name %></p>
   <p
     data-controller="time-count"
-    data-time-count-time-value="<%= model.scheduled_at.to_fs(:iso8601) %>"
-  ><%= exact_distance_time(model.scheduled_at, Time.current) %></p>
+    data-time-count-time-value="<%= model.claimed_execution.created_at.to_fs(:iso8601) %>"
+  ><%= exact_distance_time(model.claimed_execution.created_at, Time.current) %></p>
 </td>
 <td>
   <pre><%= model.arguments['arguments'][0].to_format_yaml %></pre>

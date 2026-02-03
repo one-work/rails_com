@@ -1,0 +1,11 @@
+<%=
+  tr_tag(
+    model,
+    {
+      action: url_for(action: 'enqueue', id: model.id),
+      icon: 'play',
+      title: t('.enqueue.title')
+    },
+    icons: []
+  ) { yield }
+%>

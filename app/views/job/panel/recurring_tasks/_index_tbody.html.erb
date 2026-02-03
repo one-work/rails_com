@@ -1,0 +1,7 @@
+<td><%= model.class_name %></td>
+<td><%= model.key %></td>
+<td><%= model.queue_name %></td>
+<td>
+  <p><time data-controller="time" data-format="human"><%= model.last_enqueued_time.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time" data-format="human"><%= model.next_time.to_fs(:iso8601) %></time></p>
+</td>
