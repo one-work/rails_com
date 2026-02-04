@@ -88,6 +88,10 @@ module Com
         variant << :pad
       end
 
+      if request.headers['X'] == 'x'
+        variant.prepend :modal
+      end
+
       if request.user_agent&.match? /MicroMessenger|WeChat/  # 包含 mini program
         variant += [:wechat, :phone]
       end
