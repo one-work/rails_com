@@ -1,4 +1,4 @@
-<% f_method = "#{outer}_ancestors(#{depth}i)" %>
+<% f_method = "#{outer}_ancestors(#{depth})" %>
 <div data-controller="taxon" data-taxon-url-value="nodes/outer" data-taxon-title-value="outer_ancestors_input">
   <%= f.collection_select(f_method, node.self_and_siblings, :id, :name, { selected: node.id, include_blank: true, label: false, all: { normal: nil }, wrap: { select: nil } }, { data: { action: 'taxon#choose' }, class: 'weui-select' }) %>
 </div>
