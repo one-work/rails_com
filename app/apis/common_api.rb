@@ -4,7 +4,7 @@ require 'http/form_data'
 
 module CommonApi
   class AccessTokenExpiredError < StandardError; end
-  attr_accessor :app, :client
+  attr_reader :app, :client
 
   def initialize(app = nil)
     @app = app
@@ -25,40 +25,44 @@ module CommonApi
     )
   end
 
-  def get(path, origin: @app.base_url, headers: {}, debug: nil, **params)
+  def base_url
+    @app.base_url
+  end
+
+  def get(path, origin: base_url, headers: {}, debug: nil, **params)
     request('GET', path, origin: origin, params: params, headers: headers, debug: debug)
   end
 
   def get_xml(path = '/', **params)
-    r = @client.plugin(:xml).get(path, origin: @app.base_url, params: params)
+    r = @client.plugin(:xml).get(path, origin: base_url, params: params)
     parse_response(r)
   end
 
-  def post(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
+  def post(path, origin: base_url, params: {}, headers: {}, debug: nil, **payload)
     request('POST', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
-  def post_form(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
+  def post_form(path, origin: base_url, params: {}, headers: {}, debug: nil, **payload)
     request_form('POST', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
-  def post_array(path, payload, origin: @app.base_url, params: {}, headers: {}, debug: nil)
+  def post_array(path, payload, origin: base_url, params: {}, headers: {}, debug: nil)
     request('POST', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
-  def post_stream(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
+  def post_stream(path, origin: base_url, params: {}, headers: {}, debug: nil, **payload)
     request('POST', path, payload, origin: origin, params: params, headers: headers, debug: debug, stream: true)
   end
 
-  def put(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
+  def put(path, origin: base_url, params: {}, headers: {}, debug: nil, **payload)
     request('PUT', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
-  def delete(path, origin: @app.base_url, params: {}, headers: {}, debug: nil, **payload)
+  def delete(path, origin: base_url, params: {}, headers: {}, debug: nil, **payload)
     request('DELETE', path, payload, origin: origin, params: params, headers: headers, debug: debug)
   end
 
-  def request(method, path, payload = nil, origin: @app.base_url, params: {}, headers: {}, debug: nil)
+  def request(method, path, payload = nil, origin: base_url, params: {}, headers: {}, debug: nil)
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
 
