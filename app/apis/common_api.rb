@@ -8,6 +8,10 @@ module CommonApi
 
   def initialize(app = nil)
     @app = app
+    set_client
+  end
+
+  def set_client
     @client = HTTPX.with(
       ssl: {
         verify_mode: OpenSSL::SSL::VERIFY_NONE
