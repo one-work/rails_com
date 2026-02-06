@@ -4,7 +4,7 @@ require 'http/form_data'
 
 module CommonApi
   class AccessTokenExpiredError < StandardError; end
-  attr_reader :app, :client
+  attr_accessor :app, :client
 
   def initialize(app = nil)
     @app = app
