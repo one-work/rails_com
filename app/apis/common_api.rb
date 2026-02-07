@@ -7,17 +7,19 @@ module CommonApi
   attr_reader :app, :client
 
   def self.extended(mod)
-    mod.set_app
-    mod.set_client
+    if mod.const_defined? 'APP'
+      mod.instance_variable_set :@app, mod.const_get('APP')
+    end
+    if mod.const_defined? 'CLIENT'
+      mod.instance_variable_set :@client, mod.const_get('CLIENT')
+    else
+      set_client
+    end
   end
 
   def initialize(app = nil)
-    set_app
-    set_client
-  end
-
-  def set_app(app = nil)
     @app = app
+    set_client
   end
 
   def set_client
