@@ -6,9 +6,18 @@ module CommonApi
   class AccessTokenExpiredError < StandardError; end
   attr_reader :app, :client
 
-  def initialize(app = nil)
-    @app = app
+  def self.extended(mod)
+    set_app
     set_client
+  end
+
+  def initialize(app = nil)
+    set_app
+    set_client
+  end
+
+  def set_app(app = nil)
+    @app = app
   end
 
   def set_client
