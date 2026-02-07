@@ -1,15 +1,6 @@
-<div class="as-bar">
-  <% if params[:action] == 'index' || referer_controller == 'my/home' %>
-    <%= link_to({ controller: '/my/home' }, class: 'px-4') do %>
-      <%= svg_tag 'angle-left', kind: 'regular' %>
-    <% end %>
-  <% elsif params[:action] != 'index' %>
-    <%= link_to({ action: 'index' }, class: 'px-4') do %>
-      <%= svg_tag 'angle-left', kind: 'regular' %>
-    <% end %>
-  <% end %>
+<%= render layout: 'top_bar_left' do %>
   <div class="bar-title"><%= t('.title', default: '') %></div>
   <%= button_to({ action: 'actions' }, class: 'px-4') do %>
     <%= svg_tag 'ellipsis-vertical' %>
   <% end %>
-</div>
+<% end %>
