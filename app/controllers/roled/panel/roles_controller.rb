@@ -16,6 +16,7 @@ module Roled
 
       @controllers = Meta::Controller.includes(:actions).default_where(q_params)
       @businesses = Meta::Business.all
+      render :show, locals: { model: @role }
     end
 
     def namespaces
