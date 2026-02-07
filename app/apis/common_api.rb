@@ -77,7 +77,7 @@ module CommonApi
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
 
-    with_access_token(params: params, headers: headers, payload: payload) do
+    with_access_token(params: params, headers: headers, payload: payload, path: path) do
       response = @client.with_headers(headers).with(with_options).request(method, path, params: params, json: payload)
       debug ? response : parse_response(response)
     end
@@ -87,7 +87,7 @@ module CommonApi
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
 
-    with_access_token(params: params, headers: headers, payload: payload) do
+    with_access_token(params: params, headers: headers, payload: payload, path: path) do
       response = @client.with_headers(headers).with(with_options).request(method, path, params: params, form: payload)
       debug ? response : parse_response(response)
     end
@@ -97,7 +97,7 @@ module CommonApi
     with_options = { origin: origin }
     with_options.merge! debug: STDOUT, debug_level: 2 if debug
 
-    with_access_token(params: params, headers: headers) do
+    with_access_token(params: params, headers: headers, path: path) do
       form_file = file.is_a?(HTTP::FormData::File) ? file : HTTP::FormData::File.new(file, content_type: content_type)
       response = @client.with_headers(headers).with(with_options).post(
         path,
