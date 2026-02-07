@@ -13,7 +13,7 @@ module CommonApi
     if mod.const_defined? 'CLIENT'
       mod.instance_variable_set :@client, mod.const_get('CLIENT')
     else
-      set_client
+      mod.set_client
     end
   end
 
