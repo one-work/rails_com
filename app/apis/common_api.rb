@@ -7,8 +7,8 @@ module CommonApi
   attr_reader :app, :client
 
   def self.extended(mod)
-    set_app
-    set_client
+    mod.set_app
+    mod.set_client
   end
 
   def initialize(app = nil)
