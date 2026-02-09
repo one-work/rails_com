@@ -113,7 +113,7 @@ module CommonApi
   end
 
   protected
-  def with_access_token(tries: 2, params: {}, headers: {}, payload: {}, path: nil)
+  def with_access_token(tries: 2, params: {}, headers: {}, payload: {}, **)
     @app.refresh_access_token unless @app.access_token_valid?
     headers.merge! 'Authorization' => "Bearer #{@app.access_token}"
     yield
