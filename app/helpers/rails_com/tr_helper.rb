@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 module RailsCom::TrHelper
 
-  def tr_tag(model, *items, data: {}, icons: ['show', 'edit', 'destroy'], **options, &block)
+  def tr_tag(model, *items, data: {}, icons: ['show', 'edit', 'destroy'], param: { id: model.id }, **options, &block)
     data ||= {}
     data.with_defaults!(
       controller: 'show tr-actions',
-      tr_actions_data_value: tr_actions(model, *items, icons: icons)
+      tr_actions_data_value: tr_actions(model, *items, icons: icons, param: param)
     )
     options.with_defaults! id: "tr_#{model.id}" if model
 
     tag.tr(data: data, **options, &block)
   end
 
-  def tr_actions(model, *items, icons:)
+  def tr_actions(model, *items, icons:, param:)
     defaults = []
 
     if icons.include?('show')
       defaults << {
-        action: url_for(action: 'show', id: model.id),
+        action: url_for(action: 'show', **param),
         icon: 'eye',
         label: t('.show.title'),
         class: 'text-info',
@@ -27,7 +27,7 @@ module RailsCom::TrHelper
 
     if icons.include?('edit')
       defaults << {
-        action: url_for(action: 'edit', id: model.id),
+        action: url_for(action: 'edit', **param),
         icon: 'pencil',
         label: t('.edit.title'),
         class: 'text-link',
@@ -37,7 +37,7 @@ module RailsCom::TrHelper
 
     if icons.include?('destroy')
       defaults << {
-        action: url_for(action: 'destroy', id: model.id),
+        action: url_for(action: 'destroy', **param),
         label: t('.destroy.title'),
         icon: 'trash',
         method: 'delete',
