@@ -5,14 +5,14 @@ module RailsCom::TrHelper
     data ||= {}
     data.with_defaults!(
       controller: 'show tr-actions',
-      tr_actions_data_value: tr_actions(model, *items, icons: icons, param: param)
+      tr_actions_data_value: tr_actions(*items, icons: icons, param: param)
     )
     options.with_defaults! id: "tr_#{model.id}" if model
 
     tag.tr(data: data, **options, &block)
   end
 
-  def tr_actions(model, *items, icons:, param:)
+  def tr_actions(*items, icons:, param:)
     defaults = []
 
     if icons.include?('show')
