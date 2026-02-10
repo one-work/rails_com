@@ -17,5 +17,12 @@ module Log
       @requests = Request.select(:ip).group(:ip).order(count_com_logs_ip: :desc).count
     end
 
+    private
+    def set_filter_columns
+      @filter_columns = set_filter_i18n(
+        'path' => { type: 'search', default: true }
+      )
+    end
+
   end
 end
