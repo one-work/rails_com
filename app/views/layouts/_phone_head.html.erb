@@ -4,7 +4,7 @@
     <%= render 'head_title' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="turbo-cache-control" content="no-preview">
-    <meta name="turbo-prefetch" content="<%= !Rails.env.local? %>">
+    <meta name="turbo-prefetch" content="false">
     <meta name="turbo-refresh-method" content="morph">
     <meta name="turbo-refresh-scroll" content="preserve">
     <%= yield :reload %>
