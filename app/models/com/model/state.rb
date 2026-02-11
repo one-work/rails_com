@@ -81,11 +81,11 @@ module Com
     end
 
     def default_url(**options)
-      Rails.application.routes.url_for(
+      Rails.app.routes.url_for(
         host: host,
         controller: controller_path,
         action: action_name,
-        **params.compact_blank,
+        **params.compact_blank.symbolize_keys!,
         **options
       )
     end
