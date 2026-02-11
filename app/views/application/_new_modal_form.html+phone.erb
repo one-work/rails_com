@@ -1,6 +1,6 @@
 <%= form_with theme: 'phone_modal', model: model, scope: model_name, url: { action: 'create' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section id="modal_card_body" class="modal-card-body">
     <%= render partial: 'form', locals: { f: f } %>
   </section>
   <%= f.submit %>
