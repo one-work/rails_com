@@ -40,5 +40,5 @@
 </div>
 <div>
   <dt><%= Com::Err.human_attribute_name(:exception_backtrace) %></dt>
-  <dd><pre style="overflow-x: auto"><%= @err.exception_backtrace.to_format_yaml %></pre></dd>
+  <dd><%= simple_format @err.exception_backtrace %></dd>
 </div>
