@@ -32,7 +32,7 @@ module Com
       add_paragraph(err.exception_backtrace[0])
       link_more(
         '详细点击',
-        Rails.application.routes.url_for(
+        Rails.app.routes.url_for(
           controller: 'com/panel/errs',
           action: 'show',
           err_summary_id: err.err_summary.id,

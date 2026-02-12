@@ -91,7 +91,7 @@ module Com
     end
 
     def default_path
-      Rails.application.routes.url_for(
+      Rails.app.routes.url_for(
         controller: controller_path,
         action: action_name,
         only_path: true,

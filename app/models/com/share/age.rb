@@ -37,7 +37,7 @@ module Com
     end
 
     def enter_url
-      Rails.application.routes.url_for(
+      Rails.app.routes.url_for(
         controller: 'profiled/profiles',
         action: 'qrcode',
         id: self.id,
