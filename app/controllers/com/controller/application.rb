@@ -305,5 +305,13 @@ module Com
       redirect_to '/', alert: '请求过于频繁!'
     end
 
+    class_methods do
+
+      def inherited(subclass)
+        puts "New subclass: #{subclass}"
+      end
+
+    end
+
   end
 end
