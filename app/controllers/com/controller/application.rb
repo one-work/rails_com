@@ -302,7 +302,7 @@ module Com
     end
 
     def redirect_for_too_many
-      redirect_to '/', alert: '请求过于频繁!'
+      render json: { alert: '请求过于频繁!' }
     end
 
     class_methods do
