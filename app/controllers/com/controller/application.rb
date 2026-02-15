@@ -309,7 +309,13 @@ module Com
 
       def inherited(subclass)
         super
-        puts "New subclass: #{subclass}"
+
+        _name = subclass.name.delete_suffix('Controller').split('::').last
+        name = "#{_name}Prepend"
+        if subclass.module_parent.const_defined? name
+          subclass.prepend subclass.module_parent.const_get(name)
+          logger.debug "\e[35m  #{subclass} prepend #{name}  \e[0m"
+        end
       end
 
     end
