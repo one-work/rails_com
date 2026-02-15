@@ -308,6 +308,7 @@ module Com
     class_methods do
 
       def inherited(subclass)
+        super
         puts "New subclass: #{subclass}"
       end
 
