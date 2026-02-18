@@ -80,7 +80,8 @@ module Com
       end
     end
 
-    def default_url(scheme: 'https', **options)
+    def default_url(scheme: 'https', auth_token: nil, **options)
+      params[:auth_token] = auth_token
       query = params.compact_blank.to_query
       options.merge! query: query if query.present?
       URI::Generic.build(host: host, scheme: scheme, path: path, **options).to_s
