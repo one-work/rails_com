@@ -4,7 +4,7 @@ module Job
     before_action :set_queue, only: [:pause, :resume]
 
     def index
-      @queues = Queue.all
+      @queues = SolidQueue::Queue.all
     end
 
     def pause
@@ -17,7 +17,7 @@ module Job
 
     private
     def set_queue
-      queues_hash = Queue.all.each_with_object({}) do |queue, h|
+      queues_hash = SolidQueue::Queue.all.each_with_object({}) do |queue, h|
         h.merge! queue.name => queue
       end
       @queue = queues_hash[params[:id]]
