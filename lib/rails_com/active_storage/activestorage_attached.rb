@@ -22,6 +22,11 @@ module ActiveStorage
 
     class One
 
+      def url_sync(*urls, **options)
+        purge
+        super
+      end
+
       def variant(transformations)
         if attachment&.variable?
           attachment.variant(transformations)
