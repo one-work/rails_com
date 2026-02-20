@@ -6,7 +6,7 @@
   <%= render 'my/trade_nav' if defined? RailsTrade %>
   <%= render 'my/ship_nav' if defined? RailsShip %>
   <%= render 'my/notice_nav' if defined? RailsNotice %>
-  <%= render 'my/wechat_nav' if defined? RailsWechat && current_wechat_app %>
+  <%= render 'my/wechat_nav' if defined?(RailsWechat) && current_wechat_app %>
   <%= render 'board/org_nav' if defined? RailsOrg %>
   <%= render 'my/com_nav' %>
 </div>
