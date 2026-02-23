@@ -19,7 +19,7 @@
       data-controller="time-count"
       data-time-count-time-value="<%= model.scheduled_at.to_fs(:iso8601) %>"
       class="text-danger"
-    ><%= exact_distance_time(model.scheduled_at, Time.current) %></span>
+    ><%= distance_time(model.scheduled_at, Time.current) %></span>
   </p>
 </td>
 <td>

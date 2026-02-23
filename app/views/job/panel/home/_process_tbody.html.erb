@@ -12,11 +12,11 @@
 <td>
   <p>
     <time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time>
-    <span data-controller="time-count" data-time-count-time-value="<%= model.created_at.to_fs(:iso8601) %>" class="tag text-grey"><%= exact_distance_time(model.created_at) %></span>
+    <span data-controller="time-count" data-time-count-time-value="<%= model.created_at.to_fs(:iso8601) %>" class="tag text-grey"><%= distance_time(model.created_at) %></span>
   </p>
   <p>
     <time data-controller="time" data-format="human"><%= model.last_heartbeat_at.to_fs(:iso8601) %></time>
-    <span data-controller="time-count" data-time-count-time-value="<%= model.last_heartbeat_at.to_fs(:iso8601) %>" class="tag text-grey"><%= exact_distance_time(model.last_heartbeat_at) %></span>
+    <span data-controller="time-count" data-time-count-time-value="<%= model.last_heartbeat_at.to_fs(:iso8601) %>" class="tag text-grey"><%= distance_time(model.last_heartbeat_at) %></span>
   </p>
 </td>
 <td><%= simple_format model.metadata %></td>
