@@ -5,6 +5,7 @@ Time::DATE_FORMATS[:datetime] = '%Y-%m-%d %H:%M'
 Time::DATE_FORMATS[:local] = '%Y-%m-%dT%H:%M:%S'
 Time::DATE_FORMATS[:with_usec] = '%Y-%m-%d %H:%M:%S.%6N'
 Time::DATE_FORMATS[:wechat] = '%Y年%-m月%-d日 %H:%M'
+Time::DATE_FORMATS[:short_cn] = '%-m月%-d日 %H:%M'
 Time::DATE_FORMATS[:hour] = '%H'
 Time::DATE_FORMATS[:minute] = '%M'
 Time::DATE_FORMATS[:week] = ->(time) {
