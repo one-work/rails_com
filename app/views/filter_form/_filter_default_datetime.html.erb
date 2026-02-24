@@ -1,4 +1,4 @@
-<div data-controller="search-input" class="field-body">
+<div data-controller="filter-input" class="field-body">
   <div class="field">
     <%=
       datetime_field_tag(
@@ -24,8 +24,5 @@
         form: 'filter_search_form'
       )
     %>
-  </div>
-  <div class="control">
-    <%= submit_tag 'Search', name: nil, disabled: true, data: { search_input_target: 'submit' }, form: 'filter_search_form', class: 'button is-info' %>
   </div>
 </div>
