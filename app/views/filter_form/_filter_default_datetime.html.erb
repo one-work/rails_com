@@ -1,0 +1,31 @@
+<div data-controller="search-input" class="field-body">
+  <div class="field">
+    <%=
+      datetime_field_tag(
+        scope.present? ? "#{scope}[#{key}-gte]" : "#{key}-gte",
+        params.fetch('value', {})['gte'],
+        placeholder: "请输入#{record_class.human_attribute_name(key)}",
+        data: { action: 'filter-input#confirm' },
+        class: 'input',
+        id: nil,
+        form: 'filter_search_form'
+      )
+    %>
+  </div>
+  <div class="field">
+    <%=
+      datetime_field_tag(
+        scope.present? ? "#{scope}[#{key}-lte]" : "#{key}-lte",
+        params.fetch('value', {})['lte'],
+        placeholder: "请输入#{record_class.human_attribute_name(key)}",
+        data: { action: 'filter-input#confirm' },
+        class: 'input',
+        id: nil,
+        form: 'filter_search_form'
+      )
+    %>
+  </div>
+  <div class="control">
+    <%= submit_tag 'Search', name: nil, disabled: true, data: { search_input_target: 'submit' }, form: 'filter_search_form', class: 'button is-info' %>
+  </div>
+</div>
