@@ -1,5 +1,5 @@
 module RailsCom::ActiveRecord
-  module JsonInclude
+  module IncludeJson
 
     def update_json_counter(column: 'counters', **cols)
       sql_str = cols.inject(column) do |sql, (col, num)|
@@ -31,5 +31,5 @@ module RailsCom::ActiveRecord
 end
 
 ActiveSupport.on_load :active_record do
-  include RailsCom::ActiveRecord::JsonInclude
+  include RailsCom::ActiveRecord::IncludeJson
 end
