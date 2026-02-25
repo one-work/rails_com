@@ -4,10 +4,10 @@ module RailsCom::ActiveRecord
   module ExtendTotal
 
     def total_threshold(threshold, column:, order: 'expire_at')
-      with(running_total: self.select('id', column, order, Arel.sql("SUM(#{column}) OVER (ORDER BY #{order} DESC) AS total")))
+      with(running_total: self.select('id', column, order, Arel.sql("SUM(#{column}) OVER (ORDER BY #{order} ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS total")))
         .from('running_total')
         .select('id', column, order)
-        .where(total: threshold..)
+        .where(Arel.sql("total < :threshold"), threshold: threshold)
     end
 
   end
