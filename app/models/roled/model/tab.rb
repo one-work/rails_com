@@ -14,5 +14,13 @@ module Roled
       positioned on: [:role_id]
     end
 
+    def real_path
+      if Rails.app.config.relative_url_root.present?
+        "#{Rails.app.config.relative_url_root}/#{path}"
+      else
+        path
+      end
+    end
+
   end
 end

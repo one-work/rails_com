@@ -1,5 +1,5 @@
 <% @roled_tabs.each do |tab| %>
-  <%= link_to(tab.path, data: { turbo_action: 'replace' }, class: active_helper(paths: tab.path, active: 'is-active')) do %>
+  <%= link_to(tab.real_path, data: { turbo_action: 'replace' }, class: active_helper(paths: tab.path, active: 'is-active')) do %>
     <%= svg_tag tab.icon, class: 'icon is-medium mr-0' %>
     <span class="family-monospace size-7"><%= tab.name %></span>
   <% end %>
