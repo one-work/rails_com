@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+get 'pg' => 'pg/panel/pg_subscriptions#index'
 
 namespace :pg, defaults: { business: 'pg' } do
   namespace :panel, defaults: { namespace: 'panel' } do
