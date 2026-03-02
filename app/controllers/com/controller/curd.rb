@@ -200,6 +200,7 @@ module Com
           )
         else
           arr << v.with_defaults(
+            title: k,
             default: false,
             column_name: k.to_s,
             value: filter_params[k.to_s]
