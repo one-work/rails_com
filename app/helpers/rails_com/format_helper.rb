@@ -19,12 +19,11 @@ module RailsCom::FormatHelper
   def ex_simple_format(text, html_options = {}, options = {})
     text = '' if text.nil?
     text = text.dup
-    start_tag = tag('p', html_options, true)
     text = sanitize(text) unless options[:sanitize] == false
     text = text.to_str
-    text.gsub!(/\n?/, "</p>\n#{start_tag}")
-    text.insert 0, start_tag
-    text.html_safe.safe_concat("</p>")
+    text.lines.map(&:chomp).map do |line|
+      content_tag('p', raw(line), html_options)
+    end.join("\n\n").html_safe
   end
 
   def simple_format(text, html_options = {}, options = {})

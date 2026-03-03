@@ -19,6 +19,18 @@ module RailsCom::ActiveStorage
       @data_url = "data:#{content_type};base64,#{Base64.encode64(download)}"
     end
 
+    def height_by_width
+      if metadata['height'] && metadata['width']
+        (metadata['height'].to_d / metadata['width']).round(2)
+      else
+        0
+      end
+    end
+
+    def height_by_width_ratio
+      (height_by_width * 100).to_fs(:percentage, precision: 2)
+    end
+
     def duration
       (metadata[:duration] || 0).to_f
     end
