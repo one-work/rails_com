@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RailsCom::ActiveRecord
-  module ExtendFixture
+  module Fixture
 
     def yaml_files
       Dir["#{@path}{.yml,/{**,*}/*.yml}"].select { |f| ::File.file?(f) }
@@ -22,4 +22,4 @@ module RailsCom::ActiveRecord
   end
 end
 
-ActiveRecord::FixtureSet.include RailsCom::ActiveRecord::ExtendFixture
+ActiveRecord::FixtureSet.include RailsCom::ActiveRecord::Fixture

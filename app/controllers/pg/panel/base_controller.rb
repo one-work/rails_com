@@ -8,7 +8,7 @@ module Pg
     private
     def authenticate_by
       authenticate_or_request_with_http_digest do |username|
-        Rails.application.credentials.pg_password
+        Rails.app.credentials.pg_password
       end
     end
 
