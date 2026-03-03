@@ -7,9 +7,13 @@
   <%= yield %>
   <% if instance_variable_get("@#{controller_name.pluralize}").blank? %>
     <%= render 'page_blank' %>
-  <% elsif instance_variable_get("@#{controller_name.pluralize}").total_pages <= instance_variable_get("@#{controller_name.pluralize}").current_page %>
-    <%= render 'page_no_more' %>
-  <% elsif instance_variable_get("@#{controller_name.pluralize}").total_pages > instance_variable_get("@#{controller_name.pluralize}").current_page %>
-    <%= render partial: 'page_loading', locals: { all: instance_variable_get("@#{controller_name.pluralize}") } %>
+  <% else %>
+    <% if instance_variable_get("@#{controller_name.pluralize}").respond_to?(:total_pages) %>
+      <% if instance_variable_get("@#{controller_name.pluralize}").total_pages <= instance_variable_get("@#{controller_name.pluralize}").current_page %>
+        <%= render 'page_no_more' %>
+      <% elsif instance_variable_get("@#{controller_name.pluralize}").total_pages > instance_variable_get("@#{controller_name.pluralize}").current_page %>
+        <%= render partial: 'page_loading', locals: { all: instance_variable_get("@#{controller_name.pluralize}") } %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
