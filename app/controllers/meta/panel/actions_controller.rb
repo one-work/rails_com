@@ -20,14 +20,14 @@ module Meta
       @action = @controller.actions.find(params[:id])
     end
 
-    def action_permit_params
-      [
+    def action_params
+      params.fetch(:action, {}).permit(
         :operation,
         :name,
         :params,
         :position,
         :landmark
-      ]
+      )
     end
 
   end

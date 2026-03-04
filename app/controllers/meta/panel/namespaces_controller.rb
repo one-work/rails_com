@@ -15,14 +15,14 @@ module Meta
       @namespace = Namespace.find(params[:id])
     end
 
-    def namespace_permit_params
-      [
+    def namespace_params
+      params.fetch(:namespace, {}).permit(
         :name,
         :identifier,
         :verify_organ,
         :verify_member,
         :verify_user
-      ]
+      )
     end
 
   end

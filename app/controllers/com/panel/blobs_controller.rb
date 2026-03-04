@@ -38,18 +38,14 @@ module Com
     end
 
     def blob_params
-      params.fetch(:blob, {}).permit(*blob_permit_params)
+      params.fetch(:blob, {}).permit(
+        :key,
+        :io
+      )
     end
 
     def model_klass
       ActiveStorage::Blob
-    end
-
-    def blob_permit_params
-      [
-        :key,
-        :io
-      ]
     end
 
   end

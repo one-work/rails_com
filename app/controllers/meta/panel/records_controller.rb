@@ -51,12 +51,12 @@ module Meta
       @business_identifiers = Record.select(:business_identifier).distinct
     end
 
-    def record_permit_params
-      [
+    def record_params
+      params.fetch(:record, {}).permit(
         :name,
         :record_name,
         :description
-      ]
+      )
     end
 
   end

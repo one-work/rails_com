@@ -10,11 +10,11 @@ module Meta
     end
 
     private
-    def business_permit_params
-      [
+    def business_params
+      params.fetch(:business, {}).permit(
         :name,
         :logo
-      ]
+      )
     end
 
   end

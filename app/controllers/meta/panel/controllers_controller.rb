@@ -36,10 +36,10 @@ module Meta
       @controller = Controller.find(params[:id])
     end
 
-    def meta_controller_permit_params
-      [
+    def meta_controller_params
+      params.fetch(:meta_controller, {}).permit(
         :position
-      ]
+      )
     end
 
   end

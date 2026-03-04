@@ -30,17 +30,13 @@ module Meta
     end
 
     def column_params
-      params.fetch(:column, {}).permit(*column_permit_params)
-    end
-
-    def column_permit_params
-      [
+      params.fetch(:column, {}).permit(
         :record_name,
         :column_name,
         :column_type,
         :sql_type,
         :column_limit
-      ]
+      )
     end
 
   end

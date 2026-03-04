@@ -21,10 +21,10 @@ module Com
       @acme_identifier = @acme_order.acme_identifiers.build(acme_identifier_params)
     end
 
-    def acme_identifier_permit_params
-      [
+    def acme_identifier_params
+      params.fetch(:acme_identifier, {}).permit(
         :identifier
-      ]
+      )
     end
 
   end
