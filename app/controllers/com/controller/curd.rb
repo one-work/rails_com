@@ -139,26 +139,16 @@ module Com
     end
 
     def model_params
-      if self.class.private_method_defined?("#{model_name}_params") || self.class.method_defined?("#{model_name}_params")
+      if self.class.private_method_defined?("#{model_name}_params")
         send "#{model_name}_params"
       else
         model = model_object || model_klass.new
         p = params.fetch(model_name, {}).permit(
-          *permit_keys,
           **model_klass.com_column_extra,
           **model_klass.com_column_hash
         )
         p.merge! default_form_params if model.respond_to?(:organ_id)
         p
-      end
-    end
-
-    # todo, 如果 super controller 定义了同名，则将参数进行 & 操作。
-    def permit_keys
-      if self.class.private_method_defined?("#{model_name}_permit_params") || self.class.method_defined?("#{model_name}_permit_params")
-        model_klass.com_column_names & send("#{model_name}_permit_params").map(&:to_s)
-      else
-        model_klass.com_column_names
       end
     end
 
