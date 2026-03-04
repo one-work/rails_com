@@ -17,11 +17,10 @@ module Com
 
     private
     def model_params
-      if self.class.private_method_defined?("#{model_name}_params") || self.class.method_defined?("#{model_name}_params")
+      if self.class.private_method_defined?("#{model_name}_params")
         send "#{model_name}_params"
       else
         params.fetch(model_name, {}).permit(
-          *permit_keys,
           **model_klass.com_column_extra,
           **model_klass.com_column_hash
         )
