@@ -57,9 +57,10 @@ module Com
     end
 
     def deal_h1_and_blank
-      h1 = document_h1
       contents = document.root.children
+      h1 = contents.find { |i| i.type == :header && i.options[:level] == 1 }
       if h1
+        self.title = h1.options[:raw_text]
         contents.delete(h1)
       end
       while contents[0]&.type == :blank do
@@ -67,22 +68,10 @@ module Com
       end
     end
 
-    def document_h1
-      document.root.children.find { |i| i.type == :header && i.options[:level] == 1 }
-    end
-
-    def set_title
-      h1 = document_h1
-      if h1
-        self.title = h1.options[:raw_text]
-      end
-    end
-
     def set_html
       self.deal_links_and_images
       self.deal_h1_and_blank
       self.html = document.to_html
-      self.set_title
     end
 
   end
