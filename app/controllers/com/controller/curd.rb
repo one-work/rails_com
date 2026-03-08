@@ -144,6 +144,7 @@ module Com
       else
         model = model_object || model_klass.new
         p = params.fetch(model_name, {}).permit(
+          *model_klass.com_column_names,
           **model_klass.com_column_extra,
           **model_klass.com_column_hash
         )
