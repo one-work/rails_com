@@ -40,6 +40,11 @@ module CommonApi
     @app.base_url
   end
 
+  def head(path, origin: base_url, headers: {}, **params)
+    r = request('HEAD', path, origin: origin, params: params, headers: headers, debug: true)
+    r.headers.as_json
+  end
+
   def get(path, origin: base_url, headers: {}, debug: nil, **params)
     request('GET', path, origin: origin, params: params, headers: headers, debug: debug)
   end
