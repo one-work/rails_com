@@ -81,10 +81,15 @@ module Com
     end
 
     def default_url(scheme: 'https', auth_token: nil, **options)
-      params[:auth_token] = auth_token
-      query = params.compact_blank.to_query
-      options.merge! query: query if query.present?
-      URI::Generic.build(host: host, scheme: scheme, path: path, **options).to_s
+      Rails.app.routes.url_for(
+        controller: controller_path,
+        action: action_name,
+        host: host,
+        protocol: scheme,
+        auth_token: auth_token,
+        **params.to_options,
+        **options
+      )
     end
 
     def default_path
