@@ -9,6 +9,12 @@ module RailsCom::ActiveRecord
       connection.reset_pk_sequence!(table_name)
     end
 
+    def reset_all_counters(*counters, touch: nil)
+      find_in_batches do |group|
+        reset_counters(group.pluck(:id), *counters, touch: touch)
+      end
+    end
+
     def subclasses_tree(tree = {}, node = self)
       tree[node] ||= {}
 
