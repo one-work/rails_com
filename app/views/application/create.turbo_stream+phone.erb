@@ -2,7 +2,7 @@
   <%= turbo_stream.append 'tbody', partial: 'index_item', layout: 'index_item_actions', locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") } %>
   <%= turbo_stream.remove 'modal' %>
 <% elsif referer_eql?(controller_path, 'new') %>
-  <%= turbo_stream.apend_body partial: 'visit', locals: { url: url_for(action: 'show', id: model.id) } %>
+  <%= turbo_stream.append_body partial: 'visit', locals: { url: url_for(action: 'show', id: model.id) } %>
 <% else %>
-  <%= turbo_stream.apend_body partial: 'visit' %>
+  <%= turbo_stream.append_body partial: 'visit' %>
 <% end %>
