@@ -15,8 +15,14 @@ module Statis
       begin_on.beginning_of_day ... (begin_on.end_of_year + 1).beginning_of_day
     end
 
-    def cache_value
+    def cache_count
       self.count = config.countable.where(created_at: time_range).count
+    end
+
+    def cache_values
+      config.sum_columns.each do |column|
+        self.values[column] = config.countable.where(created_at: time_range).sum(column)
+      end
     end
 
   end
