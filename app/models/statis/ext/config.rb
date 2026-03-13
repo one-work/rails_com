@@ -37,6 +37,10 @@ module Statis
       attributes.slice(self.class.scopes)
     end
 
+    def sum_columns
+      []
+    end
+
     def compute_today_begin!
       id = filter_counter.where(created_at: ...Date.today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
       self.today_begin_id = id
