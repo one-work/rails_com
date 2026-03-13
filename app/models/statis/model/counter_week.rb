@@ -1,5 +1,5 @@
 module Statis
-  module Ext::Week
+  module Model::CounterWeek
     extend ActiveSupport::Concern
 
     included do

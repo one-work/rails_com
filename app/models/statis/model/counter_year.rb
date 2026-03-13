@@ -6,6 +6,7 @@ module Statis
       attribute :year, :integer
       attribute :begin_on, :date
       attribute :count, :integer
+      attribute :values, :json, default: {}
 
       belongs_to :config, polymorphic: true, counter_cache: true
     end
@@ -13,10 +14,6 @@ module Statis
     def time_range
       begin_on.beginning_of_day ... (begin_on.end_of_year + 1).beginning_of_day
     end
-
-
-    time_range = the_day.beginning_of_day ... (the_day.end_of_year + 1).beginning_of_day
-
 
     def cache_value
       self.count = config.countable.where(created_at: time_range).count
