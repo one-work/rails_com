@@ -6,16 +6,17 @@ module Statis
       attribute :begin_on, :date
       attribute :end_on, :date
       attribute :note, :string
-      attribute :sums, :json, default: []
+      attribute :count, :integer
+      attribute :values, :json, default: []
       attribute :today, :date
       attribute :today_begin_id, :big_integer
       attribute :counter_years_count, :integer
       attribute :counter_months_count, :integer
       attribute :counter_days_count, :integer
 
-      has_many :counter_days, as: :config
-      has_many :counter_months, as: :config
-      has_many :counter_years, as: :config
+      has_many :counter_days, as: :config, dependent: :delete_all
+      has_many :counter_months, as: :config, dependent: :delete_all
+      has_many :counter_years, as: :config, dependent: :delete_all
 
       before_save :compute_time_range
     end
