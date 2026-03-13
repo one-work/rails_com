@@ -12,7 +12,6 @@ module Statis
       attribute :count, :integer
       attribute :values, :json, default: {}
 
-      belongs_to :statistic, counter_cache: true
       belongs_to :config, polymorphic: true
       belongs_to :counter_month, foreign_key: [:conter_type, :config_id, :year_month], primary_key: [:conter_type, :config_id, :year_month], optional: true
       belongs_to :counter_year, foreign_key: [:config_id, :year], primary_key: [:config_id, :year], optional: true

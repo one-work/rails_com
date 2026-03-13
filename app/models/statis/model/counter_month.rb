@@ -11,7 +11,6 @@ module Statis
       attribute :values, :json, default: {}
 
       belongs_to :config, polymorphic: true, counter_cache: true
-
       belongs_to :counter_year, foreign_key: [:config_type, :config_id, :year], primary_key: [:config_type, :config_id, :year], optional: true
 
       after_initialize :init_year_month, if: :new_record?
