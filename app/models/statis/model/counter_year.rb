@@ -6,9 +6,8 @@ module Statis
       attribute :year, :integer
       attribute :begin_on, :date
       attribute :count, :integer
-      attribute :filter, :json
 
-      belongs_to :config, counter_cache: true
+      belongs_to :config, polymorphic: true, counter_cache: true
     end
 
     def time_range

@@ -1,9 +1,8 @@
 module Statis
-  module Model::Config
+  module Ext::Config
     extend ActiveSupport::Concern
 
     included do
-      attribute :statistical_type, :string
       attribute :begin_on, :date
       attribute :end_on, :date
       attribute :note, :string
