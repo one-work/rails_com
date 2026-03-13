@@ -16,6 +16,20 @@ module Statis
       has_many :counter_days, as: :config
       has_many :counter_months, as: :config
       has_many :counter_years, as: :config
+
+      before_save :compute_time_range
+    end
+
+    def compute_time_range
+
+    end
+
+    def filter_counter
+      self.class.countable.where(filter)
+    end
+
+    def filter
+      attributes.slice(self.class.scopes)
     end
 
     def compute_today_begin!
@@ -23,10 +37,6 @@ module Statis
       self.today_begin_id = id
       self.today = Date.today
       self.save
-    end
-
-    def countable
-      raise 'Should defined in class'
     end
 
     def compute_counters
@@ -67,7 +77,6 @@ module Statis
 
     def cache_counter_year(year, the_day)
       time_range = the_day.beginning_of_day ... (the_day.end_of_year + 1).beginning_of_day
-
 
       arr.each do |k|
         counter_year = counter_years.build(year: year)
