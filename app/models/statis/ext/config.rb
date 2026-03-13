@@ -6,8 +6,6 @@ module Statis
       attribute :begin_on, :date
       attribute :end_on, :date
       attribute :note, :string
-      attribute :scopes, :json, default: []
-      attribute :keys, :json, default: []
       attribute :sums, :json, default: []
       attribute :today, :date
       attribute :today_begin_id, :big_integer
@@ -15,9 +13,9 @@ module Statis
       attribute :counter_months_count, :integer
       attribute :counter_days_count, :integer
 
-      has_many :counter_days
-      has_many :counter_months
-      has_many :counter_years
+      has_many :counter_days, as: :config
+      has_many :counter_months, as: :config
+      has_many :counter_years, as: :config
     end
 
     def compute_today_begin!
@@ -28,7 +26,7 @@ module Statis
     end
 
     def countable
-      statistical_type.constantize
+      raise 'Should defined in class'
     end
 
     def compute_counters
@@ -69,11 +67,10 @@ module Statis
 
     def cache_counter_year(year, the_day)
       time_range = the_day.beginning_of_day ... (the_day.end_of_year + 1).beginning_of_day
-      arr = countable.where(created_at: time_range).select(scopes).distinct.pluck(scopes)
+
 
       arr.each do |k|
         counter_year = counter_years.build(year: year)
-        counter_year.filter = scopes.zip(k).to_h
         counter_year.begin_on = the_start
         counter_year.cache_value
         counter_year.save
@@ -83,11 +80,10 @@ module Statis
     def cache_counter_month(year, month)
       the_day = Date.new(year, month, 1)
       time_range  = the_day.beginning_of_day ... (the_day.end_of_month + 1).beginning_of_day
-      arr = countable.where(created_at: time_range).select(scopes).distinct.pluck(scopes)
+
 
       arr.each do |k|
         counter_month = counter_months.build(year: year, month: month)
-        counter_month.filter = scopes.zip(k).to_h
         counter_month.cache_value
         counter_month.save
       end
@@ -95,15 +91,47 @@ module Statis
 
     def cache_counter_day(date = begin_on)
       time_range  = date.beginning_of_day ... (date + 1).beginning_of_day
-      arr = countable.where(created_at: time_range).select(scopes).distinct.pluck(scopes)
+
 
       counter_days.where(date: date).delete_all
       arr.each do |k|
         counter_day = counter_days.build(date: date)
-        counter_day.filter = scopes.zip(k).to_h
         counter_day.cache_value
         counter_day.save
       end
+    end
+
+    class_methods do
+      
+      def countable
+        self.name.delete_suffix('').constantize
+      end
+
+      def scopes
+        column_names - [
+          'id',
+          'organ_id',
+          'begin_on',
+          'end_on',
+          'note',
+          'sums',
+          'today',
+          'today_begin_id',
+          'counter_years_count',
+          'counter_months_count',
+          'counter_days_count',
+          'created_at',
+          'updated_at'
+        ]
+      end
+
+      def xx
+        arr = countable.select(scopes).distinct.pluck(scopes)
+        arr.each do |k|
+          self.create scopes.zip(k).to_h
+        end
+      end
+
     end
 
   end
