@@ -14,9 +14,9 @@ module Statis
       attribute :counter_months_count, :integer
       attribute :counter_days_count, :integer
 
-      has_many :counter_days, as: :config, dependent: :delete_all
-      has_many :counter_months, as: :config, dependent: :delete_all
-      has_many :counter_years, as: :config, dependent: :delete_all
+      has_many :counter_days, class_name: 'Statis::CounterDay', as: :config, dependent: :delete_all
+      has_many :counter_months, class_name: 'Statis::CounterMonth', as: :config, dependent: :delete_all
+      has_many :counter_years, class_name: 'Statis::CounterYear', as: :config, dependent: :delete_all
 
       before_save :compute_time_range
     end
