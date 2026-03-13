@@ -1,6 +1,7 @@
 module Statis
   module Model::CounterWeek
     extend ActiveSupport::Concern
+    include Inner::Compute
 
     included do
       attribute :year, :integer

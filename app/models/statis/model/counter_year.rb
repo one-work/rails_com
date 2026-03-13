@@ -1,14 +1,11 @@
 module Statis
   module Model::CounterYear
     extend ActiveSupport::Concern
+    include Inner::Compute
 
     included do
       attribute :year, :integer
       attribute :begin_on, :date
-      attribute :count, :integer
-      attribute :values, :json, default: {}
-
-      belongs_to :config, polymorphic: true, counter_cache: true
     end
 
     def time_range
