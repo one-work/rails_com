@@ -51,7 +51,9 @@ module Statis
           else
             the_day = Date.new(year, 1, 1)
           end
-          cache_counter_year(begin_on.year, the_day)
+          counter_year = counter_years.find_or_initialize_by(year: year)
+          counter_year.begin_on = the_day
+          counter_year.save
         end
         cache_months(Date.new(end_on.year, 1, 1), end_on)
       elsif begin_on.year == end_on.year  # 当开始的时间范围和结束的时间范围在同一年
@@ -62,42 +64,20 @@ module Statis
     def cache_months(begin_on, end_on)
       if begin_on.month < end_on.month
         (begin_on.month .. (end_on.month - 1)).each do |month|
-          cache_counter_month(begin_on.year, month)
+          counter_months.find_or_create_by(year: year, month: month)
         end
         cache_days(Date.new(end_on.year, end_on.month, 1), end_on)
-      elsif begin_on.month == begin_on.month
+      elsif begin_on.month == end_on.month
+        #return if end_on.day == 1 # 如果当天是月初第一天则没必要缓存计算
+        #(today.beginning_of_month .. (today - 1))
         cache_days(begin_on, end_on)
       end
     end
 
     def cache_days(begin_on, end_on)
-      #return if end_on.day == 1 # 如果当天是月初第一天则没必要缓存计算
-      #(today.beginning_of_month .. (today - 1))
-
       (begin_on .. end_on).each do |date|
-        cache_counter_day(date)
+        counter_days.find_or_create_by(date: date)
       end
-    end
-
-    def cache_counter_year(year, the_day)
-      counter_year = counter_years.build(year: year)
-      counter_year.begin_on = the_day
-      counter_year.cache_value
-      counter_year.save
-    end
-
-    def cache_counter_month(year, month)
-      counter_month = counter_months.build(year: year, month: month)
-      counter_month.cache_value
-      counter_month.save
-    end
-
-    def cache_counter_day(date = begin_on)
-      counter_days.where(date: date).delete_all
-
-      counter_day = counter_days.build(date: date)
-      counter_day.cache_value
-      counter_day.save
     end
 
     class_methods do
