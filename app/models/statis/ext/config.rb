@@ -21,7 +21,11 @@ module Statis
     end
 
     def compute_time_range
+      first = filter_counter.order(created_at: :asc).first
+      self.begin_on = first.created_at.to_date
 
+      last = filter_counter.order(created_at: :desc).first
+      self.end_on = last.created_at.to_date
     end
 
     def filter_counter
@@ -33,7 +37,7 @@ module Statis
     end
 
     def compute_today_begin!
-      id = countable.where(created_at: ...Date.today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
+      id = filter_counter.where(created_at: ...Date.today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
       self.today_begin_id = id
       self.today = Date.today
       self.save
@@ -76,37 +80,24 @@ module Statis
     end
 
     def cache_counter_year(year, the_day)
-      time_range = the_day.beginning_of_day ... (the_day.end_of_year + 1).beginning_of_day
-
-      arr.each do |k|
-        counter_year = counter_years.build(year: year)
-        counter_year.begin_on = the_start
-        counter_year.cache_value
-        counter_year.save
-      end
+      counter_year = counter_years.build(year: year)
+      counter_year.begin_on = the_day
+      counter_year.cache_value
+      counter_year.save
     end
 
     def cache_counter_month(year, month)
-      the_day = Date.new(year, month, 1)
-      time_range  = the_day.beginning_of_day ... (the_day.end_of_month + 1).beginning_of_day
-
-
-      arr.each do |k|
-        counter_month = counter_months.build(year: year, month: month)
-        counter_month.cache_value
-        counter_month.save
-      end
+      counter_month = counter_months.build(year: year, month: month)
+      counter_month.cache_value
+      counter_month.save
     end
 
     def cache_counter_day(date = begin_on)
-      time_range  = date.beginning_of_day ... (date + 1).beginning_of_day
-
       counter_days.where(date: date).delete_all
-      arr.each do |k|
-        counter_day = counter_days.build(date: date)
-        counter_day.cache_value
-        counter_day.save
-      end
+
+      counter_day = counter_days.build(date: date)
+      counter_day.cache_value
+      counter_day.save
     end
 
     class_methods do

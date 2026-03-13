@@ -12,6 +12,10 @@ module Statis
       belongs_to :counter_year, foreign_key: [:config_id, :year], primary_key: [:config_id, :year], optional: true
     end
 
+    def time_range
+      date.beginning_of_day ... (date + 1).beginning_of_day
+    end
+
     def cache_value
       self.count = config.countable.where(filter).where(created_at: time_range).count
     end
