@@ -92,7 +92,6 @@ module Statis
     def cache_counter_day(date = begin_on)
       time_range  = date.beginning_of_day ... (date + 1).beginning_of_day
 
-
       counter_days.where(date: date).delete_all
       arr.each do |k|
         counter_day = counter_days.build(date: date)
@@ -104,7 +103,7 @@ module Statis
     class_methods do
       
       def countable
-        self.name.delete_suffix('').constantize
+        self.name.delete_suffix('CounterCache').constantize
       end
 
       def scopes
@@ -125,7 +124,7 @@ module Statis
         ]
       end
 
-      def xx
+      def init_records
         arr = countable.select(scopes).distinct.pluck(scopes)
         arr.each do |k|
           self.create scopes.zip(k).to_h
