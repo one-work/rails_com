@@ -73,13 +73,15 @@ module Statis
         end
         cache_days(Date.new(end_on.year, end_on.month, 1), end_on)
       elsif begin_on.month == end_on.month
-        #return if end_on.day == 1 # 如果当天是月初第一天则没必要缓存计算
-        #(today.beginning_of_month .. (today - 1))
         cache_days(begin_on, end_on)
       end
     end
 
     def cache_days(begin_on, end_on)
+      # 没必要缓存计算
+      # 当天是月初第一天
+      # 开始日期和结束日期同一天
+      return if begin_on.day == end_on.day
       (begin_on .. end_on).each do |date|
         counter_days.find_or_create_by(date: date)
       end
