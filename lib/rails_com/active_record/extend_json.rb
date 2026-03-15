@@ -17,6 +17,10 @@ module RailsCom::ActiveRecord
       update_all "#{column} = #{sql_str}"
     end
 
+    def json_sum(col, column: 'values')
+      sum("(#{column} ->> #{col})::numeric")
+    end
+
     def json_filter(column, **params)
       query = self
 
