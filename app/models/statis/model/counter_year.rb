@@ -8,6 +8,12 @@ module Statis
       attribute :begin_on, :date
 
       has_many :counter_months, primary_key: [:config_type, :config_id, :year], foreign_key: [:config_type, :config_id, :year]
+
+      after_create :clear_counter_months
+    end
+
+    def clear_counter_months
+      counter_months.delete_all
     end
 
   end
