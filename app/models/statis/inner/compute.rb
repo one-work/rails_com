@@ -9,6 +9,9 @@ module Statis
       attribute :values, :json, default: {}
 
       belongs_to :config, polymorphic: true, counter_cache: true
+
+      before_create :cache_count
+      before_create :cache_values
     end
 
     def cache_count
