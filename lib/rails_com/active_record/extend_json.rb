@@ -18,7 +18,7 @@ module RailsCom::ActiveRecord
     end
 
     def json_sum(col, column: 'values')
-      sum("(#{column} ->> #{col})::numeric")
+      sum("(#{column} ->> '#{col}')::numeric")
     end
 
     def json_filter(column, **params)
