@@ -131,8 +131,8 @@ module Statis
       end
 
       def find_by_params(params)
-        filter = scopes.each_with_object({}) { |k, h| h.merge k => nil }
-        filter.with_defaults! params.permit(scopes)
+        filter = scopes.each_with_object({}) { |k, h| h.merge! k => nil }
+        filter.merge! params.permit(scopes)
         find_by filter
       end
 
