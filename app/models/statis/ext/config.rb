@@ -21,6 +21,16 @@ module Statis
       before_save :compute_time_range
     end
 
+    def get_today_count
+      r = {
+        count: self.class.countable.where('id > ?', today_begin_id).count
+      }
+
+      sum_columns.each do |col|
+        r.merge! col => self.class.countable.where('id > ?', today_begin_id).sum(col)
+      end
+    end
+
     def compute_time_range
       first = filter_counter.order(created_at: :asc).first
       self.begin_on = first.created_at.to_date
@@ -108,7 +118,8 @@ module Statis
           'begin_on',
           'end_on',
           'note',
-          'sums',
+          'count',
+          'values',
           'today',
           'today_begin_id',
           'counter_years_count',
@@ -117,6 +128,10 @@ module Statis
           'created_at',
           'updated_at'
         ]
+      end
+
+      def find_by_params(params)
+        find_by params.permit(scopes)
       end
 
       def init_records
