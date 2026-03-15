@@ -48,6 +48,11 @@ module Statis
       self.save
     end
 
+    def compute_counters!
+      compute_counters
+      self.count = counter_years.sum(:count) + counter_months.sum(:count) + counter_days.sum(:count)
+    end
+
     def compute_counters
       if begin_on.year < end_on.year
         (begin_on.year .. (end_on.year - 1)).each_with_index do |year, index|
