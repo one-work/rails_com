@@ -131,11 +131,14 @@ module Statis
       end
 
       def find_by_params(params)
-        find_by params.permit(scopes)
+        filter = scopes.each_with_object({}) { |k, h| h.merge k => nil }
+        filter.with_defaults! params.permit(scopes)
+        find_by filter
       end
 
       def init_records
         arr = countable.select(scopes).distinct.pluck(scopes)
+        arr << [nil] * scopes.size
         arr.each do |k|
           self.find_or_create_by scopes.zip(k).to_h
         end
