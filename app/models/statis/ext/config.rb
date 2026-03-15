@@ -86,7 +86,7 @@ module Statis
     end
 
     class_methods do
-      
+
       def countable
         self.name.delete_suffix('CounterCache').constantize
       end
@@ -112,7 +112,7 @@ module Statis
       def init_records
         arr = countable.select(scopes).distinct.pluck(scopes)
         arr.each do |k|
-          self.create scopes.zip(k).to_h
+          self.find_or_create_by scopes.zip(k).to_h
         end
       end
 
