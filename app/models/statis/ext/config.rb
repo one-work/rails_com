@@ -7,7 +7,7 @@ module Statis
       attribute :end_on, :date
       attribute :note, :string
       attribute :count, :integer
-      attribute :values, :json, default: []
+      attribute :values, :json, default: {}
       attribute :today, :date
       attribute :today_begin_id, :big_integer
       attribute :counter_years_count, :integer
@@ -48,9 +48,12 @@ module Statis
       self.save
     end
 
-    def compute_counters!
-      compute_counters
+    def sum_counters!
       self.count = counter_years.sum(:count) + counter_months.sum(:count) + counter_days.sum(:count)
+      sum_columns.each do |col|
+        self.values[col] = counter_years.json_sum(col) + counter_months.json_sum(col) + counter_days.json_sum(col)
+      end
+      self.save
     end
 
     def compute_counters
