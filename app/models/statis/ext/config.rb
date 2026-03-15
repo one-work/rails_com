@@ -69,7 +69,7 @@ module Statis
     def cache_months(begin_on, end_on)
       if begin_on.month < end_on.month
         (begin_on.month .. (end_on.month - 1)).each do |month|
-          counter_months.find_or_create_by(year: year, month: month)
+          counter_months.find_or_create_by(year: end_on.year, month: month)
         end
         cache_days(Date.new(end_on.year, end_on.month, 1), end_on)
       elsif begin_on.month == end_on.month
