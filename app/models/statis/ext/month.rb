@@ -17,7 +17,7 @@ module Statis
 
     def time_range
       the_day = Date.new(year, month, 1)
-      the_day.beginning_of_day ... (the_day + 1.month).beginning_of_day
+      the_day.beginning_of_day ... (the_day.end_of_month + 1).beginning_of_day
     end
 
   end
