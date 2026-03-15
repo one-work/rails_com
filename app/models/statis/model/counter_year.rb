@@ -6,6 +6,8 @@ module Statis
 
     included do
       attribute :begin_on, :date
+
+      has_many :counter_months, primary_key: [:config_type, :config_id, :year], foreign_key: [:config_type, :config_id, :year]
     end
 
   end
