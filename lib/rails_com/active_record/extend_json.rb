@@ -21,6 +21,10 @@ module RailsCom::ActiveRecord
       sum("(#{column} ->> '#{col}')::numeric")
     end
 
+    def json_filter_key(column, key)
+      where("#{column} ? '#{key}'")
+    end
+
     def json_filter(column, **params)
       query = self
 
