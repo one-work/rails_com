@@ -51,11 +51,16 @@ module Statis
       []
     end
 
-    def compute_today_begin!
-      id = filter_counter.where(created_at: ...Date.today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
+    def compute_today_begin(today = Date.today)
+      id = filter_counter.where(created_at: ...today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
       self.today_begin_id = id
-      self.today = Date.today
-      self.save
+      self.today = today
+      self
+    end
+
+    def compute_today_begin!
+      compute_today_begin
+      save
     end
 
     def sum_counters!
@@ -133,7 +138,7 @@ module Statis
       def find_by_params(params)
         filter = scopes.each_with_object({}) { |k, h| h.merge! k => nil }
         filter.merge! params.permit(scopes)
-        find_by filter
+        find_or_initialize_by filter
       end
 
       def init_records
