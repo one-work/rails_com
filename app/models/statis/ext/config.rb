@@ -29,8 +29,15 @@ module Statis
         r = {
           count: count + self.class.countable.where('id > ?', today_begin_id).count
         }
-        sum_keys.each do |col|
-          r.merge! col.to_sym => values[col.to_s].to_d + self.class.countable.where('id > ?', today_begin_id).sum(col)
+
+        if sum_columns.is_a? Hash
+          sum_columns.each do |col, proc|
+            r.merge! col.to_sym => values[col.to_s].to_i + proc.call(filter_counter.where("#{self.class.countable.table_name}.id > ?", today_begin_id))
+          end
+        else
+          sum_columns.each do |col|
+            r.merge! col.to_sym => values[col.to_s].to_d + filter_counter.where('id > ?', today_begin_id).sum(col)
+          end
         end
         r
       else

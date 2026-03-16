@@ -84,19 +84,7 @@ module Job
     end
 
     def set_common_jobs
-      today_begin = SolidQueue::Job.where(created_at: ...Date.today.beginning_of_month.beginning_of_day.to_fs(:human)).order(id: :desc).first
-
-      if today_begin
-        @common_jobs = SolidQueue::Job.default_where(q_params).where(id: today_begin.id..)
-      else
-        @common_jobs = SolidQueue::Job.default_where(q_params)
-      end
-    end
-
-    def set_count_before
-      prev_count = {
-        index: Statis::Config.where(keys: ['finished']).count
-      }
+      @common_jobs = SolidQueue::Job.default_where(q_params)
     end
 
     def set_filter_columns
@@ -107,15 +95,8 @@ module Job
     end
 
     def set_count
-      @count = {
-        index: @common_jobs.finished.async_count,
-        failed: @common_jobs.failed.async_count,
-        todo: @common_jobs.todo.async_count,
-        blocked: @common_jobs.blocked.async_count,
-        running: @common_jobs.running.async_count,
-        ready: @common_jobs.ready.async_count,
-        clearable: @common_jobs.clearable.async_count
-      }
+      counter_cache = JobCounterCache.find_by_params(q_params)
+      @count = counter_cache.get_today_count
     end
 
     def set_job
