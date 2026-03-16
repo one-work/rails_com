@@ -9,7 +9,7 @@ module Statis
       attribute :count, :integer
       attribute :values, :json, default: {}
       attribute :today, :date
-      attribute :today_begin_id, :uuid
+      attribute :today_begin_id, :string
       attribute :version, :string
       attribute :counter_years_count, :integer
       attribute :counter_months_count, :integer
@@ -29,13 +29,13 @@ module Statis
         r = {
           count: count + self.class.countable.where('id > ?', today_begin_id).count
         }
-        sum_columns.each do |col|
-          r.merge! col.to_sym => values[col].to_d + self.class.countable.where('id > ?', today_begin_id).sum(col)
+        sum_keys.each do |col|
+          r.merge! col.to_sym => values[col.to_s].to_d + self.class.countable.where('id > ?', today_begin_id).sum(col)
         end
         r
       else
         r = { count: 0 }
-        sum_columns.each { |col| r.merge! col.to_sym => 0 }
+        sum_keys.each { |col| r.merge! col.to_sym => 0 }
         r
       end
     end
@@ -60,11 +60,19 @@ module Statis
       []
     end
 
+    def sum_keys
+      if sum_columns.is_a? Hash
+        sum_columns.keys
+      else
+        sum_columns
+      end
+    end
+
     def compute_today_begin(today = Date.today)
       id = filter_counter.where(created_at: ...today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
       self.today_begin_id = id
       self.today = today
-      self
+      id
     end
 
     def compute_today_begin!
@@ -86,7 +94,7 @@ module Statis
 
     def sum_counters!
       self.count = counter_years.sum(:count) + counter_months.sum(:count) + counter_days.sum(:count)
-      sum_columns.each do |col|
+      sum_keys.each do |col|
         self.values[col] = (counter_years.json_sum(col) + counter_months.json_sum(col) + counter_days.json_sum(col)).round(2)
       end
       self.save
