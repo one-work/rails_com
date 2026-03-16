@@ -70,10 +70,15 @@ module Statis
       save
     end
 
+    def compute!
+      compute_counters
+      sum_counters!
+    end
+
     def sum_counters!
       self.count = counter_years.sum(:count) + counter_months.sum(:count) + counter_days.sum(:count)
       sum_columns.each do |col|
-        self.values[col] = counter_years.json_sum(col) + counter_months.json_sum(col) + counter_days.json_sum(col)
+        self.values[col] = (counter_years.json_sum(col) + counter_months.json_sum(col) + counter_days.json_sum(col)).round(2)
       end
       self.save
     end
