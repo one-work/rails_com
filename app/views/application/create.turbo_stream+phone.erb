@@ -4,5 +4,5 @@
 <% elsif referer_eql?(controller_path, 'new') %>
   <%= turbo_stream.append_body partial: 'visit', locals: { url: url_for(action: 'show', id: model.id) } %>
 <% else %>
-  <%= turbo_stream.append_body partial: 'visit' %>
+  <%= turbo_stream.visit %>
 <% end %>
