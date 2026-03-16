@@ -148,7 +148,7 @@ module Statis
 
       def find_by_params(params)
         filter = scopes.each_with_object({}) { |k, h| h.merge! k => nil }
-        filter.merge! params.slice(**scopes)
+        filter.merge! params.slice(*scopes)
         find_or_initialize_by filter
       end
 
