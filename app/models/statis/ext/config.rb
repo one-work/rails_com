@@ -152,6 +152,7 @@ module Statis
           'values',
           'today',
           'today_begin_id',
+          'version',
           'counter_years_count',
           'counter_months_count',
           'counter_days_count',
