@@ -18,7 +18,8 @@ module Statis
       has_many :counter_months, class_name: 'Statis::CounterMonth', as: :config, dependent: :delete_all
       has_many :counter_years, class_name: 'Statis::CounterYear', as: :config, dependent: :delete_all
 
-      before_save :compute_time_range
+      before_create :compute_time_range
+      before_create :compute_today_begin
     end
 
     def get_today_count
@@ -50,7 +51,7 @@ module Statis
     end
 
     def filter
-      attributes.slice(self.class.scopes)
+      attributes.slice(*self.class.scopes)
     end
 
     def sum_columns
