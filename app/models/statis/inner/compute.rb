@@ -7,11 +7,12 @@ module Statis
     included do
       attribute :count, :integer
       attribute :values, :json, default: {}
+      attribute :version, :string, default: '1'
 
       belongs_to :config, polymorphic: true, counter_cache: true
 
-      before_create :cache_count
-      before_create :cache_values
+      before_save :cache_count, if: -> { version_changed? }
+      before_save :cache_values, if: -> { version_changed? }
     end
 
     def cache_count

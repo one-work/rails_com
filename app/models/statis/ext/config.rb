@@ -25,10 +25,10 @@ module Statis
     def get_today_count
       if today_begin_id
         r = {
-          count: self.class.countable.where('id > ?', today_begin_id).count
+          count: count + self.class.countable.where('id > ?', today_begin_id).count
         }
         sum_columns.each do |col|
-          r.merge! col => self.class.countable.where('id > ?', today_begin_id).sum(col)
+          r.merge! col => values[col].to_d + self.class.countable.where('id > ?', today_begin_id).sum(col)
         end
         r
       else
