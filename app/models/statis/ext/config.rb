@@ -10,6 +10,7 @@ module Statis
       attribute :values, :json, default: {}
       attribute :today, :date
       attribute :today_begin_id, :uuid
+      attribute :version, :string, default: '1'
       attribute :counter_years_count, :integer
       attribute :counter_months_count, :integer
       attribute :counter_days_count, :integer
@@ -20,6 +21,7 @@ module Statis
 
       before_create :compute_time_range
       before_create :compute_today_begin
+      after_save_commit :recompute!, if: -> { saved_change_to_version? }
     end
 
     def get_today_count
@@ -75,6 +77,13 @@ module Statis
       sum_counters!
     end
 
+    def recompute!
+      counter_years.update(version: version)
+      counter_years.update(version: version)
+      counter_years.update(version: version)
+      sum_counters!
+    end
+
     def sum_counters!
       self.count = counter_years.sum(:count) + counter_months.sum(:count) + counter_days.sum(:count)
       sum_columns.each do |col|
@@ -93,6 +102,7 @@ module Statis
           end
           counter_year = counter_years.find_or_initialize_by(year: year)
           counter_year.begin_on = the_day
+          counter_year.version = version
           counter_year.save
         end
         cache_months(Date.new(end_on.year, 1, 1), end_on)
@@ -104,7 +114,9 @@ module Statis
     def cache_months(begin_on, end_on)
       if begin_on.month < end_on.month
         (begin_on.month .. (end_on.month - 1)).each do |month|
-          counter_months.find_or_create_by(year: end_on.year, month: month)
+          counter_month = counter_months.find_or_initialize_by(year: end_on.year, month: month)
+          counter_month.version = version
+          counter_month.save
         end
         cache_days(Date.new(end_on.year, end_on.month, 1), end_on)
       elsif begin_on.month == end_on.month
@@ -117,7 +129,9 @@ module Statis
       # 当天是月初第一天
       # 开始日期和结束日期同一天
       (begin_on .. end_on).each do |date|
-        counter_days.find_or_create_by(date: date)
+        counter_day = counter_days.find_or_initialize_by(date: date)
+        counter_day.version = version
+        counter_day.save
       end
     end
 
