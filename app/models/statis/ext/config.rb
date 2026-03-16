@@ -22,12 +22,18 @@ module Statis
     end
 
     def get_today_count
-      r = {
-        count: self.class.countable.where('id > ?', today_begin_id).count
-      }
-
-      sum_columns.each do |col|
-        r.merge! col => self.class.countable.where('id > ?', today_begin_id).sum(col)
+      if today_begin_id
+        r = {
+          count: self.class.countable.where('id > ?', today_begin_id).count
+        }
+        sum_columns.each do |col|
+          r.merge! col => self.class.countable.where('id > ?', today_begin_id).sum(col)
+        end
+        r
+      else
+        r = { count: 0 }
+        sum_columns.each { |col| r.merge! col => 0 }
+        r
       end
     end
 
