@@ -51,7 +51,7 @@ module Statis
     end
 
     def filter
-      attributes.slice(*self.class.scopes)
+      attributes.slice(*self.class.scopes).compact
     end
 
     def sum_columns
