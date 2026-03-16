@@ -149,10 +149,17 @@ module Statis
 
       def init_records
         arr = countable.select(scopes).distinct.pluck(scopes)
-        arr << [nil] * scopes.size
         arr.each do |k|
           self.find_or_create_by scopes.zip(k).to_h
         end
+
+        scopes.each do |scope|
+          countable.select(scope).distinct.pluck(scope).each do |k|
+            self.find_or_create_by scope => k, **(scopes - [scope]).each_with_object({}) { |i, h| h.merge! i => nil }
+          end
+        end
+
+        self.find_or_create_by scopes.each_with_object({}) { |i, h| h.merge! i => nil }
       end
 
     end
