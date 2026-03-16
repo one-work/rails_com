@@ -94,8 +94,8 @@ module Statis
 
     def recompute!
       counter_years.update(version: version)
-      counter_years.update(version: version)
-      counter_years.update(version: version)
+      counter_months.update(version: version)
+      counter_days.update(version: version)
       sum_counters!
     end
 
