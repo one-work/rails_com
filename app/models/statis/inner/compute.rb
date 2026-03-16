@@ -20,8 +20,14 @@ module Statis
     end
 
     def cache_values
-      config.sum_columns.each do |column|
-        self.values[column] = config.filter_counter.where(created_at: time_range).sum(column)
+      if config.sum_columns.is_a? Hash
+        config.sum_columns.each do |column, proc|
+          self.values[column] = proc.call(config.filter_counter.where(created_at: time_range))
+        end
+      else
+        config.sum_columns.each do |column|
+          self.values[column] = config.filter_counter.where(created_at: time_range).sum(column)
+        end
       end
     end
 
