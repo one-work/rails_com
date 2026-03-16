@@ -30,12 +30,12 @@ module Statis
           count: count + self.class.countable.where('id > ?', today_begin_id).count
         }
         sum_columns.each do |col|
-          r.merge! col => values[col].to_d + self.class.countable.where('id > ?', today_begin_id).sum(col)
+          r.merge! col.to_sym => values[col].to_d + self.class.countable.where('id > ?', today_begin_id).sum(col)
         end
         r
       else
         r = { count: 0 }
-        sum_columns.each { |col| r.merge! col => 0 }
+        sum_columns.each { |col| r.merge! col.to_sym => 0 }
         r
       end
     end
