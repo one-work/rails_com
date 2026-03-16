@@ -27,10 +27,10 @@ module RailsCom::ActiveRecord
       params.each do |k, v|
         if v.is_a?(Array)
           or_string = []
-          v.size.times { or_string << "#{column}->>'#{k}' = ?" }
+          v.size.times { or_string << "(#{column} ->> '#{k}')::text = ?" }
           query = query.where([or_string.join(' OR '), *v])
         else
-          query = query.where("#{column}->>'#{k}' = ?", v)
+          query = query.where("(#{column} ->> '#{k}')::text = ?", v)
         end
       end
 
