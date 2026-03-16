@@ -111,7 +111,6 @@ module Statis
       # 没必要缓存计算
       # 当天是月初第一天
       # 开始日期和结束日期同一天
-      return if begin_on.day == end_on.day
       (begin_on .. end_on).each do |date|
         counter_days.find_or_create_by(date: date)
       end
