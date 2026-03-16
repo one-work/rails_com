@@ -10,7 +10,7 @@ module Statis
       attribute :values, :json, default: {}
       attribute :today, :date
       attribute :today_begin_id, :uuid
-      attribute :version, :string, default: '1'
+      attribute :version, :string
       attribute :counter_years_count, :integer
       attribute :counter_months_count, :integer
       attribute :counter_days_count, :integer
