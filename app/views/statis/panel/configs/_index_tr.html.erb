@@ -1,7 +1,14 @@
 <%=
   tr_tag(
     model,
-    { href: url_for(controller: 'statistics', config_id: model.id), icon: 'eye', title: t('.statistics.index.title') },
-    { href: url_for(controller: 'counter_days', config_id: model.id), title: t('.counter_days.index.title') }
+    {
+      href: url_for(controller: 'statistics', config_id: model.id),
+      icon: 'eye',
+      title: t('.statistics.index.title')
+    },
+    {
+      href: url_for(controller: 'counter_days', config_id: model.id),
+      title: t('.counter_days.index.title')
+    }
   )
 %>
