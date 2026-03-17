@@ -1,7 +1,17 @@
 <div id="filter_container_<%= key %>" data-controller="popup search-input" class="max-fullwidth size-0">
   <div id="filter_search_field_<%= key %>" class="field has-addons mb-0">
     <div class="control">
-      <%= search_field_tag key, params[key], class: 'input', placeholder: '搜索', autocomplete: 'off', data: { action: 'input->search-input#cancel' }, form: 'filter_search_form' %>
+      <%=
+        search_field_tag(
+          key,
+          params[key],
+          class: 'input',
+          placeholder: '搜索',
+          autocomplete: 'off',
+          data: { action: 'input->search-input#cancel keydown.enter->search-input#enterSubmit' },
+          form: 'filter_search_form'
+        )
+      %>
     </div>
     <div class="control">
       <%= button_tag name: nil, data: { search_input_target: 'submit' }, form: 'filter_search_form', class: 'button is-info' do %>
