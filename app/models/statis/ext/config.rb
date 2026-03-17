@@ -175,7 +175,7 @@ module Statis
         if scopes.present?
           arr = countable.select(scopes).distinct.pluck(scopes)
           arr.each do |k|
-            self.find_or_create_by scopes.zip(k).to_h
+            self.find_or_create_by scopes.zip(Array(k)).to_h
           end
 
           scopes.each do |scope|
