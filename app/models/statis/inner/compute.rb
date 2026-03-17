@@ -24,7 +24,7 @@ module Statis
         if proc.respond_to? :call
           self.values[column] = proc.call(config.filter_counter.where(created_at: time_range))
         else
-          self.values[column] = config.filter_counter.where(created_at: time_range).sum(column)
+          self.values[column] = config.filter_counter.where(created_at: time_range).sum(proc)
         end
       end
     end

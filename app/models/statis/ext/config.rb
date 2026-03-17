@@ -34,7 +34,7 @@ module Statis
           if proc.respond_to?(:call)
             r.merge! col.to_sym => values[col.to_s].to_i + proc.call(filter_counter.where("#{self.class.countable.table_name}.id > ?", today_begin_id))
           else
-            r.merge! col.to_sym => values[col.to_s].to_d + filter_counter.where('id > ?', today_begin_id).sum(col)
+            r.merge! col.to_sym => values[col.to_s].to_d + filter_counter.where('id > ?', today_begin_id).sum(proc)
           end
         end
         r
