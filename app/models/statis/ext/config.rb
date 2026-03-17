@@ -176,6 +176,10 @@ module Statis
         find_or_initialize_by filter
       end
 
+      def clear
+        all.map(&:destroy)
+      end
+
       def init_records
         if scopes.present?
           arr = countable.select(scopes).distinct.pluck(scopes)
