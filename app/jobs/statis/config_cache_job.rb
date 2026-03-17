@@ -1,9 +1,9 @@
 module Statis
-  class CounterJob < ApplicationJob
+  class ConfigCacheJob < ApplicationJob
     queue_as :statistic
 
     def perform(counter)
-      counter.cache_from_config
+      counter.compute!
     end
 
   end

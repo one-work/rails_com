@@ -10,7 +10,7 @@ module Statis
       attribute :values, :json, default: {}
       attribute :today, :date
       attribute :today_begin_id, :string
-      attribute :version, :string
+      attribute :version, :string, default: '1'
       attribute :counter_years_count, :integer
       attribute :counter_months_count, :integer
       attribute :counter_days_count, :integer
@@ -22,6 +22,7 @@ module Statis
       before_create :compute_time_range
       before_create :compute_today_begin
       after_save_commit :recompute!, if: -> { saved_change_to_version? }
+      after_create_commit :compute_later
     end
 
     def get_today_count
@@ -79,6 +80,10 @@ module Statis
     def compute!
       compute_counters
       sum_counters!
+    end
+
+    def compute_later
+      ConfigCacheJob.perform_later(self)
     end
 
     def recompute!
