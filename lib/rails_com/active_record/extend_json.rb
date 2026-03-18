@@ -25,8 +25,10 @@ module RailsCom::ActiveRecord
       if keys.size > 1
         keys_str = keys.map { |i| "'#{i}'" }.join(', ')
         where("#{table_name}.#{column} ?| array[#{keys_str}]")
-      else
+      elsif keys.size == 1
         where("#{table_name}.#{column} ? '#{keys[0]}'")
+      else
+        where
       end
     end
 
