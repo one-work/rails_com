@@ -80,14 +80,6 @@ module Com
 
     def set_variant
       variant = []
-      if request.user_agent&.match? /iPhone|iPod|Android/
-        variant << :phone
-      end
-
-      if request.user_agent&.match? /iPad/
-        variant << :pad
-      end
-
       if request.headers['X'] == 'x'
         variant.prepend :modal
       end
@@ -105,6 +97,14 @@ module Com
 
       if request.user_agent&.match? /wxwork/
         variant << :work_wechat
+      end
+
+      if request.user_agent&.match? /iPhone|iPod|Android/
+        variant << :phone
+      end
+
+      if request.user_agent&.match? /iPad/
+        variant << :pad
       end
 
       request.variant = variant.uniq

@@ -130,20 +130,21 @@ module CommonApi
   def parse_response(response)
     if response.respond_to?(:status) && response.status >= 200 && response.status < 300
       content_type = response.content_type.mime_type
+      body_str = response.body.to_s
 
       body = if content_type =~ /image|audio|video/
         data = Tempfile.new('tmp')
         data.binmode
-        data.write(response.body.to_s)
+        data.write(str_body)
         data.rewind
 
         return data
-      elsif content_type =~ /html|xml/
-        Hash.from_xml(response.body.to_s)
+      elsif content_type =~ /html|xml/ || body_str.start_with?('<?xml')
+        Hash.from_xml(body_str)
       elsif content_type =~ /json/
         response.json
       else
-        JSON.parse(response.body.to_s)
+        JSON.parse(body_str)
       end
 
       extra(body)
