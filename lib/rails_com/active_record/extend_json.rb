@@ -21,8 +21,13 @@ module RailsCom::ActiveRecord
       sum("(#{column} ->> '#{col}')::numeric")
     end
 
-    def json_filter_key(column, key)
-      where("#{table_name}.#{column} ? '#{key}'")
+    def json_filter_any(column, *keys)
+      if keys.size > 1
+        keys_str = keys.map { |i| "'#{i}'" }.join(', ')
+        where("#{table_name}.#{column} ?| array[#{keys_str}]")
+      else
+        where("#{table_name}.#{column} ? '#{keys[0]}'")
+      end
     end
 
     def json_filter(column, **params)
