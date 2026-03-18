@@ -28,7 +28,7 @@ module RailsCom::ActiveRecord
       elsif keys.size == 1
         where("#{table_name}.#{column} ? '#{keys[0]}'")
       else
-        where
+        self
       end
     end
 
