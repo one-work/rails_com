@@ -7,5 +7,5 @@
   <%= turbo_stream.replace 'box', partial: 'show', locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") } %>
   <%= turbo_stream.remove 'modal' %>
 <% else %>
-  <%= turbo_stream.append_body partial: 'visit', locals: { url: url_for(action: 'show', **params.permit(:return_state)) } %>
+  <%= turbo_stream.visit %>
 <% end %>
