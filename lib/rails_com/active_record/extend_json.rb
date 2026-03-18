@@ -22,7 +22,7 @@ module RailsCom::ActiveRecord
     end
 
     def json_filter_key(column, key)
-      where("#{column} ? '#{key}'")
+      where("#{table_name}.#{column} ? '#{key}'")
     end
 
     def json_filter(column, **params)
