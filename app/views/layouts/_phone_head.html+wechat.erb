@@ -13,7 +13,7 @@
       referrerpolicy="origin"
       data-turbo-track="reload"
       id="weixin_script"
-      data-url="<%= url_for(controller: 'wechat', action: 'js') %>"
+      data-url="<%= url_for(controller: '/wechat/wechat', action: 'js') %>"
       async
     ></script>
     <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
