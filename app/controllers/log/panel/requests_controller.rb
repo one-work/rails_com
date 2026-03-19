@@ -3,7 +3,7 @@ module Log
 
     def index
       q_params = {}
-      q_params.merge! params.permit('controller_name', 'action_name', 'path', 'ip')
+      q_params.merge! params.permit('controller_name', 'action_name', 'path', 'ip', 'created_at-gte', 'created_at-lte')
 
       @requests = Request.default_where(q_params).order(id: :desc).page(params[:page]).per(params[:per])
     end
@@ -20,7 +20,8 @@ module Log
     private
     def set_filter_columns
       @filter_columns = set_filter_i18n(
-        'path' => { type: 'search', default: true }
+        'path' => { type: 'search', default: true },
+        'created_at' => { type: 'datetime', default: true }
       )
     end
 
