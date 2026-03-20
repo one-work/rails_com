@@ -1,4 +1,4 @@
-<%= turbo_stream.append 'body' do %>
+<%= turbo_stream.append_body do %>
   <% if defined?(url) %>
     <div data-controller="visit" data-visit-url-value="<%= url %>"></div>
   <% else %>
