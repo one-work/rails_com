@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
-gem 'rails', github: 'rails/rails'
+gem 'rails'
 gem 'puma'
 gem 'sqlite3'
 gem 'image_processing'
