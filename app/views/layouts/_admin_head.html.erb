@@ -5,12 +5,12 @@
     <meta name="turbo-cache-control" content="no-preview">
     <meta name="turbo-prefetch" content="<%= !Rails.env.local? %>">
     <meta name="view-transition" content="same-origin">
+    <%= action_cable_meta_tag %>
     <link rel="icon" href="/icon.png" type="image/png">
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= render 'head_extra_js' %>
     <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
     <%= csp_meta_tag %>
     <%= render 'head_templates' %>
   </head>

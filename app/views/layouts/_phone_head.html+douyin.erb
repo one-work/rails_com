@@ -7,6 +7,7 @@
     <meta name="turbo-prefetch" content="false">
     <meta name="turbo-refresh-method" content="morph">
     <meta name="turbo-refresh-scroll" content="preserve">
+    <%= action_cable_meta_tag %>
     <%= yield :reload %>
     <script src="https://lf1-cdn-tos.bytegoofy.com/goofy/developer/jssdk/jssdk-1.2.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
@@ -16,7 +17,6 @@
     <% end %>
     <%= render 'head_extra_js' %>
     <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
     <%= csp_meta_tag %>
   </head>
   <body>

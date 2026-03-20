@@ -7,6 +7,7 @@
     <meta name="turbo-prefetch" content="false">
     <meta name="turbo-refresh-method" content="morph">
     <meta name="turbo-refresh-scroll" content="preserve">
+    <%= action_cable_meta_tag %>
     <%= yield :reload %>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" referrerpolicy="origin" data-turbo-track="reload" id="weixin_script" async></script>
     <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js" referrerpolicy="origin" data-turbo-track="reload" id="wxwork_script" async></script>
@@ -18,7 +19,6 @@
     <% end %>
     <%= render 'head_extra_js' %>
     <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
     <%= csp_meta_tag %>
   </head>
   <body>
