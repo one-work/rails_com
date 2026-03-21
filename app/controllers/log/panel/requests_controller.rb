@@ -5,7 +5,7 @@ module Log
       q_params = {}
       q_params.merge! params.permit('controller_name', 'action_name', 'path', 'ip')
       if params.key? 'created_at-gte'
-        q_params.merge! created_at: params['created_at-gte'].to_datetime..params['created_at-lte'].to_datetime
+        q_params.merge! created_at: params['created_at-gte'].to_time..params['created_at-lte'].to_time
       end
 
       @requests = Request.where(q_params).order(id: :desc).page(params[:page]).per(params[:per])
