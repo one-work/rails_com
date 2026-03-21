@@ -6,7 +6,11 @@ module Com
       HTTPX.post(hook_url, json: body)
     end
 
-    def body
+    def send_custom_message(content)
+      HTTPX.post(hook_url, json: body(content))
+    end
+
+    def body(content)
       {
         msgtype: 'markdown',
         markdown: {
