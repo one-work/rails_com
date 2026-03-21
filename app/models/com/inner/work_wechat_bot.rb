@@ -16,6 +16,12 @@ module Com
       res.json
     end
 
+    def send_custom_message(title, content)
+      _body = body(title, content)
+      res = HTTPX.post(hook_url, json: _body)
+      res.json
+    end
+
     def send_message(err)
       set_content(err)
       HTTPX.post(hook_url, json: body)
