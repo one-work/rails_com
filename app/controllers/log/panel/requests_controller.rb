@@ -3,9 +3,12 @@ module Log
 
     def index
       q_params = {}
-      q_params.merge! params.permit('controller_name', 'action_name', 'path', 'ip', 'created_at-gte', 'created_at-lte')
+      q_params.merge! params.permit('controller_name', 'action_name', 'path', 'ip')
+      if q_params.key? 'created_at-gte'
+        q_params.merge! created_at: params['created_at-gte'].to_datetime..params['created_at-lte'].to_datetime
+      end
 
-      @requests = Request.default_where(q_params).order(id: :desc).page(params[:page]).per(params[:per])
+      @requests = Request.where(q_params).order(id: :desc).page(params[:page]).per(params[:per])
     end
 
     def latest
