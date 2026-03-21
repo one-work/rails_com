@@ -52,10 +52,6 @@ module Com
       raise 'error from test raise'
     end
 
-    def up
-      render plain: 'ok'
-    end
-
     # commit message end with '@deploy'
     def deploy
       require 'deploy'

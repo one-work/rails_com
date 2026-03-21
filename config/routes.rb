@@ -191,7 +191,7 @@ end
 
 Rails.application.routes.append do
   match '*all', controller: 'com/common', action: 'cors_preflight_check', via: [:options]
-  get 'up', controller: 'com/common', action: 'up'
+  get 'up', controller: 'com/application', action: 'up'
 end
 
 Rails.application.routes.append do
