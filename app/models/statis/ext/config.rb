@@ -78,6 +78,7 @@ module Statis
     end
 
     def compute!
+      compute_today_begin!
       compute_counters
       sum_counters!
     end
