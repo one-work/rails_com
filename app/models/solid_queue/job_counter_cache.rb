@@ -2,6 +2,8 @@ module SolidQueue
   class JobCounterCache < ApplicationRecord
     include Statis::Ext::Config
 
+    attribute :queue_name, :string
+
     def sum_columns
       {
         index: ->(o) { o.finished.count },
