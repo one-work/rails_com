@@ -10,7 +10,7 @@ module SolidQueue
         failed: ->(o) { o.failed.count },
         todo: ->(o) { o.todo.count },
         blocked: ->(o) { o.blocked.count },
-        ready: ->(o) { o.ready.count },
+
         clearable: ->(o) { o.clearable.count }
       }
     end
