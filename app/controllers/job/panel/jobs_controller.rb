@@ -97,6 +97,7 @@ module Job
     def set_count
       counter_cache = JobCounterCache.find_by_params(q_params)
       @count = counter_cache.get_today_count
+      @count.merge! running: counter_cache.filter_counter.running.count
     end
 
     def set_job
