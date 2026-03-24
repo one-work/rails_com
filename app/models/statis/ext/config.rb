@@ -66,8 +66,8 @@ module Statis
     end
 
     def compute_today_begin(today = Date.today)
-      id = filter_counter.where(created_at: ...today.beginning_of_day.to_fs(:human)).order(id: :desc).first.id
-      self.today_begin_id = id
+      last_item = filter_counter.where(created_at: ...today.beginning_of_day.to_fs(:human)).order(id: :desc).first
+      self.today_begin_id = last_item.id if last_item
       self.today = today
       id
     end
