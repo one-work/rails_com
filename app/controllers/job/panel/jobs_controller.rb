@@ -114,7 +114,6 @@ module Job
     def q_params
       q = { queue_name: params[:queue_id] }
       q.merge! params.permit(:class_name, 'finished_at-desc')
-      q
     end
 
   end

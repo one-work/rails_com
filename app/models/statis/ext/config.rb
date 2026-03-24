@@ -32,17 +32,22 @@ module Statis
         }
         sum_columns.each do |col, proc|
           if proc.respond_to?(:call)
-            r.merge! col.to_sym => values[col.to_s].to_i + proc.call(filter_counter.where("#{self.class.countable.table_name}.id > ?", today_begin_id))
+            r.merge! col.to_sym => values[col.to_s].to_d + proc.call(filter_counter.where("#{self.class.countable.table_name}.id > ?", today_begin_id))
           else
             r.merge! col.to_sym => values[col.to_s].to_d + filter_counter.where('id > ?', today_begin_id).sum(proc)
           end
         end
-        r
       else
-        r = { count: 0 }
-        sum_columns.keys.each { |col| r.merge! col.to_sym => 0 }
-        r
+        r = { count: count }
+        sum_columns.each do |col, proc|
+          if proc.respond_to?(:call)
+            r.merge! col.to_sym => values[col.to_s].to_d + proc.call(filter_counter)
+          else
+            r.merge! col.to_sym => values[col.to_s].to_d + filter_counter.sum(proc)
+          end
+        end
       end
+      r.transform_values! { |i| i.to_d.to_human }
     end
 
     def compute_time_range
@@ -173,7 +178,7 @@ module Statis
 
       def find_by_params(params)
         filter = scopes.each_with_object({}) { |k, h| h.merge! k => nil }
-        filter.merge! params.slice(*scopes)
+        filter.merge! params.stringify_keys.slice(*scopes)
         find_or_initialize_by filter
       end
 
