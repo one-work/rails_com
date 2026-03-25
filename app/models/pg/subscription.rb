@@ -1,4 +1,4 @@
-module Com
+module Pg
   class Subscription < PgRecord
     include Model::Subscription
 
