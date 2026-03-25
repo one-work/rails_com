@@ -80,13 +80,13 @@ module Com
       end
     end
 
-    def default_url(scheme: 'https', auth_token: nil, **options)
+    def default_url(scheme: 'https', once_token: nil, **options)
       Rails.app.routes.url_for(
         controller: controller_path,
         action: action_name,
         host: host,
         protocol: scheme,
-        auth_token: auth_token,
+        auth_token: once_token,
         **params.to_options,
         **options
       )
