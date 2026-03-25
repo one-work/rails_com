@@ -1,0 +1,14 @@
+<th><%= Pg::StatSubscription.human_attribute_name(:worker_type) %></th>
+<th>
+  <p><%= Pg::StatSubscription.human_attribute_name(:pid) %></p>
+  <p><%= Pg::StatSubscription.human_attribute_name(:leader_pid) %></p>
+</th>
+<th>
+  <p><%= Pg::StatSubscription.human_attribute_name(:received_lsn) %></p>
+  <p><%= Pg::StatSubscription.human_attribute_name(:latest_end_lsn) %></p>
+</th>
+<th>
+  <p><%= Pg::StatSubscription.human_attribute_name(:last_msg_send_time) %></p>
+  <p><%= Pg::StatSubscription.human_attribute_name(:last_msg_receipt_time) %></p>
+  <p><%= Pg::StatSubscription.human_attribute_name(:latest_end_time) %></p>
+</th>
