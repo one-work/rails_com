@@ -65,7 +65,7 @@ class Array
   #     [3, 4]
   #   ]
   #   data.to_csv_file
-  def to_2d_csv_file(file = 'export.csv')
+  def to_2d_csv_file(file = 'public/export2.csv')
     CSV.open(file, 'w') do |csv|
       self.each { |ar| csv << ar }
     end
