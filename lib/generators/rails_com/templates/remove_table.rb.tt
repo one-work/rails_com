@@ -2,7 +2,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
 
   def change
   <%- tables.each do |table| -%>
-    drop_table :<%= table %> if table_exists? <%= table.inspect %>
+    drop_table :<%= table %> if table_exists? :<%= table %>
   <%- end -%>
   end
 
