@@ -167,7 +167,7 @@ module RailsCom::ActiveRecord
         end
 
         # 这里不同步 default 这个选项，这样可以监测 changes
-        r.merge! attribute_options: r.slice(:limit, :precision, :scale, :null, :index, :array, :range, :size, :comment, :type, :as, :stored).inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
+        r.merge! attribute_options: r.slice(:limit, :precision, :scale, :null, :array, :range, :size, :comment, :type, :as, :stored).inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
 
         cols.merge! name.to_sym => r
       end
@@ -187,7 +187,7 @@ module RailsCom::ActiveRecord
         r.merge! comment: column.comment if column.comment.present?
         r.merge! column.sql_type_metadata.instance_values.slice('limit', 'precision', 'scale').compact
         r.symbolize_keys!
-        r.merge! attribute_options: r.slice(:limit, :precision, :scale, :null, :index, :array, :size, :default, :comment, :stored).inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
+        r.merge! attribute_options: r.slice(:limit, :precision, :scale, :null, :array, :size, :default, :comment, :stored).inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
 
         cols.merge! name.to_sym => r
       end

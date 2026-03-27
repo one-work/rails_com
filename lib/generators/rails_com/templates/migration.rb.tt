@@ -9,6 +9,9 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
   <%- end -%>
   <%- attributes[:add_attributes].each do |attribute, options| -%>
     add_column <%= table_name.inspect %>, <%= attribute.inspect %>, <%= options[:migrate_type].inspect %><%= options[:attribute_options] %>
+    <% if options[:index] %>
+      add_index <%= table_name.inspect %>, <%= attribute.inspect %>
+    <% end %>
   <%- end -%>
   <%- attributes[:remove_attributes].each do |attribute, options| -%>
     remove_column <%= table_name.inspect %>, <%= attribute.inspect %>, <%= options[:migrate_type].inspect %><%= options[:attribute_options] %>
