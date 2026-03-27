@@ -143,6 +143,10 @@ module RailsCom::ActiveRecord
           r.merge! migrate_type: :virtual, type: r[:migrate_type], stored: true
         end
 
+        if r[:migrate_type].blank?
+          r[:migrate_type] = :string
+        end
+
         if r[:default].respond_to?(:call)
           r.delete(:default)
         end
