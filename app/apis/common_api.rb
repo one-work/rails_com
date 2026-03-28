@@ -144,7 +144,7 @@ module CommonApi
       elsif content_type =~ /json/
         response.json
       else
-        JSON.parse(body_str)
+        body_str
       end
 
       extra(body)
