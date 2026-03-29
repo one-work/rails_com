@@ -1,10 +1,12 @@
 <div data-controller="computed-style" class="dropdown is-hoverable pop-right pop-right-bottom is-fullwidth">
   <div class="dropdown-trigger">
-    <% if defined?(current_member) && current_member.avatar.present? %>
-      <%= image_tag current_member.avatar, class: 'image is-32x32 mx-auto' %>
-    <% else %>
-      <%= image_tag 'avatar.png', class: 'image is-64x64 mx-auto' %>
-    <% end %>
+    <div class="image is-48x48">
+      <% if defined?(current_member) && current_member.avatar.present? %>
+        <%= image_tag current_member.avatar, class: 'is-rounded mx-auto' %>
+      <% else %>
+        <%= image_tag 'avatar.png', class: 'is-rounded mx-auto' %>
+      <% end %>
+    </div>
   </div>
   <div data-computed-style-target="aim" class="dropdown-menu">
     <div class="dropdown-content">
