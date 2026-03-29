@@ -5,6 +5,10 @@ module Doc
     def index
     end
 
+    def code
+      @subject = Subject.find_by(controller_path: params[:meta_controller], action_name: params[:meta_action])
+    end
+
     private
     def set_subject
       @subject = Subject.find params[:id]

@@ -1,0 +1,68 @@
+<h1 class="title is-3 text-centered"><%= @subject.meta_action.name %></h1>
+<div class="content">
+  <%= @subject.html.to_s.html_safe %>
+</div>
+<h2 class="title is-4">URL</h2>
+<p class="has-inline-centered">
+  <span class="tag is-primary"><%= @subject.meta_action.verb %></span>
+  <span aria-label="<%= @subject.base_url(request) %>" class="tag"><%= svg_tag 'plug' %></span>
+</p>
+<p class="is-wrap"><%= @subject.meta_action.path_without_format %></p>
+<div class="mt-3">
+  <p class="size-7">Path 参数</p>
+  <table class="table is-striped is-bordered is-fullwidth is-radius">
+  <% @subject.meta_action.required_parts.each do |part| %>
+    <tr>
+      <td><%= part %></td>
+      <td><%= @subject.meta_action.model_klass.human_attribute_name(part) %></td>
+      <td>必需</td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<h2 class="title is-4">请求 Body</h2>
+<table class="table is-striped is-fullwidth">
+  <tr>
+    <th>
+      <p>字段</p>
+    </th>
+    <th>
+      <p>说明</p>
+      <p>示例数据</p>
+    </th>
+  </tr>
+  <% @subject.request_body.each do |key, example| %>
+    <tr>
+      <td>
+        <p><%= key %></p>
+        <p><%= @subject.meta_action.model_klass.human_attribute_name(key) %></p>
+      </td>
+      <td>
+        <p><%= @subject.request_comments[key] %></p>
+        <p><%= example %></p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<h2 class="title is-4">响应</h2>
+<table class="table is-striped is-fullwidth">
+  <tr>
+    <th>字段</th>
+    <th>
+      <p>说明</p>
+      <p>示例数据</p>
+    </th>
+  </tr>
+  <% @subject.response_body.each do |key, example| %>
+    <tr>
+      <td><%= key %></td>
+      <td>
+        <p><%= @subject.response_comments[key] %></p>
+        <p><%= example %></p>
+      </td>
+    </tr>
+  <% end %>
+</table>

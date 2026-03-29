@@ -4,5 +4,9 @@ namespace :doc, defaults: { business: 'doc' } do
     get :index
   end
 
-  resources :subjects
+  resources :subjects do
+    member do
+      get 'code/:meta_controller/:meta_action' => :code
+    end
+  end
 end
