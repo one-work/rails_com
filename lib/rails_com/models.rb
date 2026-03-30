@@ -74,7 +74,8 @@ module RailsCom::Models
           end
         end
 
-        r[:table_options] = table_options.inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
+        r[:table_options] = table_options
+        r[:table_options_str] = table_options.inject('') { |s, h| s << ", #{h[0]}: #{h[1].inspect}" }
       end
 
       tables_hash(node, records_hash[root])

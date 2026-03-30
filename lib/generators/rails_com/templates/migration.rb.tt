@@ -17,7 +17,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
     remove_column <%= table_name.inspect %>, <%= attribute.inspect %>, <%= options[:migrate_type].inspect %><%= options[:attribute_options] %>
   <%- end -%>
   <%- else -%>
-    create_table <%= table_name.inspect %><%= attributes[:table_options] %> do |t|
+    create_table <%= table_name.inspect %><%= attributes[:table_options_str] %> do |t|
     <%- attributes[:add_references].each do |reference, options| -%>
       t.belongs_to <%= options[:name].inspect %><%= options[:reference_options] %>
     <%- end -%>
