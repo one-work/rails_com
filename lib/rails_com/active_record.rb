@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_com/active_record/abstract_adapter'
+
 require 'rails_com/active_record/extend'
 require 'rails_com/active_record/extend_enum'
 require 'rails_com/active_record/extend_json'
