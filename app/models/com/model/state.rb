@@ -81,13 +81,15 @@ module Com
     end
 
     def default_url(scheme: 'https', once_token: nil, **options)
-      _options = {
+      _options = params.to_options
+      _options.merge! options
+      _options.merge!(
         controller: controller_path,
         action: action_name,
         host: host,
         protocol: scheme,
         auth_token: once_token
-      }.with_defaults!(**options, **params.to_options)
+      )
 
       Rails.app.routes.url_for(_options)
     end
