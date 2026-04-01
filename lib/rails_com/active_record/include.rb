@@ -6,6 +6,14 @@ module RailsCom::ActiveRecord
       class_attribute :indexes_to_define_after_schema_loads, instance_accessor: false, default: []
     end
 
+    def attributes_for_url
+      r = attributes
+      self.class.reflections_with_belongs_to.keys.each do |ref|
+        r = r.merge "#{ref}_id" => self.public_send(ref)&.id
+      end
+      r
+    end
+
     def error_text
       errors.full_messages.join("\n")
     end
