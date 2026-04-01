@@ -11,7 +11,7 @@ module RailsCom::ActionDispatch
         end
         @model = access_fixture @action.model_path, key
         @url_parts = @model.attributes_for_url.slice(*@action.required_parts)
-        @params = @loaded_fixtures[@action.model_path].fixtures[key].fixture.except('id', 'created_at', 'updated_at', *@action.required_parts)
+        @params = @loaded_fixtures[@action.model_path].fixtures[key].fixture.except('id', 'type', 'created_at', 'updated_at', *@action.required_parts)
         @comments = @loaded_fixtures[@action.model_path].comments[key]
       end
     end
