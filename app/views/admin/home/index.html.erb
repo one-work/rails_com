@@ -4,7 +4,7 @@
     data-admin-actions-data-value="<%= current_member.all_shortcuts.to_json %>"
     class="column"
   >
-    <%= render partial: 'admin_tags', collection: @businesses, as: :model, cached: cache_with_model('admin') %>
+    <%= render partial: 'admin_tags', collection: @businesses, as: :model, cached: cache_with_organ('admin') %>
   </div>
   <div class="column">
     <div class="box">
