@@ -1,4 +1,4 @@
-<%= turbo_stream.replace 'page_loading' do %>
+<%= turbo_stream.append 'tbody' do %>
   <%= render partial: 'index_item', layout: 'index_item_actions', collection: instance_variable_get("@#{controller_name.pluralize}"), as: :model %>
-  <%= render partial: 'page_loading', locals: { all: instance_variable_get("@#{controller_name.pluralize}") } %>
 <% end %>
+<%= turbo_stream.replace 'page_loading', partial: 'page_loading', locals: { all: instance_variable_get("@#{controller_name.pluralize}") } %>
