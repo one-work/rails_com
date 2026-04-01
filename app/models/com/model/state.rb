@@ -87,7 +87,7 @@ module Com
         host: host,
         protocol: scheme,
         auth_token: once_token
-      }.with_defaults!(**params.to_options, **options)
+      }.with_defaults!(**options, **params.to_options)
 
       Rails.app.routes.url_for(_options)
     end
