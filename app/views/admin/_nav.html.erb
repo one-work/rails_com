@@ -1,16 +1,18 @@
 <div class="menu as-wrap flex flex-direction-column">
   <div class="menu-brand">
   <% if defined?(current_organ) && current_organ %>
-    <%= link_to('/', data: { turbo_frame: 'panel' }, class: 'text-centered p-3') do %>
+    <%= link_to('/', data: { turbo_frame: 'panel' }, class: 'has-column-centered p-3') do %>
       <% if current_organ.logo.attached? %>
         <%= image_tag current_organ.logo, class: 'image is-64x64' %>
       <% else %>
         <div class="is-avatar display-inline-block"><%= current_organ.name.to_s[0] %></div>
       <% end %>
+      <span class="size-7"><%= t('admin.home.index.title') %></span>
     <% end %>
   <% else %>
     <%= link_to('/', data: { turbo_frame: 'panel' }, class: 'text-centered') do %>
       <%= image_tag 'logo_avatar.png', class: 'image is-64x64' %>
+      <span><%= t('admin.home.index.title') %></span>
     <% end %>
   <% end %>
   </div>
