@@ -22,6 +22,8 @@ module Doc
       attribute :synced_at, :datetime
 
       belongs_to :meta_action, class_name: 'Meta::Action', foreign_key: [:controller_path, :action_name], primary_key: [:controller_path, :action_name], optional: true
+
+      before_create :sync_doc
     end
 
     def base_url(request = nil)
