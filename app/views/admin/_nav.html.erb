@@ -7,12 +7,12 @@
       <% else %>
         <div class="is-avatar display-inline-block"><%= current_organ.name.to_s[0] %></div>
       <% end %>
-      <span class="size-7"><%= t('admin.home.index.title') %></span>
+      <span class="size-7 mt-1"><%= current_organ.name %></span>
     <% end %>
   <% else %>
     <%= link_to('/', data: { turbo_frame: 'panel' }, class: 'text-centered') do %>
       <%= image_tag 'logo_avatar.png', class: 'image is-64x64' %>
-      <span><%= t('admin.home.index.title') %></span>
+      <span class="size-7 mt-1"><%= current_organ.name %></span>
     <% end %>
   <% end %>
   </div>
