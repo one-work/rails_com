@@ -1,0 +1,16 @@
+<div data-controller="page" data-page-url-value="<%= url_for(action: 'index') %>" class="has-page-grow">
+  <div id="tbody">
+    <%= yield %>
+  </div>
+  <% if instance_variable_get("@#{controller_name.pluralize}").blank? %>
+    <%= render 'page_blank' %>
+  <% else %>
+    <% if instance_variable_get("@#{controller_name.pluralize}").respond_to?(:total_pages) %>
+      <% if instance_variable_get("@#{controller_name.pluralize}").total_pages <= instance_variable_get("@#{controller_name.pluralize}").current_page %>
+        <%= render 'page_no_more' %>
+      <% elsif instance_variable_get("@#{controller_name.pluralize}").total_pages > instance_variable_get("@#{controller_name.pluralize}").current_page %>
+        <%= render partial: 'page_loading', locals: { all: instance_variable_get("@#{controller_name.pluralize}") } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
