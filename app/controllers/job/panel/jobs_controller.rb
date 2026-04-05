@@ -63,7 +63,7 @@ module Job
     end
 
     def batch_destroy
-      SolidQueue::Job.where(id: params[:ids].split(',')).each(&:destroy)
+      SolidQueue::Job.where(id: params[:ids]).each(&:destroy)
 
       if ['failed', 'ready', 'clearable'].include? params[:from_action]
         public_send params[:from_action]
@@ -71,7 +71,7 @@ module Job
     end
 
     def batch_retry
-      SolidQueue::Job.where(id: params[:ids].split(',')).each(&:retry)
+      SolidQueue::Job.where(id: params[:ids]).each(&:retry)
     end
 
     def destroy

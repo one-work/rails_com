@@ -1,5 +1,4 @@
-<%= form_with url: { action: 'batch_destroy' }, method: :delete, class: 'button_to' do |f| %>
-  <%= f.hidden_field :ids %>
+<%= form_with url: { action: 'batch_destroy' }, method: :delete, class: 'button_to' do %>
   <%= button_tag aria: { label: t('.batch_destroy.title') }, disabled: true, class: 'button is-danger' do %>
     <%= svg_tag 'trash-can' %>
   <% end %>

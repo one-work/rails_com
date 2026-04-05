@@ -40,7 +40,7 @@ module Com
     end
 
     def batch_destroy
-      model_klass.where(id: params[:ids].split(',')).each(&:destroy)
+      model_klass.where(id: params[:ids]).each(&:destroy)
     end
 
     def update
