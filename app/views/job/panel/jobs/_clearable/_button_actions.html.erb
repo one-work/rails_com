@@ -1,5 +1,4 @@
 <%= form_with url: { action: 'batch_destroy' }, method: :delete, class: 'button_to' do |f| %>
-  <%= f.hidden_field :ids %>
   <%= f.hidden_field :from_action, value: params[:action] %>
   <%= button_tag disabled: true, class: 'button is-danger' do %>
     <%= svg_tag 'trash-list' %>
