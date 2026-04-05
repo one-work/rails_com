@@ -11,7 +11,7 @@
       <%= link_to({ controller: 'wechat/my/users', action: 'invite_qrcode' }, class: 'cell has-column-centered') do %>
         <div class="text-primary left-badge">
           <%= svg_tag 'qrcode', class: 'icon is-medium' %>
-          <span class="tag is-badge">邀请有礼</span>
+          <span class="tag is-badge is-danger">邀请有礼</span>
         </div>
         <div class="text-grey size-7 mt-1">邀请好友</div>
       <% end if defined? RailsWechat %>
