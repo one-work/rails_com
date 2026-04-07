@@ -21,6 +21,7 @@ module Com
         send "#{model_name}_params"
       else
         params.fetch(model_name, {}).permit(
+          *model_klass.com_column_names,
           **model_klass.com_column_extra,
           **model_klass.com_column_hash
         )
