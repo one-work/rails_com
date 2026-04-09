@@ -85,6 +85,14 @@ module Meta
       model_path.classify.safe_constantize
     end
 
+    def model_name
+      model_klass.model_name
+    end
+
+    def params_name
+      "#{model_name.param_key}_params"
+    end
+
     def path_without_format
       path.delete_suffix('(.:format)')
     end
