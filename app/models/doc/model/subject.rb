@@ -12,11 +12,11 @@ module Doc
       attribute :request_comments, :json
       attribute :request_headers, :json
       attribute :request_type, :string
-      attribute :request_body, :json
+      attribute :request_body, :json, default: {}
       attribute :response_status, :integer, default: 200
       attribute :response_headers, :json
       attribute :response_type, :string
-      attribute :response_body, :json
+      attribute :response_body, :json, default: {}
       attribute :response_comments, :json
       attribute :note, :string
       attribute :synced_at, :datetime
