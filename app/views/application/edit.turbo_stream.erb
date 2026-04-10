@@ -1,1 +1,2 @@
+<%= turbo_stream.remove 'modal' %>
 <%= turbo_stream.append_body partial: 'edit_modal_form', layout: 'modal_form', locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") } %>
