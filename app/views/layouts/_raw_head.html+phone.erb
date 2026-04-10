@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>" style="height: 100%">
   <head>
-    <title><%= t('.title') %></title>
+    <%= render 'head_title' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="turbo-cache-control" content="no-preview">
     <%= action_cable_meta_tag %>
