@@ -35,11 +35,11 @@
         <%= link_to({ controller: 'factory/productions', host: current_organ.host }, class: 'cell has-column-centered') do %>
           <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
           <span class="size-7 text-grey mt-1">门店预览</span>
-        <% end if @organ_tabs.include?('/factory/productions') %>
+        <% end if @roled_tabs.include?('/factory/productions') %>
         <%= link_to({ controller: 'factory/productions', action: 'swift', host: current_organ.host }, class: 'cell has-column-centered') do %>
           <%= svg_tag 'up-right-and-down-left-from-center', class: 'icon is-medium text-primary' %>
           <span class="size-7 text-grey mt-1">快捷下单预览</span>
-        <% end if @organ_tabs.include?('/factory/productions/swift') %>
+        <% end if @roled_tabs.include?('/factory/productions/swift') %>
         <div
           data-controller="mini-program"
           data-mini-program-nav-value="true"
