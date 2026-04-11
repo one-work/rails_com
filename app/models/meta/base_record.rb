@@ -1,5 +1,5 @@
 module Meta
-  class BaseRecord < ActiveRecord::Base
+  class BaseRecord < ApplicationRecord
     self.abstract_class = true
     connects_to database: { writing: :prod }
   end
