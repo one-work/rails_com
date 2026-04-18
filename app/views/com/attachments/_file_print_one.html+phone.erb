@@ -1,4 +1,4 @@
-<div data-controller="picture" class="picture">
+<div data-controller="picture-print" class="picture">
   <div data-picture-target="upload" class="file is-boxed is-fullwidth">
     <label class="file-label">
       <%=
@@ -22,19 +22,6 @@
     </label>
   </div>
   <div data-picture-target="preview">
-    <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
-      <%= svg_tag 'xmark', class: 'icon text-danger' %>
-    </button>
     <canvas data-picture-target="canvas"></canvas>
   </div>
-  <% if target.attached? %>
-    <div data-picture-target="preview" class="picture-preview">
-      <button type="button" data-action="picture#removePreview" class="button is-unset is-borderless as-corner mr-2">
-        <%= svg_tag 'xmark', class: 'icon text-danger' %>
-      </button>
-      <div class="image is-64x64 overflow-y-hidden">
-        <%= image_tag target, data: { picture_target: 'src' } %>
-      </div>
-    </div>
-  <% end %>
 </div>
