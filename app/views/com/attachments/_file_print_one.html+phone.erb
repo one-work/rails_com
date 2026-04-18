@@ -1,14 +1,13 @@
 <div data-controller="picture-print" class="picture">
-  <div data-picture-target="upload" class="file is-boxed is-fullwidth">
+  <div class="file is-boxed is-fullwidth">
     <label class="file-label">
       <%=
         f.file_field(
           target.name,
-          direct_upload: true,
           wrap: { input: false },
           all: { normal: false },
           label: nil,
-          data: { action: 'picture#upload', service: f.object.attachment_reflections[target.name].options[:service_name] },
+          data: { action: 'picture-print#upload' },
           class: 'file-input',
           **local_assigns.slice(:form)
         )
@@ -22,6 +21,6 @@
     </label>
   </div>
   <div data-picture-target="preview">
-    <canvas data-picture-target="canvas"></canvas>
+    <canvas data-picture-print-target="canvas"></canvas>
   </div>
 </div>
