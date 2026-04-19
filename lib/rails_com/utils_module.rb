@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Utils
+require 'rails_com/utils_module/bmp_util'
 require 'rails_com/utils_module/cmd_util'
 require 'rails_com/utils_module/compress_util'
 require 'rails_com/utils_module/exports_util'
