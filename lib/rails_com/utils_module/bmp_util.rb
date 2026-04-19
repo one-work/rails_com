@@ -46,7 +46,7 @@ module BmpUtil
     w, h = img.width, img.height
     row_b = (w + 7) / 8
 
-    bitmap = ''
+    bitmap = []
     h.times do |y|
       row_b.times do |bx|
         byte = 0
@@ -54,7 +54,7 @@ module BmpUtil
           val = pixels[y * w + bx * 8 + bit] || 0
           byte = (byte << 1) | (val > 128 ? 1 : 0)
         end
-        bitmap << byte.chr
+        bitmap << byte
       end
     end
     bitmap
