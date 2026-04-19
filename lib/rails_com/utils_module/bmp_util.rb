@@ -56,9 +56,18 @@ module BmpUtil
     end
 
     img = img.colourspace(:b_w)
+    # 强制为 8-bit 单通道，保证 write_to_memory 返回 0..255 的字节阵列
+    begin
+      img = img.cast('uchar')
+    rescue => _e
+      # 如果 cast 不支持（极少数绑定/格式），继续使用原图，但结果可能不为 8-bit
+    end
 
-    # 2. Otsu 自适应阈值（热敏打印对纸张底色/光照极其敏感，此步大幅提升清晰度）
-    otsu_thresh = otsu_threshold(img.hist_find.write_to_memory.bytes)
+    # 2. Otsu 自适应阈值：直接从像素字节构建直方图，避免使用 hist_find 导致的类型/打包问题
+    pixels_bytes = img.write_to_memory.bytes
+    hist = Array.new(256, 0)
+    pixels_bytes.each { |b| hist[b] += 1 }
+    otsu_thresh = otsu_threshold(hist)
     bin = img >= otsu_thresh
     bin = bin.invert if invert # 热敏纸物理映射：255(黑)→1(打印)，0(白)→0(留白)
 
