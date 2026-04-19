@@ -73,7 +73,8 @@ module BmpUtil
 
     # 3. 逐行位打包（MSB 优先，8 像素对齐）
     pixels = bin.write_to_memory.bytes
-    w, h = img.width, img.height
+    w = img.width
+    h = img.height
     row_b = (w + 7) / 8
 
     bitmap = []
@@ -87,6 +88,6 @@ module BmpUtil
         bitmap << byte
       end
     end
-    bitmap
+    [bitmap, row_b, h]
   end
 end
