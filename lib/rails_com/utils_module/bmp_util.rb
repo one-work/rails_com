@@ -33,8 +33,29 @@ module BmpUtil
 
   # 完整流水线：缩放 → 灰度 → Otsu 二值化 → 打印机位图
   def to_bitmap_bytes(input_path, width_px: 280, invert: true)
-    # 1. 高质量缩放 + 灰度（自动 EXIF/ICC/线性光/Lanczos3）
-    img = Vips::Image.thumbnail(input_path, width_px, size: :both).colourspace(:b_w)
+    # 1. 先完整加载图片到内存，再高质量缩放到目标宽度并转为灰度。
+    #    直接使用 streaming thumbnail 在某些 PNG 文件上会触发 libpng 的 "out of order read" 错误，
+    #    因此改为先 new_from_file（完整加载），再按比例缩放（Lanczos3）。
+    # 为避免 libpng 的流式读取问题（out of order read），直接完整加载图片到内存再缩放。
+    # 这比 streaming thumbnail 占用更多内存，但能保证后续 histogram / write_to_memory 不会触发错误。
+    img = Vips::Image.new_from_file(input_path)
+    if img.width > width_px
+      scale = width_px.to_f / img.width
+      img = img.resize(scale, kernel: :lanczos3)
+    end
+
+    # 如果可用，尝试自动旋转（某些 vips 绑定提供 autorot/autorotate）
+    begin
+      if img.respond_to?(:autorot)
+        img = img.autorot
+      elsif img.respond_to?(:autorotate)
+        img = img.autorotate
+      end
+    rescue => e
+      warn "BmpUtil: autorotate failed or unsupported: #{e.message}"
+    end
+
+    img = img.colourspace(:b_w)
 
     # 2. Otsu 自适应阈值（热敏打印对纸张底色/光照极其敏感，此步大幅提升清晰度）
     otsu_thresh = otsu_threshold(img.hist_find.write_to_memory.bytes)
