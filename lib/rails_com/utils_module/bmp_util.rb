@@ -32,9 +32,9 @@ module BmpUtil
   end
 
   # 完整流水线：缩放 → 灰度 → Otsu 二值化 → 打印机位图
-  def to_bitmap_bytes(input_path, width_px: 384, invert: true)
+  def to_bitmap_bytes(input_path, width_px: 280, invert: true)
     # 1. 高质量缩放 + 灰度（自动 EXIF/ICC/线性光/Lanczos3）
-    img = Vips::Image.thumbnail(input_path, width_px, size: :down).colourspace(:b_w)
+    img = Vips::Image.thumbnail(input_path, width_px, size: :both).colourspace(:b_w)
 
     # 2. Otsu 自适应阈值（热敏打印对纸张底色/光照极其敏感，此步大幅提升清晰度）
     otsu_thresh = otsu_threshold(img.hist_find.write_to_memory.bytes)
