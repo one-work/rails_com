@@ -84,15 +84,15 @@ module Com
         variant.prepend :modal
       end
 
-      if request.user_agent&.match? /MicroMessenger|WeChat/  # 包含 mini program
-        variant += [:wechat, :phone]
-      end
-
       # 安卓：MiniProgramEnv/android
       # 企业微信：miniprogram
       # ios: miniProgram
       if request.user_agent&.match?(/miniProgram|miniprogram|MiniProgramEnv/) || request.referer&.match?(/servicewechat.com/)
         variant << :mini_program
+      end
+
+      if request.user_agent&.match? /MicroMessenger|WeChat/  # 包含 mini program
+        variant += [:wechat, :phone]
       end
 
       if request.user_agent&.match? /wxwork/
