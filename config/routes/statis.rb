@@ -1,4 +1,3 @@
-
 namespace :statis, defaults: { business: 'statis' } do
   namespace :panel, defaults: { namespace: 'panel' } do
     resources :statistics, only: [] do

@@ -1,4 +1,3 @@
-
 namespace :meta do
   namespace :panel do
 

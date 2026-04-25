@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 namespace :log do
   namespace :panel do
 

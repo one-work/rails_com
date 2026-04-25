@@ -1,4 +1,3 @@
-
 namespace :job, defaults: { business: 'job' } do
   namespace :panel, defaults: { namespace: 'panel' } do
     root 'home#index'
