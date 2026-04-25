@@ -5,7 +5,8 @@ module Com
     included do
       if table_exists? && column_names.include?('children_count')
         belongs_to(
-          :parent, nil,
+          :parent,
+          nil,
           class_name: _ct.model_class.to_s,
           foreign_key: _ct.parent_column_name,
           inverse_of: :children,
