@@ -91,7 +91,7 @@ module RailsCom::Models
       model = cols[:models][0]
       db = model.migrate_attributes_by_db
 
-      r = cols.slice(:indexes, :table_exists, :table_options)
+      r = cols.slice(:indexes, :table_exists, :table_options, :table_options_str)
       r[:migrations_paths] = model.connection_pool.migrations_paths
       r[:add_attributes] = cols[:model_attributes].except *db.keys
       r[:add_references] = cols[:model_references].except *db.keys
