@@ -3,9 +3,7 @@ module RailsCom::TimeHelper
 
   def distance_time(from_time = Time.current, to_time, **options)
     result = TimeUtil.exact_distance_pure_time(from_time, to_time)
-    options = {
-      scope: 'datetime.prompts'
-    }.merge!(options)
+    options = { scope: 'datetime.prompts' }.merge!(options)
     str = ''
 
     I18n.with_options locale: options[:locale], scope: options[:scope] do |locale|
