@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 module RailsCom::TrHelper
 
-  def tr_tag(model, *items, data: {}, icons: ['show', 'edit', 'destroy'], param: { id: model&.id }, **options, &block)
-    data ||= {}
+  def tr_tag(model, *items, data: {}, icons: ['show', 'edit', 'destroy'], param: {}, **options, &block)
     data.with_defaults!(
       controller: 'show tr-actions',
       tr_actions_data_value: tr_actions(*items, icons: icons, param: param)
     )
-    options.with_defaults! id: "tr_#{model.id}" if model
+    if model.respond_to? :id
+      param.with_defaults! id: model.id
+      options.with_defaults! id: "tr_#{model.id}"
+    end
 
     tag.tr(data: data, **options, &block)
   end
