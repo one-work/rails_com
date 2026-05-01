@@ -17,7 +17,7 @@ module Log
     end
 
     def ip
-      @requests = Request.select(:ip).group(:ip).order(count_com_logs_ip: :desc).count
+      @requests = Request.select(:ip).group(:ip).order(count_log_requests_ip: :desc).count
     end
 
     private
