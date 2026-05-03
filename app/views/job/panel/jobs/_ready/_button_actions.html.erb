@@ -2,6 +2,6 @@
   <%= f.hidden_field :from_action, value: params[:action] %>
   <%= button_tag disabled: true, class: 'button is-danger' do %>
     <%= svg_tag 'trash-list' %>
-    <span class="ml-1"><%= t('.batch_destroy.title') %></span>
+    <span><%= t('.batch_destroy.title') %></span>
   <% end %>
 <% end %>
