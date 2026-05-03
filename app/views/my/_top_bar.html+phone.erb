@@ -1,4 +1,4 @@
-<div class="as-bar">
+<div data-controller="navbar" class="as-bar">
   <% if current_state %>
     <%= link_to(current_state.prev_path, text: true, class: 'px-4') do %>
       <%= svg_tag 'angle-left', kind: 'regular' %>
@@ -10,4 +10,10 @@
   <% end %>
   <div class="bar-title"><%= t('.title', default: '') %></div>
   <i class="px-5"></i>
+  <button data-action="navbar#toggle" class="navbar-burger">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
 </div>
