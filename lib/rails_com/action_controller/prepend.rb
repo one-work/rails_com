@@ -53,9 +53,9 @@ module RailsCom::ActionController
       if defined?(current_organ) && current_organ&.code.present?
         RailsCom.config.override_prefixes.each do |pre|
           index = pres.index(pre)
-          pres.insert(index, "#{current_organ.code}/views/#{pre}") if index
+          pres.insert(index, "override/#{current_organ.code}/#{pre}") if index
         end
-        pres.prepend "#{current_organ.code}/views/#{controller_path}"
+        pres.prepend "override/#{current_organ.code}/#{controller_path}"
       end
 
       pres
