@@ -31,7 +31,7 @@ module RailsCom::ActionController
       #   pres + ['xx']
       # end
       if block_given?
-        pres = yield pres
+        yield pres
       end
       pres += super
 
