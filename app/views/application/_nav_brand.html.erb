@@ -10,7 +10,10 @@
     <%= image_tag current_organ.logo, class: 'image' %>
   <% end %>
 <% else %>
-  <%= link_to({ controller: '/home' }, data: { turbo_frame: 'main' }, class: 'navbar-item') do %>
+  <%= link_to({ controller: '/home' }, data: { navbar_target: 'old', turbo_frame: 'main' }, class: 'navbar-item') do %>
     <%= image_tag 'logo.png', class: 'image' %>
+  <% end %>
+  <%= link_to({ controller: '/home' }, data: { navbar_target: 'new', turbo_frame: 'main' }, class: 'navbar-item display-none') do %>
+    <%= image_tag 'logo_invert.png', class: 'image' %>
   <% end %>
 <% end %>
