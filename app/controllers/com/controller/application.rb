@@ -91,12 +91,12 @@ module Com
         variant << :mini_program
       end
 
-      if request.user_agent&.match? /MicroMessenger|WeChat/  # 包含 mini program
-        variant += [:wechat, :phone]
-      end
-
       if request.user_agent&.match? /wxwork/
         variant << :work_wechat
+      end
+
+      if request.user_agent&.match? /MicroMessenger|WeChat/  # 包含 mini program
+        variant += [:wechat, :phone]
       end
 
       if request.user_agent&.match? /iPhone|iPod|Android/
