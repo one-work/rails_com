@@ -29,7 +29,8 @@ module Com
     end
 
     def destroy
-      @blob.purge
+      @blob.attachments.each(&:destroy)
+      #@blob.purge
     end
 
     private
