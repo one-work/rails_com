@@ -1,4 +1,4 @@
-<%= link_to({ controller: 'org/me/home' }, class: 'media px-4 mt-3') do %>
+<%= link_to({ controller: 'org/me/home' }, class: 'media as-me px-4 py-3') do %>
   <div class="media-left">
   <% if current_organ.logo.attached? %>
     <%= image_tag current_organ.logo, class: 'image is-64x64 is-radius' %>
