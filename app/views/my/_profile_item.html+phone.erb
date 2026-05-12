@@ -1,14 +1,17 @@
-<%= link_to({ controller: 'auth/board/home' }, text: true, class: 'media p-3 mb-0') do %>
+<%= link_to({ controller: 'auth/board/home' }, text: true, class: 'media p-3') do %>
   <div class="media-left">
-  <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar, class: 'image is-64x64 is-radius' %>
-  <% elsif current_user.name.present? %>
-    <div class="is-avatar">
-      <div class="text"><%= current_user.name.to_s[0] %></div>
-    </div>
-  <% else %>
-    <%= image_tag 'default_avatar.jpg', class: 'image is-64x64 is-radius' %>
-  <% end %>
+    <figure class="image is-64x64">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, class: 'is-rounded' %>
+      <% elsif current_user.name.present? %>
+        <div class="is-avatar">
+          <div class="text"><%= current_user.name.to_s[0] %></div>
+        </div>
+      <% else %>
+        <%= image_tag 'default_avatar.jpg', class: 'is-rounded' %>
+      <% end %>
+      <figcaption><strong>姓名</strong></figcaption>
+    </figure>
   </div>
   <div class="media-content text-grey-dark">
     <% if current_user.name.present? || current_account&.identity.present? %>
