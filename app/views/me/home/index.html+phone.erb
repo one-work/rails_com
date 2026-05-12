@@ -1,9 +1,3 @@
-<% if defined?(current_organ) && current_member %>
-  <%= render 'profile_item' %>
-<% else %>
-  <%= render 'profile_blank' %>
-<% end %>
-
 <% if defined?(current_organ) && current_organ %>
   <%= render 'index_summary_organ' %>
 <% else %>
