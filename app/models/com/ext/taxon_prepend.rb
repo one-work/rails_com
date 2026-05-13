@@ -27,9 +27,9 @@ module Com
 
     def depth
       if parent
-        parent.depth + 1
+        parent.depth + 2
       else
-        super
+        super + 1
       end
     end
 
