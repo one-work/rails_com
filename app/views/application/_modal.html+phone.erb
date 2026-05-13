@@ -8,8 +8,9 @@
       <p class="bar-title"><%= t('.title') %></p>
       <span class="px-5"></span>
     </header>
-    <div class="modal-card-body">
+    <div id="modal-card-body" class="modal-card-body">
       <%= yield %>
     </div>
+    <%= render 'modal_foot' %>
   </div>
 </div>
