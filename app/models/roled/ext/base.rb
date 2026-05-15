@@ -32,6 +32,17 @@ module Roled
       end
     end
 
+    def role_whos_attributes
+      arr = role_whos.each_with_object([]) do |role_who, h|
+        h << {
+          role_id: role_who.role_id
+        }
+      end
+      {
+        role_whos_attributes: arr
+      }
+    end
+
     def role_hash
       cache&.role_hash || {}
     end
