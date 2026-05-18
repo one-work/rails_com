@@ -1,18 +1,18 @@
 <template id="template_tr_action">
   <form class="button_to" method="post">
     <button class="button is-small is-borderless" type="submit">
-      <svg class="icon">
+      <svg class="icon is-small">
         <use href="<%= asset_path 'icons_light.svg', host: "#{request.host_with_port}/#{Rails.app.config.relative_url_root}" %>"></use>
       </svg>
-      <span class="ml-1"></span>
+      <span></span>
     </button>
   </form>
 </template>
 <template id="template_tr_link">
   <a class="button is-small is-borderless">
-    <svg class="icon text-info">
+    <svg class="icon is-small text-info">
       <use href="<%= asset_path 'icons_light.svg', host: "#{request.host_with_port}/#{Rails.app.config.relative_url_root}" %>"></use>
     </svg>
-    <span class="ml-1"></span>
+    <span></span>
   </a>
 </template>
