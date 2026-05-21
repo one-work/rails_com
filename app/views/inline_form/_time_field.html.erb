@@ -1,1 +1,6 @@
-<%= f.time_field name, autofocus: true %>
+<div class="field is-horizontal">
+  <%= f.label name %>
+  <div class="field-body">
+    <%= f.time_select name, start_hour: 0, end_hour: 23, minute_step: 30, default: { hour: 09, min: 00 }, wrap: { all: 'field is-narrow', select: 'select' }, label: nil %>
+  </div>
+</div>
