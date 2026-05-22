@@ -4,7 +4,7 @@
     <span class="family-monospace size-7"><%= tab.name %></span>
   <% end %>
 <% end %>
-<% if current_user.organs.include?(current_organ) %>
+<% if request.subdomain == 'admin' && current_user.organs.include?(current_organ) %>
   <%= link_to({ controller: '/me/home', host: "admin.#{Rails.application.routes.default_url_options[:host]}" }, class: 'text-warning') do %>
     <%= svg_tag 'arrows-rotate', class: 'icon is-medium mr-0' %>
     <span class="family-monospace size-7">后台管理</span>
