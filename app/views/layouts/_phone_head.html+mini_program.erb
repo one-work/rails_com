@@ -10,6 +10,7 @@
     <%= action_cable_meta_tag %>
     <%= yield :reload %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <%= render 'head_extra_js' %>
