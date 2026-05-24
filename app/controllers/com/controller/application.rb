@@ -183,7 +183,7 @@ module Com
       else
         role = Roled::Role.default.take
         if role
-          @roled_tabs = role.tabs.tabs.where(namespace: '').load.sort_by(&:position)
+          @roled_tabs = role.tabs.where(namespace: '').load.sort_by(&:position)
         else
           @roled_tabs = Roled::Tab.none
         end
