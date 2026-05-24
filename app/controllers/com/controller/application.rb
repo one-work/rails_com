@@ -181,7 +181,12 @@ module Com
       if request.variant.any?(:phone) && defined?(current_organ) && current_organ
         @roled_tabs = current_organ.tabs.where(namespace: '').load.sort_by(&:position)
       else
-        @roled_tabs = Roled::Tab.none
+        role = Roled::Role.default.take
+        if role
+          @roled_tabs = role.tabs.tabs.where(namespace: '').load.sort_by(&:position)
+        else
+          @roled_tabs = Roled::Tab.none
+        end
       end
       logger.debug "\e[35m  Application SetRoleTabs: #{@roled_tabs}  \e[0m" if RailsCom.config.debug
     end
