@@ -23,6 +23,7 @@ PATH
       solid_queue
       sshkey
       turbo-rails
+      vips
 
 GEM
   remote: https://rubygems.org/
@@ -320,6 +321,8 @@ GEM
       concurrent-ruby (~> 1.0)
     uri (1.1.1)
     useragent (0.16.11)
+    vips (8.15.1)
+      ffi (~> 1.12)
     websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
@@ -457,6 +460,7 @@ CHECKSUMS
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
+  vips (8.15.1) sha256=7d16d994b1ab12c507c85868ca306e8403465758a5e9fa3e8b96f331b6fdc18f
   websocket-driver (0.8.0) sha256=ed0dba4b943c22f17f9a734817e808bc84cdce6a7e22045f5315aa57676d4962
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
   with_advisory_lock (7.5.0) sha256=dadb2f1ed35a10ed7b9649a6769e6848bc64f735a85eb8a6e162a81d383a15bf
