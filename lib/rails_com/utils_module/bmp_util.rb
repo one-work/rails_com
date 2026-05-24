@@ -1,4 +1,7 @@
-require 'vips'
+begin
+  require 'vips'
+rescue LoadError
+end
 module BmpUtil
   extend self
   # 从 Vips 直方图计算 Otsu 阈值（纯 Ruby，256次迭代耗时 < 0.05ms）
