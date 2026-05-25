@@ -11,6 +11,10 @@ module ActiveSupport
         I18n.translate("human.distance_units.format", scope: :number, locale: options[:locale], raise: true)
       end
 
+      def unit
+        I18n.translate(storage_unit_key, scope: :number, locale: options[:locale], count: number.to_i, raise: true)
+      end
+
       def storage_unit_key
         key_end = smaller_than_base? ? "m" : STORAGE_UNITS[exponent]
         "human.distance_units.units.#{key_end}"
