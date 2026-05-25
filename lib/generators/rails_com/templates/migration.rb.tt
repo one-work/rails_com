@@ -32,7 +32,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration[<%= ActiveRecord::Mi
     <%- end -%>
     end unless table_exists? <%= table_name.inspect -%>
     <% unless attributes.dig(:table_options, :id) %>
-    execute 'ALTER TABLE <%= table_name %> REPLICA IDENTITY USING INDEX "<%= attributes.fetch(:indexes, []).fetch(0, {}).fetch(:name) %>"'
+    execute 'ALTER TABLE <%= table_name %> REPLICA IDENTITY USING INDEX "<%= attributes.fetch(:indexes, []).fetch(0, {}).fetch(:name, '') %>"'
     <%- end -%>
   <%- end -%>
 
