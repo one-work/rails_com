@@ -11,6 +11,7 @@ require 'rails_com/action_view'
 require 'rails_com/active_model'
 require 'rails_com/active_record'
 require 'rails_com/active_storage'
+require 'rails_com/active_support'
 
 require 'rails_com/core'
 require 'rails_com/env'
