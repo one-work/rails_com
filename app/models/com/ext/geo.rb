@@ -3,6 +3,7 @@ module Com
     extend ActiveSupport::Concern
 
     included do
+      attr_reader :distance
       attribute :geo, :st_point, srid: 4326, geographic: true
     end
 
