@@ -12,7 +12,7 @@ module Com
 
     def distance
       if attributes.key? 'distance'
-        attributes['distance']
+        attributes['distance'].to_f.to_distance
       end
     end
 
