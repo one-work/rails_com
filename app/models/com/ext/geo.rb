@@ -7,6 +7,10 @@ module Com
       attribute :geo, :st_point, srid: 4326, geographic: true
     end
 
+    def set_geo!(lng, lat)
+      update geo: RGeo::Geos.factory(srid: 4326).point(lng, lat)
+    end
+
     class_methods do
 
       def near(lnt, lng, column: :geo)
