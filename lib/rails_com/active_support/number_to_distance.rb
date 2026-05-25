@@ -3,14 +3,19 @@
 module ActiveSupport
   module NumberHelper
 
-    eager_autoload do
-      autoload :NumberToDistanceConverter
-    end
-
     class NumberToDistanceConverter < NumberToHumanSizeConverter
       STORAGE_UNITS = [:m, :km].freeze
-      
+
       private
+      def conversion_format
+        I18n.translate("human.distance_units.format", scope: :number, locale: options[:locale], raise: true)
+      end
+
+      def storage_unit_key
+        key_end = smaller_than_base? ? "m" : STORAGE_UNITS[exponent]
+        "human.distance_units.units.#{key_end}"
+      end
+
       def base
         1000
       end
@@ -22,11 +27,13 @@ end
 module RailsCom
   module NumberToDistance
 
-    def to_distance
-      NumberToDistanceConverter.convert(self, options)
+    def to_distance(options = {})
+      ActiveSupport::NumberHelper::NumberToDistanceConverter.convert(self, options)
     end
 
   end
 end
 
-ActiveSupport::NumericWithFormat.include RailsCom::NumberToDistance
+Integer.include RailsCom::NumberToDistance
+Float.include RailsCom::NumberToDistance
+BigDecimal.include RailsCom::NumberToDistance

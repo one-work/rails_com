@@ -18,6 +18,13 @@ zh:
           tb: TB
           pb: PB
           eb: EB
+      distance_units:
+        format: "%n %u"
+        units:
+          mm: 毫米
+          cm: 厘米
+          m: 米
+          km: 千米
       decimal_units:
         format: "%n %u"
         units:
