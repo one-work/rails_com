@@ -11,8 +11,8 @@ module Com
     end
 
     def distance
-      if defined? super
-        super
+      if attributes.key? 'distance'
+        attributes['distance']
       end
     end
 
