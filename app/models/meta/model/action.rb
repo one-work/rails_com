@@ -26,7 +26,7 @@ module Meta
       attribute :testable, :boolean
       attribute :request_as, :string, default: 'turbo_stream'
       if connection.adapter_name == 'PostgreSQL'
-        attribute :required_parts, :string, array: true
+        attribute :required_parts, :string, array: true, default: []
       else
         attribute :required_parts, :json
       end
