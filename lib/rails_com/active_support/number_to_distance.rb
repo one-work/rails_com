@@ -8,11 +8,11 @@ module ActiveSupport
 
       private
       def conversion_format
-        I18n.translate("human.distance_units.format", scope: :number, locale: options[:locale], raise: true)
+        I18n.translate('human.distance_units.format', scope: :number, locale: options[:locale], raise: true)
       end
 
       def unit
-        I18n.translate(storage_unit_key, scope: :number, locale: options[:locale], count: number.to_i, raise: true)
+        I18n.translate(storage_unit_key, scope: :number, locale: options[:locale], count: number / base, raise: true)
       end
 
       def storage_unit_key
