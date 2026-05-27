@@ -5,7 +5,7 @@ module Com
     included do
       attribute :geo, :st_point, srid: 4326, geographic: true
 
-      before_save :get_location!, if: -> { defined?(:address) && geo_changed? }
+      #before_save :get_location!, if: -> { defined?(:address) && geo_changed? }
     end
 
     def set_geo!(lng, lat)
