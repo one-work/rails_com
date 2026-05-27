@@ -4,6 +4,8 @@ module Com
 
     included do
       attribute :geo, :st_point, srid: 4326, geographic: true
+
+      before_save :get_location!, if: -> { defined?(:address) && geo_changed? }
     end
 
     def set_geo!(lng, lat)
@@ -16,8 +18,9 @@ module Com
       end
     end
 
-    def get_location
-      QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
+    def get_location!
+      r = QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
+      self.address = r['address']
     end
 
     class_methods do
