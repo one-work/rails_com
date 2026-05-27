@@ -16,6 +16,10 @@ module Com
       end
     end
 
+    def get_location
+      QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
+    end
+
     class_methods do
 
       def near(lnt, lng, column: :geo)
