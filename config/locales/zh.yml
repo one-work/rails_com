@@ -20,6 +20,7 @@ zh:
     start_at: 开始时间
     finish_at: 截止时间
     code: 编码
+    geo: 地理位置
     created_at: 创建时间
     updated_at: 更新时间
   errors:
