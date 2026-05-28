@@ -151,7 +151,7 @@ module RailsCom::ActiveRecord
           r.delete(:default)
         end
 
-        if r[:array] && connection.adapter_name != 'PostgreSQL'
+        if r[:array] && ['PostgreSQL', 'PostGIS'].exclude?(connection.adapter_name)
           r.delete(:array)
           r[:migrate_type] = :json
           r.delete(:default) if r[:default].is_a? Array
@@ -165,7 +165,7 @@ module RailsCom::ActiveRecord
           end
         end
 
-        if r[:migrate_type] == :jsonb && connection.adapter_name != 'PostgreSQL'
+        if r[:migrate_type] == :jsonb && ['PostgreSQL', 'PostGIS'].exclude?(connection.adapter_name)
           r[:migrate_type] == :json
           r.delete(:default)
         end
