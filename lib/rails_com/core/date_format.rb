@@ -6,3 +6,4 @@ ActiveSupport::DateFormats.register(:week, ->(date) { I18n.t('date.day_names')[d
 ActiveSupport::DateFormats.register(:month, ->(date) { I18n.t('date.month_names')[date.month] })
 ActiveSupport::DateFormats.register(:year_month, '%Y年%m月')
 ActiveSupport::DateFormats.register(:month_day, ->(date) { "#{date.month}月#{date.mday}日" })
+ActiveSupport::DateFormats.register(:full, '%Y年%m月%d日')

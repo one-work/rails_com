@@ -8,11 +8,7 @@ module Com
       attribute :action_name, :string
       attribute :exception, :string
       attribute :exception_object, :string
-      if connection.adapter_name == 'PostgreSQL'
-        attribute :exception_backtrace, :string, array: true
-      else
-        attribute :exception_backtrace, :json, default: []
-      end
+      attribute :exception_backtrace, :json, default: []
       attribute :params, :json, default: {}
       attribute :headers, :json, default: {}
       attribute :cookie, :json, default: {}
