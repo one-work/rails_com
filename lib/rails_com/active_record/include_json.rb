@@ -6,7 +6,7 @@ module RailsCom::ActiveRecord
         if self.class.connection.adapter_name == 'PostgreSQL'
           "jsonb_set(#{sql}, '{#{col}}', (COALESCE(counters->>'#{col}', '0')::numeric #{num.negative? ? '-' : '+'} #{num.abs})::text::jsonb, true)"
         else
-          "json_set(#{sql}, '$.#{col}', (COALESCE(json_extract(counters, '$.#{col}'), '0') #{num.negative? ? '-' : '+'} #{num.abs}))"
+          "json_set(#{sql}, '$.#{col}', (COALESCE(json_extract_path(counters, '$.#{col}'), '0') #{num.negative? ? '-' : '+'} #{num.abs}))"
         end
       end
 
