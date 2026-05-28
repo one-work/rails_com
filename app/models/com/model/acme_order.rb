@@ -8,7 +8,7 @@ module Com
       attribute :url, :string
       attribute :issued_at, :datetime
       attribute :expire_at, :datetime, comment: '过期时间'
-      if connection.adapter_name == 'PostgreSQL'
+      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
         attribute :identifiers, :string, array: true, default: []
       else
         attribute :identifiers, :json, default: []

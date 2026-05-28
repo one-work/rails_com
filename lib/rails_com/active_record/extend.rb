@@ -158,7 +158,7 @@ module RailsCom::ActiveRecord
         end
 
         if r[:migrate_type] == :json
-          if connection.adapter_name == 'PostgreSQL' # Postgres 替换 json 为 jsonb
+          if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name) # Postgres 替换 json 为 jsonb
             r[:migrate_type] = :jsonb
           else
             r.delete(:default) # mysql 数据库不能接受 json 的默认值
@@ -236,7 +236,7 @@ module RailsCom::ActiveRecord
         if ref.polymorphic?
           r.merge! polymorphic: true
         end
-        if connection.adapter_name == 'PostgreSQL'
+        if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
           r.merge! type: :uuid
         end
         if [:ancestor, :descendant].include? ref.name

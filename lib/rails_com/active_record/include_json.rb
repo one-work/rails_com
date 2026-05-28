@@ -3,10 +3,10 @@ module RailsCom::ActiveRecord
 
     def update_json_counter(column: 'counters', **cols)
       sql_str = cols.inject(column) do |sql, (col, num)|
-        if self.class.connection.adapter_name == 'PostgreSQL'
+        if ['PostgreSQL', 'PostGIS'].include?(self.class.connection.adapter_name)
           "jsonb_set(#{sql}, '{#{col}}', (COALESCE(counters->>'#{col}', '0')::numeric #{num.negative? ? '-' : '+'} #{num.abs})::text::jsonb, true)"
         else
-          "json_set(#{sql}, '$.#{col}', (COALESCE(json_extract_path(counters, '$.#{col}'), '0') #{num.negative? ? '-' : '+'} #{num.abs}))"
+          "json_set(#{sql}, '$.#{col}', (COALESCE(jsonb_extract(counters, '$.#{col}'), '0') #{num.negative? ? '-' : '+'} #{num.abs}))"
         end
       end
 

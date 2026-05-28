@@ -25,7 +25,7 @@ module Meta
       attribute :synced_at, :datetime
       attribute :testable, :boolean
       attribute :request_as, :string, default: 'turbo_stream'
-      if connection.adapter_name == 'PostgreSQL'
+      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
         attribute :required_parts, :string, array: true, default: []
       else
         attribute :required_parts, :json

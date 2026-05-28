@@ -3,7 +3,7 @@ module Com
     extend ActiveSupport::Concern
 
     included do
-      if connection.adapter_name == 'PostgreSQL'
+      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
         attribute :id, :uuid
         attribute :parent_id, :uuid
       else

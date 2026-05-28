@@ -64,7 +64,7 @@ module RailsCom::Models
             if table_options[:id] == :uuid
               table_options.merge! default: 'uuidv7()'
             end
-          elsif node.connection.adapter_name == 'PostgreSQL'
+          elsif ['PostgreSQL', 'PostGIS'].include?(node.connection.adapter_name)
             table_options = {
               id: :uuid,
               default: 'uuidv7()'
