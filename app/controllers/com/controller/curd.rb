@@ -35,6 +35,7 @@ module Com
       if model.save
         render :create, locals: { model: model }, status: :created
       else
+        logger.debug "\e[35m  #{model.error_text}  \e[0m"
         render :new, locals: { model: model }, status: :unprocessable_entity
       end
     end
@@ -50,6 +51,7 @@ module Com
       if model.save
         render :update, locals: { model: model }
       else
+        logger.debug "\e[35m  #{model.error_text}  \e[0m"
         render :edit, locals: { model: model }, status: :unprocessable_entity
       end
     end
@@ -62,6 +64,7 @@ module Com
         index
         render :refresh
       else
+        logger.debug "\e[35m  #{model.error_text}  \e[0m"
         render :edit, locals: { model: model }, status: :unprocessable_entity
       end
     end
