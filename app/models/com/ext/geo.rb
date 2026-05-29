@@ -25,6 +25,14 @@ module Com
       self.address = r['address'] if r
     end
 
+    def set_geo_by_ip!(ip)
+      r = QqMapHelper.ip ip
+      location = r.fetch('location', {})
+      if location.present?
+        self.update geo: RGeo::Geos.factory(srid: 4326).point(location['lng'], location['lat'])
+      end
+    end
+
     class_methods do
 
       def near(lnt, lng, column: :geo)
