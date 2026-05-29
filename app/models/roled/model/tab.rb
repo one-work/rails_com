@@ -16,14 +16,18 @@ module Roled
 
     def real_path(**options)
       if Rails.app.config.relative_url_root.present?
-        url = "#{Rails.app.config.relative_url_root}/#{path}"
+        url = URI("#{Rails.app.config.relative_url_root}/#{path}")
       else
-        url = path
+        url = URI(path)
+      end
+
+      request = options.delete(:request)
+      if URI(request.referer).host == url.host
+        options.delete(:auth_token)
       end
 
       options.compact!
       if options.present?
-        url = URI(url)
         url.query = options.to_query
       end
 
