@@ -22,7 +22,7 @@ module Roled
       end
 
       request = options.delete(:request)
-      if URI(request.referer).host == url.host
+      if URI(request.referer.to_s).host == url.host
         options.delete(:auth_token)
       end
 
