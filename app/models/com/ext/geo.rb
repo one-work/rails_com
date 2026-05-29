@@ -18,6 +18,13 @@ module Com
       end
     end
 
+    def geo_hash
+      {
+        lat: geo.lat,
+        lng: geo.lon
+      }
+    end
+
     def get_location!
       r = QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
     rescue
