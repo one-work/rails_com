@@ -20,9 +20,9 @@ module Com
 
     def geo_hash
       {
-        lat: geo.lat,
-        lng: geo.lon
-      }
+        lat: geo&.lat,
+        lng: geo&.lon
+      }.compact
     end
 
     def get_location!
