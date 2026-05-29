@@ -14,12 +14,20 @@ module Roled
       positioned on: [:role_id]
     end
 
-    def real_path
+    def real_path(**options)
       if Rails.app.config.relative_url_root.present?
-        "#{Rails.app.config.relative_url_root}/#{path}"
+        url = "#{Rails.app.config.relative_url_root}/#{path}"
       else
-        path
+        url = path
       end
+
+      options.compact!
+      if options.present?
+        url = URI(url)
+        url.query = options.to_query
+      end
+
+      url.to_s
     end
 
   end
