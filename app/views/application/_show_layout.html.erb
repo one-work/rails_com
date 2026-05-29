@@ -2,7 +2,13 @@
   <div>
     <dt>ID</dt>
     <dd>
-      <span><%= model.id %></span>
+      <div data-controller="clipboard">
+        <span data-clipboard-target="source"><%= model.id %></span>
+        <span data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</span>
+        <div data-clipboard-target="toast" class="tag is-badge is-success display-none">
+          <%= svg_tag 'check' %>
+        </div>
+      </div>
     </dd>
   </div>
   <%= yield %>
