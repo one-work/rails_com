@@ -26,6 +26,7 @@ module Com
     end
 
     def get_location!
+      return if address_changed?
       r = QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
     rescue
     ensure
