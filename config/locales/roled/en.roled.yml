@@ -64,7 +64,6 @@ en:
         create_govern: 创建新章节
         new_rule_placeholder: 新规则名称
         create_rule: 创建新规则
-
       new:
         create: 创建新角色
         name: 角色名称 (字符串)

@@ -88,6 +88,3 @@ en:
       ssh_keys:
         index:
           title: SSH Keys
-  job:
-    panel:
-      title: Job Admin
