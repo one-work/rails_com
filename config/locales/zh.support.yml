@@ -19,13 +19,13 @@ zh:
           pb: PB
           eb: EB
       distance_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           m: 米
           km: 千米
           other: 千米
       decimal_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           femto: Quadrillionth
           pico: Trillionth

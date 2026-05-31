@@ -20,6 +20,13 @@ module ActiveSupport
         "human.distance_units.units.#{key_end}"
       end
 
+      def exponent
+        max = STORAGE_UNITS.size - 1
+        exp = (Math.log(number.abs) / Math.log(base)).to_i
+        exp = max if exp > max # avoid overflow for the highest unit
+        exp
+      end
+
       def base
         1000
       end
