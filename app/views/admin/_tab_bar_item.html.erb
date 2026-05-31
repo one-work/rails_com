@@ -11,4 +11,4 @@
 <%= link_to('/board', data: { turbo_action: 'replace' }, class: active_helper(paths: '/board', active: 'is-active')) do %>
   <%= svg_tag 'user', class: 'icon is-medium mr-0' %>
   <span class="family-monospace size-7"><%= t('board.home.index.title') %></span>
-<% end %>
+<% end if false %>
