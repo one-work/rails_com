@@ -1,0 +1,96 @@
+zh:
+  com:
+    common:
+      state_return:
+        title: 返回登录前页面
+    admin:
+      filters:
+        detect:
+          title: 保存搜索
+    my:
+      ssh_keys:
+        index:
+          title: 私有部署
+        deploy:
+          title: 部署
+    panel:
+      title: 系统配置
+      home:
+        index:
+          title: 系统配置
+      acme_accounts:
+        index:
+          title: SSL 证书申请
+      acme_orders:
+        index:
+          title: SSL 订单
+        order:
+          title: 生成订单
+        verify:
+          title: DNS验证
+        cert:
+          title: 颁发证书
+      acme_identifiers:
+        index:
+          title: SSL 订单详情
+      acme_servicers:
+        index:
+          title: 域名托管商
+      blob_defaults:
+        index:
+          title: 默认图片
+        new:
+          title: 新建图片
+      blobs:
+        index:
+          title: 文件
+        unattached:
+          title: 游离文件
+      attachments:
+        index:
+          title: 附件管理
+      detectors:
+        index:
+          title: 监测器
+      err_bots:
+        index:
+          title: 报错机器人
+      err_summaries:
+        index:
+          title: 错误日志
+        destroy:
+          title: 删除汇总
+        clean:
+          title: 删除明细
+      errs:
+        index:
+          title: 错误日志
+        clean_other:
+          title: 删除其他错误
+          confirm: 确认
+      csps:
+        index:
+          title: 内容安全
+      inbound_emails:
+        index:
+          title: 邮件管理
+      pg_publications:
+        index:
+          title: 发布者
+        create_all:
+          title: 全量复制
+      pg_publication_tables:
+        index:
+          title: 开通表
+      pg_replication_slots:
+        index:
+          title: 复制槽
+      puma:
+        stats:
+          title: Puma 运行状态
+      states:
+        index:
+          title: 状态
+      ssh_keys:
+        index:
+          title: SSH
