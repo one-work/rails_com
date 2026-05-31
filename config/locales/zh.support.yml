@@ -7,7 +7,7 @@ zh:
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
             one: 字节
