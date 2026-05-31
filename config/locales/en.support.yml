@@ -1,0 +1,9 @@
+en:
+  number:
+    human:
+      distance_units:
+        format: '%n %u'
+        units:
+          m: m
+          km: km
+          other: km
