@@ -1,0 +1,15 @@
+<div data-controller="navbar" class="as-bar">
+  <% if current_state %>
+    <%= link_to(current_state.prev_path, text: true, class: 'px-4') do %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
+    <% end %>
+  <% else %>
+    <%= link_to({ controller: '/board/home' }, class: 'px-4') do %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
+    <% end %>
+  <% end %>
+  <div class="bar-title"><%= t('.title') %></div>
+  <%= link_to({ controller: '/board/home' }, class: 'px-4') do %>
+    <%= svg_tag 'user', kind: 'regular' %>
+  <% end %>
+</div>
