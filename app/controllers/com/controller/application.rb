@@ -13,7 +13,7 @@ module Com
     included do
       layout -> { turbo_frame_layout }
       before_action :set_locale, :set_timezone, :set_variant
-      before_action :set_roled_tabs, if: -> { request.variant.any?(:phone) }
+      before_action :set_roled_tabs, if: -> { request.variant.any? :phone }
       helper_method :current_title, :current_organ_name, :current_state, :current_filters, :default_params, :turbo_frame_request_id, :tab_item_items
       after_action :set_state, if: -> { request.variant.any? :phone }
     end
