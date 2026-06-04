@@ -30,8 +30,6 @@ module Com
 
       has_one :organ_domain, class_name: 'Org::OrganDomain', primary_key: [:organ_id, :host], foreign_key: [:organ_id, :host]
 
-      after_find :destroy_after_used, if: -> { destroyable? }
-      after_save :destroy_after_used, if: -> { destroyable? && saved_change_to_destroyable? }
       before_destroy :delete_descendants
     end
 
@@ -111,10 +109,6 @@ module Com
     def ancestor_path(path)
       paths = ancestors.each_with_object({}) { |i, h| h.merge! i.path => i }
       paths[path]
-    end
-
-    def destroy_after_used
-      StateDestroyJob.perform_later(self.id)
     end
 
     def path_eql?(params_controller, params_action)
