@@ -30,7 +30,7 @@ module Com
 
       has_one :organ_domain, class_name: 'Org::OrganDomain', primary_key: [:organ_id, :host], foreign_key: [:organ_id, :host]
 
-      after_save :init_invite!, if: -> { params.key?('invite_code') && user.present? && user_id_changed? }
+      after_save :init_invite!, if: -> { params.key?('invite_code') && user.present? && saved_change_to_user_id? }
       before_destroy :delete_descendants
     end
 
