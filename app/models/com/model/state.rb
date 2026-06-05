@@ -30,6 +30,7 @@ module Com
 
       has_one :organ_domain, class_name: 'Org::OrganDomain', primary_key: [:organ_id, :host], foreign_key: [:organ_id, :host]
 
+      after_save :init_invite!, if: -> { params.key?('invite_code') && user.present? && user_id_changed? }
       before_destroy :delete_descendants
     end
 
@@ -121,6 +122,10 @@ module Com
 
     def get?
       request_method == 'GET'
+    end
+
+    def init_invite!
+      user.user_invites.find_or_create_by(code: params['invite_code'])
     end
 
     def delete_descendants
