@@ -1,5 +1,5 @@
 module Com
-  class StateDestroyJob < ApplicationJob
+  class StateCleanJob < ApplicationJob
 
     def perform
       State.where(destroyable: true, created_at: ..1.hour.ago).destroy_all
