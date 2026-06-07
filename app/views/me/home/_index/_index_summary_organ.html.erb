@@ -4,11 +4,11 @@
   </div>
   <div class="fixed-grid has-2-cols p-3">
     <div class="grid">
-      <%= link_to({ controller: 'trade/admin/orders' }, class: 'cell has-column-centered') do %>
+      <%= link_to({ controller: 'trade/admin/orders', 'created_at-gte': Date.today }, class: 'cell has-column-centered') do %>
         <strong class="size-5"><%= current_organ.counters['amount'].to_money.format.html_safe %></strong>
         <p class="size-7 text-grey">营业额</p>
       <% end %>
-      <%= link_to({ controller: 'trade/admin/orders' }, class: 'cell has-column-centered') do %>
+      <%= link_to({ controller: 'trade/admin/orders', 'created_at-gte': Date.today }, class: 'cell has-column-centered') do %>
         <strong class="size-5"><%= current_organ.counters['count'].to_i %></strong>
         <p class="size-7 text-grey">单数</p>
       <% end %>
