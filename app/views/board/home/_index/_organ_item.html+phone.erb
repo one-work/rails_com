@@ -1,6 +1,6 @@
-<div class="box is-padding-less">
-  <div class="box-header">用户身份</div>
-  <div class="box-body">
+<div class="card">
+  <div class="card-header">用户身份</div>
+  <div class="card-content">
     <% if current_organ %>
       <%= render partial: 'organ', locals: { organ: current_organ } %>
     <% end %>
