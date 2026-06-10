@@ -9,7 +9,13 @@
     <% end %>
   <% end %>
   <div class="bar-title"><%= t('.title') %></div>
-  <%= link_to({ controller: '/board/home' }, class: 'px-4') do %>
-    <%= svg_tag 'user', kind: 'regular' %>
+  <% if request.subdomain.end_with?('admin') %>
+    <%= link_to({ controller: '/me/home' }, class: 'px-4') do %>
+      <%= svg_tag 'user', kind: 'regular' %>
+    <% end %>
+  <% else %>
+    <%= link_to({ controller: '/board/home' }, class: 'px-4') do %>
+      <%= svg_tag 'user', kind: 'regular' %>
+    <% end %>
   <% end %>
 </div>
