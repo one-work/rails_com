@@ -247,7 +247,7 @@ module Com
     end
 
     def state_reset_filter
-      tab_item_items.include?(request.path) || controller_name == 'home'
+      tab_item_items.include?(request.path) || request.path == '/'
     end
 
     # 四种情况
