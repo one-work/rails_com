@@ -1,9 +1,26 @@
 <% if referer_eql?(controller_path, 'edit') %>
   <%= turbo_stream.visit %>
 <% elsif referer_eql?(controller_path, 'show') %>
-  <%= turbo_stream.update 'box', partial: 'show', locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") } %>
+  <%=
+    turbo_stream.update(
+      'box',
+      partial: 'show',
+      locals: {
+        model: defined?(model) ? model : instance_variable_get("@#{model_name}")
+      }
+    )
+  %>
   <%= turbo_stream.remove 'modal_form' %>
 <% else %>
-  <%= turbo_stream.replace "tr_#{params[:id]}", partial: 'index_tbody', layout: 'index_tr', locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") } %>
+  <%=
+    turbo_stream.replace(
+      "tr_#{params[:id]}",
+      partial: 'index_tbody',
+      layout: 'index_tr',
+      locals: {
+        model: defined?(model) ? model : instance_variable_get("@#{model_name}")
+      }
+    )
+  %>
   <%= turbo_stream.remove 'modal_form' %>
 <% end %>
