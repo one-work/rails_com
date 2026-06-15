@@ -9,7 +9,6 @@
     <meta name="turbo-refresh-scroll" content="preserve">
     <%= action_cable_meta_tag %>
     <%= yield :reload %>
-    <%= javascript_include_tag 'wx_ready', 'data-turbo-track': 'reload' %>
     <script
       src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"
       referrerpolicy="origin"
@@ -18,6 +17,7 @@
       data-url="<%= url_for(controller: '/wechat/wechat', action: 'js') %>"
       async
     ></script>
+    <%= javascript_include_tag 'wx_ready', 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
