@@ -3,6 +3,6 @@
   data-controller="wx-share"
   data-wx-share-title-value="<%= t('.title') %>"
   data-wx-share-desc-value="邀请您提前下单，到店即可享用美味"
-  data-wx-share-link-value="<%= url_for(only_path: false) %>"
+  data-wx-share-link-value="<%= url_for(only_path: false, **{ invite_code: current_user&.invite_code }.compact) %>"
   data-wx-share-image-value="<%= asset_path('logo.png') %>"
 ></div>

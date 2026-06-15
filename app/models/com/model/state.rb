@@ -125,7 +125,12 @@ module Com
     end
 
     def init_invite!
-      user.user_invites.find_or_create_by(code: params['invite_code'])
+      if params['invite_code'].start_with?('USER')
+        inviter = Auth::User.find_by(invite_code: params['invite_code'])
+      end
+      if inviter
+        user.user_invites.find_or_create_by(inviter_id: inviter.id)
+      end
     end
 
     def delete_descendants
