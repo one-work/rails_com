@@ -207,19 +207,28 @@ module Roled
       c
     end
 
+    def all_identifiers
+      role_hash.each_with_object([]) do |(con, actions), arr|
+        actions.each do |action|
+          arr << "#{con}#{action}"
+        end
+      end
+    end
+
     def sync
-      leaves = role_hash.leaves
-      rr_ids = role_rules.pluck(:meta_action_id)
+      leaves = all_identifiers
+      rr_ids = role_rules.pluck(:identifier)
 
-      role_rules.where(meta_action_id: rr_ids - leaves).delete_all
+      role_rules.where(identifier: rr_ids - leaves).delete_all
 
-      adds = Meta::Action.where(id: leaves - rr_ids).each_with_object([]) do |meta_action, arr|
+      adds = Meta::Action.where(identifier: leaves - rr_ids).each_with_object([]) do |meta_action, arr|
         arr << {
           business_identifier: meta_action.business_identifier,
           namespace_identifier: meta_action.namespace_identifier,
           controller_path: meta_action.controller_path,
           action_name: meta_action.action_name,
-          meta_action_id: meta_action.id
+          meta_action_id: meta_action.id,
+          identifier: meta_action.identifier
         }
       end
 
