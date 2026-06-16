@@ -9,8 +9,7 @@ module Roled
       attribute :visible, :boolean, default: false
       attribute :role_hash, :json, default: {}
       attribute :default, :boolean, default: false
-
-      belongs_to :organ, class_name: 'Org::Organ', optional: true
+      attribute :subdomain, :string
 
       has_many :role_whos, dependent: :destroy_async
       has_many :tabs, dependent: :delete_all
