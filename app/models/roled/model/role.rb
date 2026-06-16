@@ -112,20 +112,6 @@ module Roled
       end
     end
 
-    def namespace_on(business_identifier, namespace_identifier)
-      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
-      all = meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.actions.pluck(:action_name) }
-
-      role_hash.merge! all
-    end
-
-    def namespace_off(business_identifier:, namespace_identifier:)
-      controller_paths = Controller.where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
-      role_hash.except!(*controller_paths)
-
-      role_hash
-    end
-
     def namespace_role(meta_namespace, business_identifier = '')
       r1 = Meta::Action.where(business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
       r2 = role_rules.where(business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
@@ -140,6 +126,34 @@ module Roled
       end
     end
 
+    def controller_role(meta_controller)
+      r1 = meta_controller.actions.pluck(:identifier)
+      r2 = role_rules.where(controller_path: meta_controller.controller_path).pluck(:identifier)
+      r = r1 - r2
+
+      if r2.blank?
+        0
+      elsif r.blank?
+        1
+      else
+        -1
+      end
+    end
+
+    def namespace_on(business_identifier, namespace_identifier)
+      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
+      all = meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.actions.pluck(:action_name) }
+
+      role_hash.merge! all
+    end
+
+    def namespace_off(business_identifier:, namespace_identifier:)
+      controller_paths = Controller.where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
+      role_hash.except!(*controller_paths)
+
+      role_hash
+    end
+
     def controller_on(meta_controller)
       role_hash.merge! meta_controller.role_item
     end
@@ -147,15 +161,6 @@ module Roled
     def controller_off(meta_controller)
       role_hash.delete(meta_controller.controller_path)
       role_hash
-    end
-
-    def controller_role(meta_controller)
-      r = has_role?(controller: meta_controller.controller_path)
-      if r == meta_controller.role_hash
-        1
-      elsif r.blank?
-        0
-      end
     end
 
     def action_on(meta_action)
