@@ -127,15 +127,16 @@ module Roled
     end
 
     def namespace_role(meta_namespace, business_identifier = '')
-      r = has_role?(
-        business: business_identifier,
-        namespace: meta_namespace.identifier
-      )
+      r1 = Meta::Action.where(business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
+      r2 = role_rules.where(business_identifier: meta_business.identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
+      r = r1 - r2
 
-      if r == meta_namespace.role_hash(business_identifier)
-        1
-      elsif r.blank?
+      if r2.blank?
         0
+      elsif r.blank?
+        1
+      else
+        -1
       end
     end
 
