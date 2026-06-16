@@ -126,6 +126,10 @@ module Roled
       end
     end
 
+    def xx
+      role_rules.pluck(:controller_path, :identifier)
+    end
+
     def controller_role(meta_controller)
       r1 = meta_controller.actions.pluck(:identifier)
       r2 = role_rules.where(controller_path: meta_controller.controller_path).pluck(:identifier)

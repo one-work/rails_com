@@ -11,6 +11,12 @@ module RailsCom::ActiveRecord
         .where(Arel.sql("total < :threshold + #{column}"), threshold: threshold)
     end
 
+    def group_with_arr(group_column, arr_column)
+      select(group_column, "array_agg(#{arr_column}) as arr").group(group_column).each_with_object({}) do |x, h|
+        h.merge! x.controller_path => x.arr
+      end
+    end
+
   end
 end
 
