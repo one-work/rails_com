@@ -152,18 +152,13 @@ module Roled
     end
 
     def action_off(meta_action)
-      actions_hash = role_hash.dig(meta_action.business_identifier, meta_action.namespace_identifier, meta_action.controller_path)
-      return if actions_hash.blank?
+      exist = role_hash.fetch(meta_action.controller_path, [])
+      exist.delete(meta_action.action_name)
 
-      actions_hash.delete(meta_action.action_name)
-      if actions_hash.blank?
-        role_hash.dig(meta_action.business_identifier, meta_action.namespace_identifier).delete(meta_action.controller_path)
-      end
-      if role_hash.dig(meta_action.business_identifier, meta_action.namespace_identifier).blank?
-        role_hash.dig(meta_action.business_identifier).delete(meta_action.namespace_identifier)
-      end
-      if role_hash.dig(meta_action.business_identifier).blank?
-        role_hash.delete(meta_action.business_identifier)
+      if exist.blank?
+        role_hash.delete(meta_action.controller_path)
+      else
+        role_hash.merge! meta_action.controller_path => exist
       end
 
       role_hash
