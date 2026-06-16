@@ -26,8 +26,6 @@ module RailsCom::RoleHelper
 
     possible_result = RailsCom::Routes.controllers.dig(path_params[:controller], path_params[:action]) || {}
     result_params = {
-      business: possible_result[:business] || params[:business].to_s,
-      namespace: possible_result[:namespace] || params[:namespace].to_s,
       controller: possible_result[:controller] || params[:controller],
       action: possible_result[:action] || params[:action]
     }
@@ -40,7 +38,7 @@ module RailsCom::RoleHelper
   end
 
   def role_permit?(**path_params)
-    meta_params = path_params.slice(:business, :namespace, :controller, :action).symbolize_keys
+    meta_params = path_params.slice(:controller, :action).symbolize_keys
     extra_params = path_params.except(:controller, :action, :business, :namespace)
     if meta_params[:controller]
       filtered = meta_params[:controller].to_controller&.whether_filter_role(meta_params[:action])

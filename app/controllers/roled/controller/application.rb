@@ -8,13 +8,7 @@ module Roled
 
     private
     def support_organ
-      if current_organ.has_role?(
-        business: params[:business] || 'application',
-        namespace: params[:namespace] || 'application',
-        controller: controller_name,
-        action: action_name,
-        params: params
-      )
+      if current_organ.has_role?(controller: controller_path, action: action_name, params: params)
         return
       elsif current_organ.nil?
         return
@@ -26,13 +20,7 @@ module Roled
     end
 
     def require_role
-      if rails_role_user && rails_role_user.has_role?(
-        business: params[:business],
-        namespace: params[:namespace],
-        controller: controller_path,
-        action: action_name,
-        params: params
-      )
+      if rails_role_user && rails_role_user.has_role?(controller: controller_path, action: action_name, params: params)
         return
       end
 
