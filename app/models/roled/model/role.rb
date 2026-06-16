@@ -99,12 +99,16 @@ module Roled
     end
 
     def business_role(meta_business)
-      r = has_role?(business: meta_business.identifier)
+      r1 = meta_business.actions.pluck(:identifier)
+      r2 = role_rules.where(business_identifier: meta_business.identifier).pluck(:identifier)
 
-      if r == meta_business.role_hash
-        1
+      r = r1 - r2
+      if r2.blank?
+        0  # 空白
       elsif r.blank?
-        0
+        1  # 都已选
+      else
+        -1
       end
     end
 
