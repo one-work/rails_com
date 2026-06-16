@@ -77,12 +77,16 @@ module Roled
       end
     end
 
-    def business_on(meta_business)
-      role_hash.deep_merge! meta_business.role_path
+    def business_on(business_identifier)
+      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s)
+      all = meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.actions.pluck(:action_name) }
+
+      role_hash.merge! all
     end
 
-    def business_off(business_identifier:)
-      role_hash.delete business_identifier.to_s
+    def business_off(business_identifier)
+      controller_paths = Controller.where(business_identifier: business_identifier.to_s)
+      role_hash.except!(*controller_paths)
 
       role_hash
     end
@@ -97,18 +101,16 @@ module Roled
       end
     end
 
-    def namespace_on(meta_namespace, business_identifier)
-      role_hash.deep_merge! meta_namespace.role_path(business_identifier)
+    def namespace_on(business_identifier, namespace_identifier)
+      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
+      all = meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.actions.pluck(:action_name) }
+
+      role_hash.merge! all
     end
 
     def namespace_off(business_identifier:, namespace_identifier:)
-      namespaces_hash = role_hash.fetch(business_identifier)
-      return if namespaces_hash.blank?
-      namespaces_hash.delete(namespace_identifier)
-
-      if namespaces_hash.blank?
-        role_hash.delete(business_identifier)
-      end
+      controller_paths = Controller.where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
+      role_hash.except!(*controller_paths)
 
       role_hash
     end

@@ -35,9 +35,8 @@ module Meta
       }
     end
 
-    def role_hash(business_identifier = '')
-      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s, namespace_identifier: identifier)
-      meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.role_hash }
+    def role_items(business_identifier = '')
+
     end
 
     class_methods do

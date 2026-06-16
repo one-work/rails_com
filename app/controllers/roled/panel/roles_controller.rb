@@ -39,7 +39,7 @@ module Roled
 
     def business_on
       @business = Meta::Business.find_by identifier: params[:business_identifier]
-      @role.business_on @business
+      @role.business_on params[:business_identifier]
       @role.save
 
       render :namespaces
@@ -47,7 +47,7 @@ module Roled
 
     def business_off
       @business = Meta::Business.find_by identifier: params[:business_identifier]
-      @role.business_off(business_identifier: @business.identifier)
+      @role.business_off(params[:business_identifier])
       @role.save
 
       render :namespaces
@@ -55,7 +55,7 @@ module Roled
 
     def namespace_on
       @namespace = Meta::Namespace.find_by identifier: params[:namespace_identifier]
-      @role.namespace_on(@namespace, params[:business_identifier])
+      @role.namespace_on(params[:business_identifier], params[:namespace_identifier])
       @role.save
 
       @controllers = Meta::Controller.where(params.permit(:business_identifier, :namespace_identifier))
@@ -65,7 +65,7 @@ module Roled
 
     def namespace_off
       @namespace = Meta::Namespace.find_by identifier: params[:namespace_identifier]
-      @role.namespace_off(namespace_identifier: @namespace.identifier, business_identifier: params[:business_identifier])
+      @role.namespace_off(params[:business_identifier], params[:namespace_identifier])
       @role.save
 
       @controllers = Meta::Controller.where(params.permit(:business_identifier, :namespace_identifier))
