@@ -68,6 +68,10 @@ module Meta
       }
     end
 
+    def role_item
+      { controller_path => actions.pluck(:action_name) }
+    end
+
     def role_list
       {
         business_identifier: business_identifier.to_s,

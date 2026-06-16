@@ -7,6 +7,7 @@ module Roled
       attribute :namespace_identifier, :string, default: ''
       attribute :controller_path, :string
       attribute :action_name, :string
+      attribute :identifier, :string, index: true
       attribute :params_name, :string
       attribute :params_identifier, :string
 

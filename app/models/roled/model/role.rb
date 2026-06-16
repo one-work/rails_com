@@ -127,23 +127,11 @@ module Roled
     end
 
     def controller_on(meta_controller)
-      role_hash.deep_merge! meta_controller.role_path
+      role_hash.merge! meta_controller.role_item
     end
 
-    def controller_off(business_identifier:, namespace_identifier:, controller_path:)
-      namespaces_hash = role_hash.fetch(business_identifier, {})
-      return if namespaces_hash.blank?
-      controllers_hash = namespaces_hash.fetch(namespace_identifier, {})
-      return if controllers_hash.blank?
-      controllers_hash.delete(controller_path)
-
-      if controllers_hash.blank?
-        namespaces_hash.delete(namespace_identifier)
-      end
-      if namespaces_hash.blank?
-        role_hash.delete(business_identifier)
-      end
-
+    def controller_off(meta_controller)
+      role_hash.delete(meta_controller.controller_path)
       role_hash
     end
 
@@ -157,7 +145,10 @@ module Roled
     end
 
     def action_on(meta_action)
-      role_hash.deep_merge!(meta_action.role_path)
+      exist = role_hash.fetch(meta_action.controller_path, [])
+      exist << meta_action.action_name unless exist.include?(meta_action.action_name)
+
+      role_hash.merge! meta_action.controller_path => exist
     end
 
     def action_off(meta_action)

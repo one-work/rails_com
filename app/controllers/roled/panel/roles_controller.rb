@@ -84,7 +84,7 @@ module Roled
 
     def controller_off
       @controller = Meta::Controller.find params[:meta_controller_id]
-      @role.controller_off(**@controller.role_list)
+      @role.controller_off(@controller)
       @role.save
 
       render :actions_toggle
