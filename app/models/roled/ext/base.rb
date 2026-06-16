@@ -62,23 +62,20 @@ module Roled
       r
     end
 
-    def any_role?(*any_roles, **roles_hash)
+    def any_role?(business: nil, namespace: nil, controller: nil)
       if admin?
         return true
       end
 
-      if (any_roles.map(&:to_s) & rails_role.keys).present?
-        return true
+      if controller
+        role_hash[controller].present?
+      elsif business && namespace
+        business_hash.fetch(business, []).include?(namespace)
+      elsif business
+        business_hash[business].present?
+      else
+        false
       end
-
-      roles_hash.stringify_keys!
-      roles_hash.slice(*rails_role.keys).each do |govern, rules|
-        h_keys = rails_role[govern].select { |i| i }.keys
-        rules = Array(rules).map(&:to_s)
-        return true if (h_keys & rules).present?
-      end
-
-      false
     end
 
     def landmark_rules

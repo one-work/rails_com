@@ -68,4 +68,20 @@ module RailsCom::RoleHelper
     result
   end
 
+  def any_role?(business: nil, namespace: nil, controller: nil)
+    if defined?(current_organ) && current_organ
+      organ_permitted = current_organ.any_role?(business: business, namespace: namespace, controller: controller)
+    else
+      organ_permitted = true
+    end
+
+    if defined?(rails_role_user) && rails_role_user
+      user_permitted = rails_role_user.any_role?(business: business, namespace: namespace, controller: controller)
+    else
+      user_permitted = true
+    end
+
+    result = organ_permitted && user_permitted
+  end
+
 end

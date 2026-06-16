@@ -16,77 +16,77 @@
   <% end %>
   </div>
   <ul class="menu-list">
-    <% if defined?(RailsOrg) && role_permit?(business: 'org', namespace: 'admin') %>
+    <% if defined?(RailsOrg) && any_role?(business: 'org', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'org/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/org_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsFactory) && role_permit?(business: 'factory', namespace: 'admin') %>
+    <% if defined?(RailsFactory) && any_role?(business: 'factory', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'factory/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/factory_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsTrade) && role_permit?(business: 'trade', namespace: 'admin') %>
+    <% if defined?(RailsTrade) && any_role?(business: 'trade', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'trade/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/trade_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsShip) && role_permit?(business: 'ship', namespace: 'admin') %>
+    <% if defined?(RailsShip) && any_role?(business: 'ship', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'ship/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/ship_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsSpace) && role_permit?(business: 'space', namespace: 'admin') %>
+    <% if defined?(RailsSpace) && any_role?(business: 'space', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'space/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/space_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsCrm) && role_permit?(business: 'crm', namespace: 'admin') %>
+    <% if defined?(RailsCrm) && any_role?(business: 'crm', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'crm/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/crm_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsBench) && role_permit?(business: 'bench', namespace: 'admin') %>
+    <% if defined?(RailsBench) && any_role?(business: 'bench', namespace: 'admin') %>
     <li class="<%= active_helper(modules: 'bench/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
       <%= render 'admin/bench_nav_popup' %>
     </li>
     <% end %>
-    <% if defined?(RailsCms) && role_permit?(business: 'cms', namespace: 'admin') %>
+    <% if defined?(RailsCms) && any_role?(business: 'cms', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'cms/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/cms_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsMarkdown) && role_permit?(business: 'markdown', namespace: 'admin') %>
+    <% if defined?(RailsMarkdown) && any_role?(business: 'markdown', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'markdown/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/markdown_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsPrint) && role_permit?(business: 'print', namespace: 'admin') %>
+    <% if defined?(RailsPrint) && any_role?(business: 'print', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'print/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/print_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsFinance) && role_permit?(business: 'finance', namespace: 'admin') %>
+    <% if defined?(RailsFinance) && any_role?(business: 'finance', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'finance/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/finance_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsEvent) && role_permit?(business: 'eventual', namespace: 'admin') %>
+    <% if defined?(RailsEvent) && any_role?(business: 'eventual', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'eventual/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/eventual_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsNotice) && role_permit?(business: 'notice', namespace: 'admin') %>
+    <% if defined?(RailsNotice) && any_role?(business: 'notice', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'notice/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/notice_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsSync) && role_permit?(business: 'sync', namespace: 'admin') %>
+    <% if defined?(RailsSync) && any_role?(business: 'sync', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'sync/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/sync_nav_popup' %>
       </li>
     <% end %>
-    <% if defined?(RailsWechat) && role_permit?(business: 'wechat', namespace: 'admin') %>
+    <% if defined?(RailsWechat) && any_role?(business: 'wechat', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'wechat/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/wechat_nav_popup' %>
       </li>
