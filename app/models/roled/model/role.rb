@@ -220,7 +220,10 @@ module Roled
       leaves = all_identifiers
       rr_ids = role_rules.pluck(:identifier)
 
-      role_rules.where(identifier: rr_ids - leaves).delete_all
+      removes = rr_ids - leaves
+      if removes.present?
+        role_rules.where(identifier: removes).delete_all
+      end
 
       adds = Meta::Action.where(identifier: leaves - rr_ids).each_with_object([]) do |meta_action, arr|
         arr << {
