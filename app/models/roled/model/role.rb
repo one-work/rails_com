@@ -85,14 +85,14 @@ module Roled
     end
 
     def business_on(business_identifier)
-      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s)
+      meta_controllers = Meta::Controller.includes(:actions).where(business_identifier: business_identifier.to_s)
       all = meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.actions.pluck(:action_name) }
 
       role_hash.merge! all
     end
 
     def business_off(business_identifier)
-      controller_paths = Controller.where(business_identifier: business_identifier.to_s)
+      controller_paths = Meta::Controller.where(business_identifier: business_identifier.to_s)
       role_hash.except!(*controller_paths)
 
       role_hash
@@ -126,13 +126,9 @@ module Roled
       end
     end
 
-    def xx
-      role_rules.pluck(:controller_path, :identifier)
-    end
-
     def controller_role(meta_controller)
-      r1 = meta_controller.actions.pluck(:identifier)
-      r2 = role_rules.where(controller_path: meta_controller.controller_path).pluck(:identifier)
+      r1 = meta_controller.actions.pluck(:action_name)
+      r2 = role_hash.fetch(meta_controller.controller_path, [])
       r = r1 - r2
 
       if r2.blank?
@@ -145,14 +141,14 @@ module Roled
     end
 
     def namespace_on(business_identifier, namespace_identifier)
-      meta_controllers = Controller.includes(:actions).where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
+      meta_controllers = Meta::Controller.includes(:actions).where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
       all = meta_controllers.each_with_object({}) { |i, h| h.merge! i.controller_path => i.actions.pluck(:action_name) }
 
       role_hash.merge! all
     end
 
-    def namespace_off(business_identifier:, namespace_identifier:)
-      controller_paths = Controller.where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier)
+    def namespace_off(business_identifier, namespace_identifier)
+      controller_paths = Meta::Controller.where(business_identifier: business_identifier.to_s, namespace_identifier: namespace_identifier).pluck(:controller_path)
       role_hash.except!(*controller_paths)
 
       role_hash
