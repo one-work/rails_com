@@ -38,7 +38,7 @@ module Roled
     end
 
     def sync_to_business_hash
-      r = Meta::Controller.select(:business_identifier, :namespace_identifier).distinct.where(controller_path: role_hash.keys)
+      r = Meta::Controller.select(:business_identifier, :namespace_identifier).distinct.where(controller_path: role_hash.keys).pluck(:business_identifier, :namespace_identifier)
       self.business_hash = r.to_array_h.to_combine_h
     end
 
@@ -128,7 +128,7 @@ module Roled
 
     def namespace_role(meta_namespace, business_identifier = '')
       r1 = Meta::Action.where(business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
-      r2 = role_rules.where(business_identifier: meta_business.identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
+      r2 = role_rules.where(business_identifier: business_identifier, namespace_identifier: meta_namespace.identifier).pluck(:identifier)
       r = r1 - r2
 
       if r2.blank?
@@ -211,7 +211,7 @@ module Roled
     def all_identifiers
       role_hash.each_with_object([]) do |(con, actions), arr|
         actions.each do |action|
-          arr << "#{con}#{action}"
+          arr << "#{con}##{action}"
         end
       end
     end
