@@ -1,7 +1,17 @@
 <%= turbo_stream.replace @business.tr_id, partial: 'show_business', locals: { meta_business: @business, expand: true } %>
 <% if params[:expand].present? %>
   <% @business.meta_namespaces.each do |meta_namespace| %>
-    <%= turbo_stream.replace meta_namespace.tr_id(@business.identifier), partial: 'show_namespace', locals: { meta_namespace: meta_namespace, business_identifier: @business.identifier, hide: true } %>
+    <%=
+      turbo_stream.replace(
+        meta_namespace.tr_id(@business.identifier),
+        partial: 'show_namespace',
+        locals: {
+          meta_namespace: meta_namespace,
+          business_identifier: @business.identifier,
+          hide: true
+        }
+      )
+    %>
   <% end %>
 <% else %>
   <%=
