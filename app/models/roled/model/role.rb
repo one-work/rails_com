@@ -191,8 +191,8 @@ module Roled
       (all_identifiers - Meta::Action.where(identifier: all_identifiers).pluck(:identifier)).each do |identifier|
         identifier.split('#').each do |con, action|
           self.role_hash.fetch(con, []).delete(action)
+          role_hash.delete(con) if role_hash[con].blank?
         end
-        role_hash.delete(con) if role_hash[con].blank?
       end
     end
 
