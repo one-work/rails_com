@@ -57,7 +57,7 @@ module Roled
         logger.debug "\e[35m  #{base_class_name}_#{id} not has role: #{opts}  \e[0m"
         return false
       end
-      r = role_hash.dig(options[:controller].to_s.delete_prefix('/'), options[:action])
+      r = role_hash.fetch(options[:controller].to_s.delete_prefix('/'), []).include? options[:action]
       logger.debug "\e[35m  #{base_class_name}_#{id} has role: #{opts}, #{r}  \e[0m" if Rails.configuration.x.role_debug
       r
     end
