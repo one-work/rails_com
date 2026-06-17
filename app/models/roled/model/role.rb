@@ -189,10 +189,9 @@ module Roled
 
     def prune
       (all_identifiers - Meta::Action.where(identifier: all_identifiers).pluck(:identifier)).each do |identifier|
-        identifier.split('#').each do |con, action|
-          self.role_hash.fetch(con, []).delete(action)
-          self.role_hash.delete(con) if role_hash[con].blank?
-        end
+        con, action = identifier.split('#')
+        self.role_hash.fetch(con, []).delete(action)
+        self.role_hash.delete(con) if role_hash[con].blank?
       end
     end
 
