@@ -33,7 +33,9 @@ module Roled
 
     def compute_role_hash
       (roles + default_roles).uniq.each_with_object({}) do |role, h|
-        h.deep_merge! role.role_hash
+        role.role_hash.each do |con, actions|
+          h.merge! con => (h.fetch(con, []) + actions).uniq
+        end
       end
     end
 
