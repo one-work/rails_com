@@ -188,23 +188,12 @@ module Roled
     end
 
     def prune
-      c = {}
-
-      businesses = Meta::Business.where(identifier: role_hash.keys)
-      businesses.each do |business|
-        r = role_hash.dig(business.identifier).diff_remove(business.role_hash)
-        r.each do |namespace_identifier, controllers_hash|
-          controllers_hash.each do |controller_path, actions|
-            actions.each do |action|
-              action_off(action)
-            end
-          end
+      (all_identifiers - Meta::Action.where(identifier: all_identifiers).pluck(:identifier)).each do |identifier|
+        identifier.split('#').each do |con, action|
+          self.role_hash.fetch(con, []).delete(action)
         end
-        c.merge! business.identifier => r
+        role_hash.delete(con) if role_hash[con].blank?
       end
-      self.save
-
-      c
     end
 
     def all_identifiers
