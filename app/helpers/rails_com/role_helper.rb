@@ -47,6 +47,7 @@ module RailsCom::RoleHelper
     end
 
     if filtered && defined?(current_organ) && current_organ
+      logger.debug "========#{current_organ}"
       organ_permitted = current_organ.has_role?(params: extra_params, **meta_params)
     else
       organ_permitted = true
