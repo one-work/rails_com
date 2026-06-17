@@ -47,6 +47,10 @@ module Roled
       cache&.role_hash || {}
     end
 
+    def business_hash
+      cache&.business_hash || {}
+    end
+
     def has_role?(**options)
       if admin?
         logger.debug "\e[35m  #{base_class_name}_#{id} is admin!  \e[0m" if Rails.configuration.x.role_debug
