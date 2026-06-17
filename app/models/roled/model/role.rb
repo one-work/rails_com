@@ -195,6 +195,11 @@ module Roled
       end
     end
 
+    def prune!
+      prune
+      save
+    end
+
     def all_identifiers
       role_hash.each_with_object([]) do |(con, actions), arr|
         actions.each do |action|
