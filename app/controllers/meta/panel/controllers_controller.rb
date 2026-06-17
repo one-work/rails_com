@@ -15,7 +15,7 @@ module Meta
     end
 
     def meta_namespaces
-      @business = MetaBusiness.find_by identifier: params[:business_identifier]
+      @business = Business.find_by identifier: params[:business_identifier]
       @namespaces = @business.meta_namespaces
     end
 

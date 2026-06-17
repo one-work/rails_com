@@ -13,7 +13,7 @@ module Meta
 
     private
     def set_controller
-      @controller = MetaController.find params[:controller_id]
+      @controller = Controller.find params[:controller_id]
     end
 
     def set_action
