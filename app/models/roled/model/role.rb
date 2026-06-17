@@ -230,7 +230,6 @@ module Roled
           namespace_identifier: meta_action.namespace_identifier,
           controller_path: meta_action.controller_path,
           action_name: meta_action.action_name,
-          meta_action_id: meta_action.id,
           identifier: meta_action.identifier
         }
       end

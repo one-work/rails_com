@@ -17,7 +17,7 @@ module Meta
       attribute :controller_path, :string, null: false, index: true
       attribute :controller_name, :string, null: false
       attribute :action_name, :string, null: false
-      attribute :identifier, :string
+      attribute :identifier, :string, index: true
       attribute :path, :string
       attribute :verb, :string
       attribute :position, :integer
