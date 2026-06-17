@@ -1,9 +1,22 @@
-<%= render 'org_nav' if defined? RailsOrg %>
-<%= render 'crm_nav' if defined? RailsCrm %>
-<%= render 'factory_nav' if defined? RailsFactory %>
-<%= render 'trade_nav' if defined? RailsTrade %>
-<%= render 'bench_nav' if defined? RailsBench %>
-<%= render 'space_nav' if defined? RailsSpace %>
-<%= render 'ship_nav' if defined? RailsSpace %>
-<%= render 'bluetooth_nav' if defined? RailsBluetooth %>
+<% if defined?(RailsOrg) && any_role?(business: 'org', namespace: 'admin') %>
+  <%= render 'org_nav' %>
+<% end %>
+<% if defined?(RailsCrm) && any_role?(business: 'crm', namespace: 'admin') %>
+  <%= render 'crm_nav' %>
+<% end %>
+<% if defined?(RailsFactory) && any_role?(business: 'factory', namespace: 'admin') %>
+  <%= render 'factory_nav' %>
+<% end %>
+<% if defined?(RailsTrade) && any_role?(business: 'trade', namespace: 'admin') %>
+  <%= render 'trade_nav' %>
+<% end %>
+<% if defined?(RailsBench) && any_role?(business: 'bench', namespace: 'admin') %>
+  <%= render 'bench_nav' %>
+<% end %>
+<% if defined?(RailsSpace) && any_role?(business: 'space', namespace: 'admin') %>
+  <%= render 'space_nav' %>
+<% end %>
+<% if defined?(RailsShip) && any_role?(business: 'ship', namespace: 'admin') %>
+  <%= render 'ship_nav' %>
+<% end %>
 <%= render 'powered_by' %>
