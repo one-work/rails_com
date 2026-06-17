@@ -19,6 +19,12 @@ module RailsCom::Routes
     end
   end
 
+  def all_actions
+    controllers.each_with_object([]) do |(con, actions), arr|
+      arr.concat actions.keys.map { |i| "#{con}##{i}" }
+    end
+  end
+
   def controllers(cached = true)
     return @controllers if cached && defined? @controllers
 
