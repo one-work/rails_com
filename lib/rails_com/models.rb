@@ -107,7 +107,8 @@ module RailsCom::Models
   end
 
   def unbound_tables
-    ActiveRecord::Base.connection.tables - models.map(&:table_name) - ['schema_migrations', 'ar_internal_metadata']
+    keep = ['schema_migrations', 'ar_internal_metadata', 'spatial_ref_sys']
+    ActiveRecord::Base.connection.tables - models.map(&:table_name) - keep
   end
 
   def migrate_modules_hash
