@@ -4,6 +4,7 @@ module Doc
 
     included do
       attribute :name, :string
+      attribute :xx, :string
       attribute :mappings, :json
     end
 
