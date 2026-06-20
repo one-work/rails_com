@@ -19,6 +19,7 @@ module Pg
     end
 
     def destroy
+      User.connection.exec_query "DROP USER #{@user.usename}"
     end
 
     private
