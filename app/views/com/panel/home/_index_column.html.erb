@@ -84,11 +84,14 @@
 </div>
 <p class="size-7 text-grey mb-1">Postgresql</p>
 <div class="grid">
-  <%= link_to({ controller: 'com/panel/pg_publications' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('com.panel.pg_publications.index.title') %></span>
+  <%= link_to({ controller: 'pg/panel/publications' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('pg.panel.publications.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'com/panel/pg_replication_slots' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('com.panel.pg_replication_slots.index.title') %></span>
+  <%= link_to({ controller: 'pg/panel/replication_slots' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('pg.panel.replication_slots.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'pg/panel/users' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('pg.panel.users.index.title') %></span>
   <% end %>
 </div>
 <p class="size-7 text-grey mb-1"><%= t('statis.panel.title') %></p>

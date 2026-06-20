@@ -17,5 +17,6 @@ namespace :pg, defaults: { business: 'pg' } do
       end
       resources :stat_subscriptions
     end
+    resources :users
   end
 end

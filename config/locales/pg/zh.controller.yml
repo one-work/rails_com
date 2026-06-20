@@ -9,3 +9,17 @@ zh:
       stat_subscriptions:
         index:
           title: 订阅状态
+      publications:
+        index:
+          title: 发布者
+        create_all:
+          title: 全量复制
+      publication_tables:
+        index:
+          title: 开通表
+      replication_slots:
+        index:
+          title: 复制槽
+      users:
+        index:
+          title: 用户

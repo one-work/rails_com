@@ -1,18 +1,18 @@
 module Pg
   class Panel::PublicationTablesController < Panel::BaseController
-    before_action :set_pg_publication
+    before_action :set_publication
 
     def index
       q_params = {
         'tablename-ll': params[:tablename]
       }
 
-      @pg_publication_tables = @pg_publication.pg_publication_tables.default_where(q_params).page(params[:page])
+      @publication_tables = @publication.publication_tables.default_where(q_params).page(params[:page])
     end
 
     private
-    def set_pg_publication
-      @pg_publication = Publication.find params[:pg_publication_id]
+    def set_publication
+      @publication = Publication.find params[:publication_id]
     end
 
   end

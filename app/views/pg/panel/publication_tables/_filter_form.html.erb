@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', model: Com::PgPublicationTable.new, url: { action: params[:action] } do |f| %>
+<%= form_with theme: 'search', model: Pg::PublicationTable.new, url: { action: params[:action] } do |f| %>
   <div class="field-body">
     <%= f.text_field :tablename %>
     <div class="field is-narrow">

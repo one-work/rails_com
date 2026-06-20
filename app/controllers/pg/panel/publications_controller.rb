@@ -1,25 +1,25 @@
 module Pg
   class Panel::PublicationsController < Panel::BaseController
     before_action :set_tables
-    before_action :set_pg_publication, only: [:show, :edit, :update, :destroy]
+    before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
     def index
-      @pg_publications = Publication.page(params[:page])
+      @publications = Publication.page(params[:page])
     end
 
     def prod
       BaseRecord.connects_to database: { writing: :prod, reading: :prod }
-      @pg_publications = Publication.page(params[:page])
+      @publications = Publication.page(params[:page])
       render :index
     end
 
     def new
-      @pg_publication = Publication.new
+      @publication = Publication.new
     end
 
     def create
-      allow_tables = @tables & pg_publication_params[:tables].compact_blank!
-      Publication.connection.exec_query "CREATE PUBLICATION #{pg_publication_params[:pubname]} FOR TABLE #{allow_tables.join(', ')}"
+      allow_tables = @tables & publication_params[:tables].compact_blank!
+      Publication.connection.exec_query "CREATE PUBLICATION #{publication_params[:pubname]} FOR TABLE #{allow_tables.join(', ')}"
     end
 
     def create_all
@@ -36,8 +36,8 @@ module Pg
     end
 
     def update
-      allow_tables = @tables & pg_publication_params[:tables].compact_blank!
-      Publication.connection.exec_query "ALTER PUBLICATION #{@pg_publication.pubname} SET TABLE #{allow_tables.join(', ')}"
+      allow_tables = @tables & publication_params[:tables].compact_blank!
+      Publication.connection.exec_query "ALTER PUBLICATION #{@publication.pubname} SET TABLE #{allow_tables.join(', ')}"
     end
 
     private
@@ -45,12 +45,12 @@ module Pg
       @tables = ApplicationRecord.connection.tables
     end
 
-    def set_pg_publication
-      @pg_publication = Publication.find(params[:id])
+    def set_publication
+      @publication = Publication.find(params[:id])
     end
 
-    def pg_publication_params
-      params.fetch(:pg_publication, {}).permit(
+    def publication_params
+      params.fetch(:publication, {}).permit(
         :pubname,
         tables: []
       )
