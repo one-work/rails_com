@@ -1,5 +1,5 @@
 module Pg
-  class Namespace < PgRecord
+  class Namespace < BaseRecord
     self.table_name = 'pg_catalog.pg_namespace'
   end
 end

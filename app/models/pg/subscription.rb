@@ -1,5 +1,5 @@
 module Pg
-  class Subscription < PgRecord
+  class Subscription < BaseRecord
     include Model::Subscription
 
     self.table_name = 'pg_catalog.pg_subscription'
