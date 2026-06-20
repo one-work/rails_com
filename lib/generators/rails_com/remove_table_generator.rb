@@ -9,9 +9,13 @@ class RailsCom::RemoveTableGenerator < Rails::Generators::Base
 
   def create_migration_file
     RailsCom::Models.unbound_tables.each do |mig_paths, tables|
-      file_name = "smart_remove_table_#{file_index}"
+      next if tables.blank?
+
       @tables = tables
-      migration_template 'remove_table.rb', File.join(db_migrate_path, "#{file_name}.rb")
+      Array(mig_paths).each do |mig_path|
+        file_name = "remove_#{mig_path.delete_prefix('db/')}_#{file_index}"
+        migration_template 'remove_table.rb', File.join(mig_path, "#{file_name}.rb")
+      end
     end
   end
 
