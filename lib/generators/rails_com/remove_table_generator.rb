@@ -8,10 +8,11 @@ class RailsCom::RemoveTableGenerator < Rails::Generators::Base
   attr_reader :tables
 
   def create_migration_file
-    @tables = RailsCom::Models.unbound_tables
-    file_name = "smart_remove_table_#{file_index}"
-
-    migration_template 'remove_table.rb', File.join(db_migrate_path, "#{file_name}.rb")
+    RailsCom::Models.unbound_tables.each do |mig_paths, tables|
+      file_name = "smart_remove_table_#{file_index}"
+      @tables = tables
+      migration_template 'remove_table.rb', File.join(db_migrate_path, "#{file_name}.rb")
+    end
   end
 
   def file_index

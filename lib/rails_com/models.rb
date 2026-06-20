@@ -111,6 +111,10 @@ module RailsCom::Models
     root.connection.tables - models(root).map(&:table_name) - keep
   end
 
+  def tables_with_migrate_path
+    models.group_by { |i| i.connection_pool.migrations_paths }.transform_values! { |i| i.map(&:table_name) }
+  end
+
   def migrate_modules_hash
     tables = ActiveRecord::Base.connection.tables
     @modules = {}
