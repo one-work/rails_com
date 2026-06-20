@@ -11,7 +11,7 @@ module Pg
     end
 
     def create
-      User.connection.exec_query "CREATE USER #{user_params[:name]} WITH PASSWORD '#{user_params[:password]}'"
+      @user = User.connection.exec_query "CREATE USER #{user_params[:name]} WITH PASSWORD '#{user_params[:password]}'"
     end
 
     def update
