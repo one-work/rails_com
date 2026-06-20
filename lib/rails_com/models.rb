@@ -15,6 +15,12 @@ module RailsCom::Models
     @models
   end
 
+  def models_abstract(root = ActiveRecord::Base)
+    return @models_abstract if defined? @models_abstract
+    Zeitwerk::Loader.eager_load_all
+    @models_abstract = root.descendants.select(&:abstract_class?)
+  end
+
   def reset_pk_sequence!
     models.map do |i|
       i.reset_pk_sequence!
@@ -106,13 +112,25 @@ module RailsCom::Models
     tables
   end
 
-  def unbound_tables(root = ActiveRecord::Base)
+  def unbound_tables
     keep = ['schema_migrations', 'ar_internal_metadata', 'spatial_ref_sys']
-    root.connection.tables - models(root).map(&:table_name) - keep
+    exist_tables = tables_with_migrate_path
+
+    models_with_migrate_path.each_with_object({}) do |(mig_path, tables), h|
+      h.merge! mig_path => exist_tables[mig_path] - tables - keep
+    end
+  end
+
+  def models_with_migrate_path
+    models.group_by { |i| i.connection_pool.migrations_paths }.transform_values! { |i| i.map(&:table_name) }
   end
 
   def tables_with_migrate_path
-    models.group_by { |i| i.connection_pool.migrations_paths }.transform_values! { |i| i.map(&:table_name) }
+    models_abstract.group_by { |i| i.connection_pool.migrations_paths }.each_with_object({}) do |(mig_path, models), h|
+      tables = []
+      models.each { |model| tables.concat model.connection.tables }
+      h.merge! mig_path => tables.uniq
+    end
   end
 
   def migrate_modules_hash
