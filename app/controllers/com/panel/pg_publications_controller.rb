@@ -7,6 +7,12 @@ module Com
       @pg_publications = PgPublication.page(params[:page])
     end
 
+    def prod
+      PgRecord.connects_to database: { writing: :prod, reading: :prod }
+      @pg_publications = PgPublication.page(params[:page])
+      render :index
+    end
+
     def new
       @pg_publication = PgPublication.new
     end
