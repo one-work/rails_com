@@ -11,12 +11,11 @@ module Pg
     end
 
     def create
-      @user = User.connection.exec_query "CREATE USER #{user_params[:name]} WITH PASSWORD '#{user_params[:password]}'"
+      User.connection.exec_query "CREATE USER #{user_params[:usename]} WITH PASSWORD '#{user_params[:password]}'"
     end
 
     def update
-      allow_tables = @tables & user_params[:tables].compact_blank!
-      User.connection.exec_query "ALTER PUBLICATION #{@user.pubname} SET TABLE #{allow_tables.join(', ')}"
+      User.connection.exec_query "ALTER USER #{@user.usename} RENAME TO #{user_params[:usename]}"
     end
 
     def destroy
@@ -29,7 +28,7 @@ module Pg
 
     def user_params
       params.fetch(:user, {}).permit(
-        :name,
+        :usename,
         :password
       )
     end
