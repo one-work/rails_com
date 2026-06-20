@@ -1,5 +1,5 @@
-module Com
-  class Panel::PgPublicationTablesController < Panel::BaseController
+module Pg
+  class Panel::PublicationTablesController < Panel::BaseController
     before_action :set_pg_publication
 
     def index
@@ -12,7 +12,7 @@ module Com
 
     private
     def set_pg_publication
-      @pg_publication = PgPublication.find params[:pg_publication_id]
+      @pg_publication = Publication.find params[:pg_publication_id]
     end
 
   end

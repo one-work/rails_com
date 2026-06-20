@@ -178,14 +178,6 @@ Rails.application.routes.draw do
         end
       end
       resources :ssh_keys
-      resources :pg_publications do
-        collection do
-          get :prod
-          post :create_all
-        end
-        resources :pg_publication_tables, only: [:index, :new, :create]
-      end
-      resources :pg_replication_slots
     end
   end
 end

@@ -1,5 +1,8 @@
 module Pg
   class Panel::SubscriptionsController < Panel::BaseController
+    skip_before_action :require_member_or_user if whether_filter(:require_member_or_user)
+    skip_before_action :require_role if whether_filter(:require_role)
+    before_action :authenticate_by
     before_action :set_tables
     before_action :set_subscription, only: [:show, :edit, :update, :destroy, :refresh]
 
