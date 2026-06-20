@@ -11,13 +11,15 @@ module Pg
     end
 
     def create
-      allow_tables = @tables & user_params[:tables].compact_blank!
-      User.connection.exec_query "CREATE PUBLICATION #{user_params[:pubname]} FOR TABLE #{allow_tables.join(', ')}"
+      User.connection.exec_query "CREATE USER #{user_params[:name]} WITH PASSWORD '#{user_params[:password]}'"
     end
 
     def update
       allow_tables = @tables & user_params[:tables].compact_blank!
       User.connection.exec_query "ALTER PUBLICATION #{@user.pubname} SET TABLE #{allow_tables.join(', ')}"
+    end
+
+    def destroy
     end
 
     private
@@ -27,8 +29,8 @@ module Pg
 
     def user_params
       params.fetch(:user, {}).permit(
-        :pubname,
-        tables: []
+        :name,
+        :password
       )
     end
 
