@@ -3,7 +3,7 @@ module Pg
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
-      @users = User.page(params[:page])
+      @users = User.includes(:role).page(params[:page])
     end
 
     def new
