@@ -8,13 +8,14 @@ class RailsCom::MigrationsGenerator < Rails::Generators::Base
   attr_reader :tables
 
   def create_migration_file
-    file_name = "smart_migration_#{file_index}"
-
     RailsCom::Models.db_tables_hash.each do |mig_paths, tables|
       next if tables.blank?
+
       @tables = tables
-      path = Array(mig_paths)[0]
-      migration_template 'migration.rb', File.join(path, "#{file_name}.rb")
+      Array(mig_paths).each do |mig_path|
+        file_name = "smart_#{mig_path.delete_prefix('db/')}_#{file_index}"
+        migration_template 'migration.rb', File.join(mig_path, "#{file_name}.rb")
+      end
     end
   end
 
