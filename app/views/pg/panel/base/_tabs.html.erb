@@ -1,7 +1,7 @@
 <div class="tabs">
   <ul>
   <% Pg::BaseRecord.shard_keys.each do |key| %>
-    <li class="<%= active_helper(action: 'index', active: key == params[:shard] ? 'is-active' : '') %>">
+    <li class="<%= active_helper(action: 'index', active: key.to_s == params[:shard] ? 'is-active' : '') %>">
       <%= link_to key, { action: 'index', shard: key } %>
     </li>
   <% end %>
