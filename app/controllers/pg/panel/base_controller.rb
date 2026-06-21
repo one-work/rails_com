@@ -9,6 +9,10 @@ module Pg
       end
     end
 
+    def set_shards
+      @shards = ActiveRecord::Base.configurations.configs_for(env_name: Rails.env).map(&:name)
+    end
+
     def shard_params
       shard = { shard: :default }
       shard.merge! shard: params[:shard].to_sym if params[:shard].present?

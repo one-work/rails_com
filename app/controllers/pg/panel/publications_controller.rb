@@ -6,6 +6,7 @@ module Pg
       'com_states', 'com_state_hierarchies',
       'meta_actions', 'meta_businesses', 'meta_columns', 'meta_controllers', 'meta_namespaces', 'meta_operations'
     ].freeze
+    before_action :set_shards
     before_action :set_tables
     before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
