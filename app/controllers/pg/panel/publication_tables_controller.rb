@@ -12,7 +12,9 @@ module Pg
 
     private
     def set_publication
-      @publication = Publication.find params[:publication_id]
+      BaseRecord.connected_to(**shard_params) do
+        @publication = Publication.find params[:publication_id]
+      end
     end
 
   end

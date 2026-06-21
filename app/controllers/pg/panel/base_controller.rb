@@ -9,5 +9,11 @@ module Pg
       end
     end
 
+    def shard_params
+      shard = { shard: :default }
+      shard.merge! shard: params[:shard].to_sym if params[:shard].present?
+      shard
+    end
+
   end
 end
