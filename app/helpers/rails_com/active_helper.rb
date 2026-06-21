@@ -58,7 +58,7 @@ module RailsCom::ActiveHelper
       end
     end
 
-    present_params = request.query_parameters.merge request.path_parameters.except(:business, :namespace, :controller, :action)
+    present_params = request.GET.merge request.path_parameters.except(:business, :namespace, :controller, :action)
     if current_page?(check_parameters: check_parameters, **present_params.merge(options))
       return true
     end

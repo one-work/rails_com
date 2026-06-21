@@ -14,11 +14,11 @@
     <% end %>
   </div>
   <div data-show-target="item" class="visibility-hidden">
-    <%= link_to({ action: 'reflections', id: model.id, **request.query_parameters.except(:id, :page, :per, :table_name) }, class: 'button is-small is-borderless') do %>
+    <%= link_to({ action: 'reflections', id: model.id, **request.GET.except(:id, :page, :per, :table_name) }, class: 'button is-small is-borderless') do %>
       <%= svg_tag 'sitemap' %>
       <span><%= t('.reflections.title') %></span>
     <% end %>
-    <%= link_to({ action: 'indexes', id: model.id, **request.query_parameters.except(:id, :page, :per, :table_name) }, class: 'button is-small is-borderless') do %>
+    <%= link_to({ action: 'indexes', id: model.id, **request.GET.except(:id, :page, :per, :table_name) }, class: 'button is-small is-borderless') do %>
       <%= svg_tag 'sitemap' %>
       <span><%= t('.indexes.title') %></span>
     <% end %>

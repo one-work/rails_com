@@ -15,7 +15,7 @@
   <div class="level-right">
     <% if filter = current_filters.find(&->(i){ i.id.to_s == params[:filter_id] }) %>
       <%= render partial: 'filter_form_update', locals: { filter: filter } %>
-    <% elsif request.query_parameters.key?('taxon_id') %>
+    <% elsif request.GET.key?('taxon_id') %>
       <%= render 'filter_form_create' %>
     <% end %>
     <%= render 'filter_dropdown' %>
