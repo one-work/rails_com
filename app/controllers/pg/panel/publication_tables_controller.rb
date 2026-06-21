@@ -1,5 +1,6 @@
 module Pg
   class Panel::PublicationTablesController < Panel::BaseController
+    before_action :set_filter_columns
 
     def index
       q_params = {
@@ -10,6 +11,13 @@ module Pg
         @publication = Publication.find params[:publication_id]
         @publication_tables = @publication.publication_tables.default_where(q_params).page(params[:page])
       end
+    end
+
+    private
+    def set_filter_columns
+      @filter_columns = set_filter_i18n(
+        'tablename' => { type: 'search', default: true }
+      )
     end
 
   end
