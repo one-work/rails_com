@@ -2,7 +2,7 @@
   <ul>
   <% Pg::BaseRecord.shard_keys.each do |key| %>
     <li class="<%= active_helper(action: 'index', active: 'is-active') %>">
-      <%= link_to t('.index.title'), { action: 'index', shard: key } %>
+      <%= link_to key, { action: 'index', shard: key } %>
     </li>
   <% end %>
   </ul>
