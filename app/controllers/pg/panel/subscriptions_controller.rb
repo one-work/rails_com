@@ -3,11 +3,12 @@ module Pg
     skip_before_action :require_member_or_user if whether_filter(:require_member_or_user)
     skip_before_action :require_role if whether_filter(:require_role)
     before_action :authenticate_by
-    before_action :set_tables
-    before_action :set_subscription, only: [:show, :edit, :update, :destroy, :refresh]
+    before_action :set_subscription, only: [:show, :edit]
 
     def index
-      @subscriptions = Subscription.page(params[:page])
+      BaseRecord.connected_to(**shard_params) do
+        @subscriptions = Subscription.page(params[:page])
+      end
     end
 
     def new
@@ -15,32 +16,41 @@ module Pg
     end
 
     def create
-      Subscription.connection.exec_query(
-        "CREATE SUBSCRIPTION #{subscription_params[:subname]} CONNECTION '#{conninfo_params}' PUBLICATION #{subscription_params[:pubname]}"
-      )
+      BaseRecord.connected_to(**shard_params) do
+        Subscription.connection.exec_query(
+          "CREATE SUBSCRIPTION #{subscription_params[:subname]} CONNECTION '#{conninfo_params}' PUBLICATION #{subscription_params[:pubname]}"
+        )
+      end
     end
 
     def update
-      Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} CONNECTION '#{conninfo_params}'"
+      BaseRecord.connected_to(**shard_params) do
+        @subscription = Subscription.find(params[:id])
+        Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} CONNECTION '#{conninfo_params}'"
+      end
     end
 
     def refresh
-      Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} REFRESH PUBLICATION"
+      BaseRecord.connected_to(**shard_params) do
+        @subscription = Subscription.find(params[:id])
+        Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} REFRESH PUBLICATION"
+      end
     end
 
     def destroy
-      Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} DISABLE"
-      Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} SET (slot_name = NONE)"
-      Subscription.connection.exec_query "DROP SUBSCRIPTION #{@subscription.subname}"
+      BaseRecord.connected_to(**shard_params) do
+        @subscription = Subscription.find(params[:id])
+        Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} DISABLE"
+        Subscription.connection.exec_query "ALTER SUBSCRIPTION #{@subscription.subname} SET (slot_name = NONE)"
+        Subscription.connection.exec_query "DROP SUBSCRIPTION #{@subscription.subname}"
+      end
     end
 
     private
-    def set_tables
-      @tables = ApplicationRecord.connection.tables
-    end
-
     def set_subscription
-      @subscription = Subscription.find(params[:id])
+      BaseRecord.connected_to(**shard_params) do
+        @subscription = Subscription.find(params[:id])
+      end
     end
 
     def conninfo_params
