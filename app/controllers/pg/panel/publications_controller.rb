@@ -8,7 +8,7 @@ module Pg
     end
 
     def prod
-      BaseRecord.connects_to database: { writing: :prod, reading: :prod }
+      BaseRecord.connected_to database: { writing: :prod, reading: :prod }
       @publications = Publication.page(params[:page])
       render :index
     end
