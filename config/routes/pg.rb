@@ -5,7 +5,6 @@ namespace :pg, defaults: { business: 'pg' } do
   namespace :panel, defaults: { namespace: 'panel' } do
     resources :publications do
       collection do
-        get :prod
         post :create_all
       end
       resources :publication_tables, only: [:index, :new, :create]
