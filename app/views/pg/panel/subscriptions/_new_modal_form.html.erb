@@ -1,6 +1,7 @@
 <%= form_with theme: 'modal', model: @subscription, url: { action: 'create', **request.GET.slice(:shard) } do |f| %>
   <%= render 'modal_header' %>
   <section class="modal-card-body">
+    <p><%= params[:shard] %></p>
     <%= f.text_field :subname %>
     <%= f.text_field :host %>
     <%= f.text_field :port, value: 5432 %>
