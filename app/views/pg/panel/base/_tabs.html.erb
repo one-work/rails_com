@@ -1,0 +1,9 @@
+<div class="tabs">
+  <ul>
+  <% Pg::BaseRecord.shard_keys.each do |key| %>
+    <li class="<%= active_helper(action: 'index', active: 'is-active') %>">
+      <%= link_to t('.index.title'), { action: 'index', shard: key } %>
+    </li>
+  <% end %>
+  </ul>
+</div>
