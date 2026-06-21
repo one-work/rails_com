@@ -1,4 +1,4 @@
-<%= form_with theme: 'modal', model: @subscription, url: { action: 'create' } do |f| %>
+<%= form_with theme: 'modal', model: @subscription, url: { action: 'create', **request.GET.slice(:shard) } do |f| %>
   <%= render 'modal_header' %>
   <section class="modal-card-body">
     <%= f.text_field :subname %>
