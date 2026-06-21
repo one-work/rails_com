@@ -2,9 +2,10 @@
   tr_tag(
     model,
     {
-      href: url_for(controller: 'publication_tables', publication_id: model.id, **request.GET.slice(:shard)),
+      href: url_for(controller: 'publication_tables', publication_id: model.id, **request.GET.slice('shard')),
       icon: 'sitemap',
       title: t('.publication_tables.index.title')
-    }
+    },
+    param: request.GET.slice('shard')
   ) { yield }
 %>
