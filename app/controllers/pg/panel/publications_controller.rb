@@ -4,13 +4,10 @@ module Pg
     before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
     def index
-      @publications = Publication.page(params[:page])
-    end
 
-    def prod
-      BaseRecord.connected_to database: { writing: :prod, reading: :prod }
-      @publications = Publication.page(params[:page])
-      render :index
+      BaseRecord.connected_to(shard: :prod) do
+        @publications = Publication.page(params[:page])
+      end
     end
 
     def new
