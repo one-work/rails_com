@@ -43,13 +43,13 @@ module Pg
     private
     def set_tables
       BaseRecord.connected_to(**shard_params) do
-        @tables = ApplicationRecord.connection.tables
+        @tables = BaseRecord.connection.tables
       end
     end
 
     def set_publication
       BaseRecord.connected_to(**shard_params) do
-        @publication = Publication.find(params[:id])
+        @publication = Publication.includes(:publication_tables).find(params[:id])
       end
     end
 

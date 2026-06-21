@@ -9,8 +9,7 @@ module Pg
     end
 
     def tables
-      return @tables if defined? @tables
-      @tables = publication_tables.pluck(:tablename)
+      publication_tables.pluck(:tablename)
     end
 
   end
