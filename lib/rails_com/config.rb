@@ -29,15 +29,17 @@ module RailsCom #:nodoc:
     'SolidQueue::RecurringExecution',
     'SolidQueue::RecurringTask',
     'SolidCache::Entry',
-    'Com::PgPublication',
-    'Com::PgPublicationTable',
-    'Com::PgReplicationOriginStatus',
-    'Com::PgReplicationSlot',
     'Pg::Class',
     'Pg::Namespace',
+    'Pg::Publication',
+    'Pg::PublicationTable',
+    'Pg::ReplicationOriginStatus',
+    'Pg::ReplicationSlot',
+    'Pg::Role',
     'Pg::StatSubscription',
     'Pg::Subscription',
-    'Pg::SubscriptionRel'
+    'Pg::SubscriptionRel',
+    'Pg::User'
   ]
   config.override_prefixes = [
     'application'
