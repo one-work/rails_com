@@ -1,11 +1,18 @@
 module Pg
   class Panel::PublicationsController < Panel::BaseController
+    REMOVE = [
+      'log_requests',
+      'log_queries',
+      'com_errs',
+      'com_err_summaries',
+      'com_states',
+      'com_state_hierarchies'
+    ].freeze
     before_action :set_tables
     before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
     def index
-
-      BaseRecord.connected_to(shard: :prod) do
+      BaseRecord.connected_to(**shard_params) do
         @publications = Publication.page(params[:page])
       end
     end
@@ -16,34 +23,42 @@ module Pg
 
     def create
       allow_tables = @tables & publication_params[:tables].compact_blank!
-      Publication.connection.exec_query "CREATE PUBLICATION #{publication_params[:pubname]} FOR TABLE #{allow_tables.join(', ')}"
+      BaseRecord.connected_to(**shard_params) do
+        Publication.connection.exec_query "CREATE PUBLICATION #{publication_params[:pubname]} FOR TABLE #{allow_tables.join(', ')}"
+      end
     end
 
     def create_all
-      all_tables = Publication.connection.tables - RailsCom::Models.ignore_tables - [
-        'log_requests',
-        'log_queries',
-        'com_errs',
-        'com_err_summaries',
-        'com_states',
-        'com_state_hierarchies'
-      ]
-
-      Publication.connection.exec_query "CREATE PUBLICATION #{params[:pubname]} FOR TABLE #{all_tables.join(', ')}"
+      BaseRecord.connected_to(**shard_params) do
+        all_tables = Publication.connection.tables - RailsCom::Models.ignore_tables - REMOVE
+        Publication.connection.exec_query "CREATE PUBLICATION #{params[:pubname]} FOR TABLE #{all_tables.join(', ')}"
+      end
     end
 
     def update
-      allow_tables = @tables & publication_params[:tables].compact_blank!
-      Publication.connection.exec_query "ALTER PUBLICATION #{@publication.pubname} SET TABLE #{allow_tables.join(', ')}"
+      BaseRecord.connected_to(**shard_params) do
+        allow_tables = @tables & publication_params[:tables].compact_blank!
+        Publication.connection.exec_query "ALTER PUBLICATION #{@publication.pubname} SET TABLE #{allow_tables.join(', ')}"
+      end
     end
 
     private
     def set_tables
-      @tables = ApplicationRecord.connection.tables
+      BaseRecord.connected_to(**shard_params) do
+        @tables = ApplicationRecord.connection.tables
+      end
     end
 
     def set_publication
-      @publication = Publication.find(params[:id])
+      BaseRecord.connected_to(**shard_params) do
+        @publication = Publication.find(params[:id])
+      end
+    end
+
+    def shard_params
+      shard = { shard: :default }
+      shard.merge! shard: params[:shard].to_sym if params[:shard].present?
+      shard
     end
 
     def publication_params
