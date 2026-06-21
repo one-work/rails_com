@@ -13,7 +13,7 @@ module RailsCom::ActiveRecord
 
     def group_with_arr(group_column, arr_column)
       select(group_column, "array_agg(#{arr_column}) as arr").group(group_column).each_with_object({}) do |x, h|
-        h.merge! x.controller_path => x.arr
+        h.merge! x.attributes[group_column.to_s] => x.arr
       end
     end
 
