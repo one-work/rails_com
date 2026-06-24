@@ -13,14 +13,10 @@
       src="https://lf1-cdn-tos.bytegoofy.com/goofy/developer/jssdk/jssdk-1.2.0.js"
       referrerpolicy="origin"
       data-turbo-track="reload"
-      id="douyin_script"
-      async
     ></script>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'douyin', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
-    <% if request.variant.include?(:mini_program) %>
-      <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
-    <% end %>
     <%= render 'head_extra_js' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
