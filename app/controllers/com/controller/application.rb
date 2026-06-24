@@ -84,6 +84,11 @@ module Com
         variant.prepend :modal
       end
 
+      # 抖音
+      if request.user_agent&.match? /ToutiaoMicroApp|BytedanceWebview/
+        variant << :douyin
+      end
+
       # 安卓：MiniProgramEnv/android
       # 企业微信：miniprogram
       # ios: miniProgram
