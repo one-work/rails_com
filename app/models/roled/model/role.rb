@@ -102,7 +102,7 @@ module Roled
     end
 
     def business_role(meta_business)
-      r1 = meta_business.controllers.select(:namespace_identifier).distinct.pluck(:namespace_identifier)
+      r1 = meta_business.controllers.pluck(:namespace_identifier).uniq
       r2 = business_hash.fetch(meta_business.identifier, [])
 
       r = r1 - r2
