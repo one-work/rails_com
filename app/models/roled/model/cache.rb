@@ -18,7 +18,10 @@ module Roled
 
     def sync_to_business_hash
       r = Meta::Controller.select(:business_identifier, :namespace_identifier).distinct.where(controller_path: role_hash.keys).pluck(:business_identifier, :namespace_identifier)
-      self.business_hash = r.to_array_h.to_combine_h
+      result = r.each_with_object({}) do |(k, v), h|
+        h.merge! k => h.fetch(k, []) << v
+      end
+      self.business_hash = result
     end
 
     def sync_role_caches
