@@ -10,6 +10,16 @@
       href: url_for(controller: 'tabs', role_id: model.id),
       icon: 'house',
       title: t('.tabs.index.title')
+    },
+    {
+      href: url_for(controller: 'role_whos', role_id: model.id),
+      icon: 'house',
+      title: t('.role_whos.index.title')
+    },
+    {
+      href: url_for(controller: 'role_rules', role_id: model.id),
+      icon: 'house',
+      title: t('.role_rules.index.title')
     }
   ) { yield }
 %>

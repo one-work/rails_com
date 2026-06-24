@@ -32,6 +32,7 @@ namespace :roled, defaults: { business: 'roled' } do
         end
       end
     end
+    resources :caches
   end
 
   namespace :admin, defaults: { namespace: 'admin' } do

@@ -2,7 +2,7 @@
 <%= render 'index_actions' %>
 
 <%= render layout: 'index_table' do %>
-  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @role_rules, as: :role_rule %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @role_rules, as: :model %>
 <% end %>
 
 <%= paginate @role_rules %>
