@@ -99,8 +99,8 @@ module Roled
     end
 
     def business_role(meta_business)
-      r1 = meta_business.actions.pluck(:identifier)
-      r2 = role_rules.where(business_identifier: meta_business.identifier).pluck(:identifier)
+      r1 = meta_business.controllers.select(:namespace_identifier).distinct.pluck(:namespace_identifier)
+      r2 = business_hash.fetch(business_identifier, [])
 
       r = r1 - r2
       if r2.blank?

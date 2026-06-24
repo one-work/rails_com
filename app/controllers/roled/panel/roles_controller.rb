@@ -15,7 +15,7 @@ module Roled
       q_params = {}
 
       @controllers = Meta::Controller.includes(:actions).default_where(q_params)
-      @businesses = Meta::Business.includes(:actions).all
+      @businesses = Meta::Business.includes(:controllers).all
       render :show, locals: { model: @role }
     end
 
