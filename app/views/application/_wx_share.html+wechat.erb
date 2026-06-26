@@ -1,7 +1,7 @@
 <div
   class="display-none"
   data-controller="wx-share wx-menu"
-  data-wx-share-title-value="<%= t('.title') %>"
+  data-wx-share-title-value="<%= t('.title', default: '您好！') %>"
   data-wx-share-content-value="邀请您使用，并送您一张优惠券！"
   data-wx-share-desc-value="邀请您使用，并送您一张优惠券！"
   data-wx-share-link-value="<%= url_for(only_path: false, **{ invite_code: current_user&.invite_code }.compact) %>"
