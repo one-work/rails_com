@@ -11,7 +11,7 @@ module RailsCom::ActionView
       elsif ActionView::Base.automatically_disable_submit_tag
         disable_with_text = tag_options['data-turbo-submits-with']
         disable_with_text ||= data['turbo_submits_with']
-        disable_with_text ||= value.to_s.clone
+        disable_with_text ||= value.to_s.clone + '中'
         tag_options.deep_merge!('data' => { 'turbo_submits_with' => disable_with_text })
       end
 
