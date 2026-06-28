@@ -34,6 +34,7 @@ module RailsCom::ActionView
 
   end
 end
+
 ActiveSupport.on_load :action_view do
   ActionView::CollectionRenderer.prepend RailsCom::ActionView::CollectionRenderer
 end
