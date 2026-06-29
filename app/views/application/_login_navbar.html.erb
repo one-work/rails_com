@@ -5,7 +5,7 @@
       data: {
         turbo_frame: 'main',
         controller: 'session-init-channel',
-        session_init_channel_url_value: ENV['AUTH_HOST']
+        **{ session_init_channel_url_value: ENV['AUTH_HOST'] }.compact
       },
       class: 'navbar-item'
     ) do
