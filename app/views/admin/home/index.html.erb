@@ -1,11 +1,15 @@
 <div class="columns m-0">
-  <div
-    data-controller="admin-actions"
-    data-admin-actions-data-value="<%= current_member.all_shortcuts.to_json %>"
-    class="column"
-  >
-    <%= render partial: 'admin_tags', collection: @businesses, as: :model, cached: cache_with_organ('admin') %>
-  </div>
+  <% if current_member %>
+    <div
+      data-controller="admin-actions"
+      data-admin-actions-data-value="<%= current_member.all_shortcuts.to_json %>"
+      class="column"
+    >
+      <%= render partial: 'admin_tags', collection: @businesses, as: :model, cached: cache_with_organ('admin') %>
+    </div>
+  <% else %>
+
+  <% end %>
   <div class="column">
     <div class="box">
       <%= render partial: 'profile' %>
