@@ -4,6 +4,7 @@ module Roled
 
     included do
       attribute :str_role_ids, :string, index: true
+      attribute :str_roles, :string
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
       attribute :who_type, :string
@@ -12,6 +13,7 @@ module Roled
       has_many :roles, through: :cache_roles
 
       before_save :sync_to_business_hash, if: -> { role_hash_changed? }
+      before_save :sync_to_str_roles, if: -> { str_role_ids_changed? }
       after_save :sync_role_caches, if: -> { saved_change_to_str_role_ids? }
       after_destroy :change_caches
     end
@@ -22,6 +24,10 @@ module Roled
         h.merge! k => h.fetch(k, []) << v
       end
       self.business_hash = result
+    end
+
+    def sync_to_str_roles
+      self.str_roles = Role.find(str_role_ids.split(',')).pluck(:name).join(',')
     end
 
     def sync_role_caches
