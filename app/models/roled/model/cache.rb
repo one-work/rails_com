@@ -27,7 +27,7 @@ module Roled
     end
 
     def sync_to_str_roles
-      self.str_roles = Role.find(str_role_ids.split(',')).pluck(:name).join(',')
+      self.str_roles = Role.where(id: str_role_ids.split(',')).pluck(:name).join(',')
     end
 
     def sync_role_caches
