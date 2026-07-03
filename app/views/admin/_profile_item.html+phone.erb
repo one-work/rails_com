@@ -15,7 +15,12 @@
         <span class="tag is-primary is-light size-7"><%= current_organ.dispatch_i18n %></span>
       <% end %>
     </p>
-    <p class="size-7 text-white"><%= current_member.name %></p>
+    <p class="size-7 text-white">
+      <span><%= current_member.name %></span>
+      <% if current_member.organ_id != current_organ.id %>
+        <span class="tag"><%= current_member.organ.name %></span>
+      <% end %>
+    </p>
   </div>
   <div class="media-right text-white">
     <%= svg_tag 'qrcode' %>
