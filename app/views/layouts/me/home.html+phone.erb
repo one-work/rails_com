@@ -1,6 +1,8 @@
 <%= render layout: 'layouts/phone_head' do %>
-  <% if defined?(current_organ) && current_member %>
+  <% if defined?(current_organ) && current_organ && current_member&.organ_id == current_organ.id %>
     <%= render 'profile_item' %>
+  <% elsif defined?(current_organ) && current_organ && current_member && current_member.organ_id != current_organ.id %>
+    <%= render 'profile_partner' %>
   <% elsif defined?(current_organ) && current_organ && current_user.admin? %>
     <%= render 'profile_user' %>
   <% else %>
