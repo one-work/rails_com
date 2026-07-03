@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<% if any_role?(business: 'org', namespace: 'partner') %>
+<% if any_role?(business: 'org', namespace: 'partner') && !Current.session.mock_member %>
 <div class="card as-transparent">
   <div class="card-header">
     <span class="size-7 text-grey has-border-left-primary">合伙人功能</span>
