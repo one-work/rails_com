@@ -183,7 +183,8 @@ Rails.application.routes.draw do
 end
 
 Rails.application.routes.append do
-  match '*all', controller: 'com/common', action: 'cors_preflight_check', via: [:options]
+  options '/', controller: 'com/common', action: 'cors_preflight_check'
+  options '*all', controller: 'com/common', action: 'cors_preflight_check'
   get 'up', controller: 'com/application', action: 'up'
 end
 
