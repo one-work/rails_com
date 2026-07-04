@@ -111,5 +111,7 @@
   <%= link_to({ controller: 'roled/panel/roles' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'roles', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('roled.panel.roles.index.title') %></span>
   <% end %>
+  <%= link_to({ controller: 'roled/panel/caches' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: 'caches', item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('roled.panel.caches.index.title') %></span>
+  <% end %>
 </div>
-
