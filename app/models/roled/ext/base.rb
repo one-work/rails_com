@@ -18,12 +18,16 @@ module Roled
     end
 
     def compute_role_cache!
-      cache = Cache.find_or_create_by!(str_role_ids: role_ids.join(','), who_type: base_class_name)
+      cache = Cache.find_or_create_by!(str_role_ids: role_ids.join(','))
       self.update_columns cache_id: cache.id  # 资源新增时，防止回调污染
     end
 
     def visible_roles
       self.class.visible_roles
+    end
+
+    def default_roles
+      Role.joins(:role_types).where(role_types: { who_type: who_type }).default
     end
 
     def role_whos_hash

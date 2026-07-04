@@ -7,7 +7,6 @@ module Roled
       attribute :str_roles, :string
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
-      attribute :who_type, :string
 
       has_many :cache_roles, dependent: :delete_all
       has_many :roles, through: :cache_roles
@@ -15,7 +14,7 @@ module Roled
       before_save :sync_to_business_hash, if: -> { role_hash_changed? }
       before_save :sync_to_str_roles, if: -> { str_role_ids_changed? }
       after_save :sync_role_caches, if: -> { saved_change_to_str_role_ids? }
-      after_destroy :change_caches
+      #after_destroy :change_caches
     end
 
     def sync_to_business_hash
@@ -41,15 +40,11 @@ module Roled
     end
 
     def compute_role_hash
-      (roles + default_roles).uniq.each_with_object({}) do |role, h|
+      roles.uniq.each_with_object({}) do |role, h|
         role.role_hash.each do |con, actions|
           h.merge! con => (h.fetch(con, []) + actions).uniq
         end
       end
-    end
-
-    def default_roles
-      Role.joins(:role_types).where(role_types: { who_type: who_type }).default
     end
 
     def change_caches
