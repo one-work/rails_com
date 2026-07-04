@@ -8,7 +8,7 @@ module Roled
 
     private
     def set_cache
-      @cache = Cache.find params[:id]
+      @cach = Cache.find params[:id]
     end
 
   end
