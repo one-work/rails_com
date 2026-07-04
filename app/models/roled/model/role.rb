@@ -243,6 +243,7 @@ module Roled
             YAML.safe_load_file(icon_path).each do |k, v|
               ha[k] ||= []
               ha[k].concat v
+              ha[k].uniq!
             end
           end
         end
