@@ -23,7 +23,7 @@ module Roled
       str_role_ids = [default_roles + roles].pluck(:id).sort
       cache = Cache.find_or_create_by!(str_role_ids: str_role_ids.join(','))
 
-      mock_caches = Role.joins(:role_types).where(role_types: { who_type: base_class_name }).default.mock
+      mock_caches = Role.joins(:role_types).where(role_types: { who_type: base_class_name }).default.mockable
       mock_ids = [mock_caches + roles.mock].pluck(:id).sort
       mock_cache = Cache.find_or_create_by!(str_role_ids: mock_ids.join(','))
 
