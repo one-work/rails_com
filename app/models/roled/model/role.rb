@@ -237,12 +237,12 @@ module Roled
           init_hash = {}
         end
 
-        Rails::Engine.subclasses.each_with_object(init_hash) do |engine, h|
+        Rails::Engine.subclasses.each_with_object(init_hash) do |engine, ha|
           icon_path = engine.root.join('config/roles.yml')
           if icon_path.exist?
             YAML.safe_load_file(icon_path).each do |k, v|
-              h[k] ||= []
-              h[k].concat v
+              ha[k] ||= []
+              ha[k].concat v
             end
           end
         end
