@@ -1,6 +1,6 @@
 module Roled
   class Panel::CachesController < Panel::BaseController
-    before_action :set_cache, only: [:show, :edit, :update]
+    before_action :set_cache, only: [:show, :edit, :update, :destroy]
 
     def index
       @caches = Cache.order(id: :desc).page(params[:page])
