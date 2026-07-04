@@ -7,6 +7,7 @@ module Roled
       attribute :str_roles, :string
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
+      attribute :who_type, :string
 
       has_many :cache_roles, dependent: :delete_all
       has_many :roles, through: :cache_roles
@@ -37,6 +38,10 @@ module Roled
     def reset_role_hash!
       self.role_hash = compute_role_hash
       self.save
+    end
+
+    def xx
+
     end
 
     def compute_role_hash
