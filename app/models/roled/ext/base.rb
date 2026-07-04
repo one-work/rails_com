@@ -18,7 +18,9 @@ module Roled
     end
 
     def compute_role_cache!
-      cache = Cache.find_or_create_by!(str_role_ids: role_ids.join(','))
+      str_role_ids = [default_roles + roles].pluck(:id).sort
+
+      cache = Cache.find_or_create_by!(str_role_ids: str_role_ids.join(','))
       self.update_columns cache_id: cache.id  # 资源新增时，防止回调污染
     end
 
@@ -27,7 +29,7 @@ module Roled
     end
 
     def default_roles
-      Role.joins(:role_types).where(role_types: { who_type: who_type }).default
+      Role.joins(:role_types).where(role_types: { who_type: base_class_name }).default
     end
 
     def role_whos_hash
