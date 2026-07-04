@@ -10,7 +10,6 @@ module Roled
       attribute :mockable, :boolean, default: false
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
-      attribute :default, :boolean, default: false
       attribute :subdomain, :string
 
       has_many :role_whos, dependent: :destroy_async
@@ -48,19 +47,11 @@ module Roled
     end
 
     def reset_cache!
-      if default
-        reset_type_cache!
-      else
-        caches.find_each { |i| i.reset_role_hash! }
-      end
+      caches.find_each { |i| i.reset_role_hash! }
     end
 
     def destroy_cache!
-      if default
-        reset_type_cache!
-      else
-        caches.each(&:destroy)
-      end
+      caches.each(&:destroy)
     end
 
     def reset_type_cache!
