@@ -19,12 +19,10 @@ module Roled
     end
 
     def compute_role_cache!
-      default_roles = Role.joins(:role_types).where(role_types: { who_type: base_class_name }).default
-      str_role_ids = [default_roles + roles].pluck(:id).sort
+      str_role_ids = roles.normal.pluck(:id).sort
       cache = Cache.find_or_create_by!(str_role_ids: str_role_ids.join(','))
 
-      mock_caches = Role.joins(:role_types).where(role_types: { who_type: base_class_name }).default.mockable
-      mock_ids = [mock_caches + roles.mock].pluck(:id).sort
+      mock_ids = roles.mockable.pluck(:id).sort
       mock_cache = Cache.find_or_create_by!(str_role_ids: mock_ids.join(','))
 
       self.update_columns cache_id: cache.id, mock_cache_id: mock_cache.id  # 资源新增时，防止回调污染
