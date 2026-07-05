@@ -69,7 +69,7 @@ module Roled
       end
 
       if mock
-        role_h = mock_cache.role_hash || {}
+        role_h = mock_cache&.role_hash || {}
       else
         role_h = role_hash
       end
