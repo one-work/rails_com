@@ -20,7 +20,7 @@ module Roled
     end
 
     def require_role
-      if rails_role_user && rails_role_user.has_role?(controller: controller_path, action: action_name, params: params)
+      if rails_role_user && rails_role_user.has_role?(controller: controller_path, action: action_name, params: params, mock: Current.session.mock_member)
         return
       end
 
