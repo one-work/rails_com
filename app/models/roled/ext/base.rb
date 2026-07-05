@@ -59,7 +59,7 @@ module Roled
 
     def has_role?(controller:, action:, mock: nil, **options)
       if admin?
-        logger.debug "\e[35m  #{base_class_name}_#{id} is admin!  \e[0m" if Rails.configuration.x.role_debug
+        logger.debug "\e[35m  #{base_class_name}_#{id} is admin!  \e[0m" if RailsCom.config.debug_role
         return true
       end
 
@@ -74,7 +74,7 @@ module Roled
         role_h = role_hash
       end
       r = role_h.fetch(controller.to_s.delete_prefix('/'), []).include? action
-      logger.debug "\e[35m  #{base_class_name}_#{id} has role: #{options}, #{r}  \e[0m" if Rails.configuration.x.role_debug
+      logger.debug "\e[35m  #{base_class_name}_#{id} has role: #{options}, #{r}  \e[0m" if RailsCom.config.debug_role
       r
     end
 

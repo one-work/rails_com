@@ -12,6 +12,7 @@ module RailsCom #:nodoc:
   config.default_admin_accounts = []
   config.debug = false
   config.debug_i18n = false
+  config.debug_role = false
   config.default_return_path = '/board'
   config.enum_key = ->(o, attribute){ "#{o.i18n_scope}.enum.#{o.base_class.model_name.i18n_key}.#{attribute}" }
   config.ignore_exception = [

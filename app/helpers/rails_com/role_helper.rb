@@ -31,7 +31,7 @@ module RailsCom::RoleHelper
     }
 
     result = role_permit?(**result_params)
-    if Rails.configuration.x.role_debug || !result
+    if RailsCom.config.debug_role || !result
       logger.debug "\e[35m  Options: #{options}  \e[0m"
     end
     result
@@ -53,13 +53,13 @@ module RailsCom::RoleHelper
     end
 
     if filtered && defined?(rails_role_user) && rails_role_user
-      user_permitted = rails_role_user.has_role?(params: extra_params, **meta_params)
+      user_permitted = rails_role_user.has_role?(params: extra_params, mock: Current.session.mock_member, **meta_params)
     else
       user_permitted = true
     end
 
     result = organ_permitted && user_permitted
-    if Rails.configuration.x.role_debug || !result
+    if RailsCom.config.debug_role || !result
       logger.debug "\e[35m  #{'-' * 50} #{result} #{'-' * 50}  \e[0m"
       logger.debug "\e[35m  Meta Params: #{meta_params}, Extra Params: #{extra_params}  \e[0m"
       logger.debug "\e[35m  Organ: #{current_organ&.base_class_name}, ID: #{current_organ&.id}: #{organ_permitted.inspect}  \e[0m" if defined?(current_organ)
