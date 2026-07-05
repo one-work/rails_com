@@ -15,7 +15,7 @@ module Roled
       before_save :sync_to_business_hash, if: -> { role_hash_changed? }
       before_save :sync_to_str_roles, if: -> { str_role_ids_changed? }
       after_save :sync_role_caches, if: -> { saved_change_to_str_role_ids? }
-      #after_destroy :change_caches
+      after_destroy :change_caches
     end
 
     def sync_to_business_hash
