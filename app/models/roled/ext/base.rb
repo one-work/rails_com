@@ -57,7 +57,7 @@ module Roled
       cache&.business_hash || {}
     end
 
-    def has_role?(**options)
+    def has_role?(controller:, action:, mock: nil, **options)
       if admin?
         logger.debug "\e[35m  #{base_class_name}_#{id} is admin!  \e[0m" if Rails.configuration.x.role_debug
         return true
@@ -67,12 +67,18 @@ module Roled
         logger.debug "\e[35m  #{base_class_name}_#{id} not has role: #{options}  \e[0m"
         return false
       end
-      r = role_hash.fetch(options[:controller].to_s.delete_prefix('/'), []).include? options[:action]
+
+      if mock
+        role_h = mock_cache.role_hash || {}
+      else
+        role_h = role_hash
+      end
+      r = role_h.fetch(controller.to_s.delete_prefix('/'), []).include? action
       logger.debug "\e[35m  #{base_class_name}_#{id} has role: #{options}, #{r}  \e[0m" if Rails.configuration.x.role_debug
       r
     end
 
-    def any_role?(business: nil, namespace: nil, controller: nil)
+    def any_role?(business: nil, namespace: nil, controller: nil, mock: nil)
       if admin?
         return true
       end
