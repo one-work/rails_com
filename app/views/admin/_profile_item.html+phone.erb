@@ -14,6 +14,9 @@
       <% if current_organ.dispatch %>
         <span class="tag is-primary is-light size-7"><%= current_organ.dispatch_i18n %></span>
       <% end %>
+      <% if current_organ.cache && current_organ.cache.str_roles.present? %>
+        <span class="tag is-info is-light size-7"><%= current_organ.cache.str_roles %></span>
+      <% end %>
     </p>
     <div class="size-7 text-white">
       <span><%= current_member.name %></span>
