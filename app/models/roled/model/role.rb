@@ -34,7 +34,6 @@ module Roled
       before_save :sync_to_business_hash, if: -> { role_hash_changed? }
       after_save :sync, if: -> { saved_change_to_role_hash? }
       after_save :reset_cache!, if: -> { saved_change_to_role_hash? }
-      after_save :reset_type_cache!, if: -> { saved_change_to_default? }
       after_destroy :destroy_cache!
     end
 
