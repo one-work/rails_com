@@ -51,10 +51,16 @@ module Roled
     end
 
     def compute_role_hash
-      roles.each_with_object({}) do |role, h|
+      h1 = roles.each_with_object({}) do |role, h|
         role.role_hash.each do |con, actions|
           h.merge! con => h.fetch(con, []) | actions
         end
+      end
+      h2 = default_hash
+
+      keys = h1.keys | h2.keys
+      keys.each_with_object({}) do |con, h|
+        h.merge! con => h1.fetch(con, []) | h2.fetch(con, [])
       end
     end
 
