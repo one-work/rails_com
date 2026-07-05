@@ -186,9 +186,8 @@ module Com
       if request.variant.any?(:phone) && defined?(current_organ) && current_organ
         @roled_tabs = current_organ.tabs.where(namespace: '').load.sort_by(&:position)
       else
-        role = Roled::Role.default.take
-        if role
-          @roled_tabs = role.tabs.where(namespace: '').load.sort_by(&:position)
+        if current_user
+          @roled_tabs = current_user.tabs.where(namespace: '').load.sort_by(&:position)
         else
           @roled_tabs = Roled::Tab.none
         end
