@@ -230,9 +230,9 @@ module Roled
 
     class_methods do
 
-      def default_role_hash
+      def default_hash(key = 'default')
         if Rails.root.join('config/roles.yml').exist?
-          init_hash = YAML.load_file(Rails.root.join('config/roles.yml'))
+          init_hash = YAML.load_file(Rails.root.join('config/roles.yml'), fallback: {}).fetch(key, {})
         else
           init_hash = {}
         end
@@ -240,7 +240,7 @@ module Roled
         Rails::Engine.subclasses.each_with_object(init_hash) do |engine, ha|
           icon_path = engine.root.join('config/roles.yml')
           if icon_path.exist?
-            YAML.safe_load_file(icon_path).each do |k, v|
+            YAML.safe_load_file(icon_path, fallback: {}).fetch(key, {}).each do |k, v|
               ha[k] ||= []
               ha[k].concat v
               ha[k].uniq!

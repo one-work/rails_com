@@ -40,14 +40,20 @@ module Roled
       self.save
     end
 
-    def xx
+    def default_hash
+      h1 = Role.default_hash(who_type)
+      h2 = Role.default_hash
 
+      keys = h1.keys | h2.keys
+      keys.each_with_object({}) do |con, h|
+        h.merge! con => h1.fetch(con, []) | h2.fetch(con, [])
+      end
     end
 
     def compute_role_hash
-      roles.uniq.each_with_object({}) do |role, h|
+      roles.each_with_object({}) do |role, h|
         role.role_hash.each do |con, actions|
-          h.merge! con => (h.fetch(con, []) + actions).uniq
+          h.merge! con => h.fetch(con, []) | actions
         end
       end
     end
