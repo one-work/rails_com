@@ -68,5 +68,15 @@ module Roled
       who_type.constantize.where(cache_id: id).find_each { |who| who.compute_role_cache! }
     end
 
+    class_methods do
+
+      def reset_all_caches!
+        find_each do |cache|
+          cache.reset_role_cache!
+        end
+      end
+
+    end
+
   end
 end
