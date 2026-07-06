@@ -8,6 +8,7 @@ module Roled
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
       attribute :who_type, :string
+      attribute :mock, :boolean, default: false
 
       has_many :cache_roles, dependent: :delete_all
       has_many :roles, through: :cache_roles
