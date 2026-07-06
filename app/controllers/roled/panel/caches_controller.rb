@@ -16,7 +16,7 @@ module Roled
 
     def set_filter_columns
       @filter_columns = set_filter_i18n(
-        'id' => { type: 'string', default: true }
+        'id' => { type: 'search', default: true }
       )
     end
 
