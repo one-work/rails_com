@@ -70,9 +70,9 @@ module Roled
 
     class_methods do
 
-      def reset_all_caches!
+      def reset!
         find_each do |cache|
-          cache.reset_role_cache!
+          cache.reset_role_hash!
         end
       end
 
