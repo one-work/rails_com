@@ -1,38 +1,31 @@
 <div data-switch-target="src" class="<% @filter_columns.present? ? 'tags' : 'tags display-none' %>">
   <% @filter_columns.each do |column| %>
-  <% if column[:value] %>
-    <%=
-      render(
-        partial: "filter_form/filter_value_#{column[:type]}",
-        locals: {
-          record_class: record_class,
-          key: column[:column_name],
-          scope: nil,
-          form: 'filter_search_form',
-          **column
-        }
-      )
-    %>
-  <% elsif column[:default] %>
-    <%=
-      render(
-        partial: "filter_form/filter_default_#{column[:type]}",
-        locals: {
-          record_class: record_class,
-          key: column[:column_name],
-          scope: nil,
-          form: 'filter_search_form',
-          **column
-        }
-      )
-    %>
-  <% end %>
-  <% end %>
-  <div id="filter_container" data-controller="popup">
-    <%= button_to({ action: 'filter' }, params: { record_class: record_class, keys: request.GET.keys }, class: 'button is-small') do %>
-      <span class="icon">
-        <%= svg_tag 'plus' %>
-      </span>
+    <% if column[:value] %>
+      <%=
+        render(
+          partial: "filter_form/filter_value_#{column[:type]}",
+          locals: {
+            record_class: record_class,
+            key: column[:column_name],
+            scope: nil,
+            form: 'filter_search_form',
+            **column
+          }
+        )
+      %>
+    <% elsif column[:default] %>
+      <%=
+        render(
+          partial: "filter_form/filter_default_#{column[:type]}",
+          locals: {
+            record_class: record_class,
+            key: column[:column_name],
+            scope: nil,
+            form: 'filter_search_form',
+            **column
+          }
+        )
+      %>
     <% end %>
-  </div>
+  <% end %>
 </div>
