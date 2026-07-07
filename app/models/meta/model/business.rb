@@ -87,7 +87,9 @@ module Meta
             meta_action
           end
           self.class.transaction do
-            collected_actions.each { |i| i.save! }
+            collected_actions.each do |i|
+              i.save!
+            end
           end
 
           meta_controller
