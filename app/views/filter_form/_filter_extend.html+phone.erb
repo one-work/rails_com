@@ -1,15 +1,23 @@
 <div data-switch-target="src" class="<% @filter_columns.present? ? 'tags' : 'tags display-none' %>">
-  <% @filter_columns.each do |key, value| %>
+  <% @filter_columns.each do |column| %>
   <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
-    <% if record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :boolean %>
-      <%= render partial: 'filter_form/filter_value_boolean', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
+    <% if column[:value] %>
+      <%=
+        render(
+          partial: "filter_form/filter_value_#{column[:type]}",
+          locals: {
+            record_class: record_class,
+            key: column[:column_name],
+            scope: nil,
+            form: 'filter_search_form',
+            **column
+          }
+        )
+      %>
     <% elsif record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :datetime %>
       <%= render partial: 'filter_form/filter_value_datetime', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
     <% else %>
       <%= render partial: 'filter_form/filter_value_text', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
-    <% end %>
-    <%= link_to({ **request.GET.except(key) }, class: 'tag is-primary as-attached-right') do %>
-      <i class="delete"></i>
     <% end %>
   </div>
   <% end %>
