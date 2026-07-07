@@ -21,7 +21,6 @@ module Com
     end
 
     def filter
-      binding.b
     end
 
     def debug

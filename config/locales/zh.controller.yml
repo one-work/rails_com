@@ -10,6 +10,8 @@ zh:
       reject: 拒绝
       clear: 重置
       back: 返回
+    filter:
+      title: 筛选
     show:
       title: 详情
     new:
