@@ -240,11 +240,34 @@ module Roled
           icon_path = engine.root.join('config/roles.yml')
           if icon_path.exist?
             YAML.safe_load_file(icon_path, aliases: true, fallback: {}).fetch(key, {}).each do |k, v|
-              ha[k] ||= []
-              ha[k].concat v
+              if ha[k].is_a?(String)
+                ha[k] = default_hash_actions(ha[k], k)
+              else
+                ha[k] ||= []
+              end
+
+              if v.is_a?(Array)
+                ha[k].concat v
+              else
+                ha[k].concat default_hash_actions(v, k)
+              end
+
               ha[k].uniq!
             end
           end
+        end
+      end
+
+      def default_hash_actions(opt, controller_path)
+        case opt
+        when 'all'
+          Meta::Action.where(controller_path: controller_path).pluck(:action_name)
+        when 'read'
+          Meta::Action.where(controller_path: controller_path, operation: ['list', 'read']).pluck(:action_name)
+        when 'write'
+          Meta::Action.where(controller_path: controller_path, operation: ['list', 'read', 'add', 'edit']).pluck(:action_name)
+        else
+          []
         end
       end
 
