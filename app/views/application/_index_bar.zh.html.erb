@@ -1,6 +1,6 @@
 <nav class="level is-narrow">
   <div class="level-left">
-    <h2 class="title is-3"><%= t('.title') %></h2>
+    <h1 class="title is-3"><%= t('.title') %></h1>
     <% if instance_variable_defined?("@#{pluralize_model_name}") && instance_variable_get("@#{pluralize_model_name}").respond_to?(:total_count) %>
       <p class="text-grey">
         <span>共</span>
