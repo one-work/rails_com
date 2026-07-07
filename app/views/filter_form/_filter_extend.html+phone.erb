@@ -14,10 +14,10 @@
           }
         )
       %>
-    <% else %>
+    <% elsif column[:default] %>
       <%=
         render(
-          partial: "filter_form/filter_value_#{column[:type]}",
+          partial: "filter_form/filter_default_#{column[:type]}",
           locals: {
             record_class: record_class,
             key: column[:column_name],
