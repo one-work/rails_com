@@ -1,6 +1,6 @@
 <div data-switch-target="src" class="<% @filter_columns.present? ? 'tags' : 'tags display-none' %>">
   <% @filter_columns.each do |column| %>
-  <div id="filter_container_<%= key %>" data-controller="popup" class="max-fullwidth size-0">
+  <div data-controller="popup" class="max-fullwidth size-0">
     <% if column[:value] %>
       <%=
         render(
@@ -17,13 +17,13 @@
     <% else %>
       <%=
         render(
-          partial: 'filter_form/filter_value_text',
+          partial: "filter_form/filter_value_#{column[:type]}",
           locals: {
             record_class: record_class,
-            key: key,
-            value: value,
+            key: column[:column_name],
             scope: nil,
-            form: 'filter_search_form'
+            form: 'filter_search_form',
+            **column
           }
         )
       %>
