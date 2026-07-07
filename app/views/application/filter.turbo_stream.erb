@@ -1,3 +1,1 @@
-<%= turbo_stream.append 'filter_container' do %>
-
-<% end %>
+<%= turbo_stream.append_body partial: 'filter_form/filter_extend', layout: 'modal_auto', locals: { record_class: model_klass } %>
