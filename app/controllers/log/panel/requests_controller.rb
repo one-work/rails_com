@@ -21,11 +21,11 @@ module Log
     end
 
     private
-    def set_filter_columns
-      @filter_columns = set_filter_i18n(
+    def filter_columns
+      {
         'path' => { type: 'search', default: true },
         'created_at' => { type: 'datetime', default: true }
-      )
+      }
     end
 
   end

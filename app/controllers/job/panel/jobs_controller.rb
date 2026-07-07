@@ -87,11 +87,11 @@ module Job
       @common_jobs = SolidQueue::Job.default_where(q_params)
     end
 
-    def set_filter_columns
-      @filter_columns = set_filter_i18n(
+    def filter_columns
+      {
         'state' => { type: 'dropdown', default: true },
         'created_at' => 'datetime'
-      )
+      }
     end
 
     def set_count

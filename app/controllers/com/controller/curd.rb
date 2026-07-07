@@ -5,7 +5,7 @@ module Com
 
     included do
       helper_method :permit_keys, :model_name
-      before_action :set_filter_columns, only: [:index, :filter]
+      before_action :set_filter_columns, only: [:index]
     end
 
     def index
@@ -21,6 +21,7 @@ module Com
     end
 
     def filter
+      @filter_columns = set_filter_i18n(filtered: params.except(:authenticity_token, :business, :namespace, :controller, :action).permit!.to_h, **filter_columns)
     end
 
     def debug
@@ -159,14 +160,18 @@ module Com
       end
     end
 
-    def set_filter_columns
-      @filter_columns = set_filter_i18n(
+    def filter_columns
+      {
         'name-like' => { type: 'search', default: true }
-      )
+      }
     end
 
-    def set_filter_i18n(**items)
-      filter_params = request.GET.each_with_object({}) do |(k, v), h|
+    def set_filter_columns
+      @filter_columns = set_filter_i18n(**filter_columns)
+    end
+
+    def set_filter_i18n(filtered: request.GET, **items)
+      filter_params = filtered.each_with_object({}) do |(k, v), h|
         next if v.blank?
 
         if k.include?('-')

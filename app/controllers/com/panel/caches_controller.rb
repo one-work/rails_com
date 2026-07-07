@@ -17,12 +17,12 @@ module Com
       SolidCache::Entry
     end
 
-    def set_filter_columns
-      @filter_columns = set_filter_i18n(
+    def filter_columns
+      {
         'key' => { type: 'search', default: true },
         'key_hash' => { type: 'search', default: true },
         'created_at' => 'datetime'
-      )
+      }
     end
 
   end

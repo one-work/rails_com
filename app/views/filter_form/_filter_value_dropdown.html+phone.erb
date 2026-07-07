@@ -1,0 +1,10 @@
+<div class="field mt-2">
+  <span class="label text-grey"><%= record_class.human_attribute_name(key) %></span>
+  <div class="control">
+    <div class="tags">
+    <% record_class.options_i18n(key).each do |text, _value| %>
+      <%= link_to text, { action: 'index', key => _value }, class: value == _value.to_s ? 'tag is-primary' : 'tag' %>
+    <% end %>
+    </div>
+  </div>
+</div>

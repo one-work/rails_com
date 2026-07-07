@@ -8,7 +8,7 @@
   <button data-search-target="cancel" data-action="search#cancel" class="button is-borderless display-none">
     <span>取消</span>
   </button>
-  <%= button_to({ action: 'filter' }, class: 'button is-borderless') do %>
+  <%= button_to({ action: 'filter' }, params: request.GET, class: 'button is-borderless') do %>
     <%= svg_tag 'filter' %>
   <% end %>
 </div>
