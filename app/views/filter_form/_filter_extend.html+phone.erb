@@ -14,10 +14,19 @@
           }
         )
       %>
-    <% elsif record_class.columns_hash.key?(key) && record_class.columns_hash[key].type == :datetime %>
-      <%= render partial: 'filter_form/filter_value_datetime', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
     <% else %>
-      <%= render partial: 'filter_form/filter_value_text', locals: { record_class: record_class, key: key, value: value, scope: nil, form: 'filter_search_form' } %>
+      <%=
+        render(
+          partial: 'filter_form/filter_value_text',
+          locals: {
+            record_class: record_class,
+            key: key,
+            value: value,
+            scope: nil,
+            form: 'filter_search_form'
+          }
+        )
+      %>
     <% end %>
   </div>
   <% end %>
