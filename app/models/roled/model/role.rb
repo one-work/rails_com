@@ -246,10 +246,10 @@ module Roled
                 ha[k] ||= []
               end
 
-              if v.is_a?(Array)
-                ha[k].concat v
-              else
+              if v.is_a?(String)
                 ha[k].concat default_hash_actions(v, k)
+              else
+                ha[k].concat v
               end
 
               ha[k].uniq!
