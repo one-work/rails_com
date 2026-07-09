@@ -8,6 +8,10 @@ module Com
       helper_method :model_klass, :pluralize_model_name
     end
 
+    def filter
+      @filter_columns = {}
+    end
+
     def actions
       render :actions, locals: { model: model_object }
     end
