@@ -114,7 +114,6 @@ module Roled
         :code,
         :description,
         :visible,
-        :mockable,
         :subdomain,
         role_types_attributes: [:who_type, :id, :_destroy]
       )
