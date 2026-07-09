@@ -58,13 +58,7 @@ module Com
     end
 
     def url(**options)
-      if get? && default_path == '/board'
-        if organ_domain
-          organ_domain.redirect_url(**options)
-        else
-          default_url(**options)
-        end
-      elsif get?
+      if get?
         default_url(**options)
       elsif referer.present?
         uri = URI(referer)
