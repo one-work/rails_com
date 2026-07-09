@@ -7,7 +7,6 @@ module Roled
       attribute :tip, :string
       attribute :description, :string
       attribute :visible, :boolean, default: false
-      attribute :mockable, :boolean, default: false
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
       attribute :subdomain, :string
@@ -24,8 +23,6 @@ module Roled
       accepts_nested_attributes_for :role_types, allow_destroy: true
 
       scope :visible, -> { where(visible: true) }
-      scope :normal, -> { where(mockable: false) }
-      scope :mockable, -> { where(mockable: true) }
 
       normalizes :tip, with: -> tip { tip.presence }
 
