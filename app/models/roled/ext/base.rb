@@ -40,6 +40,12 @@ module Roled
       end
     end
 
+    def mock_role_whos_hash
+      mock_role_whos.each_with_object({}) do |role_who, h|
+        h.merge! role_who.role_id => role_who
+      end
+    end
+
     def role_whos_attributes
       arr = role_whos.each_with_object([]) do |role_who, h|
         h << {
