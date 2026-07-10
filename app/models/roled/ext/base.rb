@@ -6,8 +6,10 @@ module Roled
       belongs_to :cache, class_name: 'Roled::Cache', optional: true
       belongs_to :mock_cache, class_name: 'Roled::Cache', optional: true
 
-      has_many :role_whos, class_name: 'Roled::RoleWho', as: :who
+      has_many :role_whos, -> { where(mock: false) }, class_name: 'Roled::RoleWho', as: :who
       has_many :roles, class_name: 'Roled::Role', through: :role_whos
+      has_many :mock_role_whos, -> { where(mock: true) }, class_name: 'Roled::RoleWho', as: :who
+      has_many :mock_roles, class_name: 'Roled::Role', through: :mock_role_whos, source: :role
 
       accepts_nested_attributes_for :role_whos, allow_destroy: true, reject_if: ->(attributes){ attributes.slice('role_id').blank? }
 
