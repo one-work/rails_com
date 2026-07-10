@@ -5,6 +5,12 @@ module Roled
 
     included do
       attribute :admin, :boolean, default: false
+
+      after_create :inherit_provider_roles, if: -> { provider.present? }
+    end
+
+    def inherit_provider_roles
+      self.roles = provider.mock_roles
     end
 
   end
