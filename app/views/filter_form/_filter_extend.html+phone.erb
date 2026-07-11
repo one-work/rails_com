@@ -1,4 +1,4 @@
-<%= form_with theme: nil, method: :get, id: 'filter_search_form', class: 'display-none' do %><% end %>
+<%= form_with theme: nil, url: { action: 'index' }, method: :get, id: 'filter_search_form', class: 'display-none' do %><% end %>
 <% @filter_columns.each do |column| %>
   <% if column[:value] %>
     <%=
