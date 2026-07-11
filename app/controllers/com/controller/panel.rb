@@ -5,7 +5,14 @@ module Com
 
     def require_member_or_user
       if defined? current_member
-        require_user unless current_member
+        if current_member
+          if current_member.organ_id == current_organ.id
+            Current.session.update mock_member: false
+          end
+          return
+        else
+          require_user
+        end
       else
         require_user
       end
