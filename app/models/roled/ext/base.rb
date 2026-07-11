@@ -82,7 +82,9 @@ module Roled
         role_h = role_hash
       end
       r = role_h.fetch(controller.to_s.delete_prefix('/'), []).include? action
-      logger.debug "\e[35m  #{base_class_name}_#{id} has role: #{options}, #{r}  \e[0m" if RailsCom.config.debug_role
+      if RailsCom.config.debug_role || !r
+        logger.debug "\e[35m  #{base_class_name}_#{id} has role: #{options}, #{r}  \e[0m"
+      end
       r
     end
 
