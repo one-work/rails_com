@@ -37,7 +37,7 @@ module Roled
     def role_denied
       respond_to do |format|
         format.turbo_stream { render 'role_denied', layout: 'raw' }
-        format.html { render 'role_denied' }
+        format.html { render 'role_denied', layout: 'raw' }
       end
     end
 
