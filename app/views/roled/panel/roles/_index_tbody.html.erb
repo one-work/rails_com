@@ -13,3 +13,8 @@
   <span class="tag"><%= role_type.who_type_i18n %></span>
 <% end %>
 </td>
+<td>
+<% model.tabs.each do |tab| %>
+  <span class="tag"><%= tab.name %></span>
+<% end %>
+</td>

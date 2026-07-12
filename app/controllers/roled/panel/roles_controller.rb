@@ -8,7 +8,7 @@ module Roled
     before_action :set_new_role, only: [:new, :create]
 
     def index
-      @roles = Role.includes(:role_types).order(id: :asc).page(params[:page])
+      @roles = Role.includes(:role_types, :tabs).order(id: :asc).page(params[:page])
     end
 
     def show
