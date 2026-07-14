@@ -30,6 +30,7 @@
       }
     )
   %>
+  <%= turbo_stream.replace 'buttons', partial: 'tab_bar' %>
   <%= turbo_stream.remove 'modal_form' %>
 <% else %>
   <%= turbo_stream.visit %>
