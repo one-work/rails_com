@@ -1,6 +1,6 @@
 module Com
   class LogController < BaseController
-    skip_forgery_protection if defined?(verify_authenticity_token)
+    skip_forgery_protection
     rate_limit to: 10, within: 1.minute, with: :redirect_for_too_many, only: [:not_found]
 
     def not_found
