@@ -16,6 +16,13 @@ Rails.application.routes.draw do
     get :index
   end
 
+  resources :configurations, only: [] do
+    collection do
+      get 'ios_v1'
+      get 'android_v1'
+    end
+  end
+
   namespace :board do
     root 'home#index' unless has_named_route? 'board_root'
   end
