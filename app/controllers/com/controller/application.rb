@@ -100,6 +100,10 @@ module Com
         variant << :work_wechat
       end
 
+      if request.user_agent&.match? /(Hotwire|Turbo) Native/
+        variant << :native
+      end
+
       if request.user_agent&.match? /MicroMessenger|WeChat/  # 包含 mini program
         variant += [:wechat, :phone]
       end
