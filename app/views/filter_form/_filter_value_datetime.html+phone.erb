@@ -1,4 +1,4 @@
-<div id="filter_container_<%= key %>" class="max-fullwidth size-0">
+<div id="filter_container_<%= key %>" class="max-fullwidth size-0 mt-2">
   <%=
     button_to(
       { controller: 'com/filters', action: 'column_single' },
@@ -8,9 +8,9 @@
   %>
     <span class="tag"><%= record_class.human_attribute_name(key) %></span>
     <span class="tag is-info justify-content-flex-start overflow-x-hidden as-attached-left">
-      <time data-controller="time"><%= value['gte'] %></time>
+      <time data-controller="time"><%= value['gte'].to_datetime.to_fs(:iso8601) if value['gte'] %></time>
       <span>-</span>
-      <time data-controller="time"><%= value['lte'] %></time>
+      <time data-controller="time"><%= value['lte'].to_datetime.to_fs(:iso8601) if value['lte'] %></time>
     </span>
   <% end %>
   <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-info as-attached-right') do %>
