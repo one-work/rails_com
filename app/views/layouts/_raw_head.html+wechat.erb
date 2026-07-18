@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <%= render 'head_title' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbo-cache-control" content="no-preview">
+    <%= action_cable_meta_tag %>
+    <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'raw', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+  <body class="has-page-centered">
+    <%= yield %>
+  </body>
+</html>
