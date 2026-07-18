@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>" style="height: 100%">
+<html lang="<%= I18n.locale %>">
   <head>
     <%= render 'head_title' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="turbo-cache-control" content="no-preview">
-    <%= action_cable_meta_tag %>
     <script
       src="https://lf1-cdn-tos.bytegoofy.com/goofy/developer/jssdk/jssdk-1.2.0.js"
       referrerpolicy="origin"
@@ -15,8 +14,9 @@
     <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
   </head>
-  <body style="height: 100%; margin: 0">
+  <body class="has-page-centered">
     <%= yield %>
   </body>
 </html>
