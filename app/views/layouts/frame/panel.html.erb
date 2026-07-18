@@ -1,10 +1,14 @@
 <turbo-frame id="panel" title="<%= current_title %>">
+  <div data-controller="frame-append">
+    <%= render 'head_extra_js' %>
+  </div>
   <div class="loading">loading...</div>
-  <%= render 'head_extra_js' %>
-  <%= render 'head_templates' %>
   <ul class="breadcrumb has-succeeds-separator ml-3"><%= render 'breadcrumb' %></ul>
   <%= render 'alert' %>
-  <div class="box flex-grow-1 radius-bottom-none">
+  <div class="box flex-grow-1 radius-bottom-none mb-0">
     <%= yield %>
+  </div>
+  <div data-controller="frame-update">
+    <%= render 'head_templates' %>
   </div>
 </turbo-frame>
