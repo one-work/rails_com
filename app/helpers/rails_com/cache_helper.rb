@@ -6,7 +6,7 @@ module RailsCom
         [
           model,
           namespace,
-          current_member.cache,
+          current_member&.cache,
           compute_asset_path('icons_regular.svg'),
           compute_asset_host('icons_regular.svg')
         ]
