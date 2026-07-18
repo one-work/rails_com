@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+
+.has-page-centered {
+  // height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.has-page-centered > * {
+  color: darkgrey;
+}

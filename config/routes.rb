@@ -83,6 +83,9 @@ Rails.application.routes.draw do
       get '/not_founds' => :index
       post '/csp_violation_report' => :csp
     end
+    controller :home do
+      get :raw
+    end
     resources :nodes, only: [] do
       collection do
         get :children

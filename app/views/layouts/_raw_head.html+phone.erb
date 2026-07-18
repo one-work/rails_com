@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>" style="height: 100%">
+<html lang="<%= I18n.locale %>">
   <head>
     <%= render 'head_title' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,10 +22,11 @@
     <% end %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'mini-program', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'raw', media: 'all', 'data-turbo-track': 'reload' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   </head>
-  <body style="height: 100%; margin: 0">
+  <body class="has-page-centered">
     <%= yield %>
   </body>
 </html>
