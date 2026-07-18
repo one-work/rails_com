@@ -2,7 +2,7 @@
 <html lang="<%= I18n.locale %>" style="height: 100%">
   <head>
     <%= render 'head_title' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="turbo-cache-control" content="no-preview">
     <%= action_cable_meta_tag %>
     <% if request.variant.include?(:work_wechat) %>
