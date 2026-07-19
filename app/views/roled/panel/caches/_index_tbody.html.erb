@@ -1,3 +1,9 @@
-<td><%= model.str_roles %></td>
+<td>
+  <div class="tags">
+  <% model.roles_arr.each do |role_str| %>
+    <span class="tag"><%= role_str %></span>
+  <% end %>
+  </div>
+</td>
 <td><%= model.who_type %></td>
 <td><%= model.mock %></td>

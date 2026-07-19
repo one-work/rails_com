@@ -14,8 +14,12 @@
       <% if current_organ.dispatch %>
         <span class="tag is-primary is-light size-7"><%= current_organ.dispatch_i18n %></span>
       <% end %>
-      <% if current_organ.mock_cache && current_organ.mock_cache.str_roles.present? %>
-        <span class="tag is-info is-light size-7"><%= current_organ.mock_cache.str_roles %></span>
+      <% if current_organ.mock_cache && current_organ.mock_cache.roles_arr.present? %>
+        <div class="tags">
+        <% current_organ.mock_cache.roles_arr.each do |role_str| %>
+          <span class="tag is-info is-light size-7"><%= role_str %></span>
+        <% end %>
+        </div>
       <% end %>
     </p>
     <div class="size-7 text-white">
