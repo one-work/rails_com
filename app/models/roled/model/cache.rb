@@ -4,7 +4,7 @@ module Roled
 
     included do
       attribute :str_role_ids, :string, index: true
-      attribute :str_roles, :string
+      attribute :roles_arr, :json, default: []
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
       attribute :who_type, :string
@@ -28,7 +28,7 @@ module Roled
     end
 
     def sync_to_str_roles
-      self.str_roles = Role.where(id: str_role_ids.split(',')).pluck(:name).join(',')
+      self.roles_arr = Role.where(id: str_role_ids.split(',')).pluck(:name)
     end
 
     def sync_role_caches
