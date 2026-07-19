@@ -5,3 +5,6 @@
     locals: { model: defined?(model) ? model : instance_variable_get("@#{model_name}") }
   )
 %>
+<% if action_name == 'create' %>
+  <%= turbo_stream.remove 'modal_form' %>
+<% end %>
