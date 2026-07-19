@@ -1,6 +1,6 @@
 <%= form_with theme: 'modal', model: @subscription, url: { action: 'update' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section id="modal-card-body" class="modal-card-body">
     <%= f.text_field :host %>
     <%= f.text_field :port, value: 5432 %>
     <%= f.text_field :dbname %>

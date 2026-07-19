@@ -5,7 +5,7 @@
       <p class="modal-card-title"><%= t('.title') %></p>
       <button type="button" data-action="modal#close" class="delete"></button>
     </header>
-    <section class="modal-card-body">
+    <section id="modal-card-body" class="modal-card-body">
       <%= yield %>
     </section>
     <%= render 'modal_foot' %>

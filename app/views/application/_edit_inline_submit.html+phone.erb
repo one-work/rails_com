@@ -8,7 +8,7 @@
       <p class="bar-title"><%= f.object.class.human_attribute_name(params[:field]) %></p>
       <span class="px-5"></span>
     </header>
-    <section class="modal-card-body">
+    <section id="modal-card-body" class="modal-card-body">
       <%= render partial: params[:field_type], locals: { f: f, name: params[:field] } %>
     </section>
     <%= f.submit %>

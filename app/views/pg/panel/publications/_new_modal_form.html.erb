@@ -1,6 +1,6 @@
 <%= form_with theme: 'modal', model: @publication, url: { action: 'create' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section id="modal-card-body" class="modal-card-body">
     <%= f.text_field :pubname %>
     <%= f.collection_check_boxes :tables, @tables, :to_s, :to_s %>
   </section>
