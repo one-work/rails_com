@@ -1,1 +1,5 @@
-<%= turbo_stream.update 'alert', partial: 'alert_message', locals: { message: message } %>
+<% if defined?(tip) && tip %>
+  <%= turbo_stream.prepend 'modal_form', partial: 'alert_message', locals: { message: message } %>
+<% else %>
+  <%= turbo_stream.update 'alert', partial: 'alert_message', locals: { message: message } %>
+<% end %>
