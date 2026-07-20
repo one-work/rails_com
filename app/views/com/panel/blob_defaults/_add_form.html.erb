@@ -2,6 +2,6 @@
   <%= render 'error_messages', target: f.object %>
   <%= f.hidden_field :record_class, value: params[:record_class] %>
   <%= f.hidden_field :name, value: params[:name] %>
-  <%= f.file_field :file %>
+  <%= render partial: 'com/attachments/list_field', locals: { target: f.object.file, f: f } %>
   <%= f.submit %>
 <% end %>
