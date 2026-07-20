@@ -29,7 +29,7 @@ module ActiveStorage
 
       def variant(transformations)
         if transformations.key? :resize_to_limit
-          url(process: "fw/#{transformations[:resize_to_limit][0]}")
+          url(process: "/fw/#{transformations[:resize_to_limit][0]}")
         elsif attachment&.variable?
           attachment.variant(transformations)
         else
