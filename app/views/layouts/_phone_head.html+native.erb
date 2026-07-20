@@ -4,21 +4,17 @@
     <%= render 'head_title' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="turbo-cache-control" content="no-preview">
-    <meta name="turbo-prefetch" content="false">
     <meta name="turbo-refresh-method" content="morph">
     <meta name="turbo-refresh-scroll" content="preserve">
-    <%= action_cable_meta_tag %>
     <%= yield :reload %>
-    <%= javascript_include_tag 'wx', 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'phone', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <%= render 'head_extra_js' %>
+    <%= action_cable_meta_tag %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   </head>
   <body>
-    <%= render 'mini_program_message' %>
     <%= yield %>
-    <%= render 'wx_share' %>
   </body>
 </html>
