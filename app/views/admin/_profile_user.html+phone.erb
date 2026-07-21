@@ -1,7 +1,7 @@
 <%= link_to({ controller: 'org/me/home' }, class: 'media as-me px-4 py-3') do %>
   <div class="media-left">
   <% if current_organ.logo.attached? %>
-    <%= image_tag current_organ.logo, class: 'image is-64x64 is-radius' %>
+    <%= image_tag current_organ.logo.variant(resize_to_limit: [64, 64]), class: 'image is-64x64 is-radius' %>
   <% else %>
     <div class="is-avatar">
       <div class="text"><%= current_organ.name[0] %></div>
