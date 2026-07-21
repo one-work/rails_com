@@ -76,7 +76,7 @@ module Com
     def default_url(scheme: 'https', once_token: nil, **options)
       _options = params.to_options
       _options.merge! options
-      _options.merge!(
+      _options.with_defaults!(
         controller: controller_path,
         action: action_name,
         host: host,
