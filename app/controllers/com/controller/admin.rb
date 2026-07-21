@@ -8,6 +8,17 @@ module Com
     end
 
     private
+    def require_member_or_user
+      if current_member
+        if current_member.organ_id == current_organ.id
+          Current.session.update mock_member: false
+        end
+        return
+      end
+      return if current_user
+      require_user
+    end
+
     def set_locale
       super
     end

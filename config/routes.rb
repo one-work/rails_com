@@ -35,6 +35,10 @@ Rails.application.routes.draw do
     root 'home#index' unless has_named_route? 'admin_root'
   end
 
+  namespace :partner, defaults: { namespace: 'partner' } do
+    root 'home#index' unless has_named_route? 'partner_root'
+  end
+
   namespace :my do
     root 'home#index' unless has_named_route? 'my_root'
   end
