@@ -59,7 +59,7 @@ module RailsCom::Routes
   def routes_wrapper(cached = true)
     return @routes_wrapper if cached && defined?(@routes_wrapper)
 
-    @routes_wrapper = Rails.application.routes.routes.map do |route|
+    @routes_wrapper = Rails.app.routes.routes.map do |route|
       next if (route.defaults[:controller].blank? || route.defaults[:action].blank?)
       detail(route)
     end.compact
@@ -68,7 +68,7 @@ module RailsCom::Routes
   def blank_routes_wrapper(cached = true)
     return @blank_routes_wrapper if cached && defined?(@blank_routes_wrapper)
 
-    @blank_routes_wrapper = Rails.application.routes.routes.map do |route|
+    @blank_routes_wrapper = Rails.app.routes.routes.map do |route|
       next unless (route.defaults[:controller].blank? || route.defaults[:action].blank?)
       detail(route)
     end.compact

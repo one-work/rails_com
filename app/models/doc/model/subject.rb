@@ -32,7 +32,7 @@ module Doc
         options.merge! scheme: request.scheme, host: request.host
         options.merge! port: request.port unless [80, 443].include?(request.port)
       end
-      options.merge! Rails.application.routes.default_url_options
+      options.merge! Rails.app.routes.default_url_options
       if options.key?(:protocol)
         options.merge! scheme: options[:protocol]
       end

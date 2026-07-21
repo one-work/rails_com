@@ -5,7 +5,7 @@ module RailsCom::RoleHelper
 
     if options.is_a? String
       begin
-        path_params = Rails.application.routes.recognize_path options, { method: method }
+        path_params = Rails.app.routes.recognize_path options, { method: method }
       rescue ActionController::RoutingError
         return true  # 无法识别的路由（也就是没有在系统内定义）
       end
@@ -16,7 +16,7 @@ module RailsCom::RoleHelper
         controller: options[:controller] || controller_path,
         action: options[:action] || 'index'
       }
-      Rails.application.routes.send :generate, nil, path_params, request.path_parameters  # 例如 'orders' -> 'trade/me/orders', 这里会直接改变 dup_params 的值
+      Rails.app.routes.send :generate, nil, path_params, request.path_parameters  # 例如 'orders' -> 'trade/me/orders', 这里会直接改变 dup_params 的值
     else
       path_params = {
         controller: controller_path,

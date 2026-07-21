@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
   draw :doc
   draw :job
   draw :log
@@ -196,12 +196,12 @@ Rails.application.routes.draw do
   end
 end
 
-Rails.application.routes.append do
+Rails.app.routes.append do
   options '/', controller: 'com/common', action: 'cors_preflight_check'
   options '*all', controller: 'com/common', action: 'cors_preflight_check'
   get 'up', controller: 'com/application', action: 'up'
 end
 
-Rails.application.routes.append do
+Rails.app.routes.append do
   match '*path' => 'com/log#not_found', via: [:get, :post]
 end if RailsCom.config.intercept_not_found

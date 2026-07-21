@@ -31,7 +31,7 @@ module RailsCom::ActionController
 
     def referer_meta
       return @_referer_meta if defined? @_referer_meta
-      @_referer_meta = Rails.application.routes.recognize_path(request.referer)
+      @_referer_meta = Rails.app.routes.recognize_path(request.referer)
     end
 
     def referer_controller

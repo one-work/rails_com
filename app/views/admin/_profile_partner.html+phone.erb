@@ -1,4 +1,4 @@
-<%= link_to({ controller: 'org/partner/organs', host: "admin.#{Rails.application.routes.default_url_options[:host]}" }, class: 'media as-me px-4 py-3') do %>
+<%= link_to({ controller: 'org/partner/organs', host: "admin.#{Rails.app.routes.default_url_options[:host]}" }, class: 'media as-me px-4 py-3') do %>
   <div class="media-left">
   <% if current_organ.logo.attached? %>
     <%= image_tag current_organ.logo, class: 'image is-64x64 is-radius' %>

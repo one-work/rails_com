@@ -66,7 +66,7 @@ module JobberUtil
   end
 
   def config
-    @config ||= Rails.application.config_for('jobber')
+    @config ||= Rails.app.config_for('jobber')
   end
 
 end
