@@ -10,6 +10,7 @@ module Roled
       attribute :role_hash, :json, default: {}
       attribute :business_hash, :json, default: {}
       attribute :subdomain, :string
+      attribute :with_mock_id, :string
 
       has_many :role_whos, dependent: :destroy_async
       has_many :tabs, dependent: :delete_all
