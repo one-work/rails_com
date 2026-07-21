@@ -11,7 +11,7 @@ module Com
       else
         extra = {}
       end
-      blob = ActiveStorage::Blob.new metadata: {}, **extra, **blob_args
+      blob = ActiveStorage::Blob.new metadata: { identified: true }, **extra, **blob_args
       blob.save(validate: false)
 
       render json: direct_upload_json(blob).merge!(download_url: blob.url)
