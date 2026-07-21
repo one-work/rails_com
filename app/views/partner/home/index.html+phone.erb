@@ -1,0 +1,20 @@
+<% if defined?(current_organ) && current_organ %>
+  <%= render 'index_summary_organ' %>
+<% else %>
+  <%= render 'index_summary' %>
+<% end %>
+
+<% if any_role?(business: 'org', namespace: 'partner') && !Current.session.mock_member %>
+<div class="card as-transparent">
+  <div class="card-header">
+    <span class="size-7 text-grey has-border-left-primary">合伙人功能</span>
+  </div>
+  <div class="card-content fixed-grid has-3-cols">
+    <div class="grid">
+      <%= render 'index_partner' %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= render 'powered_by' %>
