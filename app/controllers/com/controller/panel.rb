@@ -11,6 +11,7 @@ module Com
           end
           return
         else
+          return if current_user
           require_user
         end
       else

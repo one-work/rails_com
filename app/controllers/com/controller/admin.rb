@@ -14,9 +14,10 @@ module Com
           Current.session.update mock_member: false
         end
         return
+      else
+        return if current_user
+        require_user
       end
-      return if current_user
-      require_user
     end
 
     def set_locale
