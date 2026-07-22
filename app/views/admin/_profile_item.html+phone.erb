@@ -16,7 +16,7 @@
       <% end %>
     </p>
     <% if current_organ.cache && current_organ.cache.roles_arr.present? %>
-    <div class="tags">
+    <div class="tags mb-1">
       <% current_organ.cache.roles_arr.each do |role_str| %>
         <span class="tag is-info is-light size-7"><%= role_str %></span>
       <% end %>
