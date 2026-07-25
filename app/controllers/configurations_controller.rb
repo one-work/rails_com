@@ -28,6 +28,14 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
+            "app-demo.xcprinter.com"
+          ],
+          properties: {
+            presentation: "default"
+          }
+        },
+        {
+          patterns: [
             "^/$"
           ],
           properties: {
