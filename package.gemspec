@@ -15,13 +15,13 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency 'rails'
-  s.add_dependency 'solid_queue'
+  s.add_dependency 'solid_queue', '~> 1.5'
   s.add_dependency 'solid_cache'
   s.add_dependency 'httpx'
   s.add_dependency 'http-form_data', '~> 2.3'
   s.add_dependency 'default_where', '~> 2.2'
   s.add_dependency 'kaminari'
-  s.add_dependency 'closure_tree', '>= 7.3'
+  s.add_dependency 'closure_tree', '~> 9.7'
   s.add_dependency 'positioning'
   s.add_dependency 'acme-client'
   s.add_dependency 'turbo-rails'
