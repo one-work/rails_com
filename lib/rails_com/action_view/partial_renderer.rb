@@ -11,7 +11,7 @@ module RailsCom::ActionView
         prefixes = @lookup_context.prefixes
       end
 
-      @lookup_context.find_template(path, prefixes, true, locals, @details)
+      @lookup_context.find!(path, prefixes, true, locals, @details)
     end
 
     def cache_collection_render(instrumentation_payload, view, template, collection, layout)
