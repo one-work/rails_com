@@ -11,7 +11,7 @@ class ConfigurationsController < ApplicationController
           ],
           properties: {
             context: "modal",
-            modal_close_title: "关闭"
+            modal_style: "medium"
           }
         },
         {
