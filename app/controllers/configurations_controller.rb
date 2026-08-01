@@ -7,6 +7,15 @@ class ConfigurationsController < ApplicationController
       rules: [
         {
           patterns: [
+            "/menus$"
+          ],
+          properties: {
+            context: "modal",
+            modal_close_title: "关闭"
+          }
+        },
+        {
+          patterns: [
             "/new$",
             "/edit$",
             "/modal"
