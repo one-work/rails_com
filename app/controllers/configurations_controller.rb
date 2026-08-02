@@ -23,8 +23,7 @@ class ConfigurationsController < ApplicationController
           properties: {
             context: "modal",
             pull_to_refresh_enabled: false
-          },
-          comment: "Present forms and custom modal path as modals."
+          }
         },
         {
           patterns: [
@@ -32,8 +31,7 @@ class ConfigurationsController < ApplicationController
           ],
           properties: {
             view_controller: "numbers"
-          },
-          comment: "Intercept with a native view."
+          }
         },
         {
           patterns: [
