@@ -16,6 +16,14 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
+            "/why$"
+          ],
+          properties: {
+            presentation: "replace_root"
+          }
+        },
+        {
+          patterns: [
             "/new$",
             "/edit$",
             "/modal"
@@ -27,28 +35,11 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
-            "/numbers$"
-          ],
-          properties: {
-            view_controller: "numbers"
-          }
-        },
-        {
-          patterns: [
-            "app-demo.xcprinter.com"
-          ],
-          properties: {
-            presentation: "default"
-          }
-        },
-        {
-          patterns: [
             "^/$"
           ],
           properties: {
             presentation: "clear_all"
-          },
-          comment: "Reset navigation stacks when visiting root page."
+          }
         }
       ]
     }
