@@ -7,7 +7,7 @@
     <meta name="turbo-refresh-method" content="morph">
     <meta name="turbo-refresh-scroll" content="preserve">
     <%= yield :reload %>
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'native', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'native', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
     <%= render 'head_extra_js' %>
     <%= action_cable_meta_tag %>
