@@ -1,9 +1,6 @@
 class ConfigurationsController < ApplicationController
   def ios_v1
     render json: {
-      settings: {
-        enable_feature_x: true
-      },
       rules: [
         {
           patterns: [
