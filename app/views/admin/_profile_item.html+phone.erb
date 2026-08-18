@@ -9,19 +9,19 @@
   <% end %>
   </div>
   <div class="media-content">
-    <p class="text-weight-normal text-white">
+    <div class="text-weight-normal text-white">
       <strong><%= current_organ.name %></strong>
       <% if current_organ.dispatch %>
         <span class="tag is-primary is-light size-7"><%= current_organ.dispatch_i18n %></span>
       <% end %>
-    </p>
-    <% if current_organ.cache && current_organ.cache.roles_arr.present? %>
-    <div class="tags mb-1">
-      <% current_organ.cache.roles_arr.each do |role_str| %>
-        <span class="tag is-info is-light size-7"><%= role_str %></span>
+      <% if current_organ.cache && current_organ.cache.roles_arr.present? %>
+        <div class="tags display-inline-flex">
+          <% current_organ.cache.roles_arr.each do |role_str| %>
+            <span class="tag is-info is-light size-7"><%= role_str %></span>
+          <% end %>
+        </div>
       <% end %>
     </div>
-    <% end %>
     <div class="size-7 text-white">
       <span><%= current_member.name %></span>
     </div>
