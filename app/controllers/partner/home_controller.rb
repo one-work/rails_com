@@ -9,6 +9,7 @@ module Partner
         title: '官方商场',
         appId: 'wxe44dc002dd0d29b0'
       }
+      Current.session.update mock_member: false
 
       if current_organ
         if request.variant.include? :mini_program
