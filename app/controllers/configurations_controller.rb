@@ -80,26 +80,6 @@ class ConfigurationsController < ApplicationController
         },
         {
           patterns: [
-            "/numbers$"
-          ],
-          properties: {
-            uri: "hotwire://fragment/numbers",
-            title: "Numbers",
-            comment: "Intercept with a native view."
-          }
-        },
-        {
-          patterns: [
-            "/numbers/[0-9]+$"
-          ],
-          properties: {
-            context: "modal",
-            uri: "hotwire://fragment/web/modal/sheet",
-            pull_to_refresh_enabled: false
-          }
-        },
-        {
-          patterns: [
             ".+\\.(?:bmp|gif|heic|jpg|jpeg|png|svg|webp)"
           ],
           properties: {
