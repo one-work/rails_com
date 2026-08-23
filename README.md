@@ -1,8 +1,8 @@
 # RailsCom
 
-[![测试](https://github.com/work-design/rails_com/actions/workflows/test.yml/badge.svg)](https://github.com/work-design/rails_com/actions/workflows/test.yml)
-[![Docker构建](https://github.com/work-design/rails_com/actions/workflows/cd.yml/badge.svg)](https://github.com/work-design/rails_com/actions/workflows/cd.yml)
-[![Gem](https://github.com/work-design/rails_com/actions/workflows/gempush.yml/badge.svg)](https://github.com/work-design/rails_com/actions/workflows/gempush.yml)
+[![测试](https://github.com/one-work/rails_com/actions/workflows/test.yml/badge.svg)](https://github.com/work-design/rails_com/actions/workflows/test.yml)
+[![Docker构建](https://github.com/one-work/rails_com/actions/workflows/cd.yml/badge.svg)](https://github.com/work-design/rails_com/actions/workflows/cd.yml)
+[![Gem](https://github.com/work-design/rails_com/actions/workflows/gempush.yml/badge.svg)](https://github.com/one-work/rails_com/actions/workflows/gempush.yml)
 
 Rails 通用基础库，对 Rails 的各个组件进行了扩展。
 
@@ -49,7 +49,3 @@ Processing by Log::Admin::LogCspsController#index as HTML
 
 
 ## 注意
-
-
-## 版权
-遵循 [MIT](https://opensource.org/licenses/MIT) 协议
