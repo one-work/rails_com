@@ -8,7 +8,7 @@ end
 namespace :javascript do
   desc 'Build your JavaScript bundle'
   task :build do
-    system 'npm run build', exception: true
+    system 'npm run build -- --minify', exception: true
   end
 end
 
