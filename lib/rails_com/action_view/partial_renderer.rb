@@ -46,7 +46,7 @@ module RailsCom::ActionView
 
       collection.preload! if callable_cache_key?
       collection.each_with_object([{}, []]) do |item, (hash, ordered_keys)|
-        key = expanded_cache_key(seed.call(item), view, template, digest_path)
+        key = expanded_cache_key(seed.call(item), view, digest_path)
         ordered_keys << key
         hash[key] = item
       end
