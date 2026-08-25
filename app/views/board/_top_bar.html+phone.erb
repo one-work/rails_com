@@ -1,13 +1,7 @@
 <div data-controller="navbar" class="as-bar">
-  <% if current_state %>
-    <%= link_to(current_state.prev_path, text: true, class: 'px-4') do %>
-      <%= svg_tag 'angle-left', kind: 'regular' %>
-    <% end %>
-  <% else %>
-    <%= link_to({ controller: '/board/home' }, class: 'px-4') do %>
-      <%= svg_tag 'angle-left', kind: 'regular' %>
-    <% end %>
-  <% end %>
+  <button data-controller="back" class="px-5">
+    <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small text-link' %>
+  </button>
   <div class="bar-title"><%= t('.title') %></div>
   <% if request.subdomain.end_with?('admin') %>
     <%= link_to({ controller: '/me/home' }, class: 'px-4') do %>
