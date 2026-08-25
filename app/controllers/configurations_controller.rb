@@ -57,7 +57,18 @@ class ConfigurationsController < ApplicationController
 
   def android_v1
     render json: {
-      settings: {},
+      settings: {
+        script_injections: [
+          {
+            id: 'init_turbo',
+            url: 'https://assets.linlishenghuo.com/assets/turbo-00000001.digested.js'
+          },
+          {
+            id: 'init',
+            url: 'https://assets.linlishenghuo.com/assets/printer-00000097.digested.js'
+          }
+        ]
+      },
       rules: [
         {
           patterns: [
