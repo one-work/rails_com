@@ -1,9 +1,9 @@
 <div class="as-bar">
-  <button data-controller="back" class="px-5">
+  <button data-controller="history" data-action="history#back" class="px-5">
     <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small text-link' %>
   </button>
   <div class="bar-title"><%= yield %></div>
-  <%= link_to({ controller: '/me/home' }, class: 'px-4') do %>
-    <%= svg_tag 'user', kind: 'regular' %>
-  <% end %>
+  <button data-controller="history" data-action="history#root" class="px-5">
+    <%= svg_tag 'user', kind: 'regular', class: 'icon is-small text-link' %>
+  </button>
 </div>
