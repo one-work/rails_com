@@ -79,6 +79,7 @@ Rails.app.routes.draw do
       get :test_raise
       get :cancel
       post :actions
+      post :geo
       match :deploy, via: [:get, :post]
       get :state_return
       get 'assets/*path' => :asset, constraints: ->(req) { [:jpeg, :png, :webp].include? req.format.symbol }

@@ -87,6 +87,11 @@ module Com
       head :no_content
     end
 
+    def geo
+      @url = URI(params[:url])
+      @url.query = { latitude: params[:latitude] }.to_query
+    end
+
     private
     def qrcode_params
       params.permit(
