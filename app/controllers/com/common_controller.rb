@@ -90,6 +90,8 @@ module Com
     def geo
       @url = URI(params[:url])
       @url.query = { latitude: params[:latitude] }.to_query
+      session[:latitude] = params[:latitude]
+      session[:longitude] = params[:longitude]
     end
 
     private
