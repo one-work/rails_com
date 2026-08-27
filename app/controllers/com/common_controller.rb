@@ -89,8 +89,18 @@ module Com
 
     def geo
       @url = URI(params[:url])
-      session[:latitude] = params[:latitude]
-      session[:longitude] = params[:longitude]
+      factory = RGeo::Geographic.spherical_factory(srid: 4326)
+      session_point = factory.point(session[:longitude], session[:latitude])
+      params_point = factory.point(params[:longitude], params[:latitude])
+      distance = session_point.distance(params_point)
+      logger.debug "\e[35m  Distance: #{distance}  \e[0m"
+
+      if distance > 10
+        session[:latitude] = params[:latitude]
+        session[:longitude] = params[:longitude]
+      else
+        head :ok and return
+      end
     end
 
     private
