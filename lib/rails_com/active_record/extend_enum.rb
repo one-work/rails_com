@@ -35,17 +35,18 @@ module RailsCom::ActiveRecord
     def enum_i18n(attribute, value)
       h = enum_base_i18n(attribute)
       v = nil
+      _value = type_caster.type_cast_for_database attribute, value
 
       if h.is_a?(Hash)
-        v = h[value] ? h[value] : h[value.to_s.to_sym]
+        v = h.key?(_value) ? h[_value] : h[_value.to_s.to_sym]
       end
 
-      if v.nil? && value.blank?
-        v = value.to_s
+      if v.nil? && _value.blank?
+        v = _value.to_s
       end
 
       if v.nil?
-        v = human_attribute_name(value)
+        v = human_attribute_name(_value)
       end
 
       v
