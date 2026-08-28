@@ -10,7 +10,7 @@ class ConfigurationsController < ApplicationController
           },
           {
             id: 'init',
-            url: 'https://assets.linlishenghuo.com/assets/printer-00000100.digested.js'
+            url: 'https://assets.linlishenghuo.com/assets/printer-00000101.digested.js'
           }
         ]
       },
@@ -65,7 +65,7 @@ class ConfigurationsController < ApplicationController
           },
           {
             id: 'init',
-            url: 'https://assets.linlishenghuo.com/assets/printer-00000100.digested.js'
+            url: 'https://assets.linlishenghuo.com/assets/printer-00000101.digested.js'
           }
         ]
       },
