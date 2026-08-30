@@ -16,6 +16,7 @@
   <%=
     link_to(
       { action: 'index', **request.GET.except(key, "#{key}-gte", "#{key}-lte") },
+      data: { turbo_action: 'replace' },
       class: 'tag is-info as-attached-right'
     ) do
   %>

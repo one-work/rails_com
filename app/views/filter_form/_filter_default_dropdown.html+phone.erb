@@ -7,6 +7,7 @@
         link_to(
           text,
           { action: 'index', key => value },
+          data: { turbo_action: 'replace' },
           class: active_helper(key => value, active: 'tag is-primary', item: 'tag')
         )
       %>
