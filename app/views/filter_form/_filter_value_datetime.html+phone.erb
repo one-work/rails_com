@@ -13,7 +13,12 @@
       <time data-controller="time"><%= value['lte'].to_datetime.to_fs(:iso8601) if value['lte'] %></time>
     </span>
   <% end %>
-  <%= link_to({ **request.GET.except(key, "#{key}-gte", "#{key}-lte") }, class: 'tag is-info as-attached-right') do %>
+  <%=
+    link_to(
+      { action: 'index', **request.GET.except(key, "#{key}-gte", "#{key}-lte") },
+      class: 'tag is-info as-attached-right'
+    ) do
+  %>
     <i class="delete"></i>
   <% end %>
   <%= hidden_field_tag scope.present? ? "#{scope}[#{key}-gte]" : "#{key}-gte", value['gte'], id: nil, form: form %>

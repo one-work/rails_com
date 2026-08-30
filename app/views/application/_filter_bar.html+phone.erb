@@ -9,6 +9,6 @@
     <span>取消</span>
   </button>
   <%= button_to({ action: 'filter' }, params: request.GET, class: 'button is-borderless') do %>
-    <%= svg_tag 'filter' %>
+    <%= svg_tag 'filter', class: "icon #{request.GET.present? ? 'is-small text-primary' : 'is-small'}" %>
   <% end %>
 </div>
