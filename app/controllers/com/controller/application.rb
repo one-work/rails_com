@@ -99,6 +99,10 @@ module Com
         variant << :work_wechat
       end
 
+      if request.user_agent&.match? /Native Android/
+        variant << :android
+      end
+
       if request.user_agent&.match? /(Hotwire|Turbo) Native/
         variant << :native
       end
