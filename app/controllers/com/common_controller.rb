@@ -98,6 +98,11 @@ module Com
       if distance > 10
         session[:latitude] = params[:latitude]
         session[:longitude] = params[:longitude]
+
+        resume_session unless Current.session
+        if Current.session && Current.session.user
+          Current.session.user.set_geo!(session[:longitude], session[:latitude])
+        end
       else
         head :ok and return
       end
