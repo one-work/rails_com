@@ -21,7 +21,7 @@ module Roled
     end
 
     def compute_role_cache!
-      str_role_ids = role_whos.pluck(:role_id).sort
+      str_role_ids = role_whos.pluck(:role_id).compact.sort
       cache = Cache.find_or_create_by!(str_role_ids: str_role_ids.join(','), who_type: base_class_name, mock: false)
 
       mock_ids = mock_role_whos.pluck(:role_id).sort
