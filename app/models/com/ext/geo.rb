@@ -5,6 +5,7 @@ module Com
     included do
       attribute :geo, :st_point, srid: 4326, geographic: true
       attribute :address, :string
+      attribute :address_short, :string
 
       before_save :get_location!, if: -> { geo_changed? }
     end
@@ -26,12 +27,19 @@ module Com
       }.compact
     end
 
+    def address_simple
+      address_short
+    end
+
     def get_location!
       return if address_changed?
       r = QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
     rescue
     ensure
-      self.address = r['address'] if r
+      if r
+        self.address = r['address']
+        self.address_short = r.dig('formatted_addresses', 'recommend')
+      end
     end
 
     def set_geo_by_ip!(ip)
