@@ -10,6 +10,7 @@
     )
   %>
   <%= turbo_stream.remove 'modal_form' %>
+  <%= turbo_stream.remove 'modal_grids' %>
 <% elsif referer_eql?(controller_path, 'edit') %>
   <%=
     turbo_stream.replace(
