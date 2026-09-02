@@ -6,7 +6,7 @@ module Com
     def require_member_or_user
       if defined? current_member
         if current_member
-          if current_member.organ_id == current_organ.id
+          if current_member.organ_id == current_organ&.id
             Current.session.update mock_member: false
           end
           return
