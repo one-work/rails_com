@@ -5,7 +5,7 @@ module Com
     extend ActiveSupport::Concern
 
     included do
-      helper_method :model_klass, :pluralize_model_name
+      helper_method :model_klass, :pluralize_model_name, :filter_columns
     end
 
     def filter
@@ -37,6 +37,12 @@ module Com
 
     def model_name
       controller_name.singularize
+    end
+
+    def filter_columns
+      {
+        'name-like' => { type: 'search', default: true }
+      }
     end
 
   end

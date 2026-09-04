@@ -21,7 +21,10 @@ module Com
     end
 
     def filter
-      @filter_columns = set_filter_i18n(filtered: params.except(:authenticity_token, :business, :namespace, :controller, :action).permit!.to_h, **filter_columns)
+      @filter_columns = set_filter_i18n(
+        filtered: params.except(:authenticity_token, :business, :namespace, :controller, :action).permit!.to_h,
+        **filter_columns
+      )
     end
 
     def debug
@@ -158,12 +161,6 @@ module Com
         p.merge! default_form_params if model.respond_to?(:organ_id)
         p
       end
-    end
-
-    def filter_columns
-      {
-        'name-like' => { type: 'search', default: true }
-      }
     end
 
     def set_filter_columns

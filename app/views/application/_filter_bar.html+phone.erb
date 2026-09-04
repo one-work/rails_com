@@ -10,5 +10,5 @@
   </button>
   <%= button_to({ action: 'filter' }, params: request.GET, class: 'button is-borderless') do %>
     <%= svg_tag 'filter', class: "icon #{request.GET.present? ? 'is-small text-primary' : 'is-small'}" %>
-  <% end %>
+  <% end if (filter_columns.keys - [defined?(name) ? name: 'name-like']).present? %>
 </div>
