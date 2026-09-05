@@ -31,7 +31,7 @@ module ActiveStorage
         if transformations.is_a?(Hash)
           if transformations.key? :resize_to_limit
             width, height = transformations[:resize_to_limit]
-            url(process: "/fw/#{width}/fh/#{height}")
+            url(process: "/both/#{width}x#{height}")
           else
             url
           end
