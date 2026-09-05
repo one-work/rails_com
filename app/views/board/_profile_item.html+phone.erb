@@ -1,14 +1,16 @@
 <%= link_to({ controller: 'auth/board/home' }, text: true, class: 'media py-3 px-5 as-my') do %>
   <div class="media-left">
-  <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar, class: 'image is-64x64 is-radius' %>
-  <% elsif current_user.name.present? %>
-    <div class="is-avatar">
-      <div class="text"><%= current_user.name[0] %></div>
-    </div>
-  <% else %>
-    <%= image_tag 'default_avatar.jpg', class: 'image is-64x64 is-radius' %>
-  <% end %>
+    <figure class="image is-64x64">
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar.variant(resize_to_limit: [64, 64]), class: 'is-rounded' %>
+    <% elsif current_user.name.present? %>
+      <div class="is-avatar">
+        <div class="text"><%= current_user.name[0] %></div>
+      </div>
+    <% else %>
+      <%= image_tag 'default_avatar.jpg', class: 'is-rounded' %>
+    <% end %>
+    </figure>
   </div>
   <div class="media-content">
     <strong class="weui-media-box__title">
