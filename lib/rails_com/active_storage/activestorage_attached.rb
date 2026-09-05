@@ -30,7 +30,8 @@ module ActiveStorage
       def variant(transformations)
         if transformations.is_a?(Hash)
           if transformations.key? :resize_to_limit
-            url(process: "/fw/#{transformations[:resize_to_limit][0]}")
+            width, height = transformations[:resize_to_limit]
+            url(process: "/fw/#{width}/fh/#{height}")
           else
             url
           end
