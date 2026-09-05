@@ -21,7 +21,7 @@ module Meta
     end
 
     def action_params
-      params.fetch(:action, {}).permit(
+      params.fetch(:meta_action, {}).permit(
         :operation,
         :name,
         :params,
