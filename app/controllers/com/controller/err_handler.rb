@@ -6,7 +6,6 @@ module Com
       rescue_from ActiveRecord::RecordInvalid, with: :record_not_save
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
       rescue_from Com::DisposableTokenError, with: :disposable_auth_fail
-      rescue_from StandardError, with: :err_500
     end
 
     def record_not_save(exception)
