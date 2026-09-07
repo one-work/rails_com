@@ -6,6 +6,7 @@ module Com
       rescue_from ActiveRecord::RecordInvalid, with: :record_not_save
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
       rescue_from Com::DisposableTokenError, with: :disposable_auth_fail
+      rescue_from StandardError, with: :err_500
     end
 
     def record_not_save(exception)
@@ -19,6 +20,10 @@ module Com
 
     def disposable_auth_fail(exception)
       render 'disposable_auth_fail', layout: 'raw'
+    end
+
+    def err_500(exception)
+      render 'err_500', layout: 'raw', locals: { exception: exception, message: exception.message }, status: 500
     end
 
   end
