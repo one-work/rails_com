@@ -1,5 +1,7 @@
-<% if rails_role_user.is_a?(Org::Member) %>
-  <div data-controller="visit" data-visit-url-value="<%= url_for(controller: '/admin/home') %>"></div>
-<% else %>
-  <div data-controller="visit" data-visit-url-value="<%= url_for(controller: '/my/home') %>"></div>
+<%= turbo_stream.append_body layout: 'modal' do %>
+  <% if rails_role_user.is_a?(Org::Member) %>
+    <p class="text-danger">您没有权限！</p>
+  <% else %>
+    <p class="text-danger">您没有权限！</p>
+  <% end %>
 <% end %>
