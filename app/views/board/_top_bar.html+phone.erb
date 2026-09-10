@@ -3,13 +3,7 @@
     <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small text-link' %>
   </button>
   <div class="bar-title"><%= t('.title') %></div>
-  <% if request.subdomain.end_with?('admin') %>
-    <%= link_to({ controller: '/me/home' }, class: 'right') do %>
-      <%= svg_tag 'user', kind: 'regular' %>
-    <% end %>
-  <% else %>
-    <%= link_to({ controller: '/board/home' }, class: 'right') do %>
-      <%= svg_tag 'user', kind: 'regular' %>
-    <% end %>
-  <% end %>
+  <button data-controller="history" data-action="history#root" class="right">
+    <%= svg_tag 'user', kind: 'regular', class: 'icon is-small text-link' %>
+  </button>
 </div>

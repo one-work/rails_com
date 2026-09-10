@@ -3,7 +3,7 @@
     <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small text-link' %>
   </button>
   <div class="bar-title"><%= t('.title') %></div>
-  <%= link_to({ controller: '/my/home' }, class: 'right') do %>
-    <%= svg_tag 'user', kind: 'regular' %>
-  <% end %>
+  <button data-controller="history" data-action="history#root" class="right">
+    <%= svg_tag 'user', kind: 'regular', class: 'icon is-small text-link' %>
+  </button>
 </div>
