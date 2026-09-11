@@ -25,6 +25,10 @@
   <%= svg_tag 'users', class: 'icon is-medium text-primary' %>
   <span class="size-7 text-grey mt-1"><%= t('org.admin.members.index.title') %></span>
 <% end %>
+<%= link_to({ controller: 'print/admin/home' }, class: 'cell has-column-centered') do %>
+  <%= svg_tag 'bluetooth', class: 'icon is-medium text-primary' %>
+  <span class="size-7 text-grey mt-1"><%= t('print.admin.home.index.title') %></span>
+<% end %>
 <%= link_to({ controller: 'wechat/admin/registers', action: 'new' }, class: 'cell has-column-centered') do %>
   <%= image_tag 'icons/wxpay.svg', class: 'icon is-medium' %>
   <span class="size-7 text-grey mt-1">微信支付</span>

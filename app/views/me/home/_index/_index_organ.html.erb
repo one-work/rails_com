@@ -38,10 +38,6 @@
   <span class="size-7 text-grey mt-1">微信支付</span>
 <% end %>
 <%= link_to({ controller: 'print/admin/home' }, class: 'cell has-column-centered') do %>
-  <div class="text-primary">
-    <%= svg_tag 'bluetooth', class: 'icon is-medium' %>
-  </div>
-  <div class="size-7 text-grey mt-1">
-    <p><%= t('print.admin.home.index.title') %></p>
-  </div>
+  <%= svg_tag 'bluetooth', class: 'icon is-medium text-primary' %>
+  <span class="size-7 text-grey mt-1"><%= t('print.admin.home.index.title') %></span>
 <% end %>
