@@ -37,6 +37,9 @@ Rails.app.routes.draw do
 
   namespace :partner, defaults: { namespace: 'partner' } do
     root 'home#index' unless has_named_route? 'partner_root'
+    controller :home do
+      post :share
+    end
   end
 
   namespace :my do

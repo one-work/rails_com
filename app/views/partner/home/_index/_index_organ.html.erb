@@ -11,9 +11,9 @@
       <span class="size-7 text-grey mt-1">分享门店</span>
     </div>
   <% else %>
-    <%= link_to({ controller: 'org/organs', host: current_organ.host }, target: '_blank', class: 'cell has-column-centered') do %>
+    <%= button_to({ action: 'share' }, class: 'cell has-column-centered', form: { class: 'place-self-center' }) do %>
       <%= svg_tag 'share', class: 'icon is-medium text-primary' %>
-      <span class="size-7 text-grey mt-1">分享门店</span>
+      <span class="size-7 text-grey mt-1"><%= t('.share.title') %></span>
     <% end %>
   <% end %>
 <% end %>

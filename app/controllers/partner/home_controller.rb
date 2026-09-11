@@ -31,5 +31,9 @@ module Partner
       end
     end
 
+    def share
+      @url = url_for(controller: 'org/organs', host: current_organ.host)
+    end
+
   end
 end

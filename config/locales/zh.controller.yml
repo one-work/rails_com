@@ -44,6 +44,8 @@ zh:
     home:
       index:
         title: 工作台
+      share:
+        title: 分享门店
   admin:
     home:
       index:
@@ -60,3 +62,7 @@ zh:
     home:
       index:
         title: 账号
+  partner:
+    home:
+      share:
+        title: 分享下单
