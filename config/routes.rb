@@ -42,12 +42,15 @@ Rails.app.routes.draw do
     end
   end
 
-  namespace :my do
+  namespace :my, defaults: { namespace: 'me' } do
     root 'home#index' unless has_named_route? 'my_root'
   end
 
   namespace :me, defaults: { namespace: 'me' } do
     root 'home#index' unless has_named_route? 'me_root'
+    controller :home do
+      post :share
+    end
   end
 
   namespace :our, defaults: { namespace: 'our' } do
