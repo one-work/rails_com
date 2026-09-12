@@ -1,0 +1,12 @@
+<footer class="modal-card-foot">
+  <div
+    data-controller="mini-program"
+    data-mini-program-url-value="/pages/jump/index"
+    data-mini-program-data-value="<%= @share.to_json %>"
+    data-action="click->mini-program#link"
+    class="cell has-column-centered"
+  >
+    <%= svg_tag 'share', class: 'icon is-medium text-primary' %>
+    <span class="size-7 text-grey mt-1">分享门店</span>
+  </div>
+</footer>
