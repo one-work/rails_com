@@ -23,7 +23,7 @@ Rails.app.routes.draw do
     end
   end
 
-  namespace :board do
+  namespace :board, defaults: { namespace: 'board' } do
     root 'home#index' unless has_named_route? 'board_root'
   end
 
