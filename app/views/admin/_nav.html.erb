@@ -3,7 +3,7 @@
   <% if defined?(current_organ) && current_organ %>
     <%= link_to('/', data: { turbo_frame: 'panel' }, class: 'has-column-centered p-3') do %>
       <% if current_organ.logo.attached? %>
-        <%= image_tag current_organ.logo, class: 'image is-64x64' %>
+        <%= image_tag current_organ.logo, class: 'image is-radius is-64x64' %>
       <% else %>
         <div class="is-avatar display-inline-block"><%= current_organ.name.to_s[0] %></div>
       <% end %>
@@ -11,7 +11,7 @@
     <% end %>
   <% else %>
     <%= link_to('/', data: { turbo_frame: 'panel' }, class: 'text-centered') do %>
-      <%= image_tag 'logo_avatar.png', class: 'image is-64x64' %>
+      <%= image_tag 'logo_avatar.png', class: 'image is-radius is-64x64' %>
     <% end %>
   <% end %>
   </div>

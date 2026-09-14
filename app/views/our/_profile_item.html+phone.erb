@@ -1,9 +1,9 @@
 <%= link_to({ controller: 'org/our/home' }, text: true, class: 'media') do %>
   <div class="media-left">
   <% if current_client.organ.logo.attached? %>
-    <%= image_tag current_client.organ.logo, class: 'image is-64x64 is-radius' %>
+    <%= image_tag current_client.organ.logo, class: 'image is-radius is-64x64' %>
   <% else %>
-    <%= svg_tag 'building-user', kind: 'duotone', class: 'image is-64x64 is-radius' %>
+    <%= svg_tag 'building-user', kind: 'duotone', class: 'image is-radius is-64x64' %>
   <% end %>
   </div>
   <div class="media-content">
