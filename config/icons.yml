@@ -62,6 +62,7 @@ regular:
   - angle-left
   - arrow-down
   - arrow-up
+  - house
   - user
 solid:
   - star
