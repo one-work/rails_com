@@ -1,7 +1,7 @@
 <div class="card as-transparent">
   <div class="card-header">
     <div class="is-several">
-      <%= image_tag meta[0].logo, class: 'image is-32x32' if meta[0].logo.present? %>
+      <%= image_tag meta[0].logo.variant(resize_to_limit: [32, 32]), class: 'image is-radius is-32x32' if meta[0].logo.present? %>
       <span><%= meta[0].name %></span>
     </div>
   </div>
