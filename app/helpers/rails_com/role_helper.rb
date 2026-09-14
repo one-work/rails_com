@@ -30,11 +30,7 @@ module RailsCom::RoleHelper
       action: possible_result[:action] || params[:action]
     }
 
-    result = role_permit?(**result_params)
-    if RailsCom.config.debug_role || !result
-      logger.debug "\e[35m  Options: #{options}  \e[0m"
-    end
-    result
+    role_permit?(**result_params)
   end
 
   def role_permit?(**path_params)
