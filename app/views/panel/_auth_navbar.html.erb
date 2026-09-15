@@ -1,7 +1,7 @@
 <div data-controller="computed-style" class="dropdown is-hoverable pop-right pop-right-bottom p-3 background-grey-dark">
   <div class="dropdown-trigger">
     <% if current_user %>
-      <%= image_tag current_user.avatar, class: 'image is-32x32 mx-auto mb-1' if current_user.avatar.present? %>
+      <%= image_tag current_user.avatar, class: 'image is-radius is-32x32 mx-auto mb-1' if current_user.avatar.present? %>
       <span class="text-grey"><%= current_user.name %></span>
     <% end %>
   </div>
