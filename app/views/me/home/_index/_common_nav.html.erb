@@ -10,6 +10,10 @@
   <%= svg_tag 'list', class: 'icon is-medium text-primary' %>
   <div class="size-7 text-grey mt-1"><%= t('trade.admin.orders.index.title') %></div>
 <% end %>
+<%= link_to({ controller: 'trade/admin/orders', action: 'delivery' }, class: 'cell has-column-centered') do %>
+  <%= svg_tag 'list', class: 'icon is-medium text-primary' %>
+  <div class="size-7 text-grey mt-1"><%= t('trade.admin.orders.delivery.title') %></div>
+<% end %>
 <%= link_to({ controller: 'trade/in/orders' }, class: 'cell has-column-centered') do %>
   <%= svg_tag 'list-check', class: 'icon is-medium text-primary' %>
   <div class="size-7 text-grey mt-1"><%= t('trade.in.orders.index.title') %></div>
