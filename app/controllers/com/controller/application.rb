@@ -304,6 +304,7 @@ module Com
       if request.headers.key? 'Turbo-Frame'
         "frame/#{request.headers['Turbo-Frame']}"
       else
+        logger.debug "\e[35m  设置 layout #{params[:namespace]}  \e[0m"
         params[:namespace]
       end
     end
