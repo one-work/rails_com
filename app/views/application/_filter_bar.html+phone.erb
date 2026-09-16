@@ -1,14 +1,17 @@
-<div data-controller="search" class="field is-grouped py-2 mb-0">
+<div class="flex">
+<div data-controller="search" class="field is-grouped py-2 mb-0 flex-grow-1">
   <div class="control is-expanded has-icons-left">
     <%= form_with theme: nil, method: :get, data: { turbo_action: 'replace' } do |f| %>
       <%= f.search_field defined?(name) ? name : 'name-like', value: params[defined?(name) ? name : 'name-like'], placeholder: '搜索', data: { search_target: 'input' }, class: 'input is-rounded' %>
       <%= svg_tag 'magnifying-glass', class: 'icon is-small is-left p-3' %>
     <% end %>
   </div>
-  <button data-search-target="cancel" data-action="search#cancel" class="button is-borderless display-none">
+  <button data-search-target="cancel" class="button is-borderless display-none">
     <span>取消</span>
   </button>
-  <%= button_to({ action: 'filter' }, params: request.GET, class: 'button is-borderless') do %>
-    <%= svg_tag 'filter', class: "icon #{request.GET.present? ? 'is-small text-primary' : 'is-small'}" %>
-  <% end if (filter_columns.keys - [defined?(name) ? name: 'name-like']).present? %>
+</div>
+<%= button_to({ action: 'filter' }, params: request.GET, class: 'button is-borderless') do %>
+  <%= svg_tag 'filter', class: "icon #{request.GET.present? ? 'is-small text-primary' : 'is-small'}" %>
+  <span class="size-7">筛选</span>
+<% end if (filter_columns.keys - [defined?(name) ? name: 'name-like']).present? %>
 </div>
