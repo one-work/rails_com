@@ -2,6 +2,7 @@ module Our
   class HomeController < BaseController
     include Org::Controller::Our if defined? RailsOrg
     before_action :set_roles, only: [:organs]
+    layout 'our/home'
 
     def index
     end

@@ -1,0 +1,8 @@
+<%= render layout: 'layouts/phone_head' do %>
+  <%= render 'profile_item' %>
+  <main id="weui-tab__panel">
+    <%= render 'alert' %>
+    <%= yield %>
+  </main>
+  <%= render 'tab_bar' %>
+<% end %>
