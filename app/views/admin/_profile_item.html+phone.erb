@@ -11,9 +11,6 @@
   <div class="media-content">
     <div class="text-weight-normal text-white">
       <strong><%= current_organ.name %></strong>
-      <% if current_organ.dispatch %>
-        <span class="tag is-primary is-light size-7"><%= current_organ.dispatch_i18n %></span>
-      <% end %>
       <% if current_organ.cache && current_organ.cache.roles_arr.present? %>
         <div class="tags display-inline-flex">
           <% current_organ.cache.roles_arr.each do |role_str| %>
@@ -22,7 +19,7 @@
         </div>
       <% end %>
     </div>
-    <div class="size-7 text-white">
+    <div class="size-7 text-white mt-1">
       <span><%= current_member.name %></span>
     </div>
   </div>
