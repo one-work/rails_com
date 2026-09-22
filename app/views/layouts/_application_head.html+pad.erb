@@ -4,19 +4,18 @@
     <%= render 'head_title' %>
     <%= render 'head_analysis' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta name="turbo-cache-control" content="no-cache">
-    <meta name="turbo-refresh-method" content="morph">
-    <meta name="turbo-refresh-scroll" content="preserve">
-    <%= yield :reload %>
-    <%= javascript_include_tag 'native', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_link_tag 'native', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
-    <%= render 'head_extra_js' %>
+    <meta name="turbo-cache-control" content="no-preview">
+    <meta name="turbo-prefetch" content="<%= !Rails.env.local? %>">
     <%= action_cable_meta_tag %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <%= javascript_include_tag 'native', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload', as: 'style' %>
+    <%= render 'head_extra_js' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-  </head>
-  <body>
-    <%= yield %>
     <%= render 'head_templates' %>
+  </head>
+  <body data-controller="app">
+    <%= yield %>
   </body>
 </html>
