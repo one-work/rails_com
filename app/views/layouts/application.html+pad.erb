@@ -3,8 +3,6 @@
   <div id="alert"></div>
   <turbo-frame turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="p-3">
     <%= render 'breadcrumb' %>
-    <div class="columns is-gapless">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </turbo-frame>
 <% end %>
