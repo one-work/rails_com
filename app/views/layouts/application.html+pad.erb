@@ -1,10 +1,10 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
   <div id="alert"></div>
-  <main class="container">
+  <turbo-frame turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="p-3">
     <%= render 'breadcrumb' %>
     <div class="columns is-gapless">
       <%= yield %>
     </div>
-  </main>
+  </turbo-frame>
 <% end %>
