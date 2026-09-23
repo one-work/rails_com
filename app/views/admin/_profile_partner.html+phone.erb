@@ -1,4 +1,12 @@
-<%= link_to({ controller: 'org/partner/organs', host: "partner.#{Rails.app.routes.default_url_options[:host]}" }, class: 'media as-me px-4 py-3') do %>
+<div class="as-bar">
+  <%= link_to({ controller: 'org/partner/organs', host: "partner.#{Rails.app.routes.default_url_options[:host]}" }, target: '_blank', class: 'left') do %>
+    <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small' %>
+    <span>返回列表</span>
+  <% end %>
+  <div class="bar-title"></div>
+  <i class="right"></i>
+</div>
+<div class="media as-me px-4 py-3">
   <div class="media-left">
   <% if current_organ.logo.attached? %>
     <%= image_tag current_organ.logo.variant(resize_to_limit: [64, 64]), class: 'image is-radius is-64x64' %>
@@ -31,7 +39,6 @@
     </div>
   </div>
   <div class="media-right text-white">
-    <span>返回列表</span>
     <%= svg_tag 'chevron-right', class: 'icon is-small' %>
   </div>
-<% end %>
+</div>
