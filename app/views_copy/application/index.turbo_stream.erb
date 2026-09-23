@@ -3,7 +3,7 @@
     render(
       partial: 'index_item',
       layout: 'index_item_actions',
-      collection: instance_variable_get("@#{controller_name.pluralize}"),
+      collection: @models,
       as: :model
     )
   %>
@@ -12,6 +12,6 @@
   turbo_stream.replace(
     'page_loading',
     partial: 'page_loading',
-    locals: { all: instance_variable_get("@#{controller_name.pluralize}") }
+    locals: { all: @models }
   )
 %>
