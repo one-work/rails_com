@@ -1,0 +1,5 @@
+<% if @roled_tabs.map(&:path).include?(request.path) %>
+<div class="tabs as-bottom">
+  <%= render 'tab_bar_item' %>
+</div>
+<% end %>
