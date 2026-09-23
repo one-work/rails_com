@@ -3,7 +3,7 @@
     <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small' %>
     <span>返回列表</span>
   <% end %>
-  <div class="bar-title"></div>
+  <div class="bar-title"><%= current_member.organ.name %></div>
   <i class="right"></i>
 </div>
 <div class="media as-me px-4 py-3">
@@ -17,8 +17,8 @@
   <% end %>
   </div>
   <div class="media-content">
-    <div class="text-weight-normal text-white">
-      <strong><%= current_organ.name %></strong>
+    <div class="text-weight-normal">
+      <strong class="text-white"><%= current_organ.name %></strong>
       <% if current_organ.dispatch %>
         <span class="tag is-primary is-light size-7"><%= current_organ.dispatch_i18n %></span>
       <% end %>
@@ -32,10 +32,6 @@
     </div>
     <div class="size-7 text-white mt-1">
       <span><%= current_member.name %></span>
-      <div class="tags are-small has-addons size-7 display-inline-flex">
-        <span class="tag is-dark">管理</span>
-        <span class="tag"><%= current_member.organ.name %></span>
-      </div>
     </div>
   </div>
   <div class="media-right text-white">
