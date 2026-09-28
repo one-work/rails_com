@@ -8,7 +8,7 @@ module Pg
 
     def destroy
       unless @replication_slot.active
-        ReplicationSlot.connection.exec_query "SELECT pg_drop_replication_slot(#{@replication_slot.slot_name})"
+        ReplicationSlot.connection.exec_query "SELECT pg_drop_replication_slot('#{@replication_slot.slot_name}')"
       end
     end
 
