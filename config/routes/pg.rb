@@ -9,7 +9,7 @@ namespace :pg, defaults: { business: 'pg' } do
       end
       resources :publication_tables, only: [:index, :new, :create]
     end
-    resources :replication_slots
+    resources :replication_slots, only: [:index, :destroy]
     resources :subscriptions do
       member do
         post :refresh
