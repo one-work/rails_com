@@ -1,5 +1,5 @@
-<div class="flex">
-<div data-controller="search" class="field is-grouped py-2 mb-0 flex-grow-1">
+<div class="flex mb-3">
+<div data-controller="search" class="field is-grouped mb-0 flex-grow-1">
   <div class="control is-expanded has-icons-left">
     <%= form_with theme: nil, method: :get, data: { turbo_action: 'replace' } do |f| %>
       <%= f.search_field defined?(name) ? name : 'name-like', value: params[defined?(name) ? name : 'name-like'], placeholder: '搜索', data: { search_target: 'input' }, class: 'input is-rounded' %>
