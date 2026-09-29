@@ -3,7 +3,7 @@
   data-page-url-value="<%= url_for(action: 'index') %>"
   class="has-page-grow"
 >
-  <div id="tbody" class="box is-padding-less">
+  <div id="tbody" data-controller="sortable" class="box is-padding-less">
     <%= yield %>
   </div>
   <% if instance_variable_get("@#{controller_name.pluralize}").blank? %>

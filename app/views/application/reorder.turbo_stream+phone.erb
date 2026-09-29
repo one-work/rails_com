@@ -1,8 +1,8 @@
 <%=
   turbo_stream.update(
     'tbody',
-    partial: 'index_tbody',
-    layout: 'index_tr',
+    partial: 'index_item',
+    layout: 'index_item_actions',
     collection: instance_variable_get("@#{pluralize_model_name}"),
     as: :model
   )
