@@ -1,4 +1,7 @@
-<div class="as-bar">
+<div
+  class="as-bar"
+  style="--scheme-main: <%= current_organ.theme_settings['backgroundColor'] %>"
+>
   <button id="history-button" data-controller="history-back" class="left">
     <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small text-link' %>
   </button>
