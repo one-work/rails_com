@@ -6,7 +6,7 @@
       class: active_helper(paths: tab.path, active: 'is-active')
     ) do
   %>
-    <%= svg_tag tab.icon, class: 'icon is-medium mr-0' %>
+    <%= svg_tag tab.icon, class: 'icon is-medium' %>
     <span class="family-monospace size-7"><%= tab.name %></span>
   <% end %>
 <% end %>
@@ -17,7 +17,7 @@
       class: 'text-warning'
     ) do
   %>
-    <%= svg_tag 'arrows-rotate', class: 'icon is-medium mr-0' %>
+    <%= svg_tag 'arrows-rotate', class: 'icon is-medium' %>
     <span class="family-monospace size-7">后台管理</span>
   <% end %>
 <% end if current_user && current_organ %>

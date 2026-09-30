@@ -1,4 +1,23 @@
-<%= link_to({ controller: '/me/home', host: "admin.#{Rails.app.routes.default_url_options[:host]}" }, class: 'text-warning') do %>
-  <%= svg_tag 'arrows-rotate', class: 'icon is-medium mr-0' %>
+<%=
+  link_to(
+    { controller: '/me/home', host: "admin.#{Rails.app.routes.default_url_options[:host]}" },
+    class: 'text-warning'
+  ) do
+%>
+  <%= svg_tag 'arrow-right-arrow-left', class: 'icon is-medium' %>
   <span class="family-monospace size-7">后台管理</span>
+<% end %>
+<%=
+  link_to(
+    { controller: 'factory/our/productions' },
+    data: { turbo_action: 'replace' },
+    class: active_helper(controller: 'factory/our/productions', active: 'is-active')
+  ) do
+%>
+  <%= svg_tag 'house', class: 'icon is-medium' %>
+  <span class="family-monospace size-7"><%= t('factory.our.productions.index.title') %></span>
+<% end %>
+<%= link_to('/our', data: { turbo_action: 'replace' }, class: active_helper(paths: '/our', active: 'is-active')) do %>
+  <%= svg_tag 'user', class: 'icon is-medium' %>
+  <span class="family-monospace size-7"><%= t('our.home.index.title') %></span>
 <% end %>
