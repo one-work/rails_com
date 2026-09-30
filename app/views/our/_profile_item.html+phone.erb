@@ -1,10 +1,12 @@
-<%= link_to({ controller: 'org/our/home' }, text: true, class: 'media') do %>
+<%= link_to({ controller: 'org/our/home' }, text: true, class: 'media py-3 px-5 as-my') do %>
   <div class="media-left">
-  <% if current_client.organ.logo.attached? %>
-    <%= image_tag current_client.organ.logo, class: 'image is-64x64' %>
-  <% else %>
-    <%= svg_tag 'building-user', kind: 'duotone', class: 'image is-64x64' %>
-  <% end %>
+    <figure class="image is-64x64">
+    <% if current_client.organ.logo.attached? %>
+      <%= image_tag current_client.organ.logo, class: 'is-rounded' %>
+    <% else %>
+      <%= svg_tag 'building-user', kind: 'duotone', class: 'is-rounded' %>
+    <% end %>
+    </figure>
   </div>
   <div class="media-content">
     <p>
