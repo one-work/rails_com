@@ -42,6 +42,7 @@ light:
   - plus
   - qrcode
   - rotate
+  - rotate-right
   - share
   - sitemap
   - square
