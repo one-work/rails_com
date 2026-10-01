@@ -8,7 +8,13 @@
     <span class="family-monospace size-7"><%= tab.name %></span>
   <% end %>
 <% end %>
-<%= link_to('/board', data: { turbo_action: 'replace' }, class: active_helper(paths: '/board', active: 'is-active')) do %>
+<%=
+  link_to(
+    '/org/board',
+    data: { turbo_action: 'replace' },
+    class: active_helper(paths: '/board', active: 'is-active')
+  ) do
+%>
   <%= svg_tag 'user', class: 'icon is-medium' %>
-  <span class="family-monospace size-7"><%= t('board.home.index.title') %></span>
+  <span class="family-monospace size-7"><%= t('org.board.home.index.title') %></span>
 <% end %>
