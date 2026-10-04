@@ -18,7 +18,14 @@
       <figure id="attachment_<%= file.id %>" class="image is-24x24">
         <%= video_tag file, controls: true %>
         <figcaption><%= link_to file.filename, rails_ext_video_path(file), target: '_blank' %></figcaption>
-        <%= button_to({ controller: 'com/panel/attachments', action: 'destroy', id: file.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, form: { class: 'delete' }) do %>
+        <%=
+          button_to(
+            { controller: 'com/panel/attachments', action: 'destroy', id: file.id },
+            method: :delete,
+            data: { turbo_confirm: t('.destroy.confirm') },
+            form: { class: 'delete' }
+          ) do
+        %>
           <%= svg_tag 'xmark' %>
         <% end %>
       </figure>
