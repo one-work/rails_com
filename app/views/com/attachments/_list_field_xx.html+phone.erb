@@ -1,9 +1,13 @@
 <div class="field">
   <div class="flex justify-content-space-between">
     <%= f.label target.name %>
-    <%= button_to({ controller: 'logos', action: 'search' }) do %>
+    <div
+      data-controller="common"
+      data-common-url-value="<%= url_for(controller: 'logos', action: 'search') %>"
+      data-action="click->common#streamPost"
+    >
       <span><%= t('.logos.search.title') %></span>
-    <% end %>
+    </div>
   </div>
   <div class="control">
   <% if target.is_a?(ActiveStorage::Attached::One) %>
