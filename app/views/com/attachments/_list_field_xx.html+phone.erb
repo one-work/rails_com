@@ -1,0 +1,15 @@
+<div class="field">
+  <div class="flex justify-content-space-between">
+    <%= f.label target.name %>
+    <%= button_to({ controller: 'logos', action: 'search' }) do %>
+      <span><%= t('.logos.search.title') %></span>
+    <% end %>
+  </div>
+  <div class="control">
+  <% if target.is_a?(ActiveStorage::Attached::One) %>
+    <%= render partial: 'com/attachments/file_upload_one', locals: local_assigns %>
+  <% else %>
+    <%= render partial: 'com/attachments/file_upload', locals: local_assigns %>
+  <% end %>
+  </div>
+</div>
