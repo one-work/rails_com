@@ -4,7 +4,8 @@
     <div
       data-controller="common"
       data-common-url-value="<%= url_for(controller: 'logos', action: 'search') %>"
-      data-action="click->common#streamPost"
+      data-common-body-value="product_name"
+      data-action="click->common#streamFormPost"
     >
       <span><%= t('.logos.search.title') %></span>
     </div>
