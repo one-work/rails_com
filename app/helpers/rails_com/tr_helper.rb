@@ -13,7 +13,7 @@ module RailsCom::TrHelper
       method: 'delete',
       icon: 'trash',
       class: 'text-danger',
-      confirm: t(".destroy.confirm")
+      confirm: true
     }
   }
 
@@ -36,26 +36,26 @@ module RailsCom::TrHelper
     icons.each do |icon|
       if icon.is_a? Hash
         icon.each do |key, value|
-          defaults << tr_default_actions(key, action: value)
+          defaults << tr_default_actions(key, action: value, param: param)
         end
       elsif DEFAULTS.key?(icon)
-        defaults << tr_default_actions(icon)
+        defaults << tr_default_actions(icon, param: param)
       end
     end
 
     items.select! { |i| (i.key?(:enable) && i[:enable]) || !i.key?(:enable) }
-
     (defaults + items).to_json
   end
 
-  def tr_default_actions(show, action: show, confirm: nil)
+  def tr_default_actions(icon, action: icon, param:)
     r = {
       action: url_for(action: action, **param),
       label: t(".#{action}.title"),
       position: 0,
-      **DEFAULTS[show]
+      **DEFAULTS.fetch(icon, {}).slice(:icon, :class, :method)
     }
-    r.merge! confirm: t(".#{destroy}.confirm")
+    r.merge! confirm: t(".#{action}.confirm") if DEFAULTS.dig(icon, :confirm)
+    r
   end
 
 end
