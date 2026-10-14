@@ -40,9 +40,9 @@ module RailsCom::TrHelper
     if icons.include?('destroy')
       defaults << {
         action: url_for(action: 'destroy', **param),
-        label: t('.destroy.title'),
-        icon: 'trash',
         method: 'delete',
+        icon: 'trash',
+        label: t('.destroy.title'),
         class: 'text-danger',
         confirm: t('.destroy.confirm'),
         position: 0
