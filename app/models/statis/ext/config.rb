@@ -159,7 +159,6 @@ module Statis
       def scopes
         column_names - [
           'id',
-          'organ_id',
           'begin_on',
           'end_on',
           'note',
