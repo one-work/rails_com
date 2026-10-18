@@ -40,6 +40,11 @@ class String
     ::Reline::Unicode.calculate_width(self)
   end
 
+  def rjust_display(width, padstr = ' ')
+    padding = width - display_width
+    padding <= 0 ? self : padstr * padding + self
+  end
+
   def split_by_display_width(max_width)
     ::Reline.core.instance_variable_set :@ambiguous_width, 2
     arr, _ = ::Reline::Unicode.split_by_width(self, max_width)
