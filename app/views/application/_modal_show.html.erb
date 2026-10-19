@@ -6,7 +6,9 @@
       <button type="button" data-action="modal#close" class="delete"></button>
     </header>
     <section id="modal-card-body" class="modal-card-body p-0">
-      <%= yield %>
+      <%= render layout: 'show_layout', locals: local_assigns do %>
+        <%= yield %>
+      <% end %>
     </section>
     <footer class="modal-card-foot justify-content-center">
       <%= link_to({ action: 'edit' }, class: 'button is-borderless') do %>
