@@ -1,5 +1,6 @@
 <%=
-  turbo_stream.prepend(
+  turbo_stream.action(
+    params.fetch('turbo_action', 'prepend'),
     'tbody',
     partial: 'index_tbody',
     layout: 'index_tr',
