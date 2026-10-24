@@ -3,6 +3,7 @@
   <section id="modal-card-body" class="modal-card-body">
     <%= render 'error_messages', target: f.object if f.object.errors.present? %>
     <div class="form-horizontal">
+      <%= hidden_field_tag :turbo_action, params[:turbo_action], id: nil if params.key?(:turbo_action) %>
       <%= render partial: 'form', locals: { f: f } %>
     </div>
   </section>
