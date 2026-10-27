@@ -14,7 +14,16 @@ module Com
       layout -> { turbo_frame_layout }
       before_action :set_locale, :set_timezone, :set_variant
       before_action :set_roled_tabs, if: -> { (request.variant & [:phone, :pad]).present? }
-      helper_method :current_title, :current_organ_name, :current_state, :current_filters, :default_params, :turbo_frame_request_id, :tab_item_items
+      helper_method(
+        :current_title,
+        :current_theme,
+        :current_organ_name,
+        :current_state,
+        :current_filters,
+        :default_params,
+        :turbo_frame_request_id,
+        :tab_item_items
+      )
     end
 
     private
@@ -61,6 +70,14 @@ module Com
       text = t('.title', default: :site_name)
 
       [text, current_organ_name].join(' - ')
+    end
+
+    def current_theme
+      if defined?(current_organ) && current_organ
+        current_organ.main_theme
+      else
+        {}
+      end
     end
 
     def current_organ_name
