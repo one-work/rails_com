@@ -1,4 +1,4 @@
-RailsCom.configure do |config|
+RailsCom.config.tap do |config|
   config.ignore_models = [
   <%- ignore_models.each do |count, models| -%>
     # 已定义 <%= count %> 个 attribute
