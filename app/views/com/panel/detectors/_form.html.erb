@@ -1,5 +1,8 @@
 <%= f.text_field :name %>
 <%= f.text_field :url %>
+<%= f.date_field :expire_on %>
+<%= f.text_field :note %>
+<%= f.checkbox :enabled %>
 <%= f.fields :detector_bots, wrap: { all: nil, input: 'field' }, label: false, placeholder: true do |ef| %>
   <%= render partial: 'item_form', locals: { ef: ef } %>
 <% end %>

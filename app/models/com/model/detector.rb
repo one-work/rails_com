@@ -6,6 +6,9 @@ module Com
     included do
       attribute :name, :string
       attribute :url, :string
+      attribute :expire_on, :date
+      attribute :note, :string
+      attribute :enabled, :boolean, default: true
 
       has_many :detector_bots
       has_many :detector_logs
@@ -13,6 +16,8 @@ module Com
       has_many :detector_responses
 
       accepts_nested_attributes_for :detector_bots
+
+      scope :enabled, -> { where(enabled: true) }
     end
 
     def detect(request_url = url)

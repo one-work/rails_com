@@ -24,6 +24,9 @@ module Com
       params.fetch(:detector, {}).permit(
         :name,
         :url,
+        :expire_on,
+        :note,
+        :enabled,
         detector_bots_attributes: {}
       )
     end
