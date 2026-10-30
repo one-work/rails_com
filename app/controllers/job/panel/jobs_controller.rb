@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 module Job
   class Panel::JobsController < Panel::BaseController
     before_action :set_queue
