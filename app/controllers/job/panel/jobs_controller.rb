@@ -107,7 +107,7 @@ module Job
     end
 
     def set_class_names
-      @class_names = @jobs.select(:class_name).group(:class_name).count
+      @class_names = @jobs.unscope(where: :class_name).select(:class_name).group(:class_name).count
       set_filter_columns
     end
 
