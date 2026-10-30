@@ -4,7 +4,6 @@ module Job
     before_action :set_common_jobs
     before_action :set_count
     before_action :set_job, only: [:show, :retry, :destroy]
-    before_action :set_filter_columns, only: [:index, :failed, :todo, :blocked, :running, :ready, :clearable]
 
     def index
       @jobs = @common_jobs.finished.page(params[:page]).per(params[:per])
@@ -88,7 +87,7 @@ module Job
 
     def filter_columns
       {
-        'state' => { type: 'collect', data: ['sss'], default: true },
+        'class_name' => { type: 'collect', data: @class_names.keys, default: true },
         'created_at' => 'datetime'
       }
     end
@@ -108,6 +107,7 @@ module Job
 
     def set_class_names
       @class_names = @jobs.select(:class_name).group(:class_name).count
+      set_filter_columns
     end
 
     def model_klass
