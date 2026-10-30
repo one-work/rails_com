@@ -14,6 +14,7 @@
   <%=
     button_to(
       { action: 'batch_destroy', **params.permit(:class_name) },
+      method: :delete,
       params: { from_action: 'failed' },
       class: 'button is-rounded is-danger',
       form: {
