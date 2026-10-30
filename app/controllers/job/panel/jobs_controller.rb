@@ -61,10 +61,10 @@ module Job
     end
 
     def batch_destroy
-      SolidQueue::Job.where(id: params[:ids]).each(&:destroy)
-
       if ['failed', 'ready', 'clearable'].include? params[:from_action]
-        public_send params[:from_action]
+        @common_jobs.public_send(params[:from_action]).delete_all
+      else
+        SolidQueue::Job.where(id: params[:ids]).each(&:destroy)
       end
     end
 

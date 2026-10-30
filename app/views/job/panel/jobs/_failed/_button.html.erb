@@ -1,5 +1,26 @@
 <% if params[:class_name] %>
-  <%= button_to({ action: 'retry_all', **params.permit(:class_name) }, class: 'button is-rounded is-danger', form: { data: { turbo_confirm: t('.retry_all.confirm') } }) do %>
+  <%=
+    button_to(
+      { action: 'retry_all', **params.permit(:class_name) },
+      params: { from_action: 'failed' },
+      class: 'button is-rounded is-danger',
+      form: {
+        data: { turbo_confirm: t('.retry_all.confirm') }
+      }
+    ) do
+  %>
     <span><%= t('.retry_all.title') %></span>
+  <% end %>
+  <%=
+    button_to(
+      { action: 'retry_destroy', **params.permit(:class_name) },
+      params: { from_action: 'failed' },
+      class: 'button is-rounded is-danger',
+      form: {
+        data: { turbo_confirm: t('.retry_destroy.confirm') }
+      }
+    ) do
+  %>
+    <span><%= t('.retry_destroy.title') %></span>
   <% end %>
 <% end %>
