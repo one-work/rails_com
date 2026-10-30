@@ -88,7 +88,7 @@ module Job
 
     def filter_columns
       {
-        'state' => { type: 'dropdown', default: true },
+        'state' => { type: 'collect', data: ['sss'], default: true },
         'created_at' => 'datetime'
       }
     end
