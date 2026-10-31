@@ -1,11 +1,10 @@
-# frozen_string_literal: true
 module Job
   class Panel::JobsController < Panel::BaseController
     before_action :set_queue
     before_action :set_common_jobs
     before_action :set_count
     before_action :set_job, only: [:show, :retry, :destroy]
-    before_action :set_filter_columns, only: [:index, :failed, :todo, :blocked, :running, :ready, :clearable]
+    skip_before_action :set_filter_columns, only: [:index]
 
     def index
       @jobs = @common_jobs.finished.page(params[:page]).per(params[:per])
@@ -63,10 +62,10 @@ module Job
     end
 
     def batch_destroy
-      SolidQueue::Job.where(id: params[:ids]).each(&:destroy)
-
       if ['failed', 'ready', 'clearable'].include? params[:from_action]
-        public_send params[:from_action]
+        @common_jobs.public_send(params[:from_action]).delete_all
+      else
+        SolidQueue::Job.where(id: params[:ids]).each(&:destroy)
       end
     end
 
@@ -89,7 +88,7 @@ module Job
 
     def filter_columns
       {
-        'state' => { type: 'dropdown', default: true },
+        'class_name' => { type: 'collect', data: @class_names.keys, default: true },
         'created_at' => 'datetime'
       }
     end
@@ -108,7 +107,8 @@ module Job
     end
 
     def set_class_names
-      @class_names = @jobs.select(:class_name).group(:class_name).count
+      @class_names = @jobs.unscope(where: :class_name).select(:class_name).group(:class_name).count
+      set_filter_columns
     end
 
     def model_klass

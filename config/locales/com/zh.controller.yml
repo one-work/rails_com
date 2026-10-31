@@ -52,6 +52,9 @@ zh:
       detectors:
         index:
           title: 监测器
+      detector_logs:
+        index:
+          title: 探测日志
       err_bots:
         index:
           title: 报错机器人
