@@ -1,4 +1,8 @@
-<div data-controller="navbar" class="as-bar">
+<div
+  data-controller="navbar"
+  class="as-bar"
+  style="--scheme-main: <%= current_theme['backgroundColor'] %>; --text: <%= current_theme['frontColor'] %>"
+>
   <button id="history-button" data-controller="history-back" class="left">
     <%= svg_tag 'angle-left', kind: 'regular', class: 'icon is-small text-link' %>
   </button>
