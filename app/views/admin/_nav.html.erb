@@ -31,6 +31,11 @@
         <%= render 'admin/trade_nav_popup' %>
       </li>
     <% end %>
+    <% if defined?(RailsTrade) && any_role?(business: 'trade', namespace: 'in') %>
+      <li class="<%= active_helper(modules: 'trade/in', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
+        <%= render 'in/trade_nav_popup' %>
+      </li>
+    <% end %>
     <% if defined?(RailsShip) && any_role?(business: 'ship', namespace: 'admin') %>
       <li class="<%= active_helper(modules: 'ship/admin', item: 'menu-item p-0', active: 'menu-item p-0 is-active') %>">
         <%= render 'admin/ship_nav_popup' %>
