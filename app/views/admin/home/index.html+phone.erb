@@ -10,6 +10,9 @@
 <% if defined?(RailsTrade) && any_role?(business: 'trade', namespace: 'admin') %>
   <%= render 'trade_nav' %>
 <% end %>
+<% if defined?(RailsTrade) && any_role?(business: 'trade', namespace: 'in') %>
+  <%= render 'in/trade_nav' %>
+<% end %>
 <% if defined?(RailsBench) && any_role?(business: 'bench', namespace: 'admin') %>
   <%= render 'bench_nav' %>
 <% end %>
