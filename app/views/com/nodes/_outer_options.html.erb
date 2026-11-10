@@ -1,6 +1,6 @@
 <% f_method = "#{outer}_ancestors(#{depth})" %>
 <div
-  class="field is-narrow control"
+  class="field is-narrow"
   id="<%= "#{f_method}_input" %>"
   data-controller="taxon"
   data-taxon-url-value="nodes/outer"
@@ -26,7 +26,7 @@
         include_blank: true,
         label: false,
         all: { select: nil },
-        wrap: { select: 'select' }
+        wrap: { select: 'control > select' }
       },
       {
         data: { action: 'taxon#choose' }
