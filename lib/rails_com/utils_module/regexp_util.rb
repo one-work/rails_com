@@ -17,17 +17,6 @@ module RegexpUtil
     between(prefix, suffix, quantifier: '*', greedy: true)
   end
 
-  def rails_log
-    xx(
-      method: ['Started ', ' '],
-      path: [' "', '" '],
-      ip: [' for ', ' '],
-      date: [' at ', ' '],
-      time: [' ', ' '],
-      timezone: [' ', '$']
-    )
-  end
-
   def xx(**options)
     r = options.inject([]) do |memo, (key, value)|
       last = memo.pop.to_s
