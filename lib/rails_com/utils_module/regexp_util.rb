@@ -17,29 +17,4 @@ module RegexpUtil
     between(prefix, suffix, quantifier: '*', greedy: true)
   end
 
-  def xx(**options)
-    r = options.inject([]) do |memo, (key, value)|
-      last = memo.pop.to_s
-      x = find_common_part(last, value[0])
-      memo << [last.delete_suffix(x), x, value[0].delete_prefix(x)].join
-      memo << "(?<#{key}>[^#{value[1]}]*)"
-      memo << value[1]
-    end
-    Rails.logger.debug(r)
-
-    /^#{r.join}/
-  end
-
-  def find_common_part(str1, str2)
-    common_length = [str1.length, str2.length].min
-
-    (0..common_length).reverse_each do |i|
-      if str1[-i, i] == str2[0, i]
-        return str2[0, i]
-      end
-    end
-
-    ''
-  end
-
 end
