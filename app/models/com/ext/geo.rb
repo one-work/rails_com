@@ -33,7 +33,7 @@ module Com
 
     def get_location!
       return if address_changed?
-      r = QqMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
+      r = AMapHelper.geocoder(lat: geo.lat, lng: geo.lon)
     rescue
     ensure
       if r
@@ -43,7 +43,7 @@ module Com
     end
 
     def set_geo_by_ip!(ip)
-      r = QqMapHelper.ip ip
+      r = AMapHelper.ip ip
       location = r.fetch('location', {})
       if location.present?
         self.update geo: RGeo::Geos.factory(srid: 4326).point(location['lng'], location['lat'])
