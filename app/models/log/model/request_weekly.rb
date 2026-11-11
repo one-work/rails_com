@@ -9,6 +9,8 @@ module Log
       attribute :duration_max, :float
       attribute :duration_min, :float
       attribute :total, :integer
+
+      has_many :requests, primary_key: :identifier, foreign_key: :identifier
     end
 
     class_methods do
