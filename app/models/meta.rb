@@ -5,7 +5,7 @@ module Meta
   end
 
   def self.table_name_prefix
-    'meta_'
+    'meta_'.freeze
   end
 
 end
