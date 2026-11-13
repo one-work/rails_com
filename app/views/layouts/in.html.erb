@@ -5,7 +5,7 @@
       <%= render 'menu_bar' %>
     </div>
     <turbo-frame id="panel" data-turbo-action="advance" class="column as-body">
-      <%= render 'nav_bar' %>
+      <ul class="breadcrumb has-succeeds-separator ml-3"><%= render 'breadcrumb' %></ul>
       <%= render 'alert' %>
       <div class="box flex-grow-1 radius-bottom-none">
         <%= yield %>
