@@ -17,6 +17,10 @@ module Com
     end
 
     def auto_verify
+      if authorization.status == 'valid'
+        self.update(status: 'valid')
+        return
+      end
       authorization.dns.request_validation
     rescue Acme::Client::Error::BadNonce
       retry
