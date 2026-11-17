@@ -1,6 +1,6 @@
 <div class="field">
   <%= f.label "#{outer}_id", for: nil, class: 'label text-grey' %>
-  <div class="control">
+  <div class="field-body">
     <% if node&.ancestors.present? %>
       <% node.ancestors.reverse_each do |node| %>
         <%=

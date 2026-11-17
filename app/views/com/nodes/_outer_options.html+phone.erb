@@ -13,6 +13,7 @@
       outer: outer
     }.compact.to_json
   %>"
+  class="field is-narrow"
 >
   <%=
     f.collection_select(
@@ -24,7 +25,7 @@
         selected: node.id,
         include_blank: true,
         label: false,
-        all: { normal: nil },
+        all: { select: nil },
         wrap: { select: 'select' }
       },
       {
