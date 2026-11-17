@@ -14,7 +14,7 @@
       outer: outer
     }.compact.to_json
   %>"
-  class="field is-narrow"
+  class="field"
 >
   <%=
     f.collection_select(
@@ -27,7 +27,7 @@
         include_blank: true,
         label: false,
         all: { select: nil },
-        wrap: { select: 'select' }
+        wrap: { select: 'select is-fullwidth' }
       },
       {
         data: { action: 'taxon#choose' }
