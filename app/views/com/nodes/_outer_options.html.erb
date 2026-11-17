@@ -1,6 +1,5 @@
 <% f_method = "#{outer}_ancestors(#{depth})" %>
 <div
-  class="field is-narrow"
   id="<%= "#{f_method}_input" %>"
   data-controller="taxon"
   data-taxon-url-value="nodes/outer"
@@ -14,6 +13,7 @@
       outer: outer
     }.compact.to_json
   %>"
+  class="field is-narrow"
 >
   <%=
     f.collection_select(

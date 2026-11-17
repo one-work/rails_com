@@ -1,4 +1,35 @@
 <% f_method = "#{outer}_ancestors(#{depth})" %>
-<div data-controller="taxon" data-taxon-url-value="nodes/outer" data-taxon-title-value="outer_ancestors_input">
-  <%= f.collection_select(f_method, node.self_and_siblings, :id, :name, { selected: node.id, include_blank: true, label: false, all: { normal: nil }, wrap: { select: nil } }, { data: { action: 'taxon#choose' }, class: 'weui-select' }) %>
+<div
+  id="<%= "#{f_method}_input" %>"
+  data-controller="taxon"
+  data-taxon-url-value="nodes/outer"
+  data-taxon-title-value="outer_ancestors_input"
+  data-taxon-params-value="<%=
+    {
+      node_type: node.base_class_name,
+      index: f.index,
+      scope: f.object_name,
+      method: f_method,
+      outer: outer
+    }.compact.to_json
+  %>"
+>
+  <%=
+    f.collection_select(
+      f_method,
+      node.self_and_siblings,
+      :id,
+      :name,
+      {
+        selected: node.id,
+        include_blank: true,
+        label: false,
+        all: { normal: nil },
+        wrap: { select: 'select' }
+      },
+      {
+        data: { action: 'taxon#choose' }
+      }
+    )
+  %>
 </div>
