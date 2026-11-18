@@ -18,7 +18,11 @@ module Roled
     end
 
     def path
-      Rails.app.routes.url_for(controller: controller_path, action: action_name)
+      Rails.app.routes.url_for(
+        controller: controller_path,
+        action: action_name,
+        only_path: true
+      )
     end
 
     def name
