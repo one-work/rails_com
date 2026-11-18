@@ -15,6 +15,7 @@ module Roled
 
       has_many :role_rules, class_name: 'Roled::RoleRule', through: :roles
       has_many :tabs, class_name: 'Roled::Tab', through: :roles
+      has_many :menus, class_name: 'Roled::Menu', through: :roles
       has_many :meta_actions, class_name: 'Roled::MetaAction', through: :role_rules
 
       after_create_commit :compute_role_cache!

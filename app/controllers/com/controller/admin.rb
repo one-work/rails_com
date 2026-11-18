@@ -37,5 +37,14 @@ module Com
       logger.debug "\e[35m  Admin SetRoleTabs: #{@roled_tabs}  \e[0m" if RailsCom.config.debug
     end
 
+    def set_roled_menus
+      if defined?(current_member) && current_member
+        @roled_menus = current_member.menus.where(namespace: 'admin').load.sort_by(&:position)
+      else
+        super
+      end
+      logger.debug "\e[35m  Admin SetRoleTabs: #{@roled_tabs}  \e[0m" if RailsCom.config.debug
+    end
+
   end
 end
