@@ -17,8 +17,8 @@ module Roled
       before_validation :split_identifier, if: -> { identifier.present? && controller_path.blank? }
     end
 
-    def real_path(**options)
-
+    def path
+      Rails.app.url_for(controller: controller_path, action: action_name)
     end
 
     def name
