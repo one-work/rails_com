@@ -134,7 +134,7 @@ module Meta
     end
 
     def name
-      t1 = I18n.t "#{[business_identifier, namespace_identifier, controller_name, action_name].join('.')}.title", default: nil
+      t1 = I18n.t "#{[*controller_path.split('/'), action_name].join('.')}.title", default: nil
       return t1 if t1
 
       t2 = self.class.enum_i18n :action_name, self.action_name

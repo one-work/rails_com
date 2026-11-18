@@ -7,7 +7,7 @@ module Me
 
     def index
       set_roled_tabs
-      sef_roled_menus
+      set_roled_menus
     end
 
     private

@@ -16,7 +16,12 @@
   </div>
   <div class="card-content fixed-grid has-3-cols">
     <div class="grid">
-      <%= render partial: 'common_nav', collection: @roled_menus, as: :menu %>
+    <% @roled_menus.each do |menu| %>
+      <%= link_to({ controller: menu.controller_path, action: menu.action_name }, class: 'cell has-column-centered') do %>
+        <%= svg_tag menu.icon, class: 'icon is-medium text-primary' %>
+        <div class="size-7 text-grey mt-1"><%= menu.name %></div>
+      <% end %>
+    <% end %>
     </div>
   </div>
 </div>

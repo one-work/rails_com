@@ -39,7 +39,7 @@ module Com
 
     def set_roled_menus
       if defined?(current_member) && current_member
-        @roled_menus = current_member.menus.where(namespace: 'admin').load.sort_by(&:position)
+        @roled_menus = Roled::Menu.all.sort_by(&:position)
       else
         super
       end
