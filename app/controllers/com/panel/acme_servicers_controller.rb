@@ -16,7 +16,7 @@ module Com
         :type,
         :key,
         :secret,
-        acme_domains_attributes: [:domain]
+        acme_domains_attributes: {}
       )
     end
 
