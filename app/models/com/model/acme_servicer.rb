@@ -13,7 +13,7 @@ module Com
 
       has_many :acme_domains
 
-      accepts_nested_attributes_for :acme_domains
+      accepts_nested_attributes_for :acme_domains, allow_destroy: true
     end
 
     def client
