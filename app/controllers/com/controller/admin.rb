@@ -41,7 +41,7 @@ module Com
       if defined?(current_member) && current_member
         @roled_menus = Roled::Menu.all.sort_by(&:position)
       else
-        super
+        @roled_menus = Roled::Menu.all.sort_by(&:position)
       end
       logger.debug "\e[35m  Admin SetRoleTabs: #{@roled_tabs}  \e[0m" if RailsCom.config.debug
     end
