@@ -4,7 +4,9 @@
 <%= f.fields :acme_domains, wrap: { all: nil, input: 'field' }, label: false, placeholder: true do |ef| %>
   <div class="field is-horizontal" data-controller="field" data-field-index-value="<%= ef.index %>">
     <% if ef.index == 0 %>
-      <%= ef.label :domain %>
+      <div class="field-label is-normal">
+        <%= ef.label :domain %>
+      </div>
     <% else %>
       <label class="field-label"></label>
     <% end %>
