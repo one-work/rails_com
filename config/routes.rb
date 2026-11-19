@@ -50,7 +50,6 @@ Rails.app.routes.draw do
     root 'home#index' unless has_named_route? 'me_root'
     controller :home do
       post :share
-      get :douyin
     end
   end
 

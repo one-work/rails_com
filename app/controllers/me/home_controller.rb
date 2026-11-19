@@ -11,10 +11,6 @@ module Me
       set_roled_menus
     end
 
-    def douyin
-      set_roled_menus
-    end
-
     private
     def require_member_or_user
       return if defined?(current_member) && current_member
