@@ -20,8 +20,8 @@ class ConfigurationsController < ApplicationController
             "/menus$"
           ],
           properties: {
-            context: "modal",
-            modal_style: "medium"
+            context: 'modal',
+            modal_style: 'medium'
           }
         },
         {
@@ -29,7 +29,7 @@ class ConfigurationsController < ApplicationController
             "/why$"
           ],
           properties: {
-            presentation: "replace_root"
+            presentation: 'replace_root'
           }
         },
         {
@@ -39,7 +39,7 @@ class ConfigurationsController < ApplicationController
             "/modal"
           ],
           properties: {
-            context: "modal",
+            context: 'modal',
             pull_to_refresh_enabled: false
           }
         },
@@ -48,7 +48,7 @@ class ConfigurationsController < ApplicationController
             "^/$"
           ],
           properties: {
-            presentation: "clear_all"
+            presentation: 'clear_all'
           }
         }
       ]
