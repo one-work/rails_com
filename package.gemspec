@@ -1,8 +1,9 @@
 Gem::Specification.new do |s|
   s.name = 'rails_com'
-  s.version = '1.3.0'
+  s.version = '1.3.1'
   s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
+  s.homepage = 'https://github.com/one-work/rails_com'
   s.summary = 'Rails Engine with common utils'
   s.description = 'Common utils for Rails Application'
 
