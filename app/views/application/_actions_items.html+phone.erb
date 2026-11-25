@@ -1,11 +1,11 @@
 <%= button_to({ action: 'destroy' }, method: :delete, form: { data: { turbo_confirm: t('.destroy.confirm') } }, class: 'cell has-column-centered') do %>
   <%= svg_tag 'trash' %>
   <span><%= t('.destroy.title') %></span>
-<% end if RailsCom::Routes.controllers[referer_controller].key?('destroy') %>
+<% end if RailsCom::Routes.controllers.fetch(referer_controller, {}).key?('destroy') %>
 <%= button_to({ action: 'edit' }, class: 'cell has-column-centered') do %>
   <%= svg_tag 'pencil' %>
   <span><%= t('.edit.title') %></span>
-<% end if RailsCom::Routes.controllers[referer_controller].key?('edit') %>
+<% end if RailsCom::Routes.controllers.fetch(referer_controller, {}).key?('edit') %>
 <%= link_to({ action: 'show' }, class: 'cell has-column-centered') do %>
   <%= svg_tag 'circle-info' %>
   <span><%= t('.show.title') %></span>
