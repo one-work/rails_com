@@ -11,6 +11,7 @@ zh:
     title: 标题
     type: 类型
     description: 描述
+    logo: 图标
     note: 备注
     birthday: 生日
     gender: 性别
