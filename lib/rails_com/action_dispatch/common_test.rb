@@ -16,7 +16,7 @@ module RailsCom::ActionDispatch
       end
     end
 
-    def initialize(name, action)
+    def initialize(name, action = nil)
       @action = action
       super(name)
     end
