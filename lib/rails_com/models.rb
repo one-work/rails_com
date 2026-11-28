@@ -59,24 +59,19 @@ module RailsCom::Models
 
         r[:belongs_attributes] ||= {}
         r[:belongs_attributes].reverse_merge! node.attributes_by_belongs
+        r[:adapter] = node.connection.adapter_name
 
+        table_options = {  }
         if node.primary_key.is_a? Array
-          table_options = { id: false }
+          table_options.merge! id: false
         else
           if r[:model_attributes][node.primary_key.to_sym]
-            table_options = {
-              id: r[:model_attributes].delete(node.primary_key.to_sym)[:migrate_type]
-            }
+            table_options.merge! id: r[:model_attributes].delete(node.primary_key.to_sym)[:migrate_type]
             if table_options[:id] == :uuid
               table_options.merge! default: 'uuidv7()'
             end
           elsif ['PostgreSQL', 'PostGIS'].include?(node.connection.adapter_name)
-            table_options = {
-              id: :uuid,
-              default: 'uuidv7()'
-            }
-          else
-            table_options = {}
+            table_options.merge! id: :uuid, default: 'uuidv7()'
           end
         end
 
