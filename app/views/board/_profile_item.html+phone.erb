@@ -13,12 +13,14 @@
     </figure>
   </div>
   <div class="media-content">
-    <strong class="weui-media-box__title">
-      <span><%= current_user.name %></span>
-    </strong>
-    <div class="weui-media-box__desc">
+    <% if current_user.name.present? %>
+      <strong><%= current_user.name %></strong>
+    <% else %>
+      <span class="size-7 text-grey">待设置昵称</span>
+    <% end %>
+    <p>
       <span class="text-weight-normal size-7"><%= current_account&.identity %></span>
-    </div>
+    </p>
   </div>
   <div class="media-right">
     <%= svg_tag 'qrcode' %>
