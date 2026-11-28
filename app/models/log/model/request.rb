@@ -23,10 +23,13 @@ module Log
       attribute :db_duration, :float
       attribute :query_count, :integer
       attribute :query_cached_count, :integer
-      attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
-      attribute :accept, :string, as: "headers#>>'{ACCEPT}'", virtual: true
-      attribute :referer, :string, as: "headers#>>'{REFERER}'", virtual: true
-      attribute :identifier, :string, as: "controller_name || '#' || action_name", virtual: true
+      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
+        attribute :user_agent, :string, as: "headers#>>'{USER_AGENT}'", virtual: true
+        attribute :accept, :string, as: "headers#>>'{ACCEPT}'", virtual: true
+        attribute :referer, :string, as: "headers#>>'{REFERER}'", virtual: true
+        attribute :identifier, :string, as: "controller_name || '#' || action_name", virtual: true
+      else
+      end
     end
 
     def real_path
